@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Code, Zap, Shield, Globe, Download, BookOpen, Play, CheckCircle, Database, Terminal } from 'lucide-react'
+import { ArrowRight, Code, Zap, Shield, Globe, Download, BookOpen, Play, CheckCircle, Database, Terminal, Package } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
 
 export const metadata: Metadata = {
   title: 'Getting Started',
-  description: 'Get started with Cardity smart contract development. Install CLI tools, write your first contract, and deploy to Dogecoin UTXO blockchain.',
-  keywords: 'Cardity getting started, smart contract tutorial, Dogecoin development, UTXO programming, first contract',
+  description: 'Get started with Cardity smart contract development. Install CLI tools via npm, write your first contract, and deploy to Dogecoin UTXO blockchain.',
+  keywords: 'Cardity getting started, smart contract tutorial, Dogecoin development, UTXO programming, first contract, npm install',
   openGraph: {
     title: 'Getting Started with Cardity - Smart Contract Development',
-    description: 'Learn how to install Cardity CLI, write your first smart contract, and deploy to Dogecoin UTXO blockchain.',
+    description: 'Learn how to install Cardity CLI via npm, write your first smart contract, and deploy to Dogecoin UTXO blockchain.',
   },
 }
 
@@ -34,37 +34,40 @@ export default function GettingStartedPage() {
           </h2>
           
           <div className="bg-gray-900 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-medium text-white mb-4">From Source</h3>
+            <h3 className="text-lg font-medium text-white mb-4 flex items-center">
+              <Package className="w-5 h-5 mr-2 text-blue-400" />
+              npm 安装（推荐）
+            </h3>
             <CodeBlock
-              code={`# Clone the repository
-git clone https://github.com/cardity-org/cardity-core.git
-cd cardity-core
+              code={`# 全局安装 Cardity
+npm install -g cardity
 
-# Build and install
-mkdir build && cd build
-cmake ..
-make
-sudo make install
+# 验证安装
+cardity --version
 
-# Verify installation
-cardity --version`}
-              language="bash"
-            />
-          </div>
-          
-          <div className="bg-gray-900 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-medium text-white mb-4">Using Package Manager</h3>
-            <CodeBlock
-              code={`# Install via npm (coming soon)
-npm install -g cardityc
-
-# Verify installation
-cardityc --version`}
+# 查看帮助
+cardity --help`}
               language="bash"
             />
             <p className="text-sm text-gray-400 mt-2">
-              If installation is successful, you should see output like <code className="bg-gray-800 px-1 rounded">cardity 0.1.0</code>
+              如果安装成功，你应该看到类似 <code className="bg-gray-800 px-1 rounded">cardity 1.0.1</code> 的输出
             </p>
+          </div>
+          
+          <div className="bg-gray-900 rounded-lg p-6 mb-6">
+            <h3 className="text-lg font-medium text-white mb-4">从源码编译</h3>
+            <CodeBlock
+              code={`# 克隆项目
+git clone https://github.com/cardity-org/cardity-core.git
+cd cardity-core
+
+# 安装依赖
+npm install
+
+# 验证安装
+cardity --version`}
+              language="bash"
+            />
           </div>
         </section>
 
@@ -114,282 +117,183 @@ cardityc --version`}
   }
 }`}
               language="cardity"
-              showLineNumbers={true}
             />
           </div>
           
           <div className="bg-gray-900 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-medium text-white mb-4">Compile Contract</h3>
+            <h3 className="text-lg font-medium text-white mb-4">Compile and Run</h3>
             <CodeBlock
-              code={`# Compile to binary format
-cardityc hello.car --format carc
+              code={`# 编译协议
+cardity compile hello.car
 
-# This generates hello.carc file`}
-              language="bash"
-            />
-          </div>
-          
-          <div className="bg-gray-900 rounded-lg p-6">
-            <h3 className="text-lg font-medium text-white mb-4">Run Contract</h3>
-            <CodeBlock
-              code={`# Run the contract
-cardity_runtime hello.car set_message "Hello, World!"
-cardity_runtime hello.car get_message
-cardity_runtime hello.car increment
-cardity_runtime hello.car get_count`}
+# 生成 ABI
+cardity abi hello.car
+
+# 运行协议
+cardity run hello.carc
+
+# 调用方法
+cardity run hello.carc get_message
+cardity run hello.carc set_message "Hello, World!"`}
               language="bash"
             />
           </div>
         </section>
 
-        {/* Key Concepts */}
+        {/* CLI Commands */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">
-            Key Concepts
+          <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
+            <Terminal className="w-6 h-6 mr-3 text-blue-400" />
+            CLI Commands
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Protocol</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">项目初始化</h3>
+              <CodeBlock
+                code={`# 初始化新项目
+cardity init my-first-protocol
+
+# 进入项目目录
+cd my-first-protocol
+
+# 查看项目结构
+ls -la`}
+                language="bash"
+              />
+            </div>
+            
+            <div className="card">
+              <h3 className="text-lg font-semibold text-white mb-4">编译和运行</h3>
+              <CodeBlock
+                code={`# 编译协议
+cardity compile src/index.car
+
+# 生成 ABI
+cardity abi src/index.car
+
+# 运行协议
+cardity run dist/index.carc`}
+                language="bash"
+              />
+            </div>
+            
+            <div className="card">
+              <h3 className="text-lg font-semibold text-white mb-4">DRC-20 代币操作</h3>
+              <CodeBlock
+                code={`# 编译 DRC-20 代币
+cardity drc20 compile token.car
+
+# 部署 DRC-20 代币
+cardity drc20 deploy token.car
+
+# 铸造代币
+cardity drc20 mint MYT 1000`}
+                language="bash"
+              />
+            </div>
+            
+            <div className="card">
+              <h3 className="text-lg font-semibold text-white mb-4">部署到区块链</h3>
+              <CodeBlock
+                code={`# 验证协议
+cardity_deploy validate protocol.carc
+
+# 部署到 Dogecoin
+cardity_deploy deploy protocol.carc \\
+  --address doge1... \\
+  --private-key ...`}
+                language="bash"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Language Features */}
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
+            <Code className="w-6 h-6 mr-3 text-blue-400" />
+            Language Features
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="card">
+              <h3 className="text-lg font-semibold text-white mb-4">协议定义</h3>
               <p className="text-gray-400 mb-4">
-                Similar to Solidity's Contract, Protocol is the basic unit of Cardity contracts. Each protocol contains state, methods, and events.
+                Cardity 使用 <code className="bg-gray-800 px-1 rounded">protocol</code> 关键字定义智能合约
               </p>
               <div className="flex items-center text-sm text-blue-400">
                 <CheckCircle className="w-4 h-4 mr-1" />
-                Defines contract structure
+                类似 Solidity 的语法
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">State</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">状态管理</h3>
               <p className="text-gray-400 mb-4">
-                Persistent data stored in UTXO. Supports basic types like int, string, bool, and complex data structures.
+                使用 <code className="bg-gray-800 px-1 rounded">state</code> 块定义状态变量
               </p>
               <div className="flex items-center text-sm text-blue-400">
                 <Database className="w-4 h-4 mr-1" />
-                Persistent storage
+                持久化存储
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Methods</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">事件系统</h3>
               <p className="text-gray-400 mb-4">
-                Executable functions that can modify state, return values, or trigger events. Supports parameters and return values.
+                使用 <code className="bg-gray-800 px-1 rounded">event</code> 和 <code className="bg-gray-800 px-1 rounded">emit</code> 处理事件
               </p>
               <div className="flex items-center text-sm text-blue-400">
-                <Code className="w-4 h-4 mr-1" />
-                Business logic
+                <Zap className="w-4 h-4 mr-1" />
+                事件驱动架构
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Events</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">DRC-20 支持</h3>
               <p className="text-gray-400 mb-4">
-                Used to record important information during contract execution, which can be monitored and processed by external systems.
+                内置完整的 DRC-20 代币标准支持
               </p>
               <div className="flex items-center text-sm text-blue-400">
-                <CheckCircle className="w-4 h-4 mr-1" />
-                Logging system
+                <Shield className="w-4 h-4 mr-1" />
+                代币标准兼容
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* DRC-20 Token Example */}
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">
-            DRC-20 Token Example
-          </h2>
-          
-          <p className="text-gray-400 mb-6">
-            Cardity supports the complete DRC-20 token standard, making it easy to create tokens on Dogecoin:
-          </p>
-          
-          <div className="bg-gray-900 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-medium text-white mb-4">DRC-20 Token Template</h3>
-            <CodeBlock
-              code={`# Generate DRC-20 token template
-cardity_drc20 template basic --tick MYT --name "My Token" --output my_token.car
-
-# Compile DRC-20 token
-cardity_drc20 compile my_token.car
-
-# Validate token definition
-cardity_drc20 validate my_token.car
-
-# Generate deployment inscription
-cardity_drc20 deploy my_token.car --output deploy.json`}
-              language="bash"
-            />
-          </div>
-          
-          <div className="bg-gray-900 rounded-lg p-6">
-            <h3 className="text-lg font-medium text-white mb-4">DRC-20 Token Code</h3>
-            <CodeBlock
-              code={`protocol MyDrc20Token {
-  version: "1.0.0";
-  owner: "doge1token123";
-  
-  // DRC-20 token definition
-  drc20 {
-    tick: "MYT";
-    name: "My Token";
-    max_supply: "1000000";
-    mint_limit: "1000";
-    decimals: "18";
-    deployer: "doge1token123";
-  }
-  
-  state {
-    total_supply: int = 0;
-    deployed: bool = false;
-  }
-  
-  method deploy() {
-    if (!state.deployed) {
-      state.deployed = true;
-      emit TokenDeployed(drc20.tick, drc20.max_supply);
-      return "Token deployed successfully";
-    }
-    return "Token already deployed";
-  }
-  
-  method mint(amount) {
-    if (!state.deployed) return "Token not deployed";
-    if (amount <= 0) return "Invalid amount";
-    if (state.total_supply + amount > drc20.max_supply) return "Exceeds max supply";
-    
-    state.total_supply = state.total_supply + amount;
-    emit TokenMinted(drc20.tick, amount, state.total_supply);
-    return "Minted successfully";
-  }
-  
-  event TokenDeployed {
-    tick: string;
-    max_supply: string;
-  }
-  
-  event TokenMinted {
-    tick: string;
-    amount: int;
-    total_supply: int;
-  }
-}`}
-              language="cardity"
-              showLineNumbers={true}
-            />
-          </div>
-        </section>
-
-        {/* CLI Tools */}
-        <section>
-          <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
-            <Terminal className="w-6 h-6 mr-3 text-blue-400" />
-            CLI Tools
-          </h2>
-          
-          <div className="space-y-6">
-            <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Project Management</h3>
-              <CodeBlock
-                code={`# Initialize new project
-cardity init
-
-# Build project
-cardity build
-
-# Run tests
-cardity test
-
-# Package management
-cardity install <package>
-cardity uninstall <package>
-cardity list
-cardity search <query>`}
-                language="bash"
-              />
-            </div>
-            
-            <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Compiler Tools</h3>
-              <CodeBlock
-                code={`# Compile to binary format
-cardityc main.car --format carc
-
-# Compile to JSON format
-cardityc main.car --format json
-
-# Generate deployment package
-cardityc main.car -o deployed.carc
-
-# Generate ABI
-cardity_abi main.car main.abi
-
-# Run protocol
-cardity_runtime main.car set_message "Hello"`}
-                language="bash"
-              />
-            </div>
-            
-            <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Deployment Tools</h3>
-              <CodeBlock
-                code={`# Validate .carc file
-cardity_deploy validate protocol.carc
-
-# View protocol info
-cardity_deploy info protocol.carc
-
-# Deploy to Dogecoin chain
-cardity_deploy deploy protocol.carc --address doge1... --private-key ...
-
-# Create inscription transaction
-cardity_deploy inscription protocol.carc --address doge1... --output inscription.txt`}
-                language="bash"
-              />
             </div>
           </div>
         </section>
 
         {/* Next Steps */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">
+          <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
+            <ArrowRight className="w-6 h-6 mr-3 text-blue-400" />
             Next Steps
           </h2>
           
-          <div className="bg-gray-900 rounded-lg p-6">
-            <p className="text-gray-300 mb-4">
-              Now that you've successfully created your first Cardity contract, you can:
-            </p>
-            <ul className="space-y-2 text-gray-300 mb-6">
-              <li className="flex items-center">
-                <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Learn complete language syntax and features
-              </li>
-              <li className="flex items-center">
-                <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Explore standard library functionality
-              </li>
-              <li className="flex items-center">
-                <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Understand how to deploy contracts to Dogecoin network
-              </li>
-              <li className="flex items-center">
-                <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                View more examples and best practices
-              </li>
-            </ul>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link href="/docs/cli" className="card hover:bg-gray-800/50 transition-colors">
+              <Terminal className="w-8 h-8 text-blue-400 mb-3" />
+              <h3 className="text-lg font-semibold text-white mb-2">CLI Reference</h3>
+              <p className="text-gray-400 text-sm">
+                Learn all available CLI commands and options
+              </p>
+            </Link>
             
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/docs/reference" className="btn-primary inline-flex items-center">
-                Language Reference
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-              <Link href="/examples" className="btn-secondary inline-flex items-center">
-                View Examples
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
-            </div>
+            <Link href="/examples" className="card hover:bg-gray-800/50 transition-colors">
+              <Code className="w-8 h-8 text-green-400 mb-3" />
+              <h3 className="text-lg font-semibold text-white mb-2">Examples</h3>
+              <p className="text-gray-400 text-sm">
+                Explore real-world smart contract examples
+              </p>
+            </Link>
+            
+            <Link href="/docs/deploy" className="card hover:bg-gray-800/50 transition-colors">
+              <Globe className="w-8 h-8 text-purple-400 mb-3" />
+              <h3 className="text-lg font-semibold text-white mb-2">Deploy</h3>
+              <p className="text-gray-400 text-sm">
+                Deploy your contracts to Dogecoin blockchain
+              </p>
+            </Link>
           </div>
         </section>
       </div>
