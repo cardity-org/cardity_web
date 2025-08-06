@@ -56,7 +56,7 @@ vcpkg install cmake nlohmann-json curl libarchive openssl`}
               <h3 className="text-lg font-semibold text-white mb-3">Build from Source</h3>
               <CodeBlock
                 code={`# Clone the repository
-git clone https://github.com/cardity/cardity-core.git
+git clone https://github.com/cardity-org/cardity-core.git
 cd cardity-core
 
 # Create build directory
@@ -425,14 +425,14 @@ cardity unpublish @myorg/my-utility`}
               <h3 className="text-lg font-semibold text-white mb-3">Development Workflow</h3>
               <CodeBlock
                 code={`# 1. Fork the repository
-# Visit https://github.com/cardity/cardity-core and click "Fork"
+# Visit https://github.com/cardity-org/cardity-core and click "Fork"
 
 # 2. Clone your fork
 git clone https://github.com/yourusername/cardity-core.git
 cd cardity-core
 
 # 3. Add upstream remote
-git remote add upstream https://github.com/cardity/cardity-core.git
+git remote add upstream https://github.com/cardity-org/cardity-core.git
 
 # 4. Create feature branch
 git checkout -b feature/amazing-feature
@@ -584,7 +584,7 @@ protocol AdvancedProtocol {
             <div className="card">
               <h3 className="text-lg font-semibold text-white mb-3">Community</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>• <a href="https://github.com/cardity" className="text-blue-400 hover:text-blue-300">GitHub Repository</a></li>
+                <li>• <a href="https://github.com/cardity-org/cardity-core" className="text-blue-400 hover:text-blue-300">GitHub Repository</a></li>
                 <li>• <a href="https://discord.gg/cardity" className="text-blue-400 hover:text-blue-300">Discord Community</a></li>
                 <li>• <a href="https://twitter.com/carditylang" className="text-blue-400 hover:text-blue-300">Twitter</a></li>
                 <li>• <a href="https://forum.cardity.dev" className="text-blue-400 hover:text-blue-300">Developer Forum</a></li>
@@ -621,7 +621,7 @@ protocol AdvancedProtocol {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://github.com/cardity/cardity-core"
+                href="https://github.com/cardity-org/cardity-core"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center"

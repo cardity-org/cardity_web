@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Code, Zap, Shield, Globe, ArrowRight, Download, BookOpen, Play } from 'lucide-react'
 import CodeBlock from '@/components/CodeBlock'
+import Logo from '@/components/Logo'
 
 export default function Home() {
   return (
@@ -10,9 +11,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <div className="flex justify-center mb-8">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-2xl animate-float">
-                <Code className="w-12 h-12" />
-              </div>
+              <Logo size={80} showText={false} />
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">

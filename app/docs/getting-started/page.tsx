@@ -1,6 +1,17 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Download, Play, ArrowRight, CheckCircle, Terminal, Code, Database } from 'lucide-react'
+import { ArrowRight, Code, Zap, Shield, Globe, Download, BookOpen, Play } from 'lucide-react'
 import CodeBlock from '@/components/CodeBlock'
+
+export const metadata: Metadata = {
+  title: 'Getting Started',
+  description: 'Get started with Cardity smart contract development. Install CLI tools, write your first contract, and deploy to Dogecoin UTXO blockchain.',
+  keywords: 'Cardity getting started, smart contract tutorial, Dogecoin development, UTXO programming, first contract',
+  openGraph: {
+    title: 'Getting Started with Cardity - Smart Contract Development',
+    description: 'Learn how to install Cardity CLI, write your first smart contract, and deploy to Dogecoin UTXO blockchain.',
+  },
+}
 
 export default function GettingStartedPage() {
   return (
@@ -26,7 +37,7 @@ export default function GettingStartedPage() {
             <h3 className="text-lg font-medium text-white mb-4">From Source</h3>
             <CodeBlock
               code={`# Clone the repository
-git clone https://github.com/cardity/cardity-core.git
+git clone https://github.com/cardity-org/cardity-core.git
 cd cardity-core
 
 # Build and install

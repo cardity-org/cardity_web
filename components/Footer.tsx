@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Code, Github, Twitter, Mail } from 'lucide-react'
+import { Github, Twitter, Mail } from 'lucide-react'
+import Logo from './Logo'
 
 export default function Footer() {
   return (
@@ -8,17 +9,14 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-2 rounded-lg mr-3">
-                <Code className="w-6 h-6" />
-              </div>
-              <span className="text-xl font-bold text-white">Cardity</span>
+              <Logo size={32} />
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
               A statically-typed curly-braces programming language designed for developing smart contracts that run on Dogecoin UTXO.
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://github.com/cardity"
+                href="https://github.com/cardity-org/cardity-core"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -88,7 +86,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/cardity/cardity/issues"
+                  href="https://github.com/cardity-org/cardity-core/issues"
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                   target="_blank"
                   rel="noopener noreferrer"

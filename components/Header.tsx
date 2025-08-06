@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X, Code } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import Logo from './Logo'
 
 const navigation = [
   { name: 'Documentation', href: '/docs' },
@@ -20,12 +21,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-2 rounded-lg mr-3">
-                <Code className="w-6 h-6" />
-              </div>
-              <span className="text-xl font-bold text-white">Cardity</span>
-            </Link>
+            <Logo size={36} />
           </div>
           
           <div className="hidden md:flex items-center space-x-8">

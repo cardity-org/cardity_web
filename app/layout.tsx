@@ -7,9 +7,77 @@ import Footer from '@/components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Cardity - 智能合约编程语言',
-  description: 'Cardity 是一个专为 Dogecoin UTXO 设计的智能合约编程语言，提供 Solidity 风格的语法和强大的合约逻辑能力。',
-  keywords: 'Cardity, 智能合约, Dogecoin, UTXO, 编程语言, 区块链',
+  title: {
+    default: 'Cardity - Smart Contracts for Dogecoin | Solidity-style Language',
+    template: '%s | Cardity'
+  },
+  description: 'Cardity is a statically-typed programming language designed for developing smart contracts on Dogecoin UTXO. Features Solidity-style syntax, native UTXO protocol support, and powerful contract logic capabilities.',
+  keywords: [
+    'Cardity',
+    'Smart Contracts',
+    'Dogecoin',
+    'UTXO',
+    'Programming Language',
+    'Blockchain',
+    'Solidity',
+    'Smart Contract Development',
+    'Dogecoin Development',
+    'UTXO Protocol',
+    'Blockchain Programming',
+    'DeFi',
+    'Cryptocurrency',
+    'Web3'
+  ].join(', '),
+  authors: [{ name: 'Cardity Team' }],
+  creator: 'Cardity Team',
+  publisher: 'Cardity',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://cardity.org'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Cardity - Smart Contracts for Dogecoin',
+    description: 'A statically-typed programming language for developing smart contracts on Dogecoin UTXO with Solidity-style syntax.',
+    url: 'https://cardity.org',
+    siteName: 'Cardity',
+    images: [
+      {
+        url: '/images/cardity-logo-simple.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Cardity Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cardity - Smart Contracts for Dogecoin',
+    description: 'A statically-typed programming language for developing smart contracts on Dogecoin UTXO with Solidity-style syntax.',
+    images: ['/images/cardity-logo-simple.svg'],
+    creator: '@carditylang',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.svg',
+  },
+  manifest: '/site.webmanifest',
 }
 
 export default function RootLayout({
@@ -19,6 +87,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#3B82F6" />
+      </head>
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col">
           <Header />

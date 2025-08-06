@@ -305,7 +305,7 @@ export default function BlogPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <a
-                    href="https://github.com/cardity/cardity-core"
+                    href="https://github.com/cardity-org/cardity-core"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors duration-200 inline-flex items-center"
