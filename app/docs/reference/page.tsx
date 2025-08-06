@@ -1,62 +1,50 @@
 import Link from 'next/link'
-import { ArrowRight, Code, FileText, Settings, Database } from 'lucide-react'
+import { ArrowRight, Code, FileText, Settings, Database, Zap, Shield } from 'lucide-react'
 import CodeBlock from '@/components/CodeBlock'
 
 export default function ReferencePage() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">
-          语言参考
+        <h1 className="text-3xl font-bold text-white mb-4">
+          Language Reference
         </h1>
-        <p className="text-lg text-gray-600">
-          完整的 Cardity 语言语法和特性说明
+        <p className="text-lg text-gray-400">
+          Complete Cardity language syntax and feature documentation
         </p>
       </div>
 
       <div className="space-y-12">
-        {/* SPDX License */}
-        <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-            <FileText className="w-6 h-6 mr-3 text-cardity-600" />
-            SPDX License 标识
-          </h2>
-          <p className="text-gray-600 mb-6">
-            每个 Cardity 合约文件都应该以 SPDX 许可证标识开头：
-          </p>
-          <CodeBlock
-            code={`<-- SPDX-License-Identifier: MIT -->`}
-            language="cardity"
-          />
-          <p className="text-sm text-gray-500 mt-2">
-            支持的许可证包括：MIT、GPL-3.0、Apache-2.0 等
-          </p>
-        </section>
-
         {/* Protocol Structure */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-            <Code className="w-6 h-6 mr-3 text-cardity-600" />
-            协议结构
+          <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
+            <Code className="w-6 h-6 mr-3 text-blue-400" />
+            Protocol Structure
           </h2>
-          <p className="text-gray-600 mb-6">
-            Protocol 是 Cardity 合约的基本单位，类似于 Solidity 中的 Contract：
+          <p className="text-gray-400 mb-6">
+            Protocol is the basic unit of Cardity contracts, similar to Solidity's Contract:
           </p>
           <CodeBlock
             code={`protocol MyContract {
-  // 状态变量
+  version: "1.0.0";
+  owner: "doge1contract123";
+  
+  // State variables
   state {
-    string name;
-    int balance;
+    name: string = "My Contract";
+    balance: int = 0;
   }
   
-  // 方法
-  method setName(string newName) {
-    self.name = newName;
+  // Methods
+  method setName(newName) {
+    state.name = newName;
   }
   
-  // 事件
-  event NameChanged(string oldName, string newName);
+  // Events
+  event NameChanged {
+    oldName: string;
+    newName: string;
+  }
 }`}
             language="cardity"
             showLineNumbers={true}
@@ -65,31 +53,31 @@ export default function ReferencePage() {
 
         {/* State Variables */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-            <Database className="w-6 h-6 mr-3 text-cardity-600" />
-            状态变量
+          <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
+            <Database className="w-6 h-6 mr-3 text-blue-400" />
+            State Variables
           </h2>
-          <p className="text-gray-600 mb-6">
-            状态变量存储在 UTXO 中，支持以下数据类型：
+          <p className="text-gray-400 mb-6">
+            State variables are stored in UTXO and support the following data types:
           </p>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">基本类型</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li><code className="bg-gray-100 px-1 rounded">int</code> - 整数类型</li>
-                <li><code className="bg-gray-100 px-1 rounded">string</code> - 字符串类型</li>
-                <li><code className="bg-gray-100 px-1 rounded">bool</code> - 布尔类型</li>
-                <li><code className="bg-gray-100 px-1 rounded">address</code> - 地址类型</li>
+              <h3 className="text-lg font-semibold text-white mb-3">Basic Types</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><code className="bg-gray-800 px-1 rounded">string</code> - String type</li>
+                <li><code className="bg-gray-800 px-1 rounded">int</code> - Integer type</li>
+                <li><code className="bg-gray-800 px-1 rounded">bool</code> - Boolean type</li>
+                <li><code className="bg-gray-800 px-1 rounded">number</code> - Number type</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">复合类型</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li><code className="bg-gray-100 px-1 rounded">array</code> - 数组类型</li>
-                <li><code className="bg-gray-100 px-1 rounded">map</code> - 映射类型</li>
-                <li><code className="bg-gray-100 px-1 rounded">struct</code> - 结构体类型</li>
+              <h3 className="text-lg font-semibold text-white mb-3">Complex Types</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><code className="bg-gray-800 px-1 rounded">array</code> - Array type</li>
+                <li><code className="bg-gray-800 px-1 rounded">map</code> - Mapping type</li>
+                <li><code className="bg-gray-800 px-1 rounded">struct</code> - Structure type</li>
               </ul>
             </div>
           </div>
@@ -97,22 +85,23 @@ export default function ReferencePage() {
           <div className="mt-6">
             <CodeBlock
               code={`state {
-  // 基本类型
-  string name;
-  int age;
-  bool isActive;
-  address owner;
+  // Basic types
+  name: string = "My Protocol";
+  age: int = 25;
+  isActive: bool = true;
+  owner: string = "doge1owner123";
   
-  // 复合类型
-  string[] tags;
-  map<string, int> scores;
-  User[] users;
+  // Complex types
+  tags: array = ["tag1", "tag2"];
+  scores: map = {"user1": 100, "user2": 200};
+  users: array = [];
 }
 
+// Structure definition
 struct User {
-  string name;
-  int age;
-  bool verified;
+  name: string;
+  age: int;
+  verified: bool;
 }`}
               language="cardity"
               showLineNumbers={true}
@@ -122,21 +111,21 @@ struct User {
 
         {/* Methods */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-            <Settings className="w-6 h-6 mr-3 text-cardity-600" />
-            方法
+          <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
+            <Settings className="w-6 h-6 mr-3 text-blue-400" />
+            Methods
           </h2>
-          <p className="text-gray-600 mb-6">
-            方法是合约的可执行函数，可以修改状态、返回值或触发事件：
+          <p className="text-gray-400 mb-6">
+            Methods are executable functions that can modify state, return values, or trigger events:
           </p>
           
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">基本方法</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">Basic Methods</h3>
               <CodeBlock
-                code={`method setName(string newName) {
-  self.name = newName;
-  emit NameChanged(self.name, newName);
+                code={`method setName(newName) {
+  state.name = newName;
+  emit NameChanged(state.name, newName);
 }`}
                 language="cardity"
                 showLineNumbers={true}
@@ -144,13 +133,13 @@ struct User {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">带返回值的方法</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">Methods with Return Values</h3>
               <CodeBlock
-                code={`method getName() -> string {
-  return self.name;
+                code={`method getName() {
+  return state.name;
 }
 
-method calculate(int a, int b) -> int {
+method calculate(a, b) {
   return a + b;
 }`}
                 language="cardity"
@@ -159,12 +148,20 @@ method calculate(int a, int b) -> int {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">构造函数</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">Methods with Parameters</h3>
               <CodeBlock
-                code={`method constructor(string _name, int _initialBalance) {
-  self.name = _name;
-  self.balance = _initialBalance;
-  self.owner = msg.sender;
+                code={`method transfer(toAddress, amount) {
+  if (amount <= 0) {
+    return "Invalid amount";
+  }
+  
+  if (state.balance < amount) {
+    return "Insufficient balance";
+  }
+  
+  state.balance = state.balance - amount;
+  emit Transfer(toAddress, amount);
+  return "Transfer successful";
 }`}
                 language="cardity"
                 showLineNumbers={true}
@@ -175,22 +172,122 @@ method calculate(int a, int b) -> int {
 
         {/* Events */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            事件
+          <h2 className="text-2xl font-semibold text-white mb-6">
+            Events
           </h2>
-          <p className="text-gray-600 mb-6">
-            事件用于记录合约执行过程中的重要信息：
+          <p className="text-gray-400 mb-6">
+            Events are used to record important information during contract execution:
           </p>
           
           <CodeBlock
-            code={`// 事件声明
-event Transfer(string from, string to, int amount);
-event UserRegistered(string name, int timestamp);
+            code={`// Event declaration
+event Transfer {
+  from: string;
+  to: string;
+  amount: int;
+}
 
-// 触发事件
-method transfer(string to, int amount) {
-  self.balance -= amount;
-  emit Transfer(msg.sender, to, amount);
+event UserRegistered {
+  name: string;
+  timestamp: int;
+}
+
+// Emit events in methods
+method transfer(to, amount) {
+  state.balance = state.balance - amount;
+  emit Transfer(state.owner, to, amount);
+}
+
+method registerUser(name) {
+  state.users.push(name);
+  emit UserRegistered(name, now());
+}`}
+            language="cardity"
+            showLineNumbers={true}
+          />
+        </section>
+
+        {/* DRC-20 Token Standard */}
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
+            <Zap className="w-6 h-6 mr-3 text-blue-400" />
+            DRC-20 Token Standard
+          </h2>
+          <p className="text-gray-400 mb-6">
+            Cardity supports the complete DRC-20 token standard for creating tokens on Dogecoin:
+          </p>
+          
+          <CodeBlock
+            code={`protocol MyDrc20Token {
+  version: "1.0.0";
+  owner: "doge1token123";
+  
+  // DRC-20 token definition
+  drc20 {
+    tick: "MYT";
+    name: "My Token";
+    max_supply: "1000000";
+    mint_limit: "1000";
+    decimals: "18";
+    deployer: "doge1token123";
+  }
+  
+  state {
+    total_supply: int = 0;
+    deployed: bool = false;
+    mint_count: int = 0;
+    transfer_count: int = 0;
+  }
+  
+  // Deploy method
+  method deploy() {
+    if (!state.deployed) {
+      state.deployed = true;
+      emit TokenDeployed(drc20.tick, drc20.max_supply);
+      return "Token deployed successfully";
+    }
+    return "Token already deployed";
+  }
+  
+  // Mint method
+  method mint(amount) {
+    if (!state.deployed) return "Token not deployed";
+    if (amount <= 0) return "Invalid amount";
+    if (state.total_supply + amount > drc20.max_supply) return "Exceeds max supply";
+    
+    state.total_supply = state.total_supply + amount;
+    state.mint_count = state.mint_count + 1;
+    emit TokenMinted(drc20.tick, amount, state.total_supply);
+    return "Minted successfully";
+  }
+  
+  // Transfer method
+  method transfer(to_address, amount) {
+    if (!state.deployed) return "Token not deployed";
+    if (amount <= 0) return "Invalid amount";
+    
+    state.transfer_count = state.transfer_count + 1;
+    emit TokenTransferred(drc20.tick, amount, to_address);
+    return "Transfer successful";
+  }
+  
+  // Events
+  event TokenDeployed {
+    tick: string;
+    max_supply: string;
+  }
+  
+  event TokenMinted {
+    tick: string;
+    amount: int;
+    total_supply: int;
+  }
+  
+  event TokenTransferred {
+    tick: string;
+    amount: int;
+    to_address: string;
+  }
 }`}
             language="cardity"
             showLineNumbers={true}
@@ -199,20 +296,20 @@ method transfer(string to, int amount) {
 
         {/* Control Structures */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            控制结构
+          <h2 className="text-2xl font-semibold text-white mb-6">
+            Control Structures
           </h2>
           
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">条件语句</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">Conditional Statements</h3>
               <CodeBlock
-                code={`method processPayment(int amount) {
-  if (self.balance >= amount) {
-    self.balance -= amount;
+                code={`method processPayment(amount) {
+  if (state.balance >= amount) {
+    state.balance = state.balance - amount;
     emit PaymentProcessed(amount);
   } else {
-    emit InsufficientFunds(self.balance, amount);
+    emit InsufficientFunds(state.balance, amount);
   }
 }`}
                 language="cardity"
@@ -221,11 +318,11 @@ method transfer(string to, int amount) {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">循环</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">Loops</h3>
               <CodeBlock
-                code={`method processArray(string[] items) {
-  for (int i = 0; i < items.length; i++) {
-    self.processedItems.push(items[i]);
+                code={`method processArray(items) {
+  for (i = 0; i < items.length; i++) {
+    state.processedItems.push(items[i]);
   }
 }`}
                 language="cardity"
@@ -235,32 +332,36 @@ method transfer(string to, int amount) {
           </div>
         </section>
 
-        {/* Global Variables */}
+        {/* Built-in Functions */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            全局变量
+          <h2 className="text-2xl font-semibold text-white mb-6">
+            Built-in Functions
           </h2>
-          <p className="text-gray-600 mb-6">
-            Cardity 提供了一些全局变量来访问合约执行上下文：
+          <p className="text-gray-400 mb-6">
+            Cardity provides built-in functions for common operations:
           </p>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">常用全局变量</h3>
-              <ul className="space-y-2 text-gray-600">
-                <li><code className="bg-gray-100 px-1 rounded">msg.sender</code> - 当前调用者地址</li>
-                <li><code className="bg-gray-100 px-1 rounded">msg.value</code> - 发送的 Dogecoin 数量</li>
-                <li><code className="bg-gray-100 px-1 rounded">now()</code> - 当前时间戳</li>
-                <li><code className="bg-gray-100 px-1 rounded">self</code> - 当前合约实例</li>
+              <h3 className="text-lg font-semibold text-white mb-3">Common Functions</h3>
+              <ul className="space-y-2 text-gray-400">
+                <li><code className="bg-gray-800 px-1 rounded">now()</code> - Current timestamp</li>
+                <li><code className="bg-gray-800 px-1 rounded">length()</code> - String/array length</li>
+                <li><code className="bg-gray-800 px-1 rounded">push()</code> - Add to array</li>
+                <li><code className="bg-gray-800 px-1 rounded">pop()</code> - Remove from array</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">使用示例</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">Usage Examples</h3>
               <CodeBlock
-                code={`method deposit() {
-  self.balance += msg.value;
-  emit Deposit(msg.sender, msg.value, now());
+                code={`method addUser(name) {
+  state.users.push(name);
+  emit UserAdded(name, now());
+}
+
+method getUsersCount() {
+  return state.users.length();
 }`}
                 language="cardity"
               />
@@ -270,58 +371,125 @@ method transfer(string to, int amount) {
 
         {/* Error Handling */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            错误处理
+          <h2 className="text-2xl font-semibold text-white mb-6">
+            Error Handling
           </h2>
-          <p className="text-gray-600 mb-6">
-            使用 require 语句进行条件检查和错误处理：
+          <p className="text-gray-400 mb-6">
+            Use return statements for condition checking and error handling:
           </p>
           
           <CodeBlock
-            code={`method withdraw(int amount) {
-  require(self.balance >= amount, "Insufficient balance");
-  require(amount > 0, "Amount must be positive");
+            code={`method withdraw(amount) {
+  if (state.balance < amount) {
+    return "Insufficient balance";
+  }
   
-  self.balance -= amount;
-  emit Withdrawal(msg.sender, amount);
+  if (amount <= 0) {
+    return "Amount must be positive";
+  }
+  
+  state.balance = state.balance - amount;
+  emit Withdrawal(state.owner, amount);
+  return "Withdrawal successful";
 }`}
             language="cardity"
             showLineNumbers={true}
           />
         </section>
 
+        {/* ABI Generation */}
+        <section>
+          <h2 className="text-2xl font-semibold text-white mb-6">
+            ABI Generation
+          </h2>
+          <p className="text-gray-400 mb-6">
+            Cardity automatically generates ABI (Application Binary Interface) from your protocol:
+          </p>
+          
+          <div className="bg-gray-900 rounded-lg p-6 mb-6">
+            <h3 className="text-lg font-medium text-white mb-4">Generate ABI</h3>
+            <CodeBlock
+              code={`# Generate ABI from .car file
+cardity_abi protocol.car protocol.abi
+
+# Generate ABI for DRC-20 token
+cardity_abi drc20_token.car drc20_token.abi`}
+              language="bash"
+            />
+          </div>
+          
+          <div className="bg-gray-900 rounded-lg p-6">
+            <h3 className="text-lg font-medium text-white mb-4">Generated ABI Example</h3>
+            <CodeBlock
+              code={`{
+  "protocol": "MyDrc20Token",
+  "version": "1.0.0",
+  "methods": [
+    {
+      "name": "deploy",
+      "params": [],
+      "returns": "string"
+    },
+    {
+      "name": "mint",
+      "params": ["amount"],
+      "returns": "string"
+    },
+    {
+      "name": "transfer",
+      "params": ["to_address", "amount"],
+      "returns": "string"
+    }
+  ],
+  "events": [
+    {
+      "name": "TokenDeployed",
+      "params": ["tick", "max_supply"]
+    },
+    {
+      "name": "TokenMinted",
+      "params": ["tick", "amount", "total_supply"]
+    }
+  ]
+}`}
+              language="json"
+              showLineNumbers={true}
+            />
+          </div>
+        </section>
+
         {/* Next Steps */}
         <section>
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            下一步
+          <h2 className="text-2xl font-semibold text-white mb-6">
+            Next Steps
           </h2>
           
-          <div className="bg-cardity-50 rounded-lg p-6">
-            <p className="text-gray-700 mb-4">
-              现在你已经了解了 Cardity 的基本语法，接下来可以：
+          <div className="bg-gray-900 rounded-lg p-6">
+            <p className="text-gray-300 mb-4">
+              Now that you understand Cardity's syntax, you can:
             </p>
-            <ul className="space-y-2 text-gray-700 mb-6">
+            <ul className="space-y-2 text-gray-300 mb-6">
               <li className="flex items-center">
-                <ArrowRight className="w-4 h-4 mr-2 text-cardity-600" />
-                学习标准库的使用方法
+                <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
+                Learn about the standard library
               </li>
               <li className="flex items-center">
-                <ArrowRight className="w-4 h-4 mr-2 text-cardity-600" />
-                了解 CLI 工具的使用
+                <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
+                Understand CLI tools usage
               </li>
               <li className="flex items-center">
-                <ArrowRight className="w-4 h-4 mr-2 text-cardity-600" />
-                查看更多示例代码
+                <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
+                View more code examples
               </li>
             </ul>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/docs/standard-library" className="btn-primary inline-flex items-center">
-                标准库
+                Standard Library
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
               <Link href="/docs/cli" className="btn-secondary inline-flex items-center">
-                CLI 工具
+                CLI Tools
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>
