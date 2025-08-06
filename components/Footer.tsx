@@ -3,19 +3,18 @@ import { Code, Github, Twitter, Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-black border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <div className="bg-cardity-600 text-white p-2 rounded-lg mr-3">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-2 rounded-lg mr-3">
                 <Code className="w-6 h-6" />
               </div>
-              <span className="text-xl font-bold">Cardity</span>
+              <span className="text-xl font-bold text-white">Cardity</span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
-              Cardity 是一个专为 Dogecoin UTXO 设计的智能合约编程语言，
-              提供 Solidity 风格的语法和强大的合约逻辑能力。
+              A statically-typed curly-braces programming language designed for developing smart contracts that run on Dogecoin UTXO.
             </p>
             <div className="flex space-x-4">
               <a
@@ -44,47 +43,47 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">文档</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white">Documentation</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/docs/getting-started" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  快速开始
+                  Getting Started
                 </Link>
               </li>
               <li>
                 <Link href="/docs/reference" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  语言参考
+                  Language Reference
                 </Link>
               </li>
               <li>
                 <Link href="/docs/cli" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  CLI 工具
+                  CLI Tools
                 </Link>
               </li>
               <li>
                 <Link href="/docs/deploy" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  部署指南
+                  Deployment Guide
                 </Link>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">社区</h3>
+            <h3 className="text-lg font-semibold mb-4 text-white">Community</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/examples" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  代码示例
+                  Code Examples
                 </Link>
               </li>
               <li>
                 <Link href="/blog" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  博客
+                  Blog
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  关于我们
+                  About Us
                 </Link>
               </li>
               <li>
@@ -94,7 +93,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  问题反馈
+                  Report Issues
                 </a>
               </li>
             </ul>
@@ -103,14 +102,14 @@ export default function Footer() {
         
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2024 Cardity. 开源项目，基于 MIT 协议。
+            © 2024 Cardity Team. Open source project under MIT License.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-              隐私政策
+              Privacy Policy
             </Link>
             <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-              使用条款
+              Terms of Service
             </Link>
           </div>
         </div>

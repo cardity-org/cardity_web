@@ -5,25 +5,25 @@ import Link from 'next/link'
 import { Menu, X, Code } from 'lucide-react'
 
 const navigation = [
-  { name: '文档', href: '/docs' },
-  { name: '示例', href: '/examples' },
-  { name: '博客', href: '/blog' },
-  { name: '关于', href: '/about' },
+  { name: 'Documentation', href: '/docs' },
+  { name: 'Examples', href: '/examples' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'About', href: '/about' },
 ]
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-black/50 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <div className="bg-cardity-600 text-white p-2 rounded-lg mr-3">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-2 rounded-lg mr-3">
                 <Code className="w-6 h-6" />
               </div>
-              <span className="text-xl font-bold text-gray-900">Cardity</span>
+              <span className="text-xl font-bold text-white">Cardity</span>
             </Link>
           </div>
           
@@ -32,7 +32,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-cardity-600 font-medium transition-colors duration-200"
+                className="text-gray-300 hover:text-white font-medium transition-colors duration-200"
               >
                 {item.name}
               </Link>
@@ -41,17 +41,17 @@ export default function Header() {
           
           <div className="hidden md:flex items-center space-x-4">
             <Link href="/docs/getting-started" className="btn-primary">
-              开始使用
+              Get Started
             </Link>
           </div>
           
           <div className="md:hidden">
             <button
               type="button"
-              className="text-gray-600 hover:text-gray-900"
+              className="text-gray-300 hover:text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              <span className="sr-only">打开菜单</span>
+              <span className="sr-only">Open menu</span>
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
               ) : (
@@ -64,12 +64,12 @@ export default function Header() {
         {/* Mobile menu */}
         {mobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-800">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-600 hover:text-cardity-600 font-medium"
+                  className="block px-3 py-2 text-gray-300 hover:text-white font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -81,7 +81,7 @@ export default function Header() {
                   className="block w-full text-center btn-primary"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  开始使用
+                  Get Started
                 </Link>
               </div>
             </div>

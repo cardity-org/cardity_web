@@ -4,41 +4,41 @@ import CodeBlock from '@/components/CodeBlock'
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-br from-cardity-50 to-white">
+    <div className="bg-black min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <div className="text-center">
             <div className="flex justify-center mb-8">
-              <div className="bg-cardity-600 text-white p-4 rounded-2xl">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-2xl animate-float">
                 <Code className="w-12 h-12" />
               </div>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Cardity
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              <span className="gradient-text">Cardity</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              专为 Dogecoin UTXO 设计的智能合约编程语言
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              A statically-typed curly-braces programming language designed for developing smart contracts that run on Dogecoin UTXO.
             </p>
             
-            <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto">
-              使用 Solidity 风格的语法，原生支持 UTXO 协议，让智能合约开发变得简单高效
+            <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+              Using Solidity-style syntax with native UTXO protocol support, making smart contract development simple and efficient.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/docs/getting-started" className="btn-primary inline-flex items-center">
                 <Play className="w-4 h-4 mr-2" />
-                开始编写合约
+                Get Started
               </Link>
               <Link href="/docs" className="btn-secondary inline-flex items-center">
                 <BookOpen className="w-4 h-4 mr-2" />
-                查看文档
+                Read the docs
               </Link>
               <Link href="/docs/cli" className="btn-secondary inline-flex items-center">
                 <Download className="w-4 h-4 mr-2" />
-                下载 CLI
+                Download CLI
               </Link>
             </div>
           </div>
@@ -46,51 +46,51 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              核心特性
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Core Features
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Cardity 结合了现代编程语言的优雅和区块链技术的强大功能
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Cardity combines the elegance of modern programming languages with the power of blockchain technology
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             <div className="card text-center">
-              <div className="bg-cardity-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Code className="w-8 h-8 text-cardity-600" />
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Code className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                Solidity 风格语法
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Solidity-style Syntax
               </h3>
-              <p className="text-gray-600">
-                熟悉的语法结构，降低学习成本，让开发者快速上手智能合约开发
+              <p className="text-gray-400">
+                Familiar syntax structure reduces learning curve and helps developers quickly get started with smart contract development
               </p>
             </div>
             
             <div className="card text-center">
-              <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-8 h-8 text-primary-600" />
+              <div className="bg-gradient-to-r from-purple-600 to-pink-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                UTXO 原生协议
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Native UTXO Protocol
               </h3>
-              <p className="text-gray-600">
-                专为 Dogecoin UTXO 模型设计，原生支持 UTXO 操作和状态管理
+              <p className="text-gray-400">
+                Designed specifically for Dogecoin UTXO model with native support for UTXO operations and state management
               </p>
             </div>
             
             <div className="card text-center">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-green-600" />
+              <div className="bg-gradient-to-r from-green-600 to-blue-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                自定义合约逻辑
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Custom Contract Logic
               </h3>
-              <p className="text-gray-600">
-                强大的合约逻辑表达能力，支持复杂的业务场景和自定义协议
+              <p className="text-gray-400">
+                Powerful contract logic expression capabilities supporting complex business scenarios and custom protocols
               </p>
             </div>
           </div>
@@ -98,21 +98,21 @@ export default function Home() {
       </section>
 
       {/* Code Example Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              快速开始
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Quick Start
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              几行代码就能创建一个简单的智能合约
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Create a simple smart contract in just a few lines of code
             </p>
           </div>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                Hello Cardity 示例
+              <h3 className="text-2xl font-semibold text-white mb-6">
+                Hello Cardity Example
               </h3>
               <CodeBlock
                 code={`<-- SPDX-License-Identifier: MIT -->
@@ -136,8 +136,8 @@ protocol HelloCardity {
             
             <div className="space-y-6">
               <div className="card">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                  安装 CLI
+                <h4 className="text-lg font-semibold text-white mb-3">
+                  Install CLI
                 </h4>
                 <CodeBlock
                   code={`npm install -g cardityc`}
@@ -146,8 +146,8 @@ protocol HelloCardity {
               </div>
               
               <div className="card">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                  编译合约
+                <h4 className="text-lg font-semibold text-white mb-3">
+                  Build Contract
                 </h4>
                 <CodeBlock
                   code={`cardity build hello.cardity`}
@@ -156,8 +156,8 @@ protocol HelloCardity {
               </div>
               
               <div className="card">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                  部署到 Dogecoin
+                <h4 className="text-lg font-semibold text-white mb-3">
+                  Deploy to Dogecoin
                 </h4>
                 <CodeBlock
                   code={`cardity deploy hello.carc`}
@@ -169,22 +169,82 @@ protocol HelloCardity {
         </div>
       </section>
 
+      {/* Playground Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Try Cardity Online
+            </h2>
+            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Experiment with Cardity in your browser with our online playground
+            </p>
+          </div>
+          
+          <div className="card max-w-4xl mx-auto">
+            <div className="bg-gray-950 rounded-lg p-6 border border-gray-800">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-white">Cardity Playground</h3>
+                <div className="flex space-x-2">
+                  <button className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm hover:bg-gray-700">
+                    Hello World!
+                  </button>
+                  <button className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm hover:bg-gray-700">
+                    DRC20
+                  </button>
+                  <button className="px-3 py-1 bg-gray-800 text-gray-300 rounded text-sm hover:bg-gray-700">
+                    Simple Auction
+                  </button>
+                </div>
+              </div>
+              
+              <div className="bg-gray-950 border border-gray-800 rounded-lg p-4 mb-4">
+                <textarea 
+                  className="w-full h-32 bg-transparent text-gray-300 font-mono text-sm resize-none border-none outline-none"
+                  placeholder="// Write your Cardity code here..."
+                  defaultValue={`<-- SPDX-License-Identifier: MIT -->
+
+protocol HelloCardity {
+  state {
+    string message;
+  }
+  
+  method greet(string name) {
+    self.message = "Hello, " + name + "!";
+  }
+}`}
+                />
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="text-sm text-gray-400">
+                  Compiler version: 0.1.0
+                </div>
+                <button className="btn-primary">
+                  Compile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 bg-cardity-600">
+      <section className="py-20 bg-gradient-to-r from-blue-900/20 to-purple-900/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            准备开始你的 Cardity 之旅？
+            Ready to start your Cardity journey?
           </h2>
-          <p className="text-xl text-cardity-100 mb-8 max-w-2xl mx-auto">
-            加入我们的开发者社区，探索智能合约的无限可能
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Join our developer community and explore the unlimited possibilities of smart contracts
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/docs/getting-started" className="bg-white text-cardity-600 hover:bg-gray-100 font-medium py-3 px-6 rounded-lg transition-colors duration-200 inline-flex items-center">
-              开始学习
+            <Link href="/docs/getting-started" className="btn-primary inline-flex items-center">
+              Get Started
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
-            <Link href="/examples" className="border border-white text-white hover:bg-white hover:text-cardity-600 font-medium py-3 px-6 rounded-lg transition-colors duration-200 inline-flex items-center">
-              查看示例
+            <Link href="/examples" className="btn-secondary inline-flex items-center">
+              View Examples
               <Globe className="w-4 h-4 ml-2" />
             </Link>
           </div>
