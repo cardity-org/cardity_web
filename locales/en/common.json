@@ -1,0 +1,419 @@
+{
+  "nav": {
+    "home": "Home",
+    "docs": "Documentation",
+    "examples": "Examples",
+    "download": "Download",
+    "blog": "Blog",
+    "about": "About"
+  },
+  "home": {
+    "hero": {
+      "title": "Cardity",
+      "subtitle": "Cardity Core - Complete smart contract programming language implementation designed for Dogecoin UTXO",
+      "description": "Includes compiler, runtime, package management system and development tools, supporting DRC-20 token standard and blockchain deployment",
+      "getStarted": "Get Started",
+      "readDocs": "Read the docs",
+      "downloadTools": "Download Tools",
+      "latestVersion": "Latest Version"
+    },
+    "features": {
+      "title": "Core Features",
+      "subtitle": "Cardity Core provides complete smart contract development solutions with one-stop experience from writing to deployment",
+      "compiler": {
+        "title": "Compiler & Runtime",
+        "description": "Compile .car files to executable format and provide complete runtime environment to execute compiled protocols"
+      },
+      "packageManager": {
+        "title": "Package Management",
+        "description": "Manage dependencies and publish packages, support npm installation, provide complete package management functionality"
+      },
+      "drc20": {
+        "title": "DRC-20 Token Standard",
+        "description": "Complete DRC-20 token standard support with built-in Deploy, Mint, Transfer methods"
+      }
+    },
+    "installation": {
+      "title": "Quick Installation",
+      "subtitle": "One-click installation via npm, start smart contract development immediately",
+      "npmInstall": {
+        "title": "npm Installation (Recommended)",
+        "description": "Install globally via npm package manager, support global use, automatic dependency management"
+      },
+      "sourceCode": {
+        "title": "From Source Code",
+        "description": "Clone source code from GitHub repository, suitable for developers to customize compilation and contribute code"
+      }
+    },
+    "quickStart": {
+      "title": "Create Your First Project",
+      "subtitle": "Create and deploy your first smart contract in minutes"
+    },
+    "cta": {
+      "title": "Start Building Dogecoin Smart Contracts",
+      "subtitle": "Join the Cardity community and explore unlimited possibilities of UTXO smart contracts",
+      "readDocs": "Read Documentation",
+      "viewExamples": "View Examples",
+      "learnMore": "Learn More"
+    }
+  },
+  "docs": {
+    "gettingStarted": {
+      "title": "Getting Started",
+      "subtitle": "Install Cardity CLI and write your first smart contract in minutes",
+      "installation": {
+        "title": "Installation",
+        "npmInstall": {
+          "title": "npm Installation (Recommended)",
+          "description": "If installation is successful, you should see output like"
+        },
+        "sourceCode": "From Source Code"
+      },
+      "firstContract": {
+        "title": "Your First Contract",
+        "subtitle": "Create a simple Hello World contract to get familiar with Cardity's syntax",
+        "createFile": "Create Contract File",
+        "compileRun": "Compile and Run"
+      },
+      "cliCommands": {
+        "title": "CLI Commands",
+        "projectInit": {
+          "title": "Project Initialization",
+          "description": "Create new Cardity project with basic file structure"
+        },
+        "compile": {
+          "title": "Compile Protocol",
+          "description": "Compile Cardity protocol files to executable format"
+        },
+        "run": {
+          "title": "Run Protocol",
+          "description": "Execute compiled protocol files"
+        },
+        "generateAbi": {
+          "title": "Generate ABI",
+          "description": "Automatically generate protocol application binary interface"
+        },
+        "drc20": {
+          "title": "DRC-20 Token Operations",
+          "description": "Specifically for compiling DRC-20 token protocols"
+        },
+        "deploy": {
+          "title": "Deploy DRC-20 Token",
+          "description": "Deploy DRC-20 tokens to Dogecoin network"
+        },
+        "mint": {
+          "title": "Mint Tokens",
+          "description": "Mint specified amount of DRC-20 tokens"
+        },
+        "transfer": {
+          "title": "Transfer Tokens",
+          "description": "Transfer DRC-20 tokens to specified address"
+        },
+        "validate": {
+          "title": "Validate Protocol",
+          "description": "Validate compiled protocol file format and content"
+        },
+        "info": {
+          "title": "View Protocol Info",
+          "description": "Display detailed protocol information including version, methods, etc."
+        },
+        "deployChain": {
+          "title": "Deploy to Dogecoin",
+          "description": "Deploy protocol to Dogecoin blockchain network"
+        },
+        "inscription": {
+          "title": "Create Inscription Transaction",
+          "description": "Create inscription transaction using ordinals protocol"
+        }
+      },
+      "languageFeatures": {
+        "title": "Language Features",
+        "protocol": {
+          "title": "Protocol Definition",
+          "description": "Cardity uses protocol keyword to define smart contracts",
+          "feature": "Similar to Solidity syntax"
+        },
+        "state": {
+          "title": "State Management",
+          "description": "Use state block to define state variables",
+          "feature": "Persistent storage"
+        },
+        "events": {
+          "title": "Event System",
+          "description": "Use event and emit to handle events",
+          "feature": "Event-driven architecture"
+        },
+        "drc20": {
+          "title": "DRC-20 Support",
+          "description": "Built-in complete DRC-20 token standard support",
+          "feature": "Token standard compatibility"
+        }
+      },
+      "nextSteps": {
+        "title": "Next Steps",
+        "cliReference": {
+          "title": "CLI Reference",
+          "description": "Learn all available CLI commands and options"
+        },
+        "examples": {
+          "title": "Examples",
+          "description": "Explore real-world smart contract examples"
+        },
+        "deploy": {
+          "title": "Deploy",
+          "description": "Deploy your contracts to Dogecoin blockchain"
+        }
+      }
+    }
+  },
+  "cli": {
+    "title": "CLI Reference",
+    "subtitle": "Complete command-line interface reference for Cardity development tools",
+    "installation": {
+      "title": "Installation",
+      "npmInstall": {
+        "title": "npm Installation (Recommended)",
+        "currentVersion": "Current Version"
+      }
+    },
+    "basicCommands": {
+      "title": "Basic Commands",
+      "projectInit": {
+        "title": "Project Initialization",
+        "description": "Create new Cardity project with basic file structure"
+      },
+      "compile": {
+        "title": "Compile Protocol",
+        "description": "Compile Cardity protocol files to executable format"
+      },
+      "run": {
+        "title": "Run Protocol",
+        "description": "Execute compiled protocol files"
+      },
+      "generateAbi": {
+        "title": "Generate ABI",
+        "description": "Automatically generate protocol application binary interface"
+      }
+    },
+    "drc20Commands": {
+      "title": "DRC-20 Token Commands",
+      "compile": {
+        "title": "Compile DRC-20 Token",
+        "description": "Specifically for compiling DRC-20 token protocols"
+      },
+      "deploy": {
+        "title": "Deploy DRC-20 Token",
+        "description": "Deploy DRC-20 tokens to Dogecoin network"
+      },
+      "mint": {
+        "title": "Mint Tokens",
+        "description": "Mint specified amount of DRC-20 tokens"
+      },
+      "transfer": {
+        "title": "Transfer Tokens",
+        "description": "Transfer DRC-20 tokens to specified address"
+      }
+    },
+    "deploymentCommands": {
+      "title": "Deployment Commands",
+      "validate": {
+        "title": "Validate Protocol",
+        "description": "Validate compiled protocol file format and content"
+      },
+      "info": {
+        "title": "View Protocol Info",
+        "description": "Display detailed protocol information including version, methods, etc."
+      },
+      "deploy": {
+        "title": "Deploy to Dogecoin",
+        "description": "Deploy protocol to Dogecoin blockchain network"
+      },
+      "inscription": {
+        "title": "Create Inscription Transaction",
+        "description": "Create inscription transaction using ordinals protocol"
+      }
+    },
+    "advancedCommands": {
+      "title": "Advanced Commands",
+      "compiler": {
+        "title": "Compiler Tools",
+        "description": "Advanced compiler options and format conversion"
+      },
+      "abiGenerator": {
+        "title": "ABI Generator",
+        "description": "Independent ABI generation tool"
+      },
+      "runtime": {
+        "title": "Runtime Tools",
+        "description": "Independent runtime execution tool"
+      },
+      "packageManager": {
+        "title": "Package Management",
+        "description": "Manage dependency packages and publish packages"
+      }
+    },
+    "help": {
+      "title": "Help and Support",
+      "getHelp": {
+        "title": "Get Help",
+        "description": "View all commands and specific command help"
+      },
+      "version": {
+        "title": "Version Information",
+        "description": "View version and detailed information"
+      },
+      "needHelp": "Need more help? Check our documentation and examples",
+      "quickStart": "Quick Start",
+      "viewExamples": "View Examples",
+      "deployGuide": "Deploy Guide"
+    }
+  },
+  "about": {
+    "title": "About Cardity",
+    "subtitle": "Cardity Core - Complete smart contract programming language implementation designed for Dogecoin UTXO",
+    "overview": {
+      "title": "Project Overview",
+      "description": "Cardity Core is the complete implementation of the Cardity programming language, providing:",
+      "features": [
+        "Compiler - Compile programming language format .car files to executable format",
+        "Runtime - Execute compiled protocols",
+        "Package Manager - Manage dependencies and publish packages",
+        "CLI Tools - Command line development tools",
+        "Type System - Static type checking",
+        "Event System - Event-driven architecture",
+        "ABI Generator - Automatically generate protocol interfaces (support programming language format and JSON format)",
+        "Blockchain Deployment - Support Dogecoin chain deployment",
+        "DRC-20 Token Standard - Complete DRC-20 token support"
+      ]
+    },
+    "version": {
+      "title": "Version Information",
+      "npmPackage": {
+        "title": "npm Package Information",
+        "packageName": "Package Name",
+        "currentVersion": "Current Version",
+        "license": "License",
+        "packageSize": "Package Size",
+        "fileCount": "File Count"
+      },
+      "github": {
+        "title": "GitHub Repository",
+        "repository": "Repository",
+        "homepage": "Homepage",
+        "npmPage": "npm Page"
+      }
+    },
+    "features": {
+      "title": "Core Features",
+      "languageFormat": {
+        "title": "Programming Language Format",
+        "description": "Cardity supports programming language format .car files with Solidity-like syntax, including:",
+        "items": [
+          "Protocol definition (protocol)",
+          "State variables (state)",
+          "Event system (event)",
+          "Method definition (method)",
+          "Type system (string, int, bool)",
+          "Event emission (emit)"
+        ]
+      },
+      "drc20": {
+        "title": "DRC-20 Token Standard",
+        "description": "Complete DRC-20 token standard support, including:",
+        "items": [
+          "Token definition (drc20 block)",
+          "Deploy method (deploy)",
+          "Mint method (mint)",
+          "Transfer method (transfer)",
+          "Event definitions (TokenDeployed, TokenMinted, TokenTransferred)",
+          "Automatic ABI generation"
+        ]
+      },
+      "blockchain": {
+        "title": "Blockchain Deployment",
+        "description": "Support multiple deployment methods:",
+        "items": [
+          ".carc binary format",
+          "OP_RETURN deployment",
+          "Inscription deployment (ordinals protocol)",
+          "Dogecoin chain deployment",
+          "Protocol validation and viewing"
+        ]
+      },
+      "devTools": {
+        "title": "Development Tools",
+        "description": "Complete development toolchain:",
+        "items": [
+          "CLI command line tools",
+          "Project initialization",
+          "Compilation and running",
+          "ABI generation",
+          "Package management",
+          "Debugging and testing"
+        ]
+      }
+    },
+    "installation": {
+      "title": "Installation Methods",
+      "npm": {
+        "title": "npm Installation (Recommended)",
+        "description": "One-click installation via npm package manager, support global use, automatic dependency management"
+      },
+      "sourceCode": {
+        "title": "From Source Code",
+        "description": "Clone source code from GitHub repository, suitable for developers to customize compilation and contribute code"
+      }
+    },
+    "community": {
+      "title": "Community and Links",
+      "official": {
+        "title": "Official Resources",
+        "github": "GitHub Repository",
+        "npm": "npm Package Page",
+        "docs": "Official Documentation",
+        "examples": "Example Projects"
+      },
+      "devResources": {
+        "title": "Development Resources",
+        "quickStart": "Quick Start",
+        "cliReference": "CLI Reference",
+        "deployGuide": "Deploy Guide",
+        "downloadTools": "Download Tools"
+      }
+    },
+    "contributing": {
+      "title": "Contributing Code",
+      "description": "Welcome to contribute code! Cardity is an open source project, we welcome all forms of contributions:",
+      "steps": [
+        "Fork project and create feature branch",
+        "Submit your changes",
+        "Push to branch and create Pull Request",
+        "Report bugs and suggest features"
+      ],
+      "viewGitHub": "View GitHub",
+      "devGuide": "Development Guide"
+    }
+  },
+  "footer": {
+    "description": "Cardity is a statically-typed programming language designed for developing smart contracts on Dogecoin UTXO",
+    "links": {
+      "docs": "Documentation",
+      "examples": "Examples",
+      "download": "Download",
+      "about": "About",
+      "blog": "Blog"
+    },
+    "community": {
+      "title": "Community",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "discord": "Discord"
+    },
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "license": "MIT License"
+    },
+    "copyright": "© 2024 Cardity. All rights reserved."
+  }
+} 

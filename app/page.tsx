@@ -1,9 +1,14 @@
+'use client'
+
 import Link from 'next/link'
 import { Code, Zap, Shield, Globe, ArrowRight, Download, BookOpen, Play, Package, Database, FileText } from 'lucide-react'
 import CodeBlock from '../components/CodeBlock'
 import Logo from '../components/Logo'
+import { useTranslations } from '../lib/i18n'
 
 export default function Home() {
+  const { t } = useTranslations()
+
   return (
     <div className="bg-black min-h-screen">
       {/* Hero Section */}
@@ -15,29 +20,29 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              <span className="gradient-text">Cardity</span>
+              <span className="gradient-text">{t('home.hero.title')}</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Cardity Core - 完整的智能合约编程语言实现，专为 Dogecoin UTXO 设计
+              {t('home.hero.subtitle')}
             </p>
             
             <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
-              包含编译器、运行时、包管理系统和开发工具，支持 DRC-20 代币标准和区块链部署
+              {t('home.hero.description')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/docs/getting-started" className="btn-primary inline-flex items-center">
                 <Play className="w-4 h-4 mr-2" />
-                快速开始
+                {t('home.hero.getStarted')}
               </Link>
               <Link href="/docs" className="btn-secondary inline-flex items-center">
                 <BookOpen className="w-4 h-4 mr-2" />
-                查看文档
+                {t('home.hero.readDocs')}
               </Link>
               <Link href="/download" className="btn-secondary inline-flex items-center">
                 <Download className="w-4 h-4 mr-2" />
-                下载工具
+                {t('home.hero.downloadTools')}
               </Link>
             </div>
             
@@ -45,7 +50,7 @@ export default function Home() {
             <div className="inline-flex items-center bg-blue-900/30 border border-blue-500/30 rounded-full px-4 py-2 text-blue-300">
               <Package className="w-4 h-4 mr-2" />
               <span className="text-sm font-medium">v1.0.1</span>
-              <span className="text-xs text-blue-400 ml-2">最新版本</span>
+              <span className="text-xs text-blue-400 ml-2">{t('home.hero.latestVersion')}</span>
             </div>
           </div>
         </div>
@@ -56,10 +61,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              核心功能
+              {t('home.features.title')}
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Cardity Core 提供完整的智能合约开发解决方案，从编写到部署的一站式体验
+              {t('home.features.subtitle')}
             </p>
           </div>
           
@@ -69,10 +74,10 @@ export default function Home() {
                 <Code className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">
-                编译器 & 运行时
+                {t('home.features.compiler.title')}
               </h3>
               <p className="text-gray-400">
-                将 .car 文件编译为可执行格式，提供完整的运行时环境执行编译后的协议
+                {t('home.features.compiler.description')}
               </p>
             </div>
             
@@ -81,10 +86,10 @@ export default function Home() {
                 <Package className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">
-                包管理系统
+                {t('home.features.packageManager.title')}
               </h3>
               <p className="text-gray-400">
-                管理依赖和发布包，支持 npm 安装，提供完整的包管理功能
+                {t('home.features.packageManager.description')}
               </p>
             </div>
             
@@ -93,10 +98,10 @@ export default function Home() {
                 <Database className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-3">
-                DRC-20 代币标准
+                {t('home.features.drc20.title')}
               </h3>
               <p className="text-gray-400">
-                完整的 DRC-20 代币支持，内置 Deploy、Mint、Transfer 方法
+                {t('home.features.drc20.description')}
               </p>
             </div>
           </div>
@@ -108,10 +113,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              快速安装
+              {t('home.installation.title')}
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              通过 npm 一键安装，立即开始智能合约开发
+              {t('home.installation.subtitle')}
             </p>
           </div>
           
@@ -119,7 +124,7 @@ export default function Home() {
             <div className="card">
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
                 <Package className="w-5 h-5 mr-2 text-blue-400" />
-                npm 安装（推荐）
+                {t('home.installation.npmInstall.title')}
               </h3>
               <CodeBlock
                 code={`# 全局安装 Cardity
@@ -132,12 +137,15 @@ cardity --version
 cardity --help`}
                 language="bash"
               />
+              <p className="text-sm text-gray-400 mt-2">
+                {t('home.installation.npmInstall.description')}
+              </p>
             </div>
             
             <div className="card">
               <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
                 <FileText className="w-5 h-5 mr-2 text-green-400" />
-                从源码编译
+                {t('home.installation.sourceCode.title')}
               </h3>
               <CodeBlock
                 code={`# 克隆项目
@@ -151,6 +159,9 @@ npm install
 cardity --version`}
                 language="bash"
               />
+              <p className="text-sm text-gray-400 mt-2">
+                {t('home.installation.sourceCode.description')}
+              </p>
             </div>
           </div>
         </div>
@@ -161,10 +172,10 @@ cardity --version`}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              创建第一个项目
+              {t('home.quickStart.title')}
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              几分钟内创建并部署你的第一个智能合约
+              {t('home.quickStart.subtitle')}
             </p>
           </div>
           
@@ -191,7 +202,7 @@ cardity run dist/index.carc`}
           <div className="text-center mt-8">
             <Link href="/docs/getting-started" className="btn-primary inline-flex items-center">
               <ArrowRight className="w-4 h-4 mr-2" />
-              查看完整教程
+              {t('home.hero.readDocs')}
             </Link>
           </div>
         </div>
@@ -201,23 +212,23 @@ cardity run dist/index.carc`}
       <section className="py-20 bg-gradient-to-r from-blue-900/20 to-purple-900/20">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            开始构建 Dogecoin 智能合约
+            {t('home.cta.title')}
           </h2>
           <p className="text-lg text-gray-300 mb-8">
-            加入 Cardity 社区，探索 UTXO 智能合约的无限可能
+            {t('home.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/docs" className="btn-primary inline-flex items-center">
               <BookOpen className="w-4 h-4 mr-2" />
-              阅读文档
+              {t('home.cta.readDocs')}
             </Link>
             <Link href="/examples" className="btn-secondary inline-flex items-center">
               <Code className="w-4 h-4 mr-2" />
-              查看示例
+              {t('home.cta.viewExamples')}
             </Link>
             <Link href="/about" className="btn-secondary inline-flex items-center">
               <Globe className="w-4 h-4 mr-2" />
-              了解更多
+              {t('home.cta.learnMore')}
             </Link>
           </div>
         </div>

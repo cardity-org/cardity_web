@@ -1,0 +1,419 @@
+{
+  "nav": {
+    "home": "首页",
+    "docs": "文档",
+    "examples": "示例",
+    "download": "下载",
+    "blog": "博客",
+    "about": "关于"
+  },
+  "home": {
+    "hero": {
+      "title": "Cardity",
+      "subtitle": "Cardity Core - 完整的智能合约编程语言实现，专为 Dogecoin UTXO 设计",
+      "description": "包含编译器、运行时、包管理系统和开发工具，支持 DRC-20 代币标准和区块链部署",
+      "getStarted": "快速开始",
+      "readDocs": "查看文档",
+      "downloadTools": "下载工具",
+      "latestVersion": "最新版本"
+    },
+    "features": {
+      "title": "核心功能",
+      "subtitle": "Cardity Core 提供完整的智能合约开发解决方案，从编写到部署的一站式体验",
+      "compiler": {
+        "title": "编译器 & 运行时",
+        "description": "将 .car 文件编译为可执行格式，提供完整的运行时环境执行编译后的协议"
+      },
+      "packageManager": {
+        "title": "包管理系统",
+        "description": "管理依赖和发布包，支持 npm 安装，提供完整的包管理功能"
+      },
+      "drc20": {
+        "title": "DRC-20 代币标准",
+        "description": "完整的 DRC-20 代币支持，内置 Deploy、Mint、Transfer 方法"
+      }
+    },
+    "installation": {
+      "title": "快速安装",
+      "subtitle": "通过 npm 一键安装，立即开始智能合约开发",
+      "npmInstall": {
+        "title": "npm 安装（推荐）",
+        "description": "通过 npm 包管理器全局安装，支持全局使用，自动管理依赖"
+      },
+      "sourceCode": {
+        "title": "从源码编译",
+        "description": "从 GitHub 仓库克隆源码，适合开发者自定义编译和贡献代码"
+      }
+    },
+    "quickStart": {
+      "title": "创建第一个项目",
+      "subtitle": "几分钟内创建并部署你的第一个智能合约"
+    },
+    "cta": {
+      "title": "开始构建 Dogecoin 智能合约",
+      "subtitle": "加入 Cardity 社区，探索 UTXO 智能合约的无限可能",
+      "readDocs": "阅读文档",
+      "viewExamples": "查看示例",
+      "learnMore": "了解更多"
+    }
+  },
+  "docs": {
+    "gettingStarted": {
+      "title": "快速开始",
+      "subtitle": "安装 Cardity CLI 并在几分钟内编写你的第一个智能合约",
+      "installation": {
+        "title": "安装",
+        "npmInstall": {
+          "title": "npm 安装（推荐）",
+          "description": "如果安装成功，你应该看到类似"
+        },
+        "sourceCode": "从源码编译"
+      },
+      "firstContract": {
+        "title": "你的第一个合约",
+        "subtitle": "创建一个简单的 Hello World 合约来熟悉 Cardity 的语法",
+        "createFile": "创建合约文件",
+        "compileRun": "编译和运行"
+      },
+      "cliCommands": {
+        "title": "CLI 命令",
+        "projectInit": {
+          "title": "项目初始化",
+          "description": "创建新的 Cardity 项目，包含基本文件结构"
+        },
+        "compile": {
+          "title": "编译协议",
+          "description": "将 Cardity 协议文件编译为可执行格式"
+        },
+        "run": {
+          "title": "运行协议",
+          "description": "执行编译后的协议文件"
+        },
+        "generateAbi": {
+          "title": "生成 ABI",
+          "description": "自动生成协议的应用二进制接口"
+        },
+        "drc20": {
+          "title": "DRC-20 代币操作",
+          "description": "专门用于编译 DRC-20 代币协议"
+        },
+        "deploy": {
+          "title": "部署 DRC-20 代币",
+          "description": "部署 DRC-20 代币到 Dogecoin 网络"
+        },
+        "mint": {
+          "title": "铸造代币",
+          "description": "铸造指定数量的 DRC-20 代币"
+        },
+        "transfer": {
+          "title": "转账代币",
+          "description": "转账 DRC-20 代币到指定地址"
+        },
+        "validate": {
+          "title": "验证协议",
+          "description": "验证编译后的协议文件格式和内容"
+        },
+        "info": {
+          "title": "查看协议信息",
+          "description": "显示协议的详细信息，包括版本、方法等"
+        },
+        "deployChain": {
+          "title": "部署到 Dogecoin",
+          "description": "将协议部署到 Dogecoin 区块链网络"
+        },
+        "inscription": {
+          "title": "创建铭文交易",
+          "description": "使用 ordinals 协议创建铭文交易"
+        }
+      },
+      "languageFeatures": {
+        "title": "语言特性",
+        "protocol": {
+          "title": "协议定义",
+          "description": "Cardity 使用 protocol 关键字定义智能合约",
+          "feature": "类似 Solidity 的语法"
+        },
+        "state": {
+          "title": "状态管理",
+          "description": "使用 state 块定义状态变量",
+          "feature": "持久化存储"
+        },
+        "events": {
+          "title": "事件系统",
+          "description": "使用 event 和 emit 处理事件",
+          "feature": "事件驱动架构"
+        },
+        "drc20": {
+          "title": "DRC-20 支持",
+          "description": "内置完整的 DRC-20 代币标准支持",
+          "feature": "代币标准兼容"
+        }
+      },
+      "nextSteps": {
+        "title": "下一步",
+        "cliReference": {
+          "title": "CLI 参考",
+          "description": "学习所有可用的 CLI 命令和选项"
+        },
+        "examples": {
+          "title": "示例",
+          "description": "探索真实的智能合约示例"
+        },
+        "deploy": {
+          "title": "部署",
+          "description": "将你的合约部署到 Dogecoin 区块链"
+        }
+      }
+    }
+  },
+  "cli": {
+    "title": "CLI 参考",
+    "subtitle": "Cardity 开发工具的完整命令行界面参考",
+    "installation": {
+      "title": "安装",
+      "npmInstall": {
+        "title": "npm 安装（推荐）",
+        "currentVersion": "当前版本"
+      }
+    },
+    "basicCommands": {
+      "title": "基本命令",
+      "projectInit": {
+        "title": "项目初始化",
+        "description": "创建新的 Cardity 项目，包含基本文件结构"
+      },
+      "compile": {
+        "title": "编译协议",
+        "description": "将 Cardity 协议文件编译为可执行格式"
+      },
+      "run": {
+        "title": "运行协议",
+        "description": "执行编译后的协议文件"
+      },
+      "generateAbi": {
+        "title": "生成 ABI",
+        "description": "自动生成协议的应用二进制接口"
+      }
+    },
+    "drc20Commands": {
+      "title": "DRC-20 代币命令",
+      "compile": {
+        "title": "编译 DRC-20 代币",
+        "description": "专门用于编译 DRC-20 代币协议"
+      },
+      "deploy": {
+        "title": "部署 DRC-20 代币",
+        "description": "部署 DRC-20 代币到 Dogecoin 网络"
+      },
+      "mint": {
+        "title": "铸造代币",
+        "description": "铸造指定数量的 DRC-20 代币"
+      },
+      "transfer": {
+        "title": "转账代币",
+        "description": "转账 DRC-20 代币到指定地址"
+      }
+    },
+    "deploymentCommands": {
+      "title": "部署命令",
+      "validate": {
+        "title": "验证协议",
+        "description": "验证编译后的协议文件格式和内容"
+      },
+      "info": {
+        "title": "查看协议信息",
+        "description": "显示协议的详细信息，包括版本、方法等"
+      },
+      "deploy": {
+        "title": "部署到 Dogecoin",
+        "description": "将协议部署到 Dogecoin 区块链网络"
+      },
+      "inscription": {
+        "title": "创建铭文交易",
+        "description": "使用 ordinals 协议创建铭文交易"
+      }
+    },
+    "advancedCommands": {
+      "title": "高级命令",
+      "compiler": {
+        "title": "编译器工具",
+        "description": "高级编译器选项和格式转换"
+      },
+      "abiGenerator": {
+        "title": "ABI 生成器",
+        "description": "独立的 ABI 生成工具"
+      },
+      "runtime": {
+        "title": "运行时工具",
+        "description": "独立的运行时执行工具"
+      },
+      "packageManager": {
+        "title": "包管理",
+        "description": "管理依赖包和发布包"
+      }
+    },
+    "help": {
+      "title": "帮助和支持",
+      "getHelp": {
+        "title": "获取帮助",
+        "description": "查看所有命令和特定命令帮助"
+      },
+      "version": {
+        "title": "版本信息",
+        "description": "查看版本和详细信息"
+      },
+      "needHelp": "需要更多帮助？查看我们的文档和示例",
+      "quickStart": "快速开始",
+      "viewExamples": "查看示例",
+      "deployGuide": "部署指南"
+    }
+  },
+  "about": {
+    "title": "关于 Cardity",
+    "subtitle": "Cardity Core - 完整的智能合约编程语言实现，专为 Dogecoin UTXO 设计",
+    "overview": {
+      "title": "项目概述",
+      "description": "Cardity Core 是 Cardity 编程语言的完整实现，提供：",
+      "features": [
+        "编译器 - 将编程语言格式的 .car 文件编译为可执行格式",
+        "运行时 - 执行编译后的协议",
+        "包管理器 - 管理依赖和发布包",
+        "CLI 工具 - 命令行开发工具",
+        "类型系统 - 静态类型检查",
+        "事件系统 - 事件驱动架构",
+        "ABI 生成器 - 自动生成协议接口（支持编程语言格式和 JSON 格式）",
+        "区块链部署 - 支持 Dogecoin 链上部署",
+        "DRC-20 代币标准 - 完整的 DRC-20 代币支持"
+      ]
+    },
+    "version": {
+      "title": "版本信息",
+      "npmPackage": {
+        "title": "npm 包信息",
+        "packageName": "包名",
+        "currentVersion": "当前版本",
+        "license": "许可证",
+        "packageSize": "包大小",
+        "fileCount": "文件数量"
+      },
+      "github": {
+        "title": "GitHub 仓库",
+        "repository": "仓库",
+        "homepage": "主页",
+        "npmPage": "npm 页面"
+      }
+    },
+    "features": {
+      "title": "核心特性",
+      "languageFormat": {
+        "title": "编程语言格式",
+        "description": "Cardity 支持编程语言格式的 .car 文件，类似 Solidity 的语法，包含：",
+        "items": [
+          "协议定义（protocol）",
+          "状态变量（state）",
+          "事件系统（event）",
+          "方法定义（method）",
+          "类型系统（string, int, bool）",
+          "事件发射（emit）"
+        ]
+      },
+      "drc20": {
+        "title": "DRC-20 代币标准",
+        "description": "完整的 DRC-20 代币标准支持，包含：",
+        "items": [
+          "代币定义（drc20 块）",
+          "部署方法（deploy）",
+          "铸造方法（mint）",
+          "转账方法（transfer）",
+          "事件定义（TokenDeployed, TokenMinted, TokenTransferred）",
+          "自动 ABI 生成"
+        ]
+      },
+      "blockchain": {
+        "title": "区块链部署",
+        "description": "支持多种部署方式：",
+        "items": [
+          ".carc 二进制格式",
+          "OP_RETURN 部署",
+          "铭文部署（ordinals 协议）",
+          "Dogecoin 链上部署",
+          "协议验证和查看"
+        ]
+      },
+      "devTools": {
+        "title": "开发工具",
+        "description": "完整的开发工具链：",
+        "items": [
+          "CLI 命令行工具",
+          "项目初始化",
+          "编译和运行",
+          "ABI 生成",
+          "包管理",
+          "调试和测试"
+        ]
+      }
+    },
+    "installation": {
+      "title": "安装方式",
+      "npm": {
+        "title": "npm 安装（推荐）",
+        "description": "通过 npm 包管理器一键安装，支持全局使用，自动管理依赖"
+      },
+      "sourceCode": {
+        "title": "从源码编译",
+        "description": "从 GitHub 仓库克隆源码，适合开发者自定义编译和贡献代码"
+      }
+    },
+    "community": {
+      "title": "社区和链接",
+      "official": {
+        "title": "官方资源",
+        "github": "GitHub 仓库",
+        "npm": "npm 包页面",
+        "docs": "官方文档",
+        "examples": "示例项目"
+      },
+      "devResources": {
+        "title": "开发资源",
+        "quickStart": "快速开始",
+        "cliReference": "CLI 参考",
+        "deployGuide": "部署指南",
+        "downloadTools": "下载工具"
+      }
+    },
+    "contributing": {
+      "title": "贡献代码",
+      "description": "欢迎贡献代码！Cardity 是一个开源项目，我们欢迎所有形式的贡献：",
+      "steps": [
+        "Fork 项目并创建功能分支",
+        "提交你的更改",
+        "推送到分支并创建 Pull Request",
+        "报告 Bug 和提出功能建议"
+      ],
+      "viewGitHub": "查看 GitHub",
+      "devGuide": "开发指南"
+    }
+  },
+  "footer": {
+    "description": "Cardity 是一个静态类型编程语言，专为在 Dogecoin UTXO 上开发智能合约而设计",
+    "links": {
+      "docs": "文档",
+      "examples": "示例",
+      "download": "下载",
+      "about": "关于",
+      "blog": "博客"
+    },
+    "community": {
+      "title": "社区",
+      "github": "GitHub",
+      "twitter": "Twitter",
+      "discord": "Discord"
+    },
+    "legal": {
+      "privacy": "隐私政策",
+      "terms": "服务条款",
+      "license": "MIT 许可证"
+    },
+    "copyright": "© 2024 Cardity. 保留所有权利。"
+  }
+} 

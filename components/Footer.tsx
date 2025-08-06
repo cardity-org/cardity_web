@@ -1,115 +1,191 @@
+'use client'
+
 import Link from 'next/link'
-import { Github, Twitter, Mail } from 'lucide-react'
+import { Github, Twitter } from 'lucide-react'
 import Logo from './Logo'
+import { useTranslations } from '../lib/i18n'
 
 export default function Footer() {
+  const { t } = useTranslations()
+
+  const navigation = {
+    main: [
+      { name: t('footer.links.docs'), href: '/docs' },
+      { name: t('footer.links.examples'), href: '/examples' },
+      { name: t('footer.links.download'), href: '/download' },
+      { name: t('footer.links.about'), href: '/about' },
+      { name: t('footer.links.blog'), href: '/blog' },
+    ],
+    social: [
+      {
+        name: t('footer.community.github'),
+        href: 'https://github.com/cardity-org/cardity-core',
+        icon: Github,
+      },
+      {
+        name: t('footer.community.twitter'),
+        href: 'https://twitter.com/carditylang',
+        icon: Twitter,
+      },
+    ],
+  }
+
   return (
     <footer className="bg-black border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <div className="flex items-center mb-4">
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          {/* Logo and Description */}
+          <div className="space-y-8 xl:col-span-1">
+            <div className="flex items-center">
               <Logo size={32} />
             </div>
-            <p className="text-gray-400 mb-6 max-w-md">
-              A statically-typed curly-braces programming language designed for developing smart contracts that run on Dogecoin UTXO.
+            <p className="text-gray-400 text-sm max-w-xs">
+              {t('footer.description')}
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://github.com/cardity-org/cardity-core"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com/carditylang"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:hello@cardity.org"
-                className="text-gray-400 hover:text-white transition-colors duration-200"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Documentation</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/docs/getting-started" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Getting Started
-                </Link>
-              </li>
-              <li>
-                <Link href="/docs/reference" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Language Reference
-                </Link>
-              </li>
-              <li>
-                <Link href="/docs/cli" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  CLI Tools
-                </Link>
-              </li>
-              <li>
-                <Link href="/docs/deploy" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Deployment Guide
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Community</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/examples" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Code Examples
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  About Us
-                </Link>
-              </li>
-              <li>
+            <div className="flex space-x-6">
+              {navigation.social.map((item) => (
                 <a
-                  href="https://github.com/cardity-org/cardity-core/issues"
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-400 hover:text-gray-300 transition-colors duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Report Issues
+                  <span className="sr-only">{item.name}</span>
+                  <item.icon className="h-6 w-6" />
                 </a>
-              </li>
-            </ul>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                  {t('footer.links.docs')}
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="/docs/getting-started"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                    >
+                      Getting Started
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/docs/cli"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                    >
+                      CLI Reference
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/docs/deploy"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                    >
+                      Deployment
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                  {t('footer.community.title')}
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li>
+                    <a
+                      href="https://github.com/cardity-org/cardity-core"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t('footer.community.github')}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://twitter.com/carditylang"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t('footer.community.twitter')}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                  {t('footer.links.examples')}
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="/examples"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                    >
+                      Smart Contracts
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/download/examples"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                    >
+                      Download Examples
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+                  Legal
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="/privacy"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                    >
+                      {t('footer.legal.privacy')}
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/terms"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                    >
+                      {t('footer.legal.terms')}
+                    </Link>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/cardity-org/cardity-core/blob/main/LICENSE"
+                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t('footer.legal.license')}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
-            © 2024 Cardity Team. Open source project under MIT License.
+
+        {/* Copyright */}
+        <div className="mt-12 border-t border-gray-800 pt-8">
+          <p className="text-base text-gray-400 text-center">
+            {t('footer.copyright')}
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-200">
-              Terms of Service
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
