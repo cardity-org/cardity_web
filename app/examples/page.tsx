@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Code, Zap, Shield, Globe, Download, BookOpen, Play, ExternalLink, Star, Users, Coins, Vote, Database, Wallet } from 'lucide-react'
-import CodeBlock from '@/components/CodeBlock'
+import CodeBlock from '../../components/CodeBlock'
 
 export const metadata: Metadata = {
   title: 'Code Examples',

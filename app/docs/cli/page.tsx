@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Terminal, Download, Code, Database, ArrowRight, Settings, Package } from 'lucide-react'
-import CodeBlock from '@/components/CodeBlock'
+import CodeBlock from '../../../components/CodeBlock'
 
 export default function CLIPage() {
   return (

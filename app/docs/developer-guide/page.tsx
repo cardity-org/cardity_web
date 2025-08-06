@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, Code, Settings, Terminal, Database, Shield, Package, GitBranch } from 'lucide-react'
-import CodeBlock from '@/components/CodeBlock'
+import CodeBlock from '../../../components/CodeBlock'
 
 export default function DeveloperGuidePage() {
   return (

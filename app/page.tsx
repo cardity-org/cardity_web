@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Code, Zap, Shield, Globe, ArrowRight, Download, BookOpen, Play } from 'lucide-react'
-import CodeBlock from '@/components/CodeBlock'
-import Logo from '@/components/Logo'
+import CodeBlock from '../components/CodeBlock'
+import Logo from '../components/Logo'
 
 export default function Home() {
   return (

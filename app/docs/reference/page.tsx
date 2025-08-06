@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, Code, FileText, Settings, Database, Zap, Shield } from 'lucide-react'
-import CodeBlock from '@/components/CodeBlock'
+import CodeBlock from '../../../components/CodeBlock'
 
 export default function ReferencePage() {
   return (

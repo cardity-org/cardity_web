@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, Rocket, Download, Database, Shield, Settings, Terminal } from 'lucide-react'
-import CodeBlock from '@/components/CodeBlock'
+import CodeBlock from '../../../components/CodeBlock'
 
 export default function DeployPage() {
   return (

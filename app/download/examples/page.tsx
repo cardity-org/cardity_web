@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, Download, Code, Github, ExternalLink, FileText, Package } from 'lucide-react'
-import CodeBlock from '@/components/CodeBlock'
+import CodeBlock from '../../../components/CodeBlock'
 
 const examples = [
   {
