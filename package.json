@@ -12,9 +12,11 @@
     "deploy:cloudflare:staging": "npm run build && wrangler pages deploy out --env staging"
   },
   "dependencies": {
+    "autoprefixer": "^10.0.1",
     "clsx": "^2.0.0",
     "lucide-react": "^0.294.0",
     "next": "14.0.0",
+    "postcss": "^8",
     "prismjs": "^1.29.0",
     "react": "^18",
     "react-dom": "^18",
@@ -28,10 +30,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.0",
-    "postcss": "^8",
     "typescript": "^5",
     "wrangler": "^3.0.0"
   }
