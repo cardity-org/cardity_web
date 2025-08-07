@@ -76,7 +76,7 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 
 # 社交媒体链接
 NEXT_PUBLIC_GITHUB_URL=https://github.com/cardity
-NEXT_PUBLIC_TWITTER_URL=https://twitter.com/carditylang
+NEXT_PUBLIC_X_URL=https://twitter.com/carditylang
 NEXT_PUBLIC_EMAIL=hello@cardity.org
 ```
 

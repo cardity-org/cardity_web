@@ -1,16 +1,21 @@
+"use client"
+
 import Link from 'next/link'
 import { ArrowRight, Code, FileText, Settings, Database, Zap, Shield } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
+import { useTranslations } from '../../../lib/i18n'
 
 export default function ReferencePage() {
+  const { t } = useTranslations()
+  
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-4">
-          Language Reference
+          {t('docs.reference.title')}
         </h1>
         <p className="text-lg text-gray-400">
-          Complete Cardity language syntax and feature documentation
+          {t('docs.reference.subtitle')}
         </p>
       </div>
 
@@ -19,10 +24,10 @@ export default function ReferencePage() {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Code className="w-6 h-6 mr-3 text-blue-400" />
-            Protocol Structure
+            {t('docs.reference.syntax.title')}
           </h2>
           <p className="text-gray-400 mb-6">
-            Protocol is the basic unit of Cardity contracts, similar to Solidity's Contract:
+            {t('docs.reference.syntax.description')}
           </p>
           <CodeBlock
             code={`protocol MyContract {
@@ -55,29 +60,29 @@ export default function ReferencePage() {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Database className="w-6 h-6 mr-3 text-blue-400" />
-            State Variables
+            {t('docs.reference.types.title')}
           </h2>
           <p className="text-gray-400 mb-6">
-            State variables are stored in UTXO and support the following data types:
+            {t('docs.reference.types.description')}
           </p>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Basic Types</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.types.basicTypes.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-800 px-1 rounded">string</code> - String type</li>
-                <li><code className="bg-gray-800 px-1 rounded">int</code> - Integer type</li>
-                <li><code className="bg-gray-800 px-1 rounded">bool</code> - Boolean type</li>
-                <li><code className="bg-gray-800 px-1 rounded">number</code> - Number type</li>
+                <li><code className="bg-gray-800 px-1 rounded">string</code> - {t('docs.reference.types.basicTypes.string')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">int</code> - {t('docs.reference.types.basicTypes.int')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">bool</code> - {t('docs.reference.types.basicTypes.bool')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">number</code> - {t('docs.reference.types.basicTypes.number')}</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Complex Types</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.types.complexTypes.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-800 px-1 rounded">array</code> - Array type</li>
-                <li><code className="bg-gray-800 px-1 rounded">map</code> - Mapping type</li>
-                <li><code className="bg-gray-800 px-1 rounded">struct</code> - Structure type</li>
+                <li><code className="bg-gray-800 px-1 rounded">array</code> - {t('docs.reference.types.complexTypes.array')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">map</code> - {t('docs.reference.types.complexTypes.map')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">struct</code> - {t('docs.reference.types.complexTypes.struct')}</li>
               </ul>
             </div>
           </div>
@@ -113,15 +118,15 @@ struct User {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Settings className="w-6 h-6 mr-3 text-blue-400" />
-            Methods
+            {t('docs.reference.functions.title')}
           </h2>
           <p className="text-gray-400 mb-6">
-            Methods are executable functions that can modify state, return values, or trigger events:
+            {t('docs.reference.functions.description')}
           </p>
           
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-white mb-3">Basic Methods</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.functions.basicMethods.title')}</h3>
               <CodeBlock
                 code={`method setName(newName) {
   state.name = newName;
@@ -133,7 +138,7 @@ struct User {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-white mb-3">Methods with Return Values</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.functions.methodsWithReturn.title')}</h3>
               <CodeBlock
                 code={`method getName() {
   return state.name;
@@ -148,7 +153,7 @@ method calculate(a, b) {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-white mb-3">Methods with Parameters</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.functions.methodsWithParams.title')}</h3>
               <CodeBlock
                 code={`method transfer(toAddress, amount) {
   if (amount <= 0) {
@@ -173,10 +178,10 @@ method calculate(a, b) {
         {/* Events */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Events
+            {t('docs.reference.functions.title')}
           </h2>
           <p className="text-gray-400 mb-6">
-            Events are used to record important information during contract execution:
+            {t('docs.reference.functions.description')}
           </p>
           
           <CodeBlock
@@ -211,10 +216,10 @@ method registerUser(name) {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Zap className="w-6 h-6 mr-3 text-blue-400" />
-            DRC-20 Token Standard
+            {t('docs.reference.functions.title')}
           </h2>
           <p className="text-gray-400 mb-6">
-            Cardity supports the complete DRC-20 token standard for creating tokens on Dogecoin:
+            {t('docs.reference.functions.description')}
           </p>
           
           <CodeBlock
@@ -297,12 +302,12 @@ method registerUser(name) {
         {/* Control Structures */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Control Structures
+            {t('docs.reference.functions.controlStructures.title')}
           </h2>
           
           <div className="space-y-6">
             <div>
-              <h3 className="text-lg font-semibold text-white mb-3">Conditional Statements</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.functions.controlStructures.conditionalStatements.title')}</h3>
               <CodeBlock
                 code={`method processPayment(amount) {
   if (state.balance >= amount) {
@@ -318,7 +323,7 @@ method registerUser(name) {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-white mb-3">Loops</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.functions.controlStructures.loops.title')}</h3>
               <CodeBlock
                 code={`method processArray(items) {
   for (i = 0; i < items.length; i++) {
@@ -335,25 +340,25 @@ method registerUser(name) {
         {/* Built-in Functions */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Built-in Functions
+            {t('docs.reference.functions.builtInFunctions.title')}
           </h2>
           <p className="text-gray-400 mb-6">
-            Cardity provides built-in functions for common operations:
+            {t('docs.reference.functions.builtInFunctions.description')}
           </p>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Common Functions</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.functions.builtInFunctions.commonFunctions.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-800 px-1 rounded">now()</code> - Current timestamp</li>
-                <li><code className="bg-gray-800 px-1 rounded">length()</code> - String/array length</li>
-                <li><code className="bg-gray-800 px-1 rounded">push()</code> - Add to array</li>
-                <li><code className="bg-gray-800 px-1 rounded">pop()</code> - Remove from array</li>
+                <li><code className="bg-gray-800 px-1 rounded">now()</code> - {t('docs.reference.functions.builtInFunctions.commonFunctions.now')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">length()</code> - {t('docs.reference.functions.builtInFunctions.commonFunctions.length')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">push()</code> - {t('docs.reference.functions.builtInFunctions.commonFunctions.push')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">pop()</code> - {t('docs.reference.functions.builtInFunctions.commonFunctions.pop')}</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Usage Examples</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.reference.functions.builtInFunctions.usageExamples.title')}</h3>
               <CodeBlock
                 code={`method addUser(name) {
   state.users.push(name);
@@ -372,10 +377,10 @@ method getUsersCount() {
         {/* Error Handling */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Error Handling
+            {t('docs.reference.functions.errorHandling.title')}
           </h2>
           <p className="text-gray-400 mb-6">
-            Use return statements for condition checking and error handling:
+            {t('docs.reference.functions.errorHandling.description')}
           </p>
           
           <CodeBlock
@@ -400,14 +405,14 @@ method getUsersCount() {
         {/* ABI Generation */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            ABI Generation
+            {t('docs.reference.functions.abiGeneration.title')}
           </h2>
           <p className="text-gray-400 mb-6">
-            Cardity automatically generates ABI (Application Binary Interface) from your protocol:
+            {t('docs.reference.functions.abiGeneration.description')}
           </p>
           
           <div className="bg-gray-900 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-medium text-white mb-4">Generate ABI</h3>
+            <h3 className="text-lg font-medium text-white mb-4">{t('docs.reference.functions.abiGeneration.generateAbi.title')}</h3>
             <CodeBlock
               code={`# Generate ABI from .car file
 cardity_abi protocol.car protocol.abi
@@ -419,7 +424,7 @@ cardity_abi drc20_token.car drc20_token.abi`}
           </div>
           
           <div className="bg-gray-900 rounded-lg p-6">
-            <h3 className="text-lg font-medium text-white mb-4">Generated ABI Example</h3>
+            <h3 className="text-lg font-medium text-white mb-4">{t('docs.reference.functions.abiGeneration.generatedAbiExample.title')}</h3>
             <CodeBlock
               code={`{
   "protocol": "MyDrc20Token",
@@ -461,35 +466,35 @@ cardity_abi drc20_token.car drc20_token.abi`}
         {/* Next Steps */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Next Steps
+            {t('docs.gettingStarted.nextSteps.title')}
           </h2>
           
           <div className="bg-gray-900 rounded-lg p-6">
             <p className="text-gray-300 mb-4">
-              Now that you understand Cardity's syntax, you can:
+              {t('docs.gettingStarted.nextSteps.description')}
             </p>
             <ul className="space-y-2 text-gray-300 mb-6">
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Learn about the standard library
+                {t('docs.gettingStarted.nextSteps.learnStandardLibrary')}
               </li>
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Understand CLI tools usage
+                {t('docs.gettingStarted.nextSteps.understandCliTools')}
               </li>
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                View more code examples
+                {t('docs.gettingStarted.nextSteps.viewMoreExamples')}
               </li>
             </ul>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/docs/standard-library" className="btn-primary inline-flex items-center">
-                Standard Library
+                {t('docs.standardLibrary.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
               <Link href="/docs/cli" className="btn-secondary inline-flex items-center">
-                CLI Tools
+                {t('docs.cli.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>

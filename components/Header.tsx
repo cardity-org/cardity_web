@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
@@ -9,16 +9,17 @@ import { useTranslations } from '../lib/i18n'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { t } = useTranslations()
+  const { t, locale, isClient, isInitialized } = useTranslations()
 
-  const navigation = [
+  // 使用 useMemo 确保导航菜单项在语言切换时重新计算
+  const navigation = useMemo(() => [
     { name: t('nav.home'), href: '/' },
     { name: t('nav.docs'), href: '/docs' },
     { name: t('nav.examples'), href: '/examples' },
     { name: t('nav.download'), href: '/download' },
     { name: t('nav.blog'), href: '/blog' },
     { name: t('nav.about'), href: '/about' },
-  ]
+  ], [t, locale, isClient, isInitialized])
 
   return (
     <header className="bg-black/80 backdrop-blur-sm border-b border-gray-800 sticky top-0 z-50">

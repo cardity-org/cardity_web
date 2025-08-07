@@ -1,60 +1,67 @@
+'use client'
+
 import Link from 'next/link'
 import { BookOpen, Code, Settings, Rocket, FileText, Library, Terminal, ArrowRight } from 'lucide-react'
-
-const docSections = [
-  {
-    title: '开始使用',
-    description: '安装 CLI 工具，编写你的第一个 Cardity 合约',
-    href: '/docs/getting-started',
-    icon: BookOpen,
-    color: 'bg-blue-100 text-blue-600',
-  },
-  {
-    title: '语言参考',
-    description: '完整的 Cardity 语言语法和特性说明',
-    href: '/docs/reference',
-    icon: Code,
-    color: 'bg-green-100 text-green-600',
-  },
-  {
-    title: '标准库',
-    description: '内置模块和常用功能的详细文档',
-    href: '/docs/standard-library',
-    icon: Library,
-    color: 'bg-purple-100 text-purple-600',
-  },
-  {
-    title: 'CLI 工具',
-    description: '命令行工具的使用方法和参数说明',
-    href: '/docs/cli',
-    icon: Terminal,
-    color: 'bg-orange-100 text-orange-600',
-  },
-  {
-    title: '部署指南',
-    description: '如何将合约部署到 Dogecoin 网络',
-    href: '/docs/deploy',
-    icon: Rocket,
-    color: 'bg-red-100 text-red-600',
-  },
-  {
-    title: '开发者指南',
-    description: '调试、测试和高级开发技巧',
-    href: '/docs/developer-guide',
-    icon: Settings,
-    color: 'bg-gray-100 text-gray-600',
-  },
-]
+import { useTranslations } from '../../lib/i18n'
+import { useMemo } from 'react'
 
 export default function DocsPage() {
+  const { t, locale, isClient, isInitialized } = useTranslations()
+
+  // 使用 useMemo 确保文档部分在语言切换时重新计算
+  const docSections = useMemo(() => [
+    {
+      title: t('docs.gettingStarted.title'),
+      description: t('docs.gettingStarted.subtitle'),
+      href: '/docs/getting-started',
+      icon: BookOpen,
+      color: 'bg-blue-100 text-blue-600',
+    },
+    {
+      title: t('docs.reference.title'),
+      description: t('docs.reference.subtitle'),
+      href: '/docs/reference',
+      icon: Code,
+      color: 'bg-green-100 text-green-600',
+    },
+    {
+      title: t('docs.standardLibrary.title'),
+      description: t('docs.standardLibrary.subtitle'),
+      href: '/docs/standard-library',
+      icon: Library,
+      color: 'bg-purple-100 text-purple-600',
+    },
+    {
+      title: t('docs.cli.title'),
+      description: t('docs.cli.subtitle'),
+      href: '/docs/cli',
+      icon: Terminal,
+      color: 'bg-orange-100 text-orange-600',
+    },
+    {
+      title: t('docs.deploy.title'),
+      description: t('docs.deploy.subtitle'),
+      href: '/docs/deploy',
+      icon: Rocket,
+      color: 'bg-red-100 text-red-600',
+    },
+    {
+      title: t('docs.developerGuide.title'),
+      description: t('docs.developerGuide.subtitle'),
+      href: '/docs/developer-guide',
+      icon: Settings,
+      color: 'bg-gray-100 text-gray-600',
+    },
+  ], [t, locale, isClient, isInitialized])
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Cardity 文档
+          {t('docs.title')}
         </h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          从入门到精通，掌握 Cardity 智能合约开发的所有知识
+          {t('docs.subtitle')}
         </p>
       </div>
 
@@ -85,25 +92,25 @@ export default function DocsPage() {
 
       <div className="mt-12 p-6 bg-cardity-50 rounded-lg border border-cardity-200">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          快速开始
+          {t('docs.learningPath.title')}
         </h2>
         <p className="text-gray-600 mb-4">
-          如果你是新用户，建议按照以下顺序学习：
+          {t('docs.learningPath.description')}
         </p>
         <ol className="list-decimal list-inside space-y-2 text-gray-600">
-          <li>安装 CLI 工具并配置环境</li>
-          <li>学习基本的语言语法和概念</li>
-          <li>编写和测试你的第一个合约</li>
-          <li>了解标准库的使用方法</li>
-          <li>部署合约到 Dogecoin 网络</li>
+          {t('docs.learningPath.steps').map((step: any, index: number) => (
+            <li key={index}>
+              {typeof step === 'string' ? step : `${step.title}: ${step.description}`}
+            </li>
+          ))}
         </ol>
         <div className="mt-6">
           <Link
             href="/docs/getting-started"
-            className="btn-primary inline-flex items-center"
+            className="inline-flex items-center text-cardity-600 hover:text-cardity-700 font-medium"
           >
-            开始学习
-            <ArrowRight className="w-4 h-4 ml-2" />
+            {t('docs.gettingStarted.title')}
+            <ArrowRight className="w-4 h-4 ml-1" />
           </Link>
         </div>
       </div>

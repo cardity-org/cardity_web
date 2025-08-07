@@ -29,7 +29,7 @@ export default function Logo({ size = 40, showText = true, className = '' }: Log
             Cardity
           </span>
           <span className="text-xs text-gray-400 -mt-1">
-            Smart Contracts for Dogecoin
+            Smart Protocols for Dogecoin
           </span>
         </div>
       )}

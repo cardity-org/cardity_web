@@ -1,16 +1,21 @@
+"use client"
+
 import Link from 'next/link'
-import { ArrowRight, Code, Settings, Terminal, Database, Shield, Package, GitBranch } from 'lucide-react'
+import { ArrowRight, Code, Settings, Database, Shield, Package, GitBranch } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
+import { useTranslations } from '../../../lib/i18n'
 
 export default function DeveloperGuidePage() {
+  const { t, isClient, isInitialized } = useTranslations()
+  
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-4">
-          Developer Guide
+          {t('docs.developerGuide.title')}
         </h1>
         <p className="text-lg text-gray-400">
-          Advanced development techniques, testing strategies, and contribution guidelines
+          {t('docs.developerGuide.subtitle')}
         </p>
       </div>
 
@@ -19,24 +24,35 @@ export default function DeveloperGuidePage() {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Settings className="w-6 h-6 mr-3 text-blue-400" />
-            Development Environment
+            {t('docs.developerGuide.overview.title')}
           </h2>
           
           <div className="space-y-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">System Requirements</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.overview.systemRequirements.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>• <strong>Operating System:</strong> macOS, Linux, or Windows</li>
-                <li>• <strong>Memory:</strong> 4GB RAM minimum, 8GB recommended</li>
-                <li>• <strong>Storage:</strong> 2GB free space</li>
-                <li>• <strong>Network:</strong> Internet connection for package downloads</li>
+                <li>• <strong>{t('docs.developerGuide.overview.systemRequirements.operatingSystem')}:</strong> {t('docs.developerGuide.overview.systemRequirements.osValue')}</li>
+                <li>• <strong>{t('docs.developerGuide.overview.systemRequirements.memory')}:</strong> {t('docs.developerGuide.overview.systemRequirements.memoryValue')}</li>
+                <li>• <strong>{t('docs.developerGuide.overview.systemRequirements.storage')}:</strong> {t('docs.developerGuide.overview.systemRequirements.storageValue')}</li>
+                <li>• <strong>{t('docs.developerGuide.overview.systemRequirements.network')}:</strong> {t('docs.developerGuide.overview.systemRequirements.networkValue')}</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Required Dependencies</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.overview.requiredDependencies.title')}</h3>
               <CodeBlock
-                code={`# macOS (using Homebrew)
+                code={isClient && isInitialized ? `${t('docs.developerGuide.code.macosInstall')}
+brew install cmake nlohmann-json curl libarchive openssl
+
+${t('docs.developerGuide.code.ubuntuInstall')}
+sudo apt-get update
+sudo apt-get install cmake nlohmann-json3-dev libcurl4-openssl-dev libarchive-dev libssl-dev
+
+${t('docs.developerGuide.code.centosInstall')}
+sudo yum install cmake nlohmann-json-devel libcurl-devel libarchive-devel openssl-devel
+
+${t('docs.developerGuide.code.windowsInstall')}
+vcpkg install cmake nlohmann-json curl libarchive openssl` : `# macOS (using Homebrew)
 brew install cmake nlohmann-json curl libarchive openssl
 
 # Ubuntu/Debian
@@ -53,9 +69,26 @@ vcpkg install cmake nlohmann-json curl libarchive openssl`}
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Build from Source</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.overview.buildFromSource.title')}</h3>
               <CodeBlock
-                code={`# Clone the repository
+                code={isClient && isInitialized ? `${t('docs.developerGuide.code.cloneRepository')}
+git clone https://github.com/cardity-org/cardity-core.git
+cd cardity-core
+
+${t('docs.developerGuide.code.createBuildDir')}
+mkdir build && cd build
+
+${t('docs.developerGuide.code.configureCmake')}
+cmake ..
+
+${t('docs.developerGuide.code.buildProject')}
+make -j4
+
+${t('docs.developerGuide.code.installSystem')}
+sudo make install
+
+${t('docs.developerGuide.code.verifyInstall')}
+cardity --version` : `# Clone the repository
 git clone https://github.com/cardity-org/cardity-core.git
 cd cardity-core
 
@@ -83,13 +116,35 @@ cardity --version`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Database className="w-6 h-6 mr-3 text-blue-400" />
-            Project Structure
+            {t('docs.developerGuide.overview.projectStructure.title')}
           </h2>
           
-          <div className="card">
-            <h3 className="text-lg font-semibold text-white mb-3">Cardity Core Architecture</h3>
+                      <div className="card">
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.overview.projectStructure.cardityCoreArchitecture.title')}</h3>
             <CodeBlock
-              code={`cardity_core/
+              code={isClient && isInitialized ? `${t('docs.developerGuide.code.projectStructure')}
+${t('docs.developerGuide.code.compilerDir')}
+${t('docs.developerGuide.code.lexerFile')}
+${t('docs.developerGuide.code.parserFile')}
+${t('docs.developerGuide.code.semanticFile')}
+${t('docs.developerGuide.code.typeSystemFile')}
+${t('docs.developerGuide.code.runtimeFile')}
+${t('docs.developerGuide.code.carGeneratorFile')}
+${t('docs.developerGuide.code.carcGeneratorFile')}
+${t('docs.developerGuide.code.carDeployerFile')}
+${t('docs.developerGuide.code.dogecoinDeployerFile')}
+${t('docs.developerGuide.code.drc20StandardFile')}
+${t('docs.developerGuide.code.drc20CompilerFile')}
+${t('docs.developerGuide.code.drc20CliFile')}
+${t('docs.developerGuide.code.eventSystemFile')}
+${t('docs.developerGuide.code.packageManagerFile')}
+${t('docs.developerGuide.code.packageConfigFile')}
+${t('docs.developerGuide.code.packageBuilderFile')}
+${t('docs.developerGuide.code.registryClientFile')}
+${t('docs.developerGuide.code.cardityCliFile')}
+${t('docs.developerGuide.code.examplesDir')}
+${t('docs.developerGuide.code.docsDir')}
+${t('docs.developerGuide.code.cmakeListsFile')}` : `cardity_core/
 ├── compiler/             # Compiler source code
 │   ├── lexer.cpp        # Lexical analyzer
 │   ├── parser.cpp       # Syntax parser
@@ -122,7 +177,7 @@ cardity --version`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Shield className="w-6 h-6 mr-3 text-blue-400" />
-            Testing Strategies
+            {t('docs.developerGuide.testing.title')}
           </h2>
           
           <div className="space-y-6">
@@ -217,7 +272,7 @@ cardity_drc20 compile examples/drc20_token.car
         {/* Debugging */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Debugging Techniques
+            {t('docs.developerGuide.testing.title')}
           </h2>
           
           <div className="space-y-6">
@@ -245,7 +300,7 @@ cardity build --verbose
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Error Handling</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.bestPractices.errorHandling.title')}</h3>
               <CodeBlock
                 code={`# Common error patterns and solutions
 
@@ -282,23 +337,23 @@ method trigger_event() {
         {/* Performance Optimization */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Performance Optimization
+            {t('docs.developerGuide.bestPractices.title')}
           </h2>
           
           <div className="space-y-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Protocol Optimization</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.bestPractices.protocolOptimization.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>• <strong>Minimize State Variables:</strong> Only store essential data</li>
-                <li>• <strong>Efficient Data Structures:</strong> Use appropriate types for your use case</li>
-                <li>• <strong>Optimize Methods:</strong> Reduce computational complexity</li>
-                <li>• <strong>Batch Operations:</strong> Group related operations together</li>
-                <li>• <strong>Lazy Loading:</strong> Initialize data only when needed</li>
+                <li>• <strong>{t('docs.developerGuide.bestPractices.protocolOptimization.minimizeStateVariables')}:</strong> {t('docs.developerGuide.bestPractices.protocolOptimization.minimizeStateVariablesDesc')}</li>
+                <li>• <strong>{t('docs.developerGuide.bestPractices.protocolOptimization.efficientDataStructures')}:</strong> {t('docs.developerGuide.bestPractices.protocolOptimization.efficientDataStructuresDesc')}</li>
+                <li>• <strong>{t('docs.developerGuide.bestPractices.protocolOptimization.optimizeMethods')}:</strong> {t('docs.developerGuide.bestPractices.protocolOptimization.optimizeMethodsDesc')}</li>
+                <li>• <strong>{t('docs.developerGuide.bestPractices.protocolOptimization.batchOperations')}:</strong> {t('docs.developerGuide.bestPractices.protocolOptimization.batchOperationsDesc')}</li>
+                <li>• <strong>{t('docs.developerGuide.bestPractices.protocolOptimization.lazyLoading')}:</strong> {t('docs.developerGuide.bestPractices.protocolOptimization.lazyLoadingDesc')}</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Compilation Optimization</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.bestPractices.compilationOptimization.title')}</h3>
               <CodeBlock
                 code={`# Optimize compilation
 cardityc protocol.car --format carc --optimize
@@ -322,12 +377,12 @@ cardity_deploy analyze protocol.carc`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Package className="w-6 h-6 mr-3 text-blue-400" />
-            Package Development
+            {t('docs.developerGuide.bestPractices.packageDevelopment.title')}
           </h2>
           
           <div className="space-y-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Creating Packages</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.bestPractices.packageDevelopment.creatingPackages.title')}</h3>
               <CodeBlock
                 code={`# Initialize package
 cardity init-package my-utility
@@ -353,7 +408,7 @@ my-utility/
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Package Configuration</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.bestPractices.packageDevelopment.packageConfiguration.title')}</h3>
               <CodeBlock
                 code={`{
   "name": "@myorg/my-utility",
@@ -417,7 +472,7 @@ cardity unpublish @myorg/my-utility`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <GitBranch className="w-6 h-6 mr-3 text-blue-400" />
-            Contributing to Cardity
+            {t('docs.developerGuide.overview.title')}
           </h2>
           
           <div className="space-y-6">
@@ -486,7 +541,7 @@ git push origin feature/amazing-feature
         {/* Advanced Topics */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Advanced Topics
+            {t('docs.developerGuide.overview.title')}
           </h2>
           
           <div className="space-y-6">
@@ -566,29 +621,29 @@ protocol AdvancedProtocol {
         {/* Resources */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Additional Resources
+            {t('docs.developerGuide.resources.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Documentation</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.resources.documentation')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>• <a href="/docs/getting-started" className="text-blue-400 hover:text-blue-300">Getting Started Guide</a></li>
-                <li>• <a href="/docs/reference" className="text-blue-400 hover:text-blue-300">Language Reference</a></li>
-                <li>• <a href="/docs/standard-library" className="text-blue-400 hover:text-blue-300">Standard Library</a></li>
-                <li>• <a href="/docs/cli" className="text-blue-400 hover:text-blue-300">CLI Tools</a></li>
-                <li>• <a href="/docs/deploy" className="text-blue-400 hover:text-blue-300">Deployment Guide</a></li>
+                <li>• <a href="/docs/getting-started" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.gettingStartedGuide')}</a></li>
+                <li>• <a href="/docs/reference" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.languageReference')}</a></li>
+                <li>• <a href="/docs/standard-library" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.standardLibrary')}</a></li>
+                <li>• <a href="/docs/cli" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.cliTools')}</a></li>
+                <li>• <a href="/docs/deploy" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.deploymentGuide')}</a></li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Community</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.resources.community')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>• <a href="https://github.com/cardity-org/cardity-core" className="text-blue-400 hover:text-blue-300">GitHub Repository</a></li>
-                <li>• <a href="https://discord.gg/cardity" className="text-blue-400 hover:text-blue-300">Discord Community</a></li>
-                <li>• <a href="https://twitter.com/carditylang" className="text-blue-400 hover:text-blue-300">Twitter</a></li>
-                <li>• <a href="https://forum.cardity.dev" className="text-blue-400 hover:text-blue-300">Developer Forum</a></li>
-                <li>• <a href="mailto:hello@cardity.org" className="text-blue-400 hover:text-blue-300">Email Support</a></li>
+                <li>• <a href="https://github.com/cardity-org/cardity-core" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.githubRepository')}</a></li>
+                <li>• <a href="https://discord.gg/cardity" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.discordCommunity')}</a></li>
+                <li>• <a href="https://twitter.com/carditylang" className="text-blue-400 hover:text-blue-300">X</a></li>
+                <li>• <a href="https://forum.cardity.dev" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.developerForum')}</a></li>
+                <li>• <a href="mailto:hello@cardity.org" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.emailSupport')}</a></li>
               </ul>
             </div>
           </div>
@@ -597,25 +652,25 @@ protocol AdvancedProtocol {
         {/* Next Steps */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Next Steps
+            {t('docs.developerGuide.nextSteps.title')}
           </h2>
           
           <div className="bg-gray-900 rounded-lg p-6">
             <p className="text-gray-300 mb-4">
-              Now that you're familiar with advanced development techniques, you can:
+              {t('docs.developerGuide.nextSteps.description')}
             </p>
             <ul className="space-y-2 text-gray-300 mb-6">
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Contribute to the Cardity core project
+                {t('docs.developerGuide.nextSteps.contributeCore')}
               </li>
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Create and publish your own packages
+                {t('docs.developerGuide.nextSteps.createPackages')}
               </li>
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Build complex applications with Cardity
+                {t('docs.developerGuide.nextSteps.buildApplications')}
               </li>
             </ul>
             
@@ -626,11 +681,11 @@ protocol AdvancedProtocol {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center"
               >
-                Contribute to Core
+                {t('about.contributing.viewGitHub')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </a>
               <Link href="/examples" className="btn-secondary inline-flex items-center">
-                View Examples
+                {t('docs.cli.help.viewExamples')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>

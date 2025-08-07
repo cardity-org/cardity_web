@@ -1,16 +1,21 @@
+"use client"
+
 import Link from 'next/link'
 import { ArrowRight, Package, Code, Database, Zap, Shield, Settings } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
+import { useTranslations } from '../../../lib/i18n'
 
 export default function StandardLibraryPage() {
+  const { t, isClient, isInitialized } = useTranslations()
+  
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-4">
-          Standard Library
+          {t('docs.standardLibrary.title')}
         </h1>
         <p className="text-lg text-gray-400">
-          Built-in libraries and utilities for Cardity development
+          {t('docs.standardLibrary.subtitle')}
         </p>
       </div>
 
@@ -19,46 +24,46 @@ export default function StandardLibraryPage() {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Code className="w-6 h-6 mr-3 text-blue-400" />
-            Built-in Functions
+            {t('docs.standardLibrary.functions.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Time Functions</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.functions.timeFunctions.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-800 px-1 rounded">now()</code> - Current timestamp</li>
-                <li><code className="bg-gray-800 px-1 rounded">time()</code> - Current time in seconds</li>
-                <li><code className="bg-gray-800 px-1 rounded">date()</code> - Current date string</li>
+                <li><code className="bg-gray-800 px-1 rounded">now()</code> - {t('docs.standardLibrary.functions.timeFunctions.now')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">time()</code> - {t('docs.standardLibrary.functions.timeFunctions.time')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">date()</code> - {t('docs.standardLibrary.functions.timeFunctions.date')}</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Array Functions</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.functions.arrayFunctions.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-800 px-1 rounded">length()</code> - Get array length</li>
-                <li><code className="bg-gray-800 px-1 rounded">push()</code> - Add element to array</li>
-                <li><code className="bg-gray-800 px-1 rounded">pop()</code> - Remove last element</li>
-                <li><code className="bg-gray-800 px-1 rounded">splice()</code> - Remove elements</li>
+                <li><code className="bg-gray-800 px-1 rounded">length()</code> - {t('docs.standardLibrary.functions.arrayFunctions.length')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">push()</code> - {t('docs.standardLibrary.functions.arrayFunctions.push')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">pop()</code> - {t('docs.standardLibrary.functions.arrayFunctions.pop')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">splice()</code> - {t('docs.standardLibrary.functions.arrayFunctions.splice')}</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">String Functions</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.functions.stringFunctions.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-800 px-1 rounded">length()</code> - String length</li>
-                <li><code className="bg-gray-800 px-1 rounded">substring()</code> - Extract substring</li>
-                <li><code className="bg-gray-800 px-1 rounded">toLowerCase()</code> - Convert to lowercase</li>
-                <li><code className="bg-gray-800 px-1 rounded">toUpperCase()</code> - Convert to uppercase</li>
+                <li><code className="bg-gray-800 px-1 rounded">length()</code> - {t('docs.standardLibrary.functions.stringFunctions.length')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">substring()</code> - {t('docs.standardLibrary.functions.stringFunctions.substring')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">toLowerCase()</code> - {t('docs.standardLibrary.functions.stringFunctions.toLowerCase')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">toUpperCase()</code> - {t('docs.standardLibrary.functions.stringFunctions.toUpperCase')}</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Math Functions</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.functions.mathFunctions.title')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><code className="bg-gray-800 px-1 rounded">abs()</code> - Absolute value</li>
-                <li><code className="bg-gray-800 px-1 rounded">min()</code> - Minimum value</li>
-                <li><code className="bg-gray-800 px-1 rounded">max()</code> - Maximum value</li>
-                <li><code className="bg-gray-800 px-1 rounded">sqrt()</code> - Square root</li>
+                <li><code className="bg-gray-800 px-1 rounded">abs()</code> - {t('docs.standardLibrary.functions.mathFunctions.abs')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">min()</code> - {t('docs.standardLibrary.functions.mathFunctions.min')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">max()</code> - {t('docs.standardLibrary.functions.mathFunctions.max')}</li>
+                <li><code className="bg-gray-800 px-1 rounded">sqrt()</code> - {t('docs.standardLibrary.functions.mathFunctions.sqrt')}</li>
               </ul>
             </div>
           </div>
@@ -89,16 +94,16 @@ method process_data(items) {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Package className="w-6 h-6 mr-3 text-blue-400" />
-            Package Management
+            {t('docs.standardLibrary.overview.title')}
           </h2>
           
           <p className="text-gray-400 mb-6">
-            Cardity provides a comprehensive package management system for sharing and reusing code:
+            {t('docs.standardLibrary.overview.description')}
           </p>
           
           <div className="space-y-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Package Configuration</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.overview.packageConfiguration.title')}</h3>
               <CodeBlock
                 code={`{
   "name": "my-protocol",
@@ -124,7 +129,7 @@ method process_data(items) {
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Package Commands</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.overview.packageCommands.title')}</h3>
               <CodeBlock
                 code={`# Install packages
 cardity install @cardity/standard
@@ -151,27 +156,27 @@ cardity publish`}
 
         {/* Standard Packages */}
         <section>
-          <h2 className="text-2xl font-semibold text-white mb-6">
-            Standard Packages
-          </h2>
+                  <h2 className="text-2xl font-semibold text-white mb-6">
+          {t('docs.standardLibrary.overview.standardPackages.title')}
+        </h2>
           
           <div className="space-y-6">
             <div className="card">
               <h3 className="text-lg font-semibold text-white mb-3 flex items-center">
                 <Database className="w-5 h-5 mr-2 text-blue-400" />
-                @cardity/standard
+                {t('docs.standardLibrary.overview.standardPackages.cardityStandard.title')}
               </h3>
               <p className="text-gray-400 mb-4">
-                Core standard library providing essential utilities and data structures for Cardity development.
+                {t('docs.standardLibrary.overview.standardPackages.cardityStandard.description')}
               </p>
               <div className="bg-gray-900 rounded-lg p-4">
-                <h4 className="text-md font-semibold text-white mb-2">Features:</h4>
+                <h4 className="text-md font-semibold text-white mb-2">{t('docs.standardLibrary.overview.standardPackages.cardityStandard.features.title')}</h4>
                 <ul className="space-y-1 text-gray-400 text-sm">
-                  <li>• Data structures (Array, Map, Set)</li>
-                  <li>• String manipulation utilities</li>
-                  <li>• Math and number operations</li>
-                  <li>• Time and date functions</li>
-                  <li>• Validation helpers</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityStandard.features.dataStructures')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityStandard.features.stringManipulation')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityStandard.features.mathOperations')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityStandard.features.timeFunctions')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityStandard.features.validationHelpers')}</li>
                 </ul>
               </div>
             </div>
@@ -179,19 +184,19 @@ cardity publish`}
             <div className="card">
               <h3 className="text-lg font-semibold text-white mb-3 flex items-center">
                 <Zap className="w-5 h-5 mr-2 text-blue-400" />
-                @cardity/utils
+                {t('docs.standardLibrary.overview.standardPackages.cardityUtils.title')}
               </h3>
               <p className="text-gray-400 mb-4">
-                Utility functions for common development tasks and helper methods.
+                {t('docs.standardLibrary.overview.standardPackages.cardityUtils.description')}
               </p>
               <div className="bg-gray-900 rounded-lg p-4">
-                <h4 className="text-md font-semibold text-white mb-2">Features:</h4>
+                <h4 className="text-md font-semibold text-white mb-2">{t('docs.standardLibrary.overview.standardPackages.cardityUtils.features.title')}</h4>
                 <ul className="space-y-1 text-gray-400 text-sm">
-                  <li>• Address validation and formatting</li>
-                  <li>• Hash and encryption utilities</li>
-                  <li>• JSON parsing and manipulation</li>
-                  <li>• Error handling helpers</li>
-                  <li>• Logging and debugging tools</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityUtils.features.addressValidation')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityUtils.features.hashEncryption')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityUtils.features.jsonManipulation')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityUtils.features.errorHandling')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityUtils.features.loggingDebugging')}</li>
                 </ul>
               </div>
             </div>
@@ -199,19 +204,19 @@ cardity publish`}
             <div className="card">
               <h3 className="text-lg font-semibold text-white mb-3 flex items-center">
                 <Shield className="w-5 h-5 mr-2 text-blue-400" />
-                @cardity/drc20
+                {t('docs.standardLibrary.overview.standardPackages.cardityDrc20.title')}
               </h3>
               <p className="text-gray-400 mb-4">
-                Complete DRC-20 token standard implementation with deployment and management tools.
+                {t('docs.standardLibrary.overview.standardPackages.cardityDrc20.description')}
               </p>
               <div className="bg-gray-900 rounded-lg p-4">
-                <h4 className="text-md font-semibold text-white mb-2">Features:</h4>
+                <h4 className="text-md font-semibold text-white mb-2">{t('docs.standardLibrary.overview.standardPackages.cardityDrc20.features.title')}</h4>
                 <ul className="space-y-1 text-gray-400 text-sm">
-                  <li>• DRC-20 token templates</li>
-                  <li>• Token deployment utilities</li>
-                  <li>• Mint and transfer operations</li>
-                  <li>• Token validation helpers</li>
-                  <li>• Event emission for tokens</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityDrc20.features.tokenTemplates')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityDrc20.features.deploymentUtilities')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityDrc20.features.mintTransfer')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityDrc20.features.tokenValidation')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityDrc20.features.eventEmission')}</li>
                 </ul>
               </div>
             </div>
@@ -219,19 +224,19 @@ cardity publish`}
             <div className="card">
               <h3 className="text-lg font-semibold text-white mb-3 flex items-center">
                 <Settings className="w-5 h-5 mr-2 text-blue-400" />
-                @cardity/test
+                {t('docs.standardLibrary.overview.standardPackages.cardityTest.title')}
               </h3>
               <p className="text-gray-400 mb-4">
-                Testing framework for Cardity protocols with assertion and mocking capabilities.
+                {t('docs.standardLibrary.overview.standardPackages.cardityTest.description')}
               </p>
               <div className="bg-gray-900 rounded-lg p-4">
-                <h4 className="text-md font-semibold text-white mb-2">Features:</h4>
+                <h4 className="text-md font-semibold text-white mb-2">{t('docs.standardLibrary.overview.standardPackages.cardityTest.features.title')}</h4>
                 <ul className="space-y-1 text-gray-400 text-sm">
-                  <li>• Unit testing framework</li>
-                  <li>• Assertion functions</li>
-                  <li>• Mock state and events</li>
-                  <li>• Test coverage reporting</li>
-                  <li>• Integration testing helpers</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityTest.features.unitTesting')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityTest.features.assertionFunctions')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityTest.features.mockStateEvents')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityTest.features.testCoverage')}</li>
+                  <li>• {t('docs.standardLibrary.overview.standardPackages.cardityTest.features.integrationTesting')}</li>
                 </ul>
               </div>
             </div>
@@ -241,14 +246,65 @@ cardity publish`}
         {/* Using Standard Library */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Using Standard Library
+            {t('docs.standardLibrary.usage.importAndUse')}
           </h2>
           
           <div className="space-y-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Import and Use</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.usage.importAndUse')}</h3>
               <CodeBlock
-                code={`// Import standard library functions
+                code={isClient && isInitialized ? `${t('docs.standardLibrary.usage.code.importStandardLibrary')}
+import "@cardity/standard";
+
+protocol MyProtocol {
+  version: "1.0.0";
+  owner: "doge1protocol123";
+  
+  state {
+    users: array = [];
+    balances: map = {};
+    last_updated: int = 0;
+  }
+  
+  method add_user(name, initial_balance) {
+    ${t('docs.standardLibrary.usage.code.useBuiltInFunctions')}
+    if (name.length() < 2) {
+      return "Name too short";
+    }
+    
+    if (initial_balance < 0) {
+      return "Invalid balance";
+    }
+    
+    user = {
+      "id": "user_" + state.users.length(),
+      "name": name,
+      "balance": abs(initial_balance),
+      "created_at": now()
+    };
+    
+    state.users.push(user);
+    state.balances[user.id] = user.balance;
+    state.last_updated = now();
+    
+    emit UserAdded(user.id, name, user.balance);
+    return "User added successfully";
+  }
+  
+  method get_user_balance(user_id) {
+    return state.balances[user_id] || 0;
+  }
+  
+  method get_total_users() {
+    return state.users.length();
+  }
+  
+  event UserAdded {
+    user_id: string;
+    name: string;
+    balance: int;
+  }
+}` : `// Import standard library functions
 import "@cardity/standard";
 
 protocol MyProtocol {
@@ -306,9 +362,63 @@ protocol MyProtocol {
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">DRC-20 with Standard Library</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.usage.drc20WithStandardLibrary')}</h3>
               <CodeBlock
-                code={`// Using DRC-20 standard library
+                code={isClient && isInitialized ? `${t('docs.standardLibrary.usage.code.usingDrc20Library')}
+import "@cardity/drc20";
+
+protocol MyToken {
+  version: "1.0.0";
+  owner: "doge1token123";
+  
+  ${t('docs.standardLibrary.usage.code.drc20Configuration')}
+  drc20 {
+    tick: "MYT";
+    name: "My Token";
+    max_supply: "1000000";
+    mint_limit: "1000";
+    decimals: "18";
+    deployer: "doge1token123";
+  }
+  
+  state {
+    total_supply: int = 0;
+    deployed: bool = false;
+    holders: map = {};
+  }
+  
+  method deploy() {
+    if (!state.deployed) {
+      state.deployed = true;
+      emit TokenDeployed(drc20.tick, drc20.max_supply);
+      return "Token deployed successfully";
+    }
+    return "Token already deployed";
+  }
+  
+  method mint(amount) {
+    if (!state.deployed) return "Token not deployed";
+    if (amount <= 0) return "Invalid amount";
+    if (state.total_supply + amount > drc20.max_supply) return "Exceeds max supply";
+    
+    state.total_supply = state.total_supply + amount;
+    state.holders[state.owner] = (state.holders[state.owner] || 0) + amount;
+    
+    emit TokenMinted(drc20.tick, amount, state.total_supply);
+    return "Minted successfully";
+  }
+  
+  event TokenDeployed {
+    tick: string;
+    max_supply: string;
+  }
+  
+  event TokenMinted {
+    tick: string;
+    amount: int;
+    total_supply: int;
+  }
+}` : `// Using DRC-20 standard library
 import "@cardity/drc20";
 
 protocol MyToken {
@@ -373,28 +483,28 @@ protocol MyToken {
         {/* Registry Integration */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Package Registry
+            {t('docs.standardLibrary.usage.registryFeatures')}
           </h2>
           
           <p className="text-gray-400 mb-6">
-            Cardity provides a centralized package registry for sharing and discovering community packages:
+            {t('docs.standardLibrary.overview.description')}
           </p>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Registry Features</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.usage.registryFeatures')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>• Centralized package discovery</li>
-                <li>• Version management and semantic versioning</li>
-                <li>• Dependency resolution</li>
-                <li>• Package documentation and examples</li>
-                <li>• Community ratings and reviews</li>
-                <li>• Security scanning and validation</li>
+                <li>• {t('docs.standardLibrary.usage.centralizedDiscovery')}</li>
+                <li>• {t('docs.standardLibrary.usage.versionManagement')}</li>
+                <li>• {t('docs.standardLibrary.usage.dependencyResolution')}</li>
+                <li>• {t('docs.standardLibrary.usage.packageDocumentation')}</li>
+                <li>• {t('docs.standardLibrary.usage.communityRatings')}</li>
+                <li>• {t('docs.standardLibrary.usage.securityScanning')}</li>
               </ul>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-3">Registry Commands</h3>
+              <h3 className="text-lg font-semibold text-white mb-3">{t('docs.standardLibrary.usage.registryCommands')}</h3>
               <CodeBlock
                 code={`# Search packages
 cardity search "wallet"
@@ -422,35 +532,35 @@ cardity publish`}
         {/* Next Steps */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6">
-            Next Steps
+            {t('docs.standardLibrary.nextSteps.title')}
           </h2>
           
           <div className="bg-gray-900 rounded-lg p-6">
             <p className="text-gray-300 mb-4">
-              Now that you understand the standard library, you can:
+              {t('docs.standardLibrary.nextSteps.description')}
             </p>
             <ul className="space-y-2 text-gray-300 mb-6">
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Learn about deployment strategies
+                {t('docs.standardLibrary.nextSteps.learnDeployment')}
               </li>
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Explore advanced development techniques
+                {t('docs.standardLibrary.nextSteps.exploreAdvancedTechniques')}
               </li>
               <li className="flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2 text-blue-400" />
-                Create and publish your own packages
+                {t('docs.standardLibrary.nextSteps.createPublishPackages')}
               </li>
             </ul>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/docs/deploy" className="btn-primary inline-flex items-center">
-                Deployment Guide
+                {t('docs.deploy.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
               <Link href="/docs/developer-guide" className="btn-secondary inline-flex items-center">
-                Developer Guide
+                {t('docs.developerGuide.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>

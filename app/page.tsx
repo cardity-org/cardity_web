@@ -23,11 +23,11 @@ export default function Home() {
               <span className="gradient-text">{t('home.hero.title')}</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-300 mb-8">
               {t('home.hero.subtitle')}
             </p>
             
-            <p className="text-lg text-gray-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 mb-12">
               {t('home.hero.description')}
             </p>
             
@@ -63,7 +63,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               {t('home.features.title')}
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400">
               {t('home.features.subtitle')}
             </p>
           </div>
@@ -115,7 +115,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               {t('home.installation.title')}
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400">
               {t('home.installation.subtitle')}
             </p>
           </div>
@@ -174,7 +174,7 @@ cardity --version`}
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               {t('home.quickStart.title')}
             </h2>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400">
               {t('home.quickStart.subtitle')}
             </p>
           </div>

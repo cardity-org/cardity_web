@@ -1,27 +1,21 @@
-import type { Metadata } from 'next'
+"use client"
+
 import Link from 'next/link'
 import { ArrowRight, Code, Zap, Shield, Globe, Download, BookOpen, Play, CheckCircle, Database, Terminal, Package } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
-
-export const metadata: Metadata = {
-  title: 'Getting Started',
-  description: 'Get started with Cardity smart contract development. Install CLI tools via npm, write your first contract, and deploy to Dogecoin UTXO blockchain.',
-  keywords: 'Cardity getting started, smart contract tutorial, Dogecoin development, UTXO programming, first contract, npm install',
-  openGraph: {
-    title: 'Getting Started with Cardity - Smart Contract Development',
-    description: 'Learn how to install Cardity CLI via npm, write your first smart contract, and deploy to Dogecoin UTXO blockchain.',
-  },
-}
+import { useTranslations } from '../../../lib/i18n'
 
 export default function GettingStartedPage() {
+  const { t } = useTranslations()
+  
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-4">
-          Getting Started
+          {t('docs.gettingStarted.title')}
         </h1>
         <p className="text-lg text-gray-400">
-          Install Cardity CLI and write your first smart contract in minutes
+          {t('docs.gettingStarted.subtitle')}
         </p>
       </div>
 
@@ -30,13 +24,13 @@ export default function GettingStartedPage() {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Download className="w-6 h-6 mr-3 text-blue-400" />
-            Installation
+            {t('docs.gettingStarted.installation.title')}
           </h2>
           
           <div className="bg-gray-900 rounded-lg p-6 mb-6">
             <h3 className="text-lg font-medium text-white mb-4 flex items-center">
               <Package className="w-5 h-5 mr-2 text-blue-400" />
-              npm 安装（推荐）
+              {t('docs.gettingStarted.installation.npmInstall.title')}
             </h3>
             <CodeBlock
               code={`# 全局安装 Cardity
@@ -50,12 +44,12 @@ cardity --help`}
               language="bash"
             />
             <p className="text-sm text-gray-400 mt-2">
-              如果安装成功，你应该看到类似 <code className="bg-gray-800 px-1 rounded">cardity 1.0.1</code> 的输出
+              {t('docs.gettingStarted.installation.npmInstall.description')} <code className="bg-gray-800 px-1 rounded">{t('docs.gettingStarted.installation.npmInstall.successOutput')}</code> {t('docs.gettingStarted.installation.npmInstall.outputText')}
             </p>
           </div>
           
           <div className="bg-gray-900 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-medium text-white mb-4">从源码编译</h3>
+            <h3 className="text-lg font-medium text-white mb-4">{t('docs.gettingStarted.installation.sourceCode.title')}</h3>
             <CodeBlock
               code={`# 克隆项目
 git clone https://github.com/cardity-org/cardity-core.git
@@ -75,16 +69,16 @@ cardity --version`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Play className="w-6 h-6 mr-3 text-blue-400" />
-            Your First Contract
+            {t('docs.gettingStarted.firstContract.title')}
           </h2>
           
           <p className="text-gray-400 mb-6">
-            Create a simple Hello World contract to get familiar with Cardity's syntax:
+            {t('docs.gettingStarted.firstContract.subtitle')}
           </p>
           
           <div className="bg-gray-900 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-medium text-white mb-4">Create Contract File</h3>
-            <p className="text-gray-400 mb-4">Create a file named <code className="bg-gray-800 px-1 rounded">hello.car</code>:</p>
+            <h3 className="text-lg font-medium text-white mb-4">{t('docs.gettingStarted.firstContract.createFile')}</h3>
+            <p className="text-gray-400 mb-4">{t('docs.gettingStarted.firstContract.createFileDescription')} <code className="bg-gray-800 px-1 rounded">hello.car</code>:</p>
             <CodeBlock
               code={`protocol HelloCardity {
   version: "1.0.0";
@@ -121,7 +115,7 @@ cardity --version`}
           </div>
           
           <div className="bg-gray-900 rounded-lg p-6 mb-6">
-            <h3 className="text-lg font-medium text-white mb-4">Compile and Run</h3>
+            <h3 className="text-lg font-medium text-white mb-4">{t('docs.gettingStarted.firstContract.compileRun')}</h3>
             <CodeBlock
               code={`# 编译协议
 cardity compile hello.car
@@ -144,12 +138,12 @@ cardity run hello.carc set_message "Hello, World!"`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Terminal className="w-6 h-6 mr-3 text-blue-400" />
-            CLI Commands
+            {t('docs.gettingStarted.cliCommands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">项目初始化</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.gettingStarted.cliCommands.projectInit.title')}</h3>
               <CodeBlock
                 code={`# 初始化新项目
 cardity init my-first-protocol
@@ -164,7 +158,7 @@ ls -la`}
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">编译和运行</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.gettingStarted.cliCommands.compile.title')}</h3>
               <CodeBlock
                 code={`# 编译协议
 cardity compile src/index.car
@@ -179,7 +173,7 @@ cardity run dist/index.carc`}
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">DRC-20 代币操作</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.gettingStarted.cliCommands.drc20.title')}</h3>
               <CodeBlock
                 code={`# 编译 DRC-20 代币
 cardity drc20 compile token.car
@@ -194,7 +188,7 @@ cardity drc20 mint MYT 1000`}
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">部署到区块链</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.gettingStarted.cliCommands.deployChain.title')}</h3>
               <CodeBlock
                 code={`# 验证协议
 cardity_deploy validate protocol.carc
@@ -213,51 +207,51 @@ cardity_deploy deploy protocol.carc \\
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Code className="w-6 h-6 mr-3 text-blue-400" />
-            Language Features
+            {t('docs.gettingStarted.languageFeatures.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">协议定义</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.gettingStarted.languageFeatures.protocol.title')}</h3>
               <p className="text-gray-400 mb-4">
-                Cardity 使用 <code className="bg-gray-800 px-1 rounded">protocol</code> 关键字定义智能合约
+                {t('docs.gettingStarted.languageFeatures.protocol.description')}
               </p>
               <div className="flex items-center text-sm text-blue-400">
                 <CheckCircle className="w-4 h-4 mr-1" />
-                类似 Solidity 的语法
+                {t('docs.gettingStarted.languageFeatures.protocol.feature')}
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">状态管理</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.gettingStarted.languageFeatures.state.title')}</h3>
               <p className="text-gray-400 mb-4">
-                使用 <code className="bg-gray-800 px-1 rounded">state</code> 块定义状态变量
+                {t('docs.gettingStarted.languageFeatures.state.description')}
               </p>
               <div className="flex items-center text-sm text-blue-400">
                 <Database className="w-4 h-4 mr-1" />
-                持久化存储
+                {t('docs.gettingStarted.languageFeatures.state.feature')}
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">事件系统</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.gettingStarted.languageFeatures.events.title')}</h3>
               <p className="text-gray-400 mb-4">
-                使用 <code className="bg-gray-800 px-1 rounded">event</code> 和 <code className="bg-gray-800 px-1 rounded">emit</code> 处理事件
+                {t('docs.gettingStarted.languageFeatures.events.description')}
               </p>
               <div className="flex items-center text-sm text-blue-400">
                 <Zap className="w-4 h-4 mr-1" />
-                事件驱动架构
+                {t('docs.gettingStarted.languageFeatures.events.feature')}
               </div>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">DRC-20 支持</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.gettingStarted.languageFeatures.drc20.title')}</h3>
               <p className="text-gray-400 mb-4">
-                内置完整的 DRC-20 代币标准支持
+                {t('docs.gettingStarted.languageFeatures.drc20.description')}
               </p>
               <div className="flex items-center text-sm text-blue-400">
                 <Shield className="w-4 h-4 mr-1" />
-                代币标准兼容
+                {t('docs.gettingStarted.languageFeatures.drc20.feature')}
               </div>
             </div>
           </div>
@@ -267,31 +261,31 @@ cardity_deploy deploy protocol.carc \\
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <ArrowRight className="w-6 h-6 mr-3 text-blue-400" />
-            Next Steps
+            {t('docs.gettingStarted.nextSteps.title')}
           </h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             <Link href="/docs/cli" className="card hover:bg-gray-800/50 transition-colors">
               <Terminal className="w-8 h-8 text-blue-400 mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">CLI Reference</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t('docs.gettingStarted.nextSteps.cliReference.title')}</h3>
               <p className="text-gray-400 text-sm">
-                Learn all available CLI commands and options
+                {t('docs.gettingStarted.nextSteps.cliReference.description')}
               </p>
             </Link>
             
             <Link href="/examples" className="card hover:bg-gray-800/50 transition-colors">
               <Code className="w-8 h-8 text-green-400 mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">Examples</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t('docs.gettingStarted.nextSteps.examples.title')}</h3>
               <p className="text-gray-400 text-sm">
-                Explore real-world smart contract examples
+                {t('docs.gettingStarted.nextSteps.examples.description')}
               </p>
             </Link>
             
             <Link href="/docs/deploy" className="card hover:bg-gray-800/50 transition-colors">
               <Globe className="w-8 h-8 text-purple-400 mb-3" />
-              <h3 className="text-lg font-semibold text-white mb-2">Deploy</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">{t('docs.gettingStarted.nextSteps.deploy.title')}</h3>
               <p className="text-gray-400 text-sm">
-                Deploy your contracts to Dogecoin blockchain
+                {t('docs.gettingStarted.nextSteps.deploy.description')}
               </p>
             </Link>
           </div>

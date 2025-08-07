@@ -1,14 +1,28 @@
 'use client'
 
+import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
-import { Github, Twitter } from 'lucide-react'
+import { Github } from 'lucide-react'
 import Logo from './Logo'
 import { useTranslations } from '../lib/i18n'
 
-export default function Footer() {
-  const { t } = useTranslations()
+// X Icon Component
+const XIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
 
-  const navigation = {
+export default function Footer() {
+  const { t, locale, isClient, isInitialized } = useTranslations()
+
+  // 使用 useMemo 确保导航链接在语言切换时重新计算
+  const navigation = useMemo(() => ({
     main: [
       { name: t('footer.links.docs'), href: '/docs' },
       { name: t('footer.links.examples'), href: '/examples' },
@@ -25,10 +39,10 @@ export default function Footer() {
       {
         name: t('footer.community.twitter'),
         href: 'https://twitter.com/carditylang',
-        icon: Twitter,
+        icon: XIcon,
       },
     ],
-  }
+  }), [t, locale, isClient, isInitialized])
 
   return (
     <footer className="bg-black border-t border-gray-800">
@@ -71,7 +85,7 @@ export default function Footer() {
                       href="/docs/getting-started"
                       className="text-base text-gray-300 hover:text-white transition-colors duration-200"
                     >
-                      Getting Started
+                      {t('footer.docs.gettingStarted')}
                     </Link>
                   </li>
                   <li>
@@ -79,7 +93,7 @@ export default function Footer() {
                       href="/docs/cli"
                       className="text-base text-gray-300 hover:text-white transition-colors duration-200"
                     >
-                      CLI Reference
+                      {t('footer.docs.cliReference')}
                     </Link>
                   </li>
                   <li>
@@ -87,7 +101,7 @@ export default function Footer() {
                       href="/docs/deploy"
                       className="text-base text-gray-300 hover:text-white transition-colors duration-200"
                     >
-                      Deployment
+                      {t('footer.docs.deployment')}
                     </Link>
                   </li>
                 </ul>
@@ -131,7 +145,7 @@ export default function Footer() {
                       href="/examples"
                       className="text-base text-gray-300 hover:text-white transition-colors duration-200"
                     >
-                      Smart Contracts
+                      {t('footer.examples.smartProtocols')}
                     </Link>
                   </li>
                   <li>
@@ -139,14 +153,14 @@ export default function Footer() {
                       href="/download/examples"
                       className="text-base text-gray-300 hover:text-white transition-colors duration-200"
                     >
-                      Download Examples
+                      {t('footer.examples.downloadExamples')}
                     </Link>
                   </li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                  Legal
+                  {t('footer.legal.title')}
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>

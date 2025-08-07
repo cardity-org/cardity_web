@@ -24,7 +24,7 @@ const blogPosts = [
   {
     id: 3,
     title: 'Understanding Cardity\'s UTXO-Native Architecture',
-    excerpt: 'Deep dive into how Cardity leverages Dogecoin\'s UTXO model for efficient smart contract execution and state management.',
+    excerpt: 'Deep dive into how Cardity leverages Dogecoin\'s UTXO model for efficient smart protocol execution and state management.',
     date: '2024-01-05',
     readTime: '12 min read',
     tags: ['Architecture', 'UTXO', 'Technical'],
@@ -42,7 +42,7 @@ const blogPosts = [
   {
     id: 5,
     title: 'Advanced Cardity Patterns: Event-Driven Architecture',
-    excerpt: 'Explore advanced patterns for building event-driven smart contracts with Cardity, including best practices and real-world examples.',
+    excerpt: 'Explore advanced patterns for building event-driven smart protocols with Cardity, including best practices and real-world examples.',
     date: '2023-12-20',
     readTime: '15 min read',
     tags: ['Advanced', 'Events', 'Patterns'],
@@ -51,7 +51,7 @@ const blogPosts = [
   {
     id: 6,
     title: 'Deploying Cardity Contracts to Dogecoin Mainnet',
-    excerpt: 'Step-by-step guide to deploying your Cardity smart contracts to the Dogecoin mainnet using OP_RETURN and inscription methods.',
+    excerpt: 'Step-by-step guide to deploying your Cardity smart protocols to the Dogecoin mainnet using OP_RETURN and inscription methods.',
     date: '2023-12-15',
     readTime: '7 min read',
     tags: ['Deployment', 'Mainnet', 'Guide'],
@@ -68,8 +68,8 @@ const blogPosts = [
   },
   {
     id: 8,
-    title: 'Security Best Practices for Cardity Smart Contracts',
-    excerpt: 'Essential security practices and patterns for writing secure Cardity smart contracts, including common pitfalls to avoid.',
+    title: 'Security Best Practices for Cardity Smart Protocols',
+    excerpt: 'Essential security practices and patterns for writing secure Cardity smart protocols, including common pitfalls to avoid.',
     date: '2023-12-05',
     readTime: '11 min read',
     tags: ['Security', 'Best Practices', 'Audit'],
@@ -332,7 +332,7 @@ export default function BlogPage() {
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors duration-200 inline-flex items-center"
                   >
-                    Twitter Updates
+                    X Updates
                     <ExternalLink className="w-3 h-3 ml-1" />
                   </a>
                 </li>

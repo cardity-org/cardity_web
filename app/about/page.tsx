@@ -4,11 +4,11 @@ import { ArrowRight, Code, Zap, Shield, Globe, Download, BookOpen, Play, Package
 
 export const metadata: Metadata = {
   title: 'About Cardity',
-  description: 'Learn about Cardity - a statically-typed programming language for developing smart contracts on Dogecoin UTXO with Solidity-style syntax.',
-  keywords: 'Cardity about, smart contract language, Dogecoin development, UTXO programming, blockchain language',
+  description: 'Learn about Cardity - a statically-typed programming language for developing smart protocols on Dogecoin UTXO with Solidity-style syntax.',
+  keywords: 'Cardity about, smart protocol language, Dogecoin development, UTXO programming, blockchain language',
   openGraph: {
-    title: 'About Cardity - Smart Contract Language for Dogecoin',
-    description: 'Learn about Cardity programming language, its features, and how it enables smart contract development on Dogecoin UTXO.',
+    title: 'About Cardity - Smart Protocol Language for Dogecoin',
+    description: 'Learn about Cardity programming language, its features, and how it enables smart protocol development on Dogecoin UTXO.',
   },
 }
 
@@ -20,7 +20,7 @@ export default function AboutPage() {
           About Cardity
         </h1>
         <p className="text-lg text-gray-400">
-          Cardity Core - 完整的智能合约编程语言实现，专为 Dogecoin UTXO 设计
+          Cardity Core - 完整的智能协议编程语言实现，专为 Dogecoin UTXO 设计
         </p>
       </div>
 

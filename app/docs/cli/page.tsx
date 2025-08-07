@@ -1,16 +1,21 @@
+"use client"
+
 import Link from 'next/link'
 import { Terminal, Download, Code, Database, ArrowRight, Settings, Package } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
+import { useTranslations } from '../../../lib/i18n'
 
 export default function CLIPage() {
+  const { t, isClient, isInitialized } = useTranslations()
+  
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-4">
-          CLI Reference
+          {t('docs.cli.title')}
         </h1>
         <p className="text-lg text-gray-400">
-          Complete command-line interface reference for Cardity development tools
+          {t('docs.cli.subtitle')}
         </p>
       </div>
 
@@ -19,27 +24,34 @@ export default function CLIPage() {
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Download className="w-6 h-6 mr-3 text-blue-400" />
-            Installation
+            {t('docs.cli.installation.title')}
           </h2>
           
           <div className="bg-gray-900 rounded-lg p-6 mb-6">
             <h3 className="text-lg font-medium text-white mb-4 flex items-center">
               <Package className="w-5 h-5 mr-2 text-blue-400" />
-              npm 安装（推荐）
+              {t('docs.cli.installation.npmInstall.title')}
             </h3>
             <CodeBlock
-              code={`# 全局安装 Cardity
+              code={isClient && isInitialized ? `${t('docs.cli.installation.npmInstall.code.globalInstall')}
 npm install -g cardity
 
-# 验证安装
+${t('docs.cli.installation.npmInstall.code.verifyInstall')}
 cardity --version
 
-# 查看帮助
+${t('docs.cli.installation.npmInstall.code.viewHelp')}
+cardity --help` : `# Global installation of Cardity
+npm install -g cardity
+
+# Verify installation
+cardity --version
+
+# View help
 cardity --help`}
               language="bash"
             />
             <p className="text-sm text-gray-400 mt-2">
-              当前版本：<code className="bg-gray-800 px-1 rounded">1.0.1</code>
+              {t('docs.cli.installation.npmInstall.currentVersion')}{t('docs.cli.installation.npmInstall.colon')}<code className="bg-gray-800 px-1 rounded">1.0.1</code>
             </p>
           </div>
         </section>
@@ -48,70 +60,89 @@ cardity --help`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Terminal className="w-6 h-6 mr-3 text-blue-400" />
-            Basic Commands
+            {t('docs.cli.basicCommands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">项目初始化</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.basicCommands.projectInit.title')}</h3>
               <CodeBlock
-                code={`# 初始化新项目
+                code={isClient && isInitialized ? `${t('docs.cli.basicCommands.projectInit.code.initProject')}
 cardity init [project-name]
 
-# 示例
+${t('docs.cli.basicCommands.projectInit.code.example')}
+cardity init my-first-protocol` : `# Initialize new project
+cardity init [project-name]
+
+# Example
 cardity init my-first-protocol`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                创建新的 Cardity 项目，包含基本文件结构
+                {t('docs.cli.basicCommands.projectInit.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">编译协议</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.basicCommands.compile.title')}</h3>
               <CodeBlock
-                code={`# 编译 .car 文件
+                code={isClient && isInitialized ? `${t('docs.cli.basicCommands.compile.code.compileFile')}
 cardity compile <file> [options]
 
-# 示例
+${t('docs.cli.basicCommands.compile.code.example')}
+cardity compile src/index.car
+cardity compile src/index.car --format carc` : `# Compile .car file
+cardity compile <file> [options]
+
+# Example
 cardity compile src/index.car
 cardity compile src/index.car --format carc`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                将 Cardity 协议文件编译为可执行格式
+                {t('docs.cli.basicCommands.compile.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">运行协议</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.basicCommands.run.title')}</h3>
               <CodeBlock
-                code={`# 运行编译后的协议
+                code={isClient && isInitialized ? `${t('docs.cli.basicCommands.run.code.runProtocol')}
 cardity run <file> [options]
 
-# 示例
+${t('docs.cli.basicCommands.run.code.example')}
+cardity run dist/index.carc
+cardity run dist/index.carc get_message` : `# Run compiled protocol
+cardity run <file> [options]
+
+# Example
 cardity run dist/index.carc
 cardity run dist/index.carc get_message`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                执行编译后的协议文件
+                {t('docs.cli.basicCommands.run.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">生成 ABI</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.basicCommands.generateAbi.title')}</h3>
               <CodeBlock
-                code={`# 生成协议接口
+                code={isClient && isInitialized ? `${t('docs.cli.basicCommands.generateAbi.code.generateInterface')}
 cardity abi <file> [options]
 
-# 示例
+${t('docs.cli.basicCommands.generateAbi.code.example')}
+cardity abi src/index.car
+cardity abi src/index.car --output index.abi` : `# Generate protocol interface
+cardity abi <file> [options]
+
+# Example
 cardity abi src/index.car
 cardity abi src/index.car --output index.abi`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                自动生成协议的应用二进制接口
+                {t('docs.cli.basicCommands.generateAbi.description')}
               </p>
             </div>
           </div>
@@ -121,70 +152,89 @@ cardity abi src/index.car --output index.abi`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Database className="w-6 h-6 mr-3 text-green-400" />
-            DRC-20 Token Commands
+            {t('docs.cli.drc20Commands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">编译 DRC-20 代币</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.drc20Commands.compile.title')}</h3>
               <CodeBlock
-                code={`# 编译 DRC-20 代币
+                code={isClient && isInitialized ? `${t('docs.cli.drc20Commands.compile.code.compileToken')}
 cardity drc20 compile <file>
 
-# 示例
+${t('docs.cli.drc20Commands.compile.code.example')}
+cardity drc20 compile token.car` : `# Compile DRC-20 token
+cardity drc20 compile <file>
+
+# Example
 cardity drc20 compile token.car`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                专门用于编译 DRC-20 代币协议
+                {t('docs.cli.drc20Commands.compile.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">部署 DRC-20 代币</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.drc20Commands.deploy.title')}</h3>
               <CodeBlock
-                code={`# 部署 DRC-20 代币
+                code={isClient && isInitialized ? `${t('docs.cli.drc20Commands.deploy.code.deployToken')}
 cardity drc20 deploy <file> [options]
 
-# 示例
+${t('docs.cli.drc20Commands.deploy.code.example')}
+cardity drc20 deploy token.car
+cardity drc20 deploy token.car --output deploy.json` : `# Deploy DRC-20 token
+cardity drc20 deploy <file> [options]
+
+# Example
 cardity drc20 deploy token.car
 cardity drc20 deploy token.car --output deploy.json`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                部署 DRC-20 代币到 Dogecoin 网络
+                {t('docs.cli.drc20Commands.deploy.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">铸造代币</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.drc20Commands.mint.title')}</h3>
               <CodeBlock
-                code={`# 铸造代币
+                code={isClient && isInitialized ? `${t('docs.cli.drc20Commands.mint.code.mintTokens')}
 cardity drc20 mint <tick> <amount> [options]
 
-# 示例
+${t('docs.cli.drc20Commands.mint.code.example')}
+cardity drc20 mint MYT 1000
+cardity drc20 mint MYT 1000 --output mint.json` : `# Mint tokens
+cardity drc20 mint <tick> <amount> [options]
+
+# Example
 cardity drc20 mint MYT 1000
 cardity drc20 mint MYT 1000 --output mint.json`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                铸造指定数量的 DRC-20 代币
+                {t('docs.cli.drc20Commands.mint.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">转账代币</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.drc20Commands.transfer.title')}</h3>
               <CodeBlock
-                code={`# 转账代币
+                code={isClient && isInitialized ? `${t('docs.cli.drc20Commands.transfer.code.transferTokens')}
 cardity drc20 transfer <tick> <to> <amount> [options]
 
-# 示例
+${t('docs.cli.drc20Commands.transfer.code.example')}
+cardity drc20 transfer MYT doge1abc... 100
+cardity drc20 transfer MYT doge1abc... 100 --output transfer.json` : `# Transfer tokens
+cardity drc20 transfer <tick> <to> <amount> [options]
+
+# Example
 cardity drc20 transfer MYT doge1abc... 100
 cardity drc20 transfer MYT doge1abc... 100 --output transfer.json`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                转账 DRC-20 代币到指定地址
+                {t('docs.cli.drc20Commands.transfer.description')}
               </p>
             </div>
           </div>
@@ -194,71 +244,91 @@ cardity drc20 transfer MYT doge1abc... 100 --output transfer.json`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Settings className="w-6 h-6 mr-3 text-purple-400" />
-            Deployment Commands
+            {t('docs.cli.deploymentCommands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">验证协议</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.deploymentCommands.validate.title')}</h3>
               <CodeBlock
-                code={`# 验证 .carc 文件
+                code={isClient && isInitialized ? `${t('docs.cli.deploymentCommands.validate.code.validateFile')}
 cardity_deploy validate <file>
 
-# 示例
+${t('docs.cli.deploymentCommands.validate.code.example')}
+cardity_deploy validate protocol.carc` : `# Validate .carc file
+cardity_deploy validate <file>
+
+# Example
 cardity_deploy validate protocol.carc`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                验证编译后的协议文件格式和内容
+                {t('docs.cli.deploymentCommands.validate.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">查看协议信息</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.deploymentCommands.info.title')}</h3>
               <CodeBlock
-                code={`# 查看协议信息
+                code={isClient && isInitialized ? `${t('docs.cli.deploymentCommands.info.code.viewInfo')}
 cardity_deploy info <file>
 
-# 示例
+${t('docs.cli.deploymentCommands.info.code.example')}
+cardity_deploy info protocol.carc` : `# View protocol info
+cardity_deploy info <file>
+
+# Example
 cardity_deploy info protocol.carc`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                显示协议的详细信息，包括版本、方法等
+                {t('docs.cli.deploymentCommands.info.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">部署到 Dogecoin</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.deploymentCommands.deploy.title')}</h3>
               <CodeBlock
-                code={`# 部署到 Dogecoin 链
+                code={isClient && isInitialized ? `${t('docs.cli.deploymentCommands.deploy.code.deployChain')}
 cardity_deploy deploy <file> [options]
 
-# 示例
+${t('docs.cli.deploymentCommands.deploy.code.example')}
+cardity_deploy deploy protocol.carc \\
+  --address doge1... \\
+  --private-key ...` : `# Deploy to Dogecoin chain
+cardity_deploy deploy <file> [options]
+
+# Example
 cardity_deploy deploy protocol.carc \\
   --address doge1... \\
   --private-key ...`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                将协议部署到 Dogecoin 区块链网络
+                {t('docs.cli.deploymentCommands.deploy.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">创建铭文交易</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.deploymentCommands.inscription.title')}</h3>
               <CodeBlock
-                code={`# 创建铭文交易
+                code={isClient && isInitialized ? `${t('docs.cli.deploymentCommands.inscription.code.createInscription')}
 cardity_deploy inscription <file> [options]
 
-# 示例
+${t('docs.cli.deploymentCommands.inscription.code.example')}
+cardity_deploy inscription protocol.carc \\
+  --address doge1... \\
+  --output inscription.txt` : `# Create inscription transaction
+cardity_deploy inscription <file> [options]
+
+# Example
 cardity_deploy inscription protocol.carc \\
   --address doge1... \\
   --output inscription.txt`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                使用 ordinals 协议创建铭文交易
+                {t('docs.cli.deploymentCommands.inscription.description')}
               </p>
             </div>
           </div>
@@ -268,60 +338,78 @@ cardity_deploy inscription protocol.carc \\
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <Code className="w-6 h-6 mr-3 text-orange-400" />
-            Advanced Commands
+            {t('docs.cli.advancedCommands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">编译器工具</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.advancedCommands.compiler.title')}</h3>
               <CodeBlock
-                code={`# 编译为不同格式
+                code={isClient && isInitialized ? `${t('docs.cli.advancedCommands.compiler.code.compileFormats')}
 cardityc main.car --format carc
 cardityc main.car --format json
 
-# 生成部署包
+${t('docs.cli.advancedCommands.compiler.code.generatePackage')}
+cardityc main.car -o deployed.carc` : `# Compile to different formats
+cardityc main.car --format carc
+cardityc main.car --format json
+
+# Generate deployment package
 cardityc main.car -o deployed.carc`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                高级编译器选项和格式转换
+                {t('docs.cli.advancedCommands.compiler.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">ABI 生成器</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.advancedCommands.abiGenerator.title')}</h3>
               <CodeBlock
-                code={`# 生成 ABI
-cardity_abi main.car                    # 输出到标准输出
-cardity_abi main.car main.abi          # 输出到文件
+                code={isClient && isInitialized ? `${t('docs.cli.advancedCommands.abiGenerator.code.generateAbi')}
+cardity_abi main.car                    ${t('docs.cli.advancedCommands.abiGenerator.code.outputStdout')}
+cardity_abi main.car main.abi          ${t('docs.cli.advancedCommands.abiGenerator.code.outputFile')}
 
-# 支持编程语言格式和 JSON 格式`}
+${t('docs.cli.advancedCommands.abiGenerator.code.supportedFormats')}` : `# Generate ABI
+cardity_abi main.car                    # Output to stdout
+cardity_abi main.car main.abi          # Output to file
+
+# Support programming language format and JSON format`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                独立的 ABI 生成工具
+                {t('docs.cli.advancedCommands.abiGenerator.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">运行时工具</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.advancedCommands.runtime.title')}</h3>
               <CodeBlock
-                code={`# 运行协议
+                code={isClient && isInitialized ? `${t('docs.cli.advancedCommands.runtime.code.runProtocol')}
 cardity_runtime main.car set_message "Hello"
 cardity_runtime main.car get_message
 
-# 支持方法调用和参数传递`}
+${t('docs.cli.advancedCommands.runtime.code.methodSupport')}` : `# Run protocol
+cardity_runtime main.car set_message "Hello"
+cardity_runtime main.car get_message
+
+# Support method calls and parameter passing`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                独立的运行时执行工具
+                {t('docs.cli.advancedCommands.runtime.description')}
               </p>
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">包管理</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.advancedCommands.packageManager.title')}</h3>
               <CodeBlock
-                code={`# 包管理命令
+                code={isClient && isInitialized ? `${t('docs.cli.advancedCommands.packageManager.code.packageCommands')}
+cardity install <package>
+cardity uninstall <package>
+cardity list
+cardity search <query>
+cardity publish` : `# Package management commands
 cardity install <package>
 cardity uninstall <package>
 cardity list
@@ -330,7 +418,7 @@ cardity publish`}
                 language="bash"
               />
               <p className="text-sm text-gray-400 mt-2">
-                管理依赖包和发布包
+                {t('docs.cli.advancedCommands.packageManager.description')}
               </p>
             </div>
           </div>
@@ -340,17 +428,23 @@ cardity publish`}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
             <ArrowRight className="w-6 h-6 mr-3 text-blue-400" />
-            Help and Support
+            {t('docs.cli.help.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">获取帮助</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.help.getHelp.title')}</h3>
               <CodeBlock
-                code={`# 查看所有命令
+                code={isClient && isInitialized ? `${t('docs.cli.help.getHelp.code.viewAllCommands')}
 cardity --help
 
-# 查看特定命令帮助
+${t('docs.cli.help.getHelp.code.viewSpecificHelp')}
+cardity compile --help
+cardity drc20 --help
+cardity_deploy --help` : `# View all commands
+cardity --help
+
+# View specific command help
 cardity compile --help
 cardity drc20 --help
 cardity_deploy --help`}
@@ -359,12 +453,16 @@ cardity_deploy --help`}
             </div>
             
             <div className="card">
-              <h3 className="text-lg font-semibold text-white mb-4">版本信息</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.help.version.title')}</h3>
               <CodeBlock
-                code={`# 查看版本
+                code={isClient && isInitialized ? `${t('docs.cli.help.version.code.viewVersion')}
 cardity --version
 
-# 查看详细信息
+${t('docs.cli.help.version.code.viewDetails')}
+cardity --version --verbose` : `# View version
+cardity --version
+
+# View detailed information
 cardity --version --verbose`}
                 language="bash"
               />
@@ -373,20 +471,20 @@ cardity --version --verbose`}
           
           <div className="mt-8 text-center">
             <p className="text-gray-400 mb-4">
-              需要更多帮助？查看我们的文档和示例
+              {t('docs.cli.help.needHelp')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/docs/getting-started" className="btn-primary inline-flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2" />
-                快速开始
+                {t('docs.cli.help.quickStart')}
               </Link>
               <Link href="/examples" className="btn-secondary inline-flex items-center">
                 <Code className="w-4 h-4 mr-2" />
-                查看示例
+                {t('docs.cli.help.viewExamples')}
               </Link>
               <Link href="/docs/deploy" className="btn-secondary inline-flex items-center">
                 <Settings className="w-4 h-4 mr-2" />
-                部署指南
+                {t('docs.cli.help.deployGuide')}
               </Link>
             </div>
           </div>
