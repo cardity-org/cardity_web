@@ -4,7 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-.yarn/install-state.gz
 
 # testing
 /coverage
@@ -35,10 +34,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Cloudflare
-.wrangler/
-wrangler.toml.bak
-*.log
+# npm cache
+.npm-cache/
+.npm/
 
 # IDE
 .vscode/
