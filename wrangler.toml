@@ -1,18 +1,14 @@
 name = "cardity-web"
 compatibility_date = "2024-01-01"
 
-[build]
-command = "npm run build"
-output_directory = "out"
-
-[build.upload]
-format = "directory"
+# Cloudflare Pages 配置
+pages_build_output_dir = "out"
 
 [env.production]
 name = "cardity-web-production"
 
-[env.staging]
-name = "cardity-web-staging"
+[env.preview]
+name = "cardity-web-preview"
 
 # 环境变量配置
 [vars]

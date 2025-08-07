@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 启用静态导出，输出到 out 目录
+  output: 'export',
+  
   // 图片配置
   images: {
     unoptimized: true, // Cloudflare Pages 优化
@@ -20,6 +23,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
+  
+  // 禁用服务器端功能，因为使用静态导出
+  trailingSlash: true,
 }
 
 module.exports = nextConfig 
