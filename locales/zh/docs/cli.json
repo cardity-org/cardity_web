@@ -1,0 +1,183 @@
+{
+  "title": "CLI 工具",
+  "subtitle": "Cardity 命令行工具完整参考",
+  "description": "Cardity 命令行工具的综合指南，用于智能协议的开发、测试和部署。",
+  "installation": {
+    "title": "安装",
+    "npmInstall": {
+      "title": "npm 安装",
+      "code": {
+        "globalInstall": "# 全局安装",
+        "verifyInstall": "# 验证安装",
+        "viewHelp": "# 查看帮助"
+      },
+      "currentVersion": "当前版本",
+      "colon": "："
+    }
+  },
+  "basicCommands": {
+    "title": "基本命令",
+    "projectInit": {
+      "title": "项目初始化",
+      "code": {
+        "initProject": "# 初始化新项目",
+        "example": "cardity init my-project"
+      },
+      "description": "创建具有默认结构的新 Cardity 项目"
+    },
+    "compile": {
+      "title": "编译",
+      "code": {
+        "compileFile": "# 编译协议文件",
+        "example": "cardity compile src/main.car"
+      },
+      "description": "将 Cardity 协议文件编译为字节码"
+    },
+    "run": {
+      "title": "运行协议",
+      "code": {
+        "runProtocol": "# 运行编译后的协议",
+        "example": "cardity run dist/main.carc"
+      },
+      "description": "执行编译后的协议文件"
+    },
+    "generateAbi": {
+      "title": "生成 ABI",
+      "code": {
+        "generateInterface": "# 生成 ABI 接口",
+        "example": "cardity abi src/main.car"
+      },
+      "description": "为协议生成应用程序二进制接口"
+    }
+  },
+  "drc20Commands": {
+    "title": "DRC-20 命令",
+    "compile": {
+      "title": "编译 DRC-20 代币",
+      "code": {
+        "compileToken": "# 编译 DRC-20 代币",
+        "example": "cardity drc20 compile token.car"
+      },
+      "description": "编译 DRC-20 代币协议"
+    },
+    "deploy": {
+      "title": "部署 DRC-20 代币",
+      "code": {
+        "deployToken": "# 部署 DRC-20 代币",
+        "example": "cardity drc20 deploy token.car"
+      },
+      "description": "将 DRC-20 代币部署到 Dogecoin 网络"
+    },
+    "mint": {
+      "title": "铸造代币",
+      "code": {
+        "mintTokens": "# 铸造新代币",
+        "example": "cardity drc20 mint MYT 1000"
+      },
+      "description": "铸造新的 DRC-20 代币"
+    },
+    "transfer": {
+      "title": "转移代币",
+      "code": {
+        "transferTokens": "# 转移代币",
+        "example": "cardity drc20 transfer MYT 100 doge1..."
+      },
+      "description": "在地址之间转移 DRC-20 代币"
+    }
+  },
+  "deploymentCommands": {
+    "title": "部署命令",
+    "validate": {
+      "title": "验证协议",
+      "code": {
+        "validateFile": "# 验证协议文件",
+        "example": "cardity_deploy validate protocol.carc"
+      },
+      "description": "部署前验证协议"
+    },
+    "info": {
+      "title": "协议信息",
+      "code": {
+        "viewInfo": "# 查看协议信息",
+        "example": "cardity_deploy info protocol.carc"
+      },
+      "description": "显示协议信息和元数据"
+    },
+    "deploy": {
+      "title": "部署到链上",
+      "code": {
+        "deployChain": "# 部署到 Dogecoin",
+        "example": "cardity_deploy deploy protocol.carc --address doge1... --private-key ..."
+      },
+      "description": "将协议部署到 Dogecoin 区块链"
+    },
+    "inscription": {
+      "title": "创建铭文",
+      "code": {
+        "createInscription": "# 创建铭文",
+        "example": "cardity_deploy inscription protocol.carc --address doge1..."
+      },
+      "description": "为协议部署创建铭文"
+    }
+  },
+  "advancedCommands": {
+    "title": "高级命令",
+    "compiler": {
+      "title": "编译器选项",
+      "code": {
+        "compileFormats": "# 使用不同格式编译",
+        "generatePackage": "cardity compile --format wasm src/main.car"
+      },
+      "description": "高级编译选项和格式"
+    },
+    "abiGenerator": {
+      "title": "ABI 生成器",
+      "code": {
+        "generateAbi": "# 生成 ABI",
+        "outputStdout": "                    # 输出到标准输出",
+        "outputFile": "          # 输出到文件",
+        "supportedFormats": "    # 支持的格式：json, yaml"
+      },
+      "description": "以不同格式生成 ABI"
+    },
+    "runtime": {
+      "title": "运行时选项",
+      "code": {
+        "runProtocol": "# 使用选项运行协议",
+        "methodSupport": "cardity run --method get_balance protocol.carc"
+      },
+      "description": "高级运行时执行选项"
+    },
+    "packageManager": {
+      "title": "包管理器",
+      "code": {
+        "packageCommands": "# 包管理命令",
+        "install": "cardity package install",
+        "update": "cardity package update",
+        "list": "cardity package list"
+      },
+      "description": "管理 Cardity 包和依赖项"
+    }
+  },
+  "help": {
+    "title": "获取帮助",
+    "getHelp": {
+      "title": "命令帮助",
+      "code": {
+        "viewAllCommands": "# 查看所有命令",
+        "viewSpecificHelp": "cardity --help"
+      }
+    },
+    "version": {
+      "title": "版本信息",
+      "code": {
+        "viewVersion": "# 查看版本",
+        "viewDetails": "cardity --version"
+      }
+    },
+    "needHelp": "需要 Cardity CLI 帮助？",
+    "quickStart": "查看快速开始指南",
+    "viewExamples": "查看示例",
+    "deployGuide": "阅读部署指南"
+  }
+}

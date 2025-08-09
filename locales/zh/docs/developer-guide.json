@@ -1,0 +1,121 @@
+{
+  "title": "开发者指南",
+  "subtitle": "高级开发技术和最佳实践",
+  "description": "Cardity 开发者的高级指南，涵盖最佳实践、设计模式和高级开发技术。",
+  "overview": {
+    "title": "开发概览",
+    "systemRequirements": {
+      "title": "系统要求",
+      "operatingSystem": "操作系统",
+      "osValue": "Linux、macOS、Windows",
+      "memory": "内存",
+      "memoryValue": "最少 4GB RAM",
+      "storage": "存储",
+      "storageValue": "2GB 可用空间",
+      "network": "网络",
+      "networkValue": "互联网连接"
+    },
+    "requiredDependencies": {
+      "title": "必需依赖项"
+    },
+    "buildFromSource": {
+      "title": "从源代码构建"
+    },
+    "projectStructure": {
+      "title": "项目结构",
+      "cardityCoreArchitecture": {
+        "title": "Cardity 核心架构"
+      }
+    }
+  },
+  "code": {
+    "macosInstall": "# macOS 安装",
+    "ubuntuInstall": "# Ubuntu 安装",
+    "centosInstall": "# CentOS 安装",
+    "windowsInstall": "# Windows 安装",
+    "cloneRepository": "# 克隆仓库",
+    "createBuildDir": "# 创建构建目录",
+    "configureCmake": "# 使用 CMake 配置",
+    "buildProject": "# 构建项目",
+    "installSystem": "# 系统级安装",
+    "verifyInstall": "# 验证安装",
+    "projectStructure": "cardity_core/",
+    "compilerDir": "compiler/",
+    "lexerFile": "lexer.car",
+    "parserFile": "parser.car",
+    "semanticFile": "semantic.car",
+    "typeSystemFile": "type_system.car",
+    "runtimeFile": "runtime.car",
+    "carGeneratorFile": "car_generator.car",
+    "carcGeneratorFile": "carc_generator.car",
+    "carDeployerFile": "car_deployer.car",
+    "dogecoinDeployerFile": "dogecoin_deployer.car",
+    "drc20StandardFile": "drc20_standard.car",
+    "drc20CompilerFile": "drc20_compiler.car",
+    "drc20CliFile": "drc20_cli.car",
+    "eventSystemFile": "event_system.car",
+    "packageManagerFile": "package_manager.car",
+    "packageConfigFile": "package_config.car",
+    "packageBuilderFile": "package_builder.car",
+    "registryClientFile": "registry_client.car",
+    "cardityCliFile": "cardity_cli.car",
+    "examplesDir": "examples/",
+    "docsDir": "docs/",
+    "cmakeListsFile": "CMakeLists.txt"
+  },
+  "testing": {
+    "title": "测试"
+  },
+  "bestPractices": {
+    "title": "最佳实践",
+    "errorHandling": {
+      "title": "错误处理"
+    },
+    "protocolOptimization": {
+      "title": "协议优化",
+      "minimizeStateVariables": "最小化状态变量",
+      "minimizeStateVariablesDesc": "保持状态变量最小化和专注",
+      "efficientDataStructures": "高效数据结构",
+      "efficientDataStructuresDesc": "为您的用例使用适当的数据结构",
+      "optimizeMethods": "优化方法",
+      "optimizeMethodsDesc": "编写高效的方法实现",
+      "batchOperations": "批量操作",
+      "batchOperationsDesc": "尽可能分组操作",
+      "lazyLoading": "懒加载",
+      "lazyLoadingDesc": "仅在需要时加载数据"
+    },
+    "compilationOptimization": {
+      "title": "编译优化"
+    },
+    "packageDevelopment": {
+      "title": "包开发",
+      "creatingPackages": {
+        "title": "创建包"
+      },
+      "packageConfiguration": {
+        "title": "包配置"
+      }
+    }
+  },
+  "resources": {
+    "title": "资源",
+    "documentation": "文档",
+    "gettingStartedGuide": "快速开始指南",
+    "languageReference": "语言参考",
+    "standardLibrary": "标准库",
+    "cliTools": "CLI 工具",
+    "deploymentGuide": "部署指南",
+    "community": "社区",
+    "githubRepository": "GitHub 仓库",
+    "discordCommunity": "Discord 社区",
+    "developerForum": "开发者论坛",
+    "emailSupport": "邮件支持"
+  },
+  "nextSteps": {
+    "title": "下一步",
+    "description": "继续您的开发之旅",
+    "contributeCore": "为 Cardity 核心做出贡献",
+    "createPackages": "创建和发布包",
+    "buildApplications": "构建真实世界的应用程序"
+  }
+}

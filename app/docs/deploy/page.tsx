@@ -551,11 +551,11 @@ cardity_deploy tx-info <txid> --verbose`}
             </ul>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/docs/developer-guide" className="btn-primary inline-flex items-center">
+              <Link href={`/docs/developer-guide?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-primary inline-flex items-center">
                 {t('docs.developerGuide.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
-              <Link href="/examples" className="btn-secondary inline-flex items-center">
+              <Link href={`/examples?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
                 {t('examples.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>

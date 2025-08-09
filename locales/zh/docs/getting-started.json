@@ -1,0 +1,83 @@
+{
+  "title": "快速开始",
+  "subtitle": "安装 Cardity CLI 并在几分钟内编写您的第一个智能协议",
+  "description": "在几分钟内开始使用 Cardity。本指南将带您完成 CLI 工具的安装、开发环境的设置以及创建您的第一个智能协议。",
+  "installation": {
+    "title": "安装",
+    "description": "在您的系统上安装 Cardity CLI 工具",
+    "npmInstall": {
+      "title": "npm 安装（推荐）",
+      "description": "通过 npm 安装 Cardity 或从源代码构建。包含完整的开发环境设置。",
+      "successOutput": "cardity 1.0.1",
+      "outputText": "如果安装成功应该显示。"
+    },
+    "sourceCode": {
+      "title": "从源代码",
+      "description": "从 GitHub 仓库克隆源代码，适合开发者自定义编译和贡献代码"
+    }
+  },
+  "firstContract": {
+    "title": "您的第一个协议",
+    "description": "编写和测试您的第一个 Cardity 智能协议",
+    "createFile": "创建您的第一个协议",
+    "createFileDescription": "创建一个名为",
+    "compileRun": "编译和运行"
+  },
+  "cliCommands": {
+    "title": "CLI 命令",
+    "projectInit": {
+      "title": "项目初始化"
+    },
+    "compile": {
+      "title": "编译"
+    },
+    "drc20": {
+      "title": "DRC-20 代币"
+    },
+    "deployChain": {
+      "title": "部署到链上"
+    }
+  },
+  "languageFeatures": {
+    "title": "语言特性",
+    "protocol": {
+      "title": "协议定义",
+      "description": "使用清晰的结构和类型安全定义智能协议",
+      "feature": "类型安全的协议定义"
+    },
+    "state": {
+      "title": "状态管理",
+      "description": "使用持久化存储管理协议状态",
+      "feature": "持久化状态存储"
+    },
+    "events": {
+      "title": "事件系统",
+      "description": "为协议交互发出和处理事件",
+      "feature": "事件驱动架构"
+    },
+    "drc20": {
+      "title": "DRC-20 支持",
+      "description": "内置 DRC-20 代币标准支持",
+      "feature": "DRC-20 代币创建"
+    }
+  },
+  "nextSteps": {
+    "title": "下一步",
+    "description": "继续您的 Cardity 学习之旅",
+    "cliReference": {
+      "title": "CLI 参考",
+      "description": "学习所有可用的 CLI 命令和选项"
+    },
+    "examples": {
+      "title": "示例",
+      "description": "探索真实的智能协议示例"
+    },
+    "deploy": {
+      "title": "部署指南",
+      "description": "将您的协议部署到 Dogecoin 区块链"
+    },
+    "learnStandardLibrary": "了解标准库",
+    "understandCliTools": "了解 CLI 工具",
+    "viewMoreExamples": "查看更多示例"
+  }
+}

@@ -49,11 +49,8 @@ export default function LanguageSwitcher() {
 
   // 当前显示的语言名称
   const currentLanguageName = useMemo(() => {
-    if (!isClient || !isInitialized) {
-      return 'English'
-    }
     return locale === 'zh' ? '中文' : 'English'
-  }, [locale, isClient, isInitialized])
+  }, [locale])
 
   return (
     <div className="relative" ref={dropdownRef}>

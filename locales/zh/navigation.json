@@ -1,0 +1,13 @@
+{
+  "sidebar": {
+    "docs": {
+      "title": "文档",
+      "gettingStarted": "快速开始",
+      "reference": "语言参考",
+      "cli": "CLI 工具",
+      "standardLibrary": "标准库",
+      "deploy": "部署指南",
+      "developerGuide": "开发者指南"
+    }
+  }
+}

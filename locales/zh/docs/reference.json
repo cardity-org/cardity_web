@@ -1,0 +1,76 @@
+{
+  "title": "语言参考",
+  "subtitle": "完整的 Cardity 语言语法和功能参考",
+  "description": "Cardity 编程语言语法、数据类型、运算符和语言功能的完整参考。",
+  "syntax": {
+    "title": "语法",
+    "description": "基本语法规则和结构"
+  },
+  "types": {
+    "title": "数据类型",
+    "description": "内置数据类型及其用法",
+    "basicTypes": {
+      "title": "基本类型",
+      "string": "文本字符串",
+      "int": "整数",
+      "bool": "布尔值（真/假）",
+      "number": "浮点数"
+    },
+    "complexTypes": {
+      "title": "复杂类型",
+      "array": "有序集合",
+      "map": "键值对",
+      "struct": "自定义数据结构"
+    }
+  },
+  "functions": {
+    "title": "函数",
+    "description": "函数声明和用法",
+    "basicMethods": {
+      "title": "基本方法"
+    },
+    "methodsWithReturn": {
+      "title": "带返回值的方法"
+    },
+    "methodsWithParams": {
+      "title": "带参数的方法"
+    },
+    "controlStructures": {
+      "title": "控制结构",
+      "conditionalStatements": {
+        "title": "条件语句"
+      },
+      "loops": {
+        "title": "循环"
+      }
+    },
+    "builtInFunctions": {
+      "title": "内置函数",
+      "description": "Cardity 中预定义的函数",
+      "commonFunctions": {
+        "title": "常用函数",
+        "now": "获取当前时间戳",
+        "length": "获取数组或字符串长度",
+        "push": "向数组添加元素",
+        "pop": "从数组移除最后一个元素"
+      },
+      "usageExamples": {
+        "title": "使用示例"
+      }
+    },
+    "errorHandling": {
+      "title": "错误处理",
+      "description": "处理协议中的错误和异常"
+    },
+    "abiGeneration": {
+      "title": "ABI 生成",
+      "description": "为您的协议生成应用程序二进制接口",
+      "generateAbi": {
+        "title": "生成 ABI"
+      },
+      "generatedAbiExample": {
+        "title": "生成的 ABI 示例"
+      }
+    }
+  }
+}

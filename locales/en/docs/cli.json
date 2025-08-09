@@ -1,0 +1,183 @@
+{
+  "title": "CLI Reference",
+  "subtitle": "Complete command-line interface reference for Cardity development tools",
+  "description": "Comprehensive guide to Cardity command-line tools for development, testing, and deployment of smart protocols.",
+  "installation": {
+    "title": "Installation",
+    "npmInstall": {
+      "title": "npm Installation",
+      "code": {
+        "globalInstall": "# Global installation",
+        "verifyInstall": "# Verify installation",
+        "viewHelp": "# View help"
+      },
+      "currentVersion": "Current version",
+      "colon": ":"
+    }
+  },
+  "basicCommands": {
+    "title": "Basic Commands",
+    "projectInit": {
+      "title": "Project Initialization",
+      "code": {
+        "initProject": "# Initialize new project",
+        "example": "cardity init my-project"
+      },
+      "description": "Create a new Cardity project with default structure"
+    },
+    "compile": {
+      "title": "Compilation",
+      "code": {
+        "compileFile": "# Compile protocol file",
+        "example": "cardity compile src/main.car"
+      },
+      "description": "Compile Cardity protocol files to bytecode"
+    },
+    "run": {
+      "title": "Run Protocol",
+      "code": {
+        "runProtocol": "# Run compiled protocol",
+        "example": "cardity run dist/main.carc"
+      },
+      "description": "Execute compiled protocol files"
+    },
+    "generateAbi": {
+      "title": "Generate ABI",
+      "code": {
+        "generateInterface": "# Generate ABI interface",
+        "example": "cardity abi src/main.car"
+      },
+      "description": "Generate Application Binary Interface for protocols"
+    }
+  },
+  "drc20Commands": {
+    "title": "DRC-20 Commands",
+    "compile": {
+      "title": "Compile DRC-20 Token",
+      "code": {
+        "compileToken": "# Compile DRC-20 token",
+        "example": "cardity drc20 compile token.car"
+      },
+      "description": "Compile DRC-20 token protocols"
+    },
+    "deploy": {
+      "title": "Deploy DRC-20 Token",
+      "code": {
+        "deployToken": "# Deploy DRC-20 token",
+        "example": "cardity drc20 deploy token.car"
+      },
+      "description": "Deploy DRC-20 tokens to Dogecoin network"
+    },
+    "mint": {
+      "title": "Mint Tokens",
+      "code": {
+        "mintTokens": "# Mint new tokens",
+        "example": "cardity drc20 mint MYT 1000"
+      },
+      "description": "Mint new DRC-20 tokens"
+    },
+    "transfer": {
+      "title": "Transfer Tokens",
+      "code": {
+        "transferTokens": "# Transfer tokens",
+        "example": "cardity drc20 transfer MYT 100 doge1..."
+      },
+      "description": "Transfer DRC-20 tokens between addresses"
+    }
+  },
+  "deploymentCommands": {
+    "title": "Deployment Commands",
+    "validate": {
+      "title": "Validate Protocol",
+      "code": {
+        "validateFile": "# Validate protocol file",
+        "example": "cardity_deploy validate protocol.carc"
+      },
+      "description": "Validate protocol before deployment"
+    },
+    "info": {
+      "title": "Protocol Information",
+      "code": {
+        "viewInfo": "# View protocol info",
+        "example": "cardity_deploy info protocol.carc"
+      },
+      "description": "Display protocol information and metadata"
+    },
+    "deploy": {
+      "title": "Deploy to Chain",
+      "code": {
+        "deployChain": "# Deploy to Dogecoin",
+        "example": "cardity_deploy deploy protocol.carc --address doge1... --private-key ..."
+      },
+      "description": "Deploy protocol to Dogecoin blockchain"
+    },
+    "inscription": {
+      "title": "Create Inscription",
+      "code": {
+        "createInscription": "# Create inscription",
+        "example": "cardity_deploy inscription protocol.carc --address doge1..."
+      },
+      "description": "Create inscription for protocol deployment"
+    }
+  },
+  "advancedCommands": {
+    "title": "Advanced Commands",
+    "compiler": {
+      "title": "Compiler Options",
+      "code": {
+        "compileFormats": "# Compile with different formats",
+        "generatePackage": "cardity compile --format wasm src/main.car"
+      },
+      "description": "Advanced compilation options and formats"
+    },
+    "abiGenerator": {
+      "title": "ABI Generator",
+      "code": {
+        "generateAbi": "# Generate ABI",
+        "outputStdout": "                    # Output to stdout",
+        "outputFile": "          # Output to file",
+        "supportedFormats": "    # Supported formats: json, yaml"
+      },
+      "description": "Generate ABI in different formats"
+    },
+    "runtime": {
+      "title": "Runtime Options",
+      "code": {
+        "runProtocol": "# Run protocol with options",
+        "methodSupport": "cardity run --method get_balance protocol.carc"
+      },
+      "description": "Advanced runtime execution options"
+    },
+    "packageManager": {
+      "title": "Package Manager",
+      "code": {
+        "packageCommands": "# Package management commands",
+        "install": "cardity package install",
+        "update": "cardity package update",
+        "list": "cardity package list"
+      },
+      "description": "Manage Cardity packages and dependencies"
+    }
+  },
+  "help": {
+    "title": "Getting Help",
+    "getHelp": {
+      "title": "Command Help",
+      "code": {
+        "viewAllCommands": "# View all commands",
+        "viewSpecificHelp": "cardity --help"
+      }
+    },
+    "version": {
+      "title": "Version Information",
+      "code": {
+        "viewVersion": "# View version",
+        "viewDetails": "cardity --version"
+      }
+    },
+    "needHelp": "Need help with Cardity CLI?",
+    "quickStart": "Check out the quick start guide",
+    "viewExamples": "View examples",
+    "deployGuide": "Read the deployment guide"
+  }
+}

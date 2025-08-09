@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "Cardity",
+    "subtitle": "A static type programming language designed for developing smart protocols on Dogecoin UTXO",
+    "description": "Build powerful smart protocols with a modern, type-safe programming language that runs directly on the Dogecoin blockchain.",
+    "getStarted": "Get Started",
+    "readDocs": "Read the docs",
+    "downloadTools": "Download Tools",
+    "latestVersion": "Latest Version"
+  },
+  "features": {
+    "title": "Why Cardity?",
+    "subtitle": "Modern smart protocol development with type safety and developer experience",
+    "compiler": {
+      "title": "Type Safe",
+      "description": "Static type checking prevents runtime errors and improves code quality"
+    },
+    "packageManager": {
+      "title": "Developer Friendly",
+      "description": "Familiar syntax with modern development tools and debugging support"
+    },
+    "drc20": {
+      "title": "Dogecoin Native",
+      "description": "Built specifically for Dogecoin UTXO model with optimized performance"
+    }
+  },
+  "installation": {
+    "title": "Quick Installation",
+    "subtitle": "Get started with Cardity in minutes",
+    "npmInstall": {
+      "title": "npm Installation (Recommended)",
+      "description": "Install Cardity via npm or build from source. Full development environment setup included."
+    },
+    "sourceCode": {
+      "title": "From Source Code",
+      "description": "Clone source code from GitHub repository, suitable for developers to customize compilation and contribute code"
+    }
+  },
+  "quickStart": {
+    "title": "Create Your First Project",
+    "subtitle": "Create and deploy your first smart protocol in minutes"
+  },
+  "cta": {
+    "title": "Start Building Dogecoin Smart Protocols",
+    "subtitle": "Join the Cardity community and explore unlimited possibilities of UTXO smart protocols",
+    "readDocs": "Read Documentation",
+    "viewExamples": "View Examples",
+    "learnMore": "Learn More"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "title": "Deployment Guide",
+  "subtitle": "Learn how to deploy your Cardity smart protocols to Dogecoin blockchain",
+  "description": "Step-by-step guide to deploying your Cardity smart protocols to the Dogecoin blockchain network.",
+  "overview": {
+    "title": "Deployment Overview",
+    "description": "Cardity supports multiple deployment methods for smart protocols on the Dogecoin blockchain."
+  },
+  "methods": {
+    "title": "Deployment Methods",
+    "opReturn": {
+      "title": "OP_RETURN Method",
+      "description": "Deploy protocols using OP_RETURN outputs for data storage"
+    },
+    "inscription": {
+      "title": "Inscription Method",
+      "description": "Deploy protocols using Dogecoin inscriptions for permanent storage"
+    }
+  },
+  "steps": {
+    "compile": {
+      "title": "Compile Protocol"
+    },
+    "validate": {
+      "title": "Validate Protocol"
+    },
+    "deploy": {
+      "title": "Deploy to Blockchain"
+    }
+  },
+  "code": {
+    "compileCommands": {
+      "compileToBinary": "# Compile to binary",
+      "compileWithOptimization": "# Compile with optimization",
+      "compileWithOutput": "# Compile with output",
+      "validateCompilation": "# Validate compilation"
+    },
+    "binaryStructure": {
+      "title": "Binary Structure",
+      "description": "Compiled protocol structure:",
+      "protocolMetadata": "Protocol metadata",
+      "stateVariables": "State variables",
+      "methodBytecode": "Method bytecode",
+      "eventDefinitions": "Event definitions",
+      "abiInformation": "ABI information"
+    },
+    "deploymentCommands": {
+      "validateFile": "# Validate file",
+      "viewProtocolInfo": "# View protocol info",
+      "checkDeploymentStatus": "# Check deployment status",
+      "validateWithVerbose": "# Validate with verbose output",
+      "deployToChain": "# Deploy to chain",
+      "deployWithCustomFee": "# Deploy with custom fee",
+      "deployToTestnet": "# Deploy to testnet",
+      "deployWithMetadata": "# Deploy with metadata",
+      "createInscription": "# Create inscription",
+      "createInscriptionWithMetadata": "# Create inscription with metadata",
+      "viewInscriptionDetails": "# View inscription details",
+      "deployInscription": "# Deploy inscription"
+    },
+    "validationChecks": {
+      "title": "Validation Checks",
+      "protocolStructure": "Protocol structure validation",
+      "stateVariableType": "State variable type checking",
+      "methodSyntax": "Method syntax validation",
+      "eventDefinition": "Event definition validation",
+      "abiGeneration": "ABI generation verification",
+      "sizeOptimization": "Size optimization checks"
+    }
+  },
+  "troubleshooting": {
+    "title": "Troubleshooting",
+    "documentation": "Documentation",
+    "documentAllMethods": "Document all methods and parameters",
+    "provideUsageExamples": "Provide usage examples",
+    "includeDeploymentInstructions": "Include deployment instructions",
+    "maintainChangelog": "Maintain changelog",
+    "createUserGuides": "Create user guides",
+    "commonIssues": "Common Issues",
+    "compilationErrors": "Compilation Errors",
+    "deploymentFailures": "Deployment Failures"
+  },
+  "nextSteps": {
+    "title": "Next Steps",
+    "description": "Continue your deployment journey",
+    "learnAdvancedTechniques": "Learn advanced deployment techniques",
+    "exploreTestingDebugging": "Explore testing and debugging",
+    "contributeEcosystem": "Contribute to the ecosystem"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "title": "Code Examples",
+  "subtitle": "Explore Cardity smart protocol examples including Hello World, DRC-20 tokens, wallets, voting systems, and more. Learn from real-world code samples.",
+  "hero": {
+    "title": "Code Examples",
+    "subtitle": "Explore real-world smart protocol examples and learn Cardity programming patterns",
+    "description": "From simple Hello World to complex DRC-20 tokens, discover how to build powerful smart protocols"
+  },
+  "pageTitle": "Cardity Examples",
+  "pageSubtitle": "Learn Cardity through practical examples, from basic contracts to advanced DRC-20 tokens and governance systems",
+  "categories": {
+    "basic": "Basic",
+    "token": "Token",
+    "wallet": "Wallet",
+    "governance": "Governance",
+    "advanced": "Advanced"
+  },
+  "difficulty": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "examples": {
+    "helloWorld": {
+      "title": "Hello World",
+      "description": "A simple protocol that demonstrates basic Cardity syntax and structure"
+    },
+    "counter": {
+      "title": "Counter Protocol",
+      "description": "A simple counter that can be incremented and decremented"
+    },
+    "drc20Token": {
+      "title": "DRC-20 Token",
+      "description": "A complete DRC-20 token implementation with mint and transfer functionality"
+    },
+    "simpleWallet": {
+      "title": "Simple Wallet",
+      "description": "A basic wallet protocol for managing Dogecoin balances"
+    },
+    "votingSystem": {
+      "title": "Voting System",
+      "description": "A decentralized voting system with proposal creation and voting"
+    },
+    "eventSystemDemo": {
+      "title": "Event System Demo",
+      "description": "Demonstrates advanced event handling and state management"
+    }
+  },
+  "actions": {
+    "viewDetails": "View Details",
+    "submitExample": "Submit Example",
+    "startCoding": "Start Coding"
+  },
+  "contribute": {
+    "title": "Want to contribute examples?",
+    "description": "We welcome community contributions of high-quality example code. Your examples can help other developers better understand and use Cardity."
+  },
+  "comingSoon": {
+    "title": "Examples Coming Soon",
+    "description": "We are preparing the latest Cardity code examples, stay tuned!"
+  }
+}

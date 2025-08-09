@@ -25,10 +25,10 @@ export default function Logo({ size = 40, showText = true, className = '' }: Log
       
       {showText && (
         <div className="flex flex-col">
-          <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+          <span className="text-xl font-bold bg-gradient-to-r from-cardity-400 to-cardity-600 bg-clip-text text-transparent">
             Cardity
           </span>
-          <span className="text-xs text-gray-400 -mt-1">
+          <span className="text-xs text-cardity-200 -mt-1">
             Smart Protocols for Dogecoin
           </span>
         </div>

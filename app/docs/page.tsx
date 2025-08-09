@@ -15,52 +15,46 @@ export default function DocsPage() {
       description: t('docs.gettingStarted.subtitle'),
       href: '/docs/getting-started',
       icon: BookOpen,
-      color: 'bg-blue-100 text-blue-600',
     },
     {
       title: t('docs.reference.title'),
       description: t('docs.reference.subtitle'),
       href: '/docs/reference',
       icon: Code,
-      color: 'bg-green-100 text-green-600',
     },
     {
       title: t('docs.standardLibrary.title'),
       description: t('docs.standardLibrary.subtitle'),
       href: '/docs/standard-library',
       icon: Library,
-      color: 'bg-purple-100 text-purple-600',
     },
     {
       title: t('docs.cli.title'),
       description: t('docs.cli.subtitle'),
       href: '/docs/cli',
       icon: Terminal,
-      color: 'bg-orange-100 text-orange-600',
     },
     {
       title: t('docs.deploy.title'),
       description: t('docs.deploy.subtitle'),
       href: '/docs/deploy',
       icon: Rocket,
-      color: 'bg-red-100 text-red-600',
     },
     {
       title: t('docs.developerGuide.title'),
       description: t('docs.developerGuide.subtitle'),
       href: '/docs/developer-guide',
       icon: Settings,
-      color: 'bg-gray-100 text-gray-600',
     },
   ], [t, locale, isClient, isInitialized])
 
   return (
     <div className="max-w-4xl mx-auto">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4">
           {t('docs.title')}
         </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
           {t('docs.subtitle')}
         </p>
       </div>
@@ -70,34 +64,34 @@ export default function DocsPage() {
           <Link
             key={section.href}
             href={section.href}
-            className="group block p-6 bg-white rounded-lg border border-gray-200 hover:border-cardity-300 hover:shadow-md transition-all duration-200"
+            className="group block p-6 card card-gradient hover:translate-y-[-2px] transition-all duration-200"
           >
             <div className="flex items-start">
-              <div className={`p-3 rounded-lg ${section.color} mr-4`}>
+              <div className="p-3 rounded-lg mr-4 bg-cardity-900/30 ring-1 ring-cardity-800/50 text-cardity-300">
                 <section.icon className="w-6 h-6" />
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-gray-900 group-hover:text-cardity-600 transition-colors duration-200">
+                <h3 className="text-lg font-semibold text-white group-hover:text-cardity-200 transition-colors duration-200">
                   {section.title}
                 </h3>
-                <p className="text-gray-600 mt-2">
+                <p className="text-gray-400 mt-2">
                   {section.description}
                 </p>
               </div>
-              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-cardity-600 transition-colors duration-200" />
+              <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-cardity-300 transition-colors duration-200" />
             </div>
           </Link>
         ))}
       </div>
 
-      <div className="mt-12 p-6 bg-cardity-50 rounded-lg border border-cardity-200">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+      <div className="mt-12 p-6 bg-dark-900 rounded-lg border border-dark-800">
+        <h2 className="text-xl font-semibold text-white mb-4">
           {t('docs.learningPath.title')}
         </h2>
-        <p className="text-gray-600 mb-4">
+        <p className="text-gray-400 mb-4">
           {t('docs.learningPath.description')}
         </p>
-        <ol className="list-decimal list-inside space-y-2 text-gray-600">
+        <ol className="list-decimal list-inside space-y-2 text-gray-400">
           {t('docs.learningPath.steps').map((step: any, index: number) => (
             <li key={index}>
               {typeof step === 'string' ? step : `${step.title}: ${step.description}`}
@@ -106,8 +100,8 @@ export default function DocsPage() {
         </ol>
         <div className="mt-6">
           <Link
-            href="/docs/getting-started"
-            className="inline-flex items-center text-cardity-600 hover:text-cardity-700 font-medium"
+            href={`/docs/getting-started?lang=${locale === 'zh' ? 'zh' : 'en'}`}
+            className="inline-flex items-center text-cardity-300 hover:text-cardity-200 font-medium"
           >
             {t('docs.gettingStarted.title')}
             <ArrowRight className="w-4 h-4 ml-1" />

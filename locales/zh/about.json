@@ -1,0 +1,199 @@
+{
+  "about2": {
+    "title": "关于 Cardity",
+    "subtitle": "Cardity 是面向 Dogecoin/Cardinals 协议的智能协议开发语言与工具链",
+    "whatIs": {
+      "title": "Cardity 是什么",
+      "items": [
+        "面向 Dogecoin/Cardinals 协议的智能协议开发语言与工具链。",
+        "强调 UTXO 安全模型（单次消费、单签控制），并适配链上索引与前端调用。"
+      ]
+    },
+    "capabilities": {
+      "title": "组成与能力",
+      "items": [
+        "语言与类型系统：接近 TypeScript/Solidity 的语法，支持 string/int/bool/address/map、事件、返回类型。",
+        "编译器与产物：将 .car 源码编译为 .carc 二进制或 JSON 协议描述；自动生成 ABI（可选）。",
+        "运行时：本地执行协议（支持 ctx.sender/txid/data_length），状态可持久化到文件。",
+        "打包与多模块：支持多文件打包为“包级部署”（package），并按模块分发与调用。",
+        "上链与调用：支持 JSON 铭文、仅 Hex 上链、以及大文件的 commit/reveal 流程（已内置）。",
+        "SDK 生成：基于 ABI 自动生成前端 TypeScript 客户端，便于直接构造调用负载。"
+      ]
+    },
+    "workflow": {
+      "title": "典型工作流",
+      "items": [
+        "开发：用 .car 编写协议与方法（含事件与显式返回类型）。",
+        "编译：产出 .carc（部署）或 JSON（运行时调试）。",
+        "上链：仅 Hex 流、JSON 铭文、或大文件铭文计划 commit/reveal。",
+        "调用：支持 method:\"Module.method\"，或附带 module 字段进行模块级调用。",
+        "索引：与 dogeuni-indexer 对齐字段规范，支持包/模块/分片重组、纯 hex 识别与方法检索。"
+      ]
+    },
+    "utxoDesign": {
+      "title": "适配 UTXO 的设计点",
+      "items": [
+        "无 allowance/approve 语义，避免授权竞态攻击。",
+        "提供 pause/unpause、freeze/unfreeze、max_tx_amount、费率上限等风控能力。",
+        "返回统一错误码字符串（如 \"InvalidAmount\", \"Paused\", \"Insufficient\"），前后端易对齐。"
+      ]
+    },
+    "indexerSpec": {
+      "title": "与 indexer 的约定（要点）",
+      "items": [
+        "p: \"cardity\"",
+        "deploy: op:\"deploy\" | op:\"deploy_package\"，含 protocol/version 或 package_id/version、可选 abi/carc_b64",
+        "invoke: op:\"invoke\"，contract_id/contract_ref，method（支持 Module.method），args 原始 JSON",
+        "不建议自定义分片；推荐用铭文计划自动分段，indexer 解析 body 并提取文件字节"
+      ]
+    },
+    "toolchain": {
+      "title": "工具链（核心命令）",
+      "items": [
+        "编译/运行：编译 .car 为 .carc/JSON；运行时本地执行与持久化。",
+        "打包：多文件打包为包级部署（可选携带或剔除 ABI）。",
+        "仅 Hex：部署/调用生成十六进制数据。",
+        "铭文计划：生成 plan 并直接广播；或完整 commit/reveal（等价 dogeuni-sdk 流程）。",
+        "SDK：从 ABI 生成 TS 客户端，标准化方法签名与调用负载。"
+      ]
+    },
+    "useCaseUSDT": {
+      "title": "典型应用：USDT-like 稳定币",
+      "items": [
+        "协议功能：增发/转账/费率/上限/冻结/暂停，事件记录 Issue/Transfer。",
+        "多文件组织：USDTLikeToken + USDTokenMeta，以 package 方式部署与索引。"
+      ]
+    },
+    "securityOps": {
+      "title": "安全与运维",
+      "items": [
+        "运行时和工具链容错：更健壮的 Tokenizer/Parser，UTF-8/不可见字符处理，错误不致崩溃。",
+        "与 indexer 的幂等与重放：建议唯一键、重组状态与软删除。"
+      ]
+    }
+  },
+  "title": "关于 Cardity",
+  "subtitle": "Cardity Core - 完整的智能协议编程语言实现，专为 Dogecoin UTXO 设计",
+  "overview": {
+    "title": "项目概述",
+    "description": "Cardity Core 是 Cardity 编程语言的完整实现，提供：",
+    "features": [
+      "编译器 - 将编程语言格式的 .car 文件编译为可执行格式",
+      "运行时 - 执行编译后的协议",
+      "包管理器 - 管理依赖和发布包",
+      "CLI 工具 - 命令行开发工具",
+      "类型系统 - 静态类型检查",
+      "事件系统 - 事件驱动架构",
+      "ABI 生成器 - 自动生成协议接口（支持编程语言格式和 JSON 格式）",
+      "区块链部署 - 支持 Dogecoin 链上部署",
+      "DRC-20 代币标准 - 完整的 DRC-20 代币支持"
+    ]
+  },
+  "version": {
+    "title": "版本信息",
+    "npmPackage": {
+      "title": "npm 包信息",
+      "packageName": "包名称",
+      "currentVersion": "当前版本",
+      "license": "许可证",
+      "packageSize": "包大小",
+      "fileCount": "文件数量"
+    },
+    "github": {
+      "title": "GitHub 仓库",
+      "repository": "仓库",
+      "homepage": "主页",
+      "npmPage": "npm 页面"
+    }
+  },
+  "features": {
+    "title": "核心功能",
+    "languageFormat": {
+      "title": "编程语言格式",
+      "description": "Cardity 支持具有类似 Solidity 语法的编程语言格式 .car 文件，包括：",
+      "items": [
+        "协议定义 (protocol)",
+        "状态变量 (state)",
+        "事件系统 (event)",
+        "方法定义 (method)",
+        "类型系统 (string, int, bool)",
+        "事件发射 (emit)"
+      ]
+    },
+    "drc20": {
+      "title": "DRC-20 代币标准",
+      "description": "完整的 DRC-20 代币标准支持，包括：",
+      "items": [
+        "代币定义 (drc20 block)",
+        "部署方法 (deploy)",
+        "铸造方法 (mint)",
+        "转账方法 (transfer)",
+        "事件定义 (TokenDeployed, TokenMinted, TokenTransferred)",
+        "自动 ABI 生成"
+      ]
+    },
+    "blockchain": {
+      "title": "区块链部署",
+      "description": "支持多种部署方法：",
+      "items": [
+        ".carc 二进制格式",
+        "OP_RETURN 部署",
+        "铭文部署 (ordinals 协议)",
+        "Dogecoin 链上部署",
+        "协议验证和查看"
+      ]
+    },
+    "devTools": {
+      "title": "开发工具",
+      "description": "完整的开发工具链：",
+      "items": [
+        "CLI 命令行工具",
+        "项目初始化",
+        "编译和运行",
+        "ABI 生成",
+        "包管理",
+        "调试和测试"
+      ]
+    }
+  },
+  "installation": {
+    "title": "安装方法",
+    "npm": {
+      "title": "npm 安装（推荐）",
+      "description": "通过 npm 包管理器一键安装，支持全局使用，自动依赖管理"
+    },
+    "sourceCode": {
+      "title": "从源代码",
+      "description": "从 GitHub 仓库克隆源代码，适合开发者自定义编译和贡献代码"
+    }
+  },
+  "community": {
+    "title": "社区和链接",
+    "official": {
+      "title": "官方资源",
+      "github": "GitHub 仓库",
+      "npm": "npm 包页面",
+      "docs": "官方文档",
+      "examples": "示例项目"
+    },
+    "devResources": {
+      "title": "开发资源",
+      "quickStart": "快速开始",
+      "cliReference": "CLI 参考",
+      "deployGuide": "部署指南",
+      "downloadTools": "下载工具"
+    }
+  },
+  "contributing": {
+    "title": "贡献代码",
+    "description": "欢迎贡献代码！Cardity 是一个开源项目，我们欢迎各种形式的贡献：",
+    "steps": [
+      "Fork 项目并创建功能分支",
+      "提交您的更改",
+      "推送到分支并创建 Pull Request",
+      "报告错误和建议功能"
+    ],
+    "viewGitHub": "查看 GitHub",
+    "devGuide": "开发指南"
+  }
+}

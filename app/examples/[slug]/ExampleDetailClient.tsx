@@ -62,7 +62,7 @@ export default function ExampleDetailClient({ example, examplesData }: ExampleDe
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Link href="/examples" className="text-gray-400 hover:text-white transition-colors">
+              <Link href={`/examples?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="text-gray-400 hover:text-white transition-colors">
                 <ArrowLeft className="w-6 h-6" />
               </Link>
               <div className="flex items-center space-x-3">
@@ -198,7 +198,7 @@ export default function ExampleDetailClient({ example, examplesData }: ExampleDe
                   下载代码
                 </button>
                 <Link
-                  href="/docs/getting-started"
+                  href={`/docs/getting-started?lang=${locale === 'zh' ? 'zh' : 'en'}`}
                   className="w-full btn-secondary inline-flex items-center justify-center"
                 >
                   <Code className="w-4 h-4 mr-2" />

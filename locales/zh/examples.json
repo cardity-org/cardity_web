@@ -1,0 +1,62 @@
+{
+  "title": "示例",
+  "subtitle": "通过实际示例和真实用例学习 Cardity",
+  "hero": {
+    "title": "代码示例",
+    "subtitle": "探索真实世界的智能协议示例并学习 Cardity 编程模式",
+    "description": "从简单的 Hello World 到复杂的 DRC-20 代币，发现如何构建强大的智能协议"
+  },
+  "pageTitle": "Cardity 示例",
+  "pageSubtitle": "通过实际示例学习 Cardity，从基础协议到高级 DRC-20 代币和治理系统",
+  "categories": {
+    "basic": "基础",
+    "token": "代币",
+    "wallet": "钱包",
+    "governance": "治理",
+    "advanced": "高级"
+  },
+  "difficulty": {
+    "beginner": "初学者",
+    "intermediate": "中级",
+    "advanced": "高级"
+  },
+  "examples": {
+    "helloWorld": {
+      "title": "Hello World",
+      "description": "演示基本 Cardity 语法和结构的简单协议"
+    },
+    "counter": {
+      "title": "计数器协议",
+      "description": "可以递增和递减的简单计数器"
+    },
+    "drc20Token": {
+      "title": "DRC-20 代币",
+      "description": "具有铸造和转账功能的完整 DRC-20 代币实现"
+    },
+    "simpleWallet": {
+      "title": "简单钱包",
+      "description": "用于管理 Dogecoin 余额的基础钱包协议"
+    },
+    "votingSystem": {
+      "title": "投票系统",
+      "description": "具有提案创建和投票功能的去中心化投票系统"
+    },
+    "eventSystemDemo": {
+      "title": "事件系统演示",
+      "description": "演示高级事件处理和状态管理"
+    }
+  },
+  "actions": {
+    "viewDetails": "查看详情",
+    "submitExample": "提交示例",
+    "startCoding": "开始编码"
+  },
+  "contribute": {
+    "title": "想要贡献示例？",
+    "description": "我们欢迎高质量的示例代码社区贡献。您的示例可以帮助其他开发者更好地理解和使用 Cardity。"
+  },
+  "comingSoon": {
+    "title": "示例即将推出",
+    "description": "我们正在准备最新的 Cardity 代码示例，敬请期待！"
+  }
+}

@@ -1,8 +1,37 @@
 "use client"
 
 import { useState, useEffect, useMemo, useCallback } from 'react'
-import enTranslations from '../locales/en/common.json'
-import zhTranslations from '../locales/zh/common.json'
+
+// 引入所有翻译文件
+import enCommon from '../locales/en/common.json'
+import enNav from '../locales/en/nav.json'
+import enNavigation from '../locales/en/navigation.json'
+import enHome from '../locales/en/home.json'
+import enDocs from '../locales/en/docs.json'
+import enGettingStarted from '../locales/en/docs/getting-started.json'
+import enReference from '../locales/en/docs/reference.json'
+import enCli from '../locales/en/docs/cli.json'
+import enStandardLibrary from '../locales/en/docs/standard-library.json'
+import enDeploy from '../locales/en/docs/deploy.json'
+import enDeveloperGuide from '../locales/en/docs/developer-guide.json'
+import enExamples from '../locales/en/examples.json'
+import enDownload from '../locales/en/download.json'
+import enAbout from '../locales/en/about.json'
+
+import zhCommon from '../locales/zh/common.json'
+import zhNav from '../locales/zh/nav.json'
+import zhNavigation from '../locales/zh/navigation.json'
+import zhHome from '../locales/zh/home.json'
+import zhDocs from '../locales/zh/docs.json'
+import zhGettingStarted from '../locales/zh/docs/getting-started.json'
+import zhReference from '../locales/zh/docs/reference.json'
+import zhCli from '../locales/zh/docs/cli.json'
+import zhStandardLibrary from '../locales/zh/docs/standard-library.json'
+import zhDeploy from '../locales/zh/docs/deploy.json'
+import zhDeveloperGuide from '../locales/zh/docs/developer-guide.json'
+import zhExamples from '../locales/zh/examples.json'
+import zhDownload from '../locales/zh/download.json'
+import zhAbout from '../locales/zh/about.json'
 
 // 支持的语言列表
 export const locales = ['en', 'zh'] as const
@@ -15,6 +44,51 @@ export const defaultLocale: Locale = 'en'
 export const localeNames: Record<Locale, string> = {
   en: 'English',
   zh: '中文'
+}
+
+// 合并所有翻译文件
+const enTranslations = {
+  ...enCommon,
+  nav: enNav,
+  navigation: enNavigation,
+  home: enHome,
+  docs: {
+    ...enDocs,
+    gettingStarted: enGettingStarted,
+    reference: enReference,
+    cli: enCli,
+    standardLibrary: enStandardLibrary,
+    deploy: enDeploy,
+    developerGuide: enDeveloperGuide
+  },
+  examples: enExamples,
+  download: enDownload,
+  about: enAbout
+  ,
+  // Expose about2 at top-level for simplified access
+  about2: (enAbout as any).about2
+}
+
+const zhTranslations = {
+  ...zhCommon,
+  nav: zhNav,
+  navigation: zhNavigation,
+  home: zhHome,
+  docs: {
+    ...zhDocs,
+    gettingStarted: zhGettingStarted,
+    reference: zhReference,
+    cli: zhCli,
+    standardLibrary: zhStandardLibrary,
+    deploy: zhDeploy,
+    developerGuide: zhDeveloperGuide
+  },
+  examples: zhExamples,
+  download: zhDownload,
+  about: zhAbout
+  ,
+  // Expose about2 at top-level for simplified access
+  about2: (zhAbout as any).about2
 }
 
 // 获取嵌套对象的值
@@ -50,57 +124,37 @@ export function useTranslations() {
   }, [locale])
 
   const t = useCallback((key: string, params?: Record<string, string | number>): any => {
-    // 在服务器端或客户端未初始化时，始终返回英文翻译
-    if (typeof window === 'undefined' || !isClient || !isInitialized) {
+    // 仅在服务器端渲染时使用英文，客户端始终使用当前 locale 的 translations
+    if (typeof window === 'undefined') {
       const enValue = getNestedValue(enTranslations, key)
-      if (enValue !== undefined) {
-        if (typeof enValue === 'string') {
-          if (params) {
-            return Object.entries(params).reduce((str, [key, val]) => {
-              return str.replace(new RegExp(`{${key}}`, 'g'), String(val))
-            }, enValue)
-          }
-          return enValue
-        }
-        return enValue
+      if (enValue === undefined) return key
+      if (typeof enValue === 'string' && params) {
+        return Object.entries(params).reduce((str, [k, val]) => str.replace(new RegExp(`{${k}}`, 'g'), String(val)), enValue)
       }
-      return key
+      return enValue
     }
 
-    const value = getNestedValue(translations, key)
-    
+    const localized = getNestedValue(translations, key)
+    const fallback = getNestedValue(enTranslations, key)
+    const value = localized !== undefined ? localized : fallback
     if (value === undefined) {
       console.warn(`Translation key not found: ${key}`)
       return key
     }
-
-    if (typeof value === 'string') {
-      if (params) {
-        return Object.entries(params).reduce((str, [key, val]) => {
-          return str.replace(new RegExp(`{${key}}`, 'g'), String(val))
-        }, value)
-      }
-      return value
+    if (typeof value === 'string' && params) {
+      return Object.entries(params).reduce((str, [k, val]) => str.replace(new RegExp(`{${k}}`, 'g'), String(val)), value)
     }
-
     return value
-  }, [translations, locale, isClient, isInitialized])
+  }, [translations])
 
   const switchLanguage = useCallback((newLocale: Locale) => {
     setLocale(newLocale)
-    localStorage.setItem('cardity-locale', newLocale)
-    
-    // 更新 URL 参数
+    try { localStorage.setItem('cardity-locale', newLocale) } catch {}
     const url = new URL(window.location.href)
-    if (newLocale === 'en') {
-      url.searchParams.delete('lang')
-    } else {
-      url.searchParams.set('lang', newLocale)
-    }
-    window.history.replaceState({}, '', url.toString())
-    
-    // 刷新页面以确保所有组件都使用新的语言
-    window.location.reload()
+    // 需求：任何页面都携带 lang 参数，即便是英文
+    url.searchParams.set('lang', newLocale)
+    // 全量刷新当前页面，避免水合与状态残留
+    window.location.replace(url.toString())
   }, [])
 
   return {
@@ -130,15 +184,24 @@ export function getCurrentLocale(): Locale {
   const urlParams = new URLSearchParams(window.location.search)
   const urlLocale = urlParams.get('lang') as Locale
   if (urlLocale && locales.includes(urlLocale)) {
+    try { localStorage.setItem('cardity-locale', urlLocale) } catch {}
     return urlLocale
   }
   
   // 然后从 localStorage 获取
   const savedLocale = localStorage.getItem('cardity-locale') as Locale
   if (savedLocale && locales.includes(savedLocale)) {
+    // 如果 URL 未带 lang，则补齐
+    const url = new URL(window.location.href)
+    url.searchParams.set('lang', savedLocale)
+    window.history.replaceState({}, '', url.toString())
     return savedLocale
   }
   
+  // 默认 en：也写入 URL，满足“任何页面都需要带参数”
+  const url = new URL(window.location.href)
+  url.searchParams.set('lang', 'en')
+  window.history.replaceState({}, '', url.toString())
   return defaultLocale
 }
 
@@ -172,25 +235,8 @@ export function getInitialLocale(): Locale {
 
 // 同步获取初始语言（用于服务器端渲染）
 export function getInitialLocaleSync(): Locale {
-  // 在服务器端渲染时始终返回英文，避免水合错误
-  if (typeof window === 'undefined') {
-    return defaultLocale
-  }
-  
-  // 在客户端，尝试获取当前语言，但避免复杂的检测逻辑
-  // 优先从 URL 参数获取
-  const urlParams = new URLSearchParams(window.location.search)
-  const urlLocale = urlParams.get('lang') as Locale
-  if (urlLocale && locales.includes(urlLocale)) {
-    return urlLocale
-  }
-  
-  // 然后从 localStorage 获取
-  const savedLocale = localStorage.getItem('cardity-locale') as Locale
-  if (savedLocale && locales.includes(savedLocale)) {
-    return savedLocale
-  }
-  
+  // 为避免 SSR 与 Hydration 字面不一致，首帧始终使用默认语言；
+  // 实际语言通过 useEffect 异步切换
   return defaultLocale
 }
 

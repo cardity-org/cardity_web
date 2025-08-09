@@ -1,0 +1,121 @@
+{
+  "title": "Developer Guide",
+  "subtitle": "Advanced development techniques and best practices",
+  "description": "Advanced guide for Cardity developers covering best practices, design patterns, and advanced development techniques.",
+  "overview": {
+    "title": "Development Overview",
+    "systemRequirements": {
+      "title": "System Requirements",
+      "operatingSystem": "Operating System",
+      "osValue": "Linux, macOS, Windows",
+      "memory": "Memory",
+      "memoryValue": "4GB RAM minimum",
+      "storage": "Storage",
+      "storageValue": "2GB free space",
+      "network": "Network",
+      "networkValue": "Internet connection"
+    },
+    "requiredDependencies": {
+      "title": "Required Dependencies"
+    },
+    "buildFromSource": {
+      "title": "Build from Source"
+    },
+    "projectStructure": {
+      "title": "Project Structure",
+      "cardityCoreArchitecture": {
+        "title": "Cardity Core Architecture"
+      }
+    }
+  },
+  "code": {
+    "macosInstall": "# macOS installation",
+    "ubuntuInstall": "# Ubuntu installation",
+    "centosInstall": "# CentOS installation",
+    "windowsInstall": "# Windows installation",
+    "cloneRepository": "# Clone repository",
+    "createBuildDir": "# Create build directory",
+    "configureCmake": "# Configure with CMake",
+    "buildProject": "# Build project",
+    "installSystem": "# Install system-wide",
+    "verifyInstall": "# Verify installation",
+    "projectStructure": "cardity_core/",
+    "compilerDir": "compiler/",
+    "lexerFile": "lexer.car",
+    "parserFile": "parser.car",
+    "semanticFile": "semantic.car",
+    "typeSystemFile": "type_system.car",
+    "runtimeFile": "runtime.car",
+    "carGeneratorFile": "car_generator.car",
+    "carcGeneratorFile": "carc_generator.car",
+    "carDeployerFile": "car_deployer.car",
+    "dogecoinDeployerFile": "dogecoin_deployer.car",
+    "drc20StandardFile": "drc20_standard.car",
+    "drc20CompilerFile": "drc20_compiler.car",
+    "drc20CliFile": "drc20_cli.car",
+    "eventSystemFile": "event_system.car",
+    "packageManagerFile": "package_manager.car",
+    "packageConfigFile": "package_config.car",
+    "packageBuilderFile": "package_builder.car",
+    "registryClientFile": "registry_client.car",
+    "cardityCliFile": "cardity_cli.car",
+    "examplesDir": "examples/",
+    "docsDir": "docs/",
+    "cmakeListsFile": "CMakeLists.txt"
+  },
+  "testing": {
+    "title": "Testing"
+  },
+  "bestPractices": {
+    "title": "Best Practices",
+    "errorHandling": {
+      "title": "Error Handling"
+    },
+    "protocolOptimization": {
+      "title": "Protocol Optimization",
+      "minimizeStateVariables": "Minimize State Variables",
+      "minimizeStateVariablesDesc": "Keep state variables minimal and focused",
+      "efficientDataStructures": "Efficient Data Structures",
+      "efficientDataStructuresDesc": "Use appropriate data structures for your use case",
+      "optimizeMethods": "Optimize Methods",
+      "optimizeMethodsDesc": "Write efficient method implementations",
+      "batchOperations": "Batch Operations",
+      "batchOperationsDesc": "Group operations when possible",
+      "lazyLoading": "Lazy Loading",
+      "lazyLoadingDesc": "Load data only when needed"
+    },
+    "compilationOptimization": {
+      "title": "Compilation Optimization"
+    },
+    "packageDevelopment": {
+      "title": "Package Development",
+      "creatingPackages": {
+        "title": "Creating Packages"
+      },
+      "packageConfiguration": {
+        "title": "Package Configuration"
+      }
+    }
+  },
+  "resources": {
+    "title": "Resources",
+    "documentation": "Documentation",
+    "gettingStartedGuide": "Getting Started Guide",
+    "languageReference": "Language Reference",
+    "standardLibrary": "Standard Library",
+    "cliTools": "CLI Tools",
+    "deploymentGuide": "Deployment Guide",
+    "community": "Community",
+    "githubRepository": "GitHub Repository",
+    "discordCommunity": "Discord Community",
+    "developerForum": "Developer Forum",
+    "emailSupport": "Email Support"
+  },
+  "nextSteps": {
+    "title": "Next Steps",
+    "description": "Continue your development journey",
+    "contributeCore": "Contribute to Cardity Core",
+    "createPackages": "Create and publish packages",
+    "buildApplications": "Build real-world applications"
+  }
+}

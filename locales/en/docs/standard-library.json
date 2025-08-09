@@ -1,0 +1,121 @@
+{
+  "title": "Standard Library",
+  "subtitle": "Built-in functions and utilities for Cardity development",
+  "description": "Comprehensive reference for Cardity standard library functions, utilities, and built-in modules for smart protocol development.",
+  "functions": {
+    "title": "Built-in Functions",
+    "timeFunctions": {
+      "title": "Time Functions",
+      "now": "Get current timestamp",
+      "time": "Get current time in seconds",
+      "date": "Get current date string"
+    },
+    "arrayFunctions": {
+      "title": "Array Functions",
+      "length": "Get array length",
+      "push": "Add element to array",
+      "pop": "Remove last element",
+      "splice": "Remove elements from array"
+    },
+    "stringFunctions": {
+      "title": "String Functions",
+      "length": "Get string length",
+      "substring": "Extract substring",
+      "toLowerCase": "Convert to lowercase",
+      "toUpperCase": "Convert to uppercase"
+    },
+    "mathFunctions": {
+      "title": "Math Functions",
+      "abs": "Absolute value",
+      "min": "Minimum value",
+      "max": "Maximum value",
+      "sqrt": "Square root"
+    }
+  },
+  "overview": {
+    "title": "Package Overview",
+    "description": "Cardity provides a comprehensive standard library with built-in functions and utilities for smart protocol development.",
+    "packageConfiguration": {
+      "title": "Package Configuration"
+    },
+    "packageCommands": {
+      "title": "Package Commands"
+    },
+    "standardPackages": {
+      "title": "Standard Packages",
+      "cardityStandard": {
+        "title": "cardity-standard",
+        "description": "Core standard library with essential functions",
+        "features": {
+          "title": "Features",
+          "dataStructures": "Data structures and collections",
+          "stringManipulation": "String manipulation utilities",
+          "mathOperations": "Mathematical operations",
+          "timeFunctions": "Time and date functions",
+          "validationHelpers": "Validation and type checking"
+        }
+      },
+      "cardityUtils": {
+        "title": "cardity-utils",
+        "description": "Utility functions for common tasks",
+        "features": {
+          "title": "Features",
+          "addressValidation": "Address validation utilities",
+          "hashEncryption": "Hash and encryption functions",
+          "jsonManipulation": "JSON manipulation helpers",
+          "errorHandling": "Error handling utilities",
+          "loggingDebugging": "Logging and debugging tools"
+        }
+      },
+      "cardityDrc20": {
+        "title": "cardity-drc20",
+        "description": "DRC-20 token development utilities",
+        "features": {
+          "title": "Features",
+          "tokenTemplates": "Token templates and patterns",
+          "deploymentUtilities": "Deployment utilities",
+          "mintTransfer": "Mint and transfer functions",
+          "tokenValidation": "Token validation helpers",
+          "eventEmission": "Event emission utilities"
+        }
+      },
+      "cardityTest": {
+        "title": "cardity-test",
+        "description": "Testing framework and utilities",
+        "features": {
+          "title": "Features",
+          "unitTesting": "Unit testing framework",
+          "assertionFunctions": "Assertion functions",
+          "mockStateEvents": "Mock state and events",
+          "testCoverage": "Test coverage reporting",
+          "integrationTesting": "Integration testing support"
+        }
+      }
+    }
+  },
+  "usage": {
+    "importAndUse": "Import and Use",
+    "code": {
+      "importStandardLibrary": "// Import standard library",
+      "useBuiltInFunctions": "// Use built-in functions",
+      "usingDrc20Library": "// Using DRC-20 library",
+      "drc20Configuration": "// DRC-20 configuration"
+    },
+    "drc20WithStandardLibrary": "DRC-20 with Standard Library",
+    "registryFeatures": "Registry Features",
+    "centralizedDiscovery": "Centralized package discovery",
+    "versionManagement": "Version management",
+    "dependencyResolution": "Dependency resolution",
+    "packageDocumentation": "Package documentation",
+    "communityRatings": "Community ratings",
+    "securityScanning": "Security scanning",
+    "registryCommands": "Registry Commands"
+  },
+  "nextSteps": {
+    "title": "Next Steps",
+    "description": "Continue exploring the standard library",
+    "learnDeployment": "Learn about deployment",
+    "exploreAdvancedTechniques": "Explore advanced techniques",
+    "createPublishPackages": "Create and publish packages"
+  }
+}

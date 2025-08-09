@@ -1,0 +1,90 @@
+{
+  "title": "部署指南",
+  "subtitle": "了解如何将您的 Cardity 智能协议部署到 Dogecoin 区块链",
+  "description": "将您的 Cardity 智能协议部署到 Dogecoin 区块链网络的逐步指南。",
+  "overview": {
+    "title": "部署概览",
+    "description": "Cardity 支持在 Dogecoin 区块链上部署智能协议的多种方法。"
+  },
+  "methods": {
+    "title": "部署方法",
+    "opReturn": {
+      "title": "OP_RETURN 方法",
+      "description": "使用 OP_RETURN 输出进行数据存储来部署协议"
+    },
+    "inscription": {
+      "title": "铭文方法",
+      "description": "使用 Dogecoin 铭文进行永久存储来部署协议"
+    }
+  },
+  "steps": {
+    "compile": {
+      "title": "编译协议"
+    },
+    "validate": {
+      "title": "验证协议"
+    },
+    "deploy": {
+      "title": "部署到区块链"
+    }
+  },
+  "code": {
+    "compileCommands": {
+      "compileToBinary": "# 编译为二进制",
+      "compileWithOptimization": "# 使用优化编译",
+      "compileWithOutput": "# 使用输出编译",
+      "validateCompilation": "# 验证编译"
+    },
+    "binaryStructure": {
+      "title": "二进制结构",
+      "description": "编译后的协议结构：",
+      "protocolMetadata": "协议元数据",
+      "stateVariables": "状态变量",
+      "methodBytecode": "方法字节码",
+      "eventDefinitions": "事件定义",
+      "abiInformation": "ABI 信息"
+    },
+    "deploymentCommands": {
+      "validateFile": "# 验证文件",
+      "viewProtocolInfo": "# 查看协议信息",
+      "checkDeploymentStatus": "# 检查部署状态",
+      "validateWithVerbose": "# 使用详细输出验证",
+      "deployToChain": "# 部署到链上",
+      "deployWithCustomFee": "# 使用自定义费用部署",
+      "deployToTestnet": "# 部署到测试网",
+      "deployWithMetadata": "# 使用元数据部署",
+      "createInscription": "# 创建铭文",
+      "createInscriptionWithMetadata": "# 使用元数据创建铭文",
+      "viewInscriptionDetails": "# 查看铭文详情",
+      "deployInscription": "# 部署铭文"
+    },
+    "validationChecks": {
+      "title": "验证检查",
+      "protocolStructure": "协议结构验证",
+      "stateVariableType": "状态变量类型检查",
+      "methodSyntax": "方法语法验证",
+      "eventDefinition": "事件定义验证",
+      "abiGeneration": "ABI 生成验证",
+      "sizeOptimization": "大小优化检查"
+    }
+  },
+  "troubleshooting": {
+    "title": "故障排除",
+    "documentation": "文档",
+    "documentAllMethods": "记录所有方法和参数",
+    "provideUsageExamples": "提供使用示例",
+    "includeDeploymentInstructions": "包含部署说明",
+    "maintainChangelog": "维护变更日志",
+    "createUserGuides": "创建用户指南",
+    "commonIssues": "常见问题",
+    "compilationErrors": "编译错误",
+    "deploymentFailures": "部署失败"
+  },
+  "nextSteps": {
+    "title": "下一步",
+    "description": "继续您的部署之旅",
+    "learnAdvancedTechniques": "学习高级部署技术",
+    "exploreTestingDebugging": "探索测试和调试",
+    "contributeEcosystem": "为生态系统做出贡献"
+  }
+}

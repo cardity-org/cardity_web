@@ -1,0 +1,76 @@
+{
+  "title": "Language Reference",
+  "subtitle": "Complete Cardity language syntax and features reference",
+  "description": "Comprehensive reference for the Cardity programming language syntax, data types, operators, and language features.",
+  "syntax": {
+    "title": "Syntax",
+    "description": "Basic syntax rules and structure"
+  },
+  "types": {
+    "title": "Data Types",
+    "description": "Built-in data types and their usage",
+    "basicTypes": {
+      "title": "Basic Types",
+      "string": "Text strings",
+      "int": "Integer numbers",
+      "bool": "Boolean values (true/false)",
+      "number": "Floating point numbers"
+    },
+    "complexTypes": {
+      "title": "Complex Types",
+      "array": "Ordered collections",
+      "map": "Key-value pairs",
+      "struct": "Custom data structures"
+    }
+  },
+  "functions": {
+    "title": "Functions",
+    "description": "Function declaration and usage",
+    "basicMethods": {
+      "title": "Basic Methods"
+    },
+    "methodsWithReturn": {
+      "title": "Methods with Return Values"
+    },
+    "methodsWithParams": {
+      "title": "Methods with Parameters"
+    },
+    "controlStructures": {
+      "title": "Control Structures",
+      "conditionalStatements": {
+        "title": "Conditional Statements"
+      },
+      "loops": {
+        "title": "Loops"
+      }
+    },
+    "builtInFunctions": {
+      "title": "Built-in Functions",
+      "description": "Pre-defined functions available in Cardity",
+      "commonFunctions": {
+        "title": "Common Functions",
+        "now": "Get current timestamp",
+        "length": "Get array or string length",
+        "push": "Add element to array",
+        "pop": "Remove last element from array"
+      },
+      "usageExamples": {
+        "title": "Usage Examples"
+      }
+    },
+    "errorHandling": {
+      "title": "Error Handling",
+      "description": "Handle errors and exceptions in your protocols"
+    },
+    "abiGeneration": {
+      "title": "ABI Generation",
+      "description": "Generate Application Binary Interface for your protocols",
+      "generateAbi": {
+        "title": "Generate ABI"
+      },
+      "generatedAbiExample": {
+        "title": "Generated ABI Example"
+      }
+    }
+  }
+}

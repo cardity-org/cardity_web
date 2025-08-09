@@ -28,11 +28,11 @@ export default function CodeBlock({ code, language, showLineNumbers = false }: C
     <div className="relative group">
       <button
         onClick={copyToClipboard}
-        className="absolute top-2 right-2 p-2 bg-gray-800 text-gray-300 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-gray-700"
+        className="absolute top-2 right-2 p-2 bg-dark-800 text-gray-300 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-dark-700 ring-1 ring-dark-700/60"
         title="复制代码"
       >
         {copied ? (
-          <Check className="w-4 h-4 text-green-400" />
+          <Check className="w-4 h-4 text-cardity-300" />
         ) : (
           <Copy className="w-4 h-4" />
         )}
@@ -47,6 +47,7 @@ export default function CodeBlock({ code, language, showLineNumbers = false }: C
           borderRadius: '0.5rem',
           fontSize: '0.875rem',
           lineHeight: '1.5',
+          border: '1px solid rgba(30,41,59,0.6)'
         }}
         codeTagProps={{
           style: {

@@ -1,0 +1,25 @@
+{
+  "title": "Documentation",
+  "subtitle": "Complete guide to Cardity smart protocol development",
+  "description": "Welcome to the Cardity documentation. Here you'll find everything you need to develop smart protocols on the Dogecoin blockchain.",
+  "learningPath": {
+    "title": "Learning Path",
+    "description": "If you are a new user, we recommend learning in the following order:",
+    "steps": [
+      "Install CLI tools and configure environment",
+      "Learn basic language syntax and concepts",
+      "Write and test your first contract",
+      "Understand standard library usage",
+      "Deploy contracts to Dogecoin network"
+    ]
+  },
+  "quickLinks": {
+    "title": "Quick Links",
+    "gettingStarted": "Getting Started",
+    "reference": "Language Reference",
+    "cli": "CLI Tools",
+    "standardLibrary": "Standard Library",
+    "deploy": "Deployment Guide",
+    "developerGuide": "Developer Guide"
+  }
+}

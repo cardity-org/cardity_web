@@ -19,16 +19,16 @@ const XIcon = ({ className }: { className?: string }) => (
 )
 
 export default function Footer() {
-  const { t, locale, isClient, isInitialized } = useTranslations()
+  const { t, locale } = useTranslations()
 
   // 使用 useMemo 确保导航链接在语言切换时重新计算
+  const langParam = useMemo(() => `?lang=${locale === 'zh' ? 'zh' : 'en'}`, [locale])
   const navigation = useMemo(() => ({
     main: [
-      { name: t('footer.links.docs'), href: '/docs' },
-      { name: t('footer.links.examples'), href: '/examples' },
-      { name: t('footer.links.download'), href: '/download' },
-      { name: t('footer.links.about'), href: '/about' },
-      { name: t('footer.links.blog'), href: '/blog' },
+      { name: t('footer.links.docs'), href: `/docs${langParam}` },
+      { name: t('footer.links.examples'), href: `/examples${langParam}` },
+      { name: t('footer.links.download'), href: `/download${langParam}` },
+      { name: t('footer.links.about'), href: `/about${langParam}` },
     ],
     social: [
       {
@@ -38,14 +38,14 @@ export default function Footer() {
       },
       {
         name: t('footer.community.twitter'),
-        href: 'https://twitter.com/carditylang',
+        href: 'https://x.com/song_doge',
         icon: XIcon,
       },
     ],
-  }), [t, locale, isClient, isInitialized])
+  }), [t, locale])
 
   return (
-    <footer className="bg-black border-t border-gray-800">
+    <footer className="bg-dark-950 border-t border-dark-800">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           {/* Logo and Description */}
@@ -61,7 +61,7 @@ export default function Footer() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-400 hover:text-gray-300 transition-colors duration-200"
+                  className="text-gray-400 hover:text-cardity-300 transition-colors duration-200"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -82,24 +82,24 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="/docs/getting-started"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      href={`/docs/getting-started${langParam}`}
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                     >
                       {t('footer.docs.gettingStarted')}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/docs/cli"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      href={`/docs/cli${langParam}`}
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                     >
                       {t('footer.docs.cliReference')}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/docs/deploy"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      href={`/docs/deploy${langParam}`}
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                     >
                       {t('footer.docs.deployment')}
                     </Link>
@@ -114,7 +114,7 @@ export default function Footer() {
                   <li>
                     <a
                       href="https://github.com/cardity-org/cardity-core"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -123,8 +123,8 @@ export default function Footer() {
                   </li>
                   <li>
                     <a
-                      href="https://twitter.com/carditylang"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      href="https://x.com/song_doge"
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -142,16 +142,16 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="/examples"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      href={`/examples${langParam}`}
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                     >
                       {t('footer.examples.smartProtocols')}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/download/examples"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      href={`/download/examples${langParam}`}
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                     >
                       {t('footer.examples.downloadExamples')}
                     </Link>
@@ -165,16 +165,16 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="/privacy"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      href={`/privacy${langParam}`}
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                     >
                       {t('footer.legal.privacy')}
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/terms"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      href={`/terms${langParam}`}
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                     >
                       {t('footer.legal.terms')}
                     </Link>
@@ -182,7 +182,7 @@ export default function Footer() {
                   <li>
                     <a
                       href="https://github.com/cardity-org/cardity-core/blob/main/LICENSE"
-                      className="text-base text-gray-300 hover:text-white transition-colors duration-200"
+                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

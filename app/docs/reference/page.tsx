@@ -489,11 +489,11 @@ cardity_abi drc20_token.car drc20_token.abi`}
             </ul>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/docs/standard-library" className="btn-primary inline-flex items-center">
+              <Link href={`/docs/standard-library?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-primary inline-flex items-center">
                 {t('docs.standardLibrary.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
-              <Link href="/docs/cli" className="btn-secondary inline-flex items-center">
+              <Link href={`/docs/cli?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
                 {t('docs.cli.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>

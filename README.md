@@ -137,5 +137,5 @@ MIT License - 查看 [LICENSE](LICENSE) 文件了解详情。
 ## 联系我们
 
 - GitHub: [@cardity](https://github.com/cardity)
-- X: [@carditylang](https://twitter.com/carditylang)
+- X: [@song_doge](https://x.com/song_doge)
 - Email: hello@cardity.org 

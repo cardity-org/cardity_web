@@ -628,11 +628,11 @@ protocol AdvancedProtocol {
             <div className="card">
               <h3 className="text-lg font-semibold text-white mb-3">{t('docs.developerGuide.resources.documentation')}</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>• <a href="/docs/getting-started" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.gettingStartedGuide')}</a></li>
-                <li>• <a href="/docs/reference" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.languageReference')}</a></li>
-                <li>• <a href="/docs/standard-library" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.standardLibrary')}</a></li>
-                <li>• <a href="/docs/cli" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.cliTools')}</a></li>
-                <li>• <a href="/docs/deploy" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.deploymentGuide')}</a></li>
+                <li>• <a href={`/docs/getting-started?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.gettingStartedGuide')}</a></li>
+                <li>• <a href={`/docs/reference?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.languageReference')}</a></li>
+                <li>• <a href={`/docs/standard-library?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.standardLibrary')}</a></li>
+                <li>• <a href={`/docs/cli?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.cliTools')}</a></li>
+                <li>• <a href={`/docs/deploy?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.deploymentGuide')}</a></li>
               </ul>
             </div>
             
@@ -641,7 +641,7 @@ protocol AdvancedProtocol {
               <ul className="space-y-2 text-gray-400">
                 <li>• <a href="https://github.com/cardity-org/cardity-core" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.githubRepository')}</a></li>
                 <li>• <a href="https://discord.gg/cardity" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.discordCommunity')}</a></li>
-                <li>• <a href="https://twitter.com/carditylang" className="text-blue-400 hover:text-blue-300">X</a></li>
+                <li>• <a href="https://x.com/song_doge" className="text-blue-400 hover:text-blue-300">X</a></li>
                 <li>• <a href="https://forum.cardity.dev" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.developerForum')}</a></li>
                 <li>• <a href="mailto:hello@cardity.org" className="text-blue-400 hover:text-blue-300">{t('docs.developerGuide.resources.emailSupport')}</a></li>
               </ul>
@@ -681,10 +681,10 @@ protocol AdvancedProtocol {
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center"
               >
-                {t('about.contributing.viewGitHub')}
+                {t('download.openSource.viewOnGithub')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </a>
-              <Link href="/examples" className="btn-secondary inline-flex items-center">
+              <Link href={`/examples?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
                 {t('docs.cli.help.viewExamples')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>

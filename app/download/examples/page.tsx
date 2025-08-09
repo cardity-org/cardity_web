@@ -626,7 +626,7 @@ cardity_runtime hello.car your_new_method`}
               <Github className="w-4 h-4 mr-2" />
               Browse All Examples
             </a>
-            <Link href="/docs/getting-started" className="btn-secondary inline-flex items-center">
+            <Link href={`/docs/getting-started?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
               <Code className="w-4 h-4 mr-2" />
               Learn Cardity
             </Link>

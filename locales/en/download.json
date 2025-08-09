@@ -1,0 +1,130 @@
+{
+  "title": "Download Cardity",
+  "subtitle": "Get the latest Cardity tools, examples, and development kits to start building smart protocols on Dogecoin",
+  "page": {
+    "title": "Download & Install",
+    "subtitle": "Source-based build and quick deployment guide"
+  },
+  "env": {
+    "title": "Environment & Dependencies",
+    "macosTested": "macOS (tested)",
+    "xcode": "Xcode Command Line Tools",
+    "brewDeps": "Homebrew deps: cmake, openssl, libarchive, curl",
+    "nodeVersion": "Node.js ≥ 16",
+    "installTitle": "Install dependencies"
+  },
+  "build": {
+    "title": "Download & Build"
+  },
+  "verify": {
+    "title": "Verify"
+  },
+  "quickstart": {
+    "title": "Quickstart (single-file deploy)"
+  },
+  "onchain": {
+    "title": "On-chain (inscription plan + broadcast)",
+    "envTitle": "1) Configure .env (repo root)",
+    "planTitle": "2) Generate plan and broadcast"
+  },
+  "optional": {
+    "title": "Optional: full commit/reveal (requires deps)"
+  },
+  "package": {
+    "title": "Multi-file packaging (package/module)"
+  },
+  "openSource": {
+    "title": "Open-source Repository",
+    "description": "Get the latest source code and report issues",
+    "viewOnGithub": "View on GitHub"
+  },
+  "quickStart": {
+    "title": "Quick Start",
+    "description": "Choose your platform and get started with Cardity in minutes",
+    "downloadFor": "Download for",
+    "orInstallVia": "Or install via package manager:",
+    "homebrewCommand": "brew install cardity"
+  },
+  "downloadOptions": {
+    "cliTools": {
+      "title": "CLI Tools",
+      "description": "Complete command-line interface for Cardity development"
+    },
+    "exampleProjects": {
+      "title": "Example Projects",
+      "description": "Ready-to-use example projects and templates"
+    },
+    "developmentKit": {
+      "title": "Development Kit",
+      "description": "Complete development environment setup"
+    }
+  },
+  "tools": {
+    "cardity": {
+      "name": "cardity",
+      "description": "Main CLI tool for project management",
+      "version": "0.1.0",
+      "size": "2.1 MB"
+    },
+    "cardityc": {
+      "name": "cardityc",
+      "description": "Compiler for .car files",
+      "version": "0.1.0",
+      "size": "1.8 MB"
+    },
+    "cardityRuntime": {
+      "name": "cardity_runtime",
+      "description": "Runtime execution engine",
+      "version": "0.1.0",
+      "size": "2.3 MB"
+    },
+    "cardityDrc20": {
+      "name": "cardity_drc20",
+      "description": "DRC-20 token management tools",
+      "version": "0.1.0",
+      "size": "1.5 MB"
+    },
+    "cardityAbi": {
+      "name": "cardity_abi",
+      "description": "ABI generator",
+      "version": "0.1.0",
+      "size": "1.2 MB"
+    },
+    "cardityDeploy": {
+      "name": "cardity_deploy",
+      "description": "Deployment tools",
+      "version": "0.1.0",
+      "size": "2.0 MB"
+    }
+  },
+  "platforms": {
+    "macOS": "macOS",
+    "linux": "Linux",
+    "windows": "Windows",
+    "architecturesLabel": "Architectures:",
+    "packageManagersLabel": "Package Managers:",
+    "download": "Download",
+    "architectures": {
+      "intelX64": "Intel x64",
+      "appleSilicon": "Apple Silicon",
+      "x64": "x64",
+      "arm64": "ARM64"
+    },
+    "packageManagers": {
+      "homebrew": "Homebrew",
+      "apt": "APT",
+      "yum": "YUM",
+      "chocolatey": "Chocolatey",
+      "directDownload": "Direct Download"
+    },
+    "allPlatforms": "All Platforms",
+    "sourceCode": "Source Code",
+    "vsCode": "VS Code"
+  },
+  "common": {
+    "version": "Version:",
+    "size": "Size:",
+    "platform": "Platform:",
+    "download": "Download"
+  }
+}

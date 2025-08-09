@@ -650,7 +650,7 @@ export default function ExampleDetailPage({ params }: { params: { slug: string }
           <div className="text-center">
             <h1 className="text-4xl font-bold text-white mb-4">示例未找到</h1>
             <p className="text-gray-400 mb-8">抱歉，您请求的示例不存在。</p>
-            <Link href="/examples" className="btn-primary inline-flex items-center">
+            <Link href={`/examples?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-primary inline-flex items-center">
               <ArrowLeft className="w-4 h-4 mr-2" />
               返回示例列表
             </Link>

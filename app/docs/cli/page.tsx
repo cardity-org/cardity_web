@@ -14,7 +14,7 @@ export default function CLIPage() {
         <h1 className="text-3xl font-bold text-white mb-4">
           {t('docs.cli.title')}
         </h1>
-        <p className="text-lg text-gray-400">
+        <p className="text-lg text-gray-300">
           {t('docs.cli.subtitle')}
         </p>
       </div>
@@ -27,9 +27,9 @@ export default function CLIPage() {
             {t('docs.cli.installation.title')}
           </h2>
           
-          <div className="bg-gray-900 rounded-lg p-6 mb-6">
+          <div className="card card-gradient mb-6">
             <h3 className="text-lg font-medium text-white mb-4 flex items-center">
-              <Package className="w-5 h-5 mr-2 text-blue-400" />
+              <Package className="w-5 h-5 mr-2 text-cardity-300" />
               {t('docs.cli.installation.npmInstall.title')}
             </h3>
             <CodeBlock
@@ -59,12 +59,12 @@ cardity --help`}
         {/* Basic Commands */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
-            <Terminal className="w-6 h-6 mr-3 text-blue-400" />
+            <Terminal className="w-6 h-6 mr-3 text-cardity-300" />
             {t('docs.cli.basicCommands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.basicCommands.projectInit.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.basicCommands.projectInit.code.initProject')}
@@ -83,7 +83,7 @@ cardity init my-first-protocol`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.basicCommands.compile.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.basicCommands.compile.code.compileFile')}
@@ -104,7 +104,7 @@ cardity compile src/index.car --format carc`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.basicCommands.run.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.basicCommands.run.code.runProtocol')}
@@ -125,7 +125,7 @@ cardity run dist/index.carc get_message`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.basicCommands.generateAbi.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.basicCommands.generateAbi.code.generateInterface')}
@@ -151,12 +151,12 @@ cardity abi src/index.car --output index.abi`}
         {/* DRC-20 Commands */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
-            <Database className="w-6 h-6 mr-3 text-green-400" />
+            <Database className="w-6 h-6 mr-3 text-cardity-300" />
             {t('docs.cli.drc20Commands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.drc20Commands.compile.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.drc20Commands.compile.code.compileToken')}
@@ -175,7 +175,7 @@ cardity drc20 compile token.car`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.drc20Commands.deploy.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.drc20Commands.deploy.code.deployToken')}
@@ -196,7 +196,7 @@ cardity drc20 deploy token.car --output deploy.json`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.drc20Commands.mint.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.drc20Commands.mint.code.mintTokens')}
@@ -217,7 +217,7 @@ cardity drc20 mint MYT 1000 --output mint.json`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.drc20Commands.transfer.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.drc20Commands.transfer.code.transferTokens')}
@@ -243,12 +243,12 @@ cardity drc20 transfer MYT doge1abc... 100 --output transfer.json`}
         {/* Deployment Commands */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
-            <Settings className="w-6 h-6 mr-3 text-purple-400" />
+            <Settings className="w-6 h-6 mr-3 text-cardity-300" />
             {t('docs.cli.deploymentCommands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.deploymentCommands.validate.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.deploymentCommands.validate.code.validateFile')}
@@ -267,7 +267,7 @@ cardity_deploy validate protocol.carc`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.deploymentCommands.info.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.deploymentCommands.info.code.viewInfo')}
@@ -286,7 +286,7 @@ cardity_deploy info protocol.carc`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.deploymentCommands.deploy.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.deploymentCommands.deploy.code.deployChain')}
@@ -309,7 +309,7 @@ cardity_deploy deploy protocol.carc \\
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.deploymentCommands.inscription.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.deploymentCommands.inscription.code.createInscription')}
@@ -337,12 +337,12 @@ cardity_deploy inscription protocol.carc \\
         {/* Advanced Commands */}
         <section>
           <h2 className="text-2xl font-semibold text-white mb-6 flex items-center">
-            <Code className="w-6 h-6 mr-3 text-orange-400" />
+            <Code className="w-6 h-6 mr-3 text-cardity-300" />
             {t('docs.cli.advancedCommands.title')}
           </h2>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.advancedCommands.compiler.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.advancedCommands.compiler.code.compileFormats')}
@@ -363,7 +363,7 @@ cardityc main.car -o deployed.carc`}
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.advancedCommands.abiGenerator.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.advancedCommands.abiGenerator.code.generateAbi')}
@@ -382,7 +382,7 @@ cardity_abi main.car main.abi          # Output to file
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.advancedCommands.runtime.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.advancedCommands.runtime.code.runProtocol')}
@@ -401,7 +401,7 @@ cardity_runtime main.car get_message
               </p>
             </div>
             
-            <div className="card">
+            <div className="card card-gradient">
               <h3 className="text-lg font-semibold text-white mb-4">{t('docs.cli.advancedCommands.packageManager.title')}</h3>
               <CodeBlock
                 code={isClient && isInitialized ? `${t('docs.cli.advancedCommands.packageManager.code.packageCommands')}
@@ -474,15 +474,15 @@ cardity --version --verbose`}
               {t('docs.cli.help.needHelp')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/docs/getting-started" className="btn-primary inline-flex items-center">
+              <Link href={`/docs/getting-started?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-primary inline-flex items-center">
                 <ArrowRight className="w-4 h-4 mr-2" />
                 {t('docs.cli.help.quickStart')}
               </Link>
-              <Link href="/examples" className="btn-secondary inline-flex items-center">
+              <Link href={`/examples?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
                 <Code className="w-4 h-4 mr-2" />
                 {t('docs.cli.help.viewExamples')}
               </Link>
-              <Link href="/docs/deploy" className="btn-secondary inline-flex items-center">
+              <Link href={`/docs/deploy?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
                 <Settings className="w-4 h-4 mr-2" />
                 {t('docs.cli.help.deployGuide')}
               </Link>

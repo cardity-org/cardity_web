@@ -555,11 +555,11 @@ cardity publish`}
             </ul>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/docs/deploy" className="btn-primary inline-flex items-center">
+              <Link href={`/docs/deploy?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-primary inline-flex items-center">
                 {t('docs.deploy.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
-              <Link href="/docs/developer-guide" className="btn-secondary inline-flex items-center">
+              <Link href={`/docs/developer-guide?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
                 {t('docs.developerGuide.title')}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>

@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "Cardity",
+    "subtitle": "专为在 Dogecoin UTXO 上开发智能协议而设计的静态类型编程语言",
+    "description": "使用现代、类型安全的编程语言构建强大的智能协议，直接在 Dogecoin 区块链上运行。",
+    "getStarted": "开始使用",
+    "readDocs": "查看文档",
+    "downloadTools": "下载工具",
+    "latestVersion": "最新版本"
+  },
+  "features": {
+    "title": "为什么选择 Cardity？",
+    "subtitle": "具有类型安全性和开发者体验的现代智能协议开发",
+    "compiler": {
+      "title": "类型安全",
+      "description": "静态类型检查防止运行时错误并提高代码质量"
+    },
+    "packageManager": {
+      "title": "开发者友好",
+      "description": "熟悉的语法，现代化的开发工具和调试支持"
+    },
+    "drc20": {
+      "title": "Dogecoin 原生",
+      "description": "专为 Dogecoin UTXO 模型构建，性能优化"
+    }
+  },
+  "installation": {
+    "title": "快速安装",
+    "subtitle": "几分钟内开始使用 Cardity",
+    "npmInstall": {
+      "title": "npm 安装（推荐）",
+      "description": "通过 npm 安装 Cardity 或从源码构建。包含完整的开发环境设置。"
+    },
+    "sourceCode": {
+      "title": "从源码安装",
+      "description": "从 GitHub 仓库克隆源码，适合开发者自定义编译和贡献代码"
+    }
+  },
+  "quickStart": {
+    "title": "创建第一个项目",
+    "subtitle": "几分钟内创建并部署你的第一个智能协议"
+  },
+  "cta": {
+    "title": "开始构建 Dogecoin 智能协议",
+    "subtitle": "加入 Cardity 社区，探索 UTXO 智能协议的无限可能",
+    "readDocs": "阅读文档",
+    "viewExamples": "查看示例",
+    "learnMore": "了解更多"
+  }
+}

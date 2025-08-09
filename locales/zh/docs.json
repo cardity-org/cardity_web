@@ -1,0 +1,25 @@
+{
+  "title": "文档",
+  "subtitle": "Cardity 智能协议开发完整指南",
+  "description": "欢迎来到 Cardity 文档。在这里您将找到在 Dogecoin 区块链上开发智能协议所需的一切。",
+  "learningPath": {
+    "title": "学习路径",
+    "description": "按照我们推荐的学习路径掌握 Cardity 开发",
+    "steps": [
+      "安装 CLI 工具并配置环境",
+      "学习基本语言语法和概念",
+      "编写和测试您的第一个协议",
+      "了解标准库的使用",
+      "将协议部署到 Dogecoin 网络"
+    ]
+  },
+  "quickLinks": {
+    "title": "快速链接",
+    "gettingStarted": "快速开始",
+    "reference": "语言参考",
+    "cli": "CLI 工具",
+    "standardLibrary": "标准库",
+    "deploy": "部署指南",
+    "developerGuide": "开发者指南"
+  }
+}

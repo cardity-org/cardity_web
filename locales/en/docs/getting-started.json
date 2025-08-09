@@ -1,0 +1,83 @@
+{
+  "title": "Getting Started",
+  "subtitle": "Install Cardity CLI and write your first smart protocol in minutes",
+  "description": "Get up and running with Cardity in just a few minutes. This guide will walk you through installing the CLI tools, setting up your development environment, and creating your first smart protocol.",
+  "installation": {
+    "title": "Installation",
+    "description": "Install Cardity CLI tools on your system",
+    "npmInstall": {
+      "title": "npm Installation (Recommended)",
+      "description": "Install Cardity via npm or build from source. Full development environment setup included.",
+      "successOutput": "cardity 1.0.1",
+      "outputText": "should be displayed if installation is successful."
+    },
+    "sourceCode": {
+      "title": "From Source Code",
+      "description": "Clone source code from GitHub repository, suitable for developers to customize compilation and contribute code"
+    }
+  },
+  "firstContract": {
+    "title": "Your First Contract",
+    "description": "Write and test your first Cardity smart protocol",
+    "createFile": "Create Your First Protocol",
+    "createFileDescription": "Create a new file called",
+    "compileRun": "Compile and Run"
+  },
+  "cliCommands": {
+    "title": "CLI Commands",
+    "projectInit": {
+      "title": "Project Initialization"
+    },
+    "compile": {
+      "title": "Compilation"
+    },
+    "drc20": {
+      "title": "DRC-20 Token"
+    },
+    "deployChain": {
+      "title": "Deploy to Chain"
+    }
+  },
+  "languageFeatures": {
+    "title": "Language Features",
+    "protocol": {
+      "title": "Protocol Definition",
+      "description": "Define smart protocols with clear structure and type safety",
+      "feature": "Type-safe protocol definitions"
+    },
+    "state": {
+      "title": "State Management",
+      "description": "Manage protocol state with persistent storage",
+      "feature": "Persistent state storage"
+    },
+    "events": {
+      "title": "Event System",
+      "description": "Emit and handle events for protocol interactions",
+      "feature": "Event-driven architecture"
+    },
+    "drc20": {
+      "title": "DRC-20 Support",
+      "description": "Built-in support for DRC-20 token standards",
+      "feature": "DRC-20 token creation"
+    }
+  },
+  "nextSteps": {
+    "title": "Next Steps",
+    "description": "Continue your learning journey with Cardity",
+    "cliReference": {
+      "title": "CLI Reference",
+      "description": "Learn all available CLI commands and options"
+    },
+    "examples": {
+      "title": "Examples",
+      "description": "Explore real-world smart protocol examples"
+    },
+    "deploy": {
+      "title": "Deployment Guide",
+      "description": "Deploy your protocols to Dogecoin blockchain"
+    },
+    "learnStandardLibrary": "Learn about the standard library",
+    "understandCliTools": "Understand CLI tools",
+    "viewMoreExamples": "View more examples"
+  }
+}

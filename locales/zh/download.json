@@ -1,0 +1,125 @@
+{
+  "title": "下载 Cardity",
+  "subtitle": "获取最新的 Cardity 工具、示例和开发套件，开始在 Dogecoin 上构建智能协议",
+  "page": {
+    "title": "下载与安装",
+    "subtitle": "基于源码构建与快速部署指南"
+  },
+  "env": {
+    "title": "开发环境与依赖",
+    "macosTested": "macOS（已测试）",
+    "xcode": "Xcode Command Line Tools",
+    "brewDeps": "Homebrew 依赖：cmake, openssl, libarchive, curl",
+    "nodeVersion": "Node.js ≥ 16",
+    "installTitle": "安装依赖"
+  },
+  "build": {
+    "title": "下载与构建"
+  },
+  "verify": {
+    "title": "验证"
+  },
+  "quickstart": {
+    "title": "快速上手（单文件部署）"
+  },
+  "onchain": {
+    "title": "直接上链（内置铭文计划 + 广播）",
+    "envTitle": "1) 配置 .env（放在仓库根目录）",
+    "planTitle": "2) 生成计划并广播"
+  },
+  "optional": {
+    "title": "可选：完整 commit/reveal（需安装依赖）"
+  },
+  "package": {
+    "title": "多文件打包（包/模块）"
+  },
+  "quickStart": {
+    "title": "快速开始",
+    "description": "选择您的平台，几分钟内开始使用 Cardity",
+    "downloadFor": "下载适用于",
+    "orInstallVia": "或通过包管理器安装：",
+    "homebrewCommand": "brew install cardity"
+  },
+  "downloadOptions": {
+    "cliTools": {
+      "title": "CLI 工具",
+      "description": "Cardity 开发的完整命令行界面"
+    },
+    "exampleProjects": {
+      "title": "示例项目",
+      "description": "即用型示例项目和模板"
+    },
+    "developmentKit": {
+      "title": "开发套件",
+      "description": "完整的开发环境设置"
+    }
+  },
+  "tools": {
+    "cardity": {
+      "name": "cardity",
+      "description": "项目管理的主要 CLI 工具",
+      "version": "0.1.0",
+      "size": "2.1 MB"
+    },
+    "cardityc": {
+      "name": "cardityc",
+      "description": ".car 文件编译器",
+      "version": "0.1.0",
+      "size": "1.8 MB"
+    },
+    "cardityRuntime": {
+      "name": "cardity_runtime",
+      "description": "运行时执行引擎",
+      "version": "0.1.0",
+      "size": "2.3 MB"
+    },
+    "cardityDrc20": {
+      "name": "cardity_drc20",
+      "description": "DRC-20 代币管理工具",
+      "version": "0.1.0",
+      "size": "1.5 MB"
+    },
+    "cardityAbi": {
+      "name": "cardity_abi",
+      "description": "ABI 生成器",
+      "version": "0.1.0",
+      "size": "1.2 MB"
+    },
+    "cardityDeploy": {
+      "name": "cardity_deploy",
+      "description": "部署工具",
+      "version": "0.1.0",
+      "size": "2.0 MB"
+    }
+  },
+  "platforms": {
+    "macOS": "macOS",
+    "linux": "Linux",
+    "windows": "Windows",
+    "architecturesLabel": "架构：",
+    "packageManagersLabel": "包管理器：",
+    "download": "下载",
+    "architectures": {
+      "intelX64": "Intel x64",
+      "appleSilicon": "Apple Silicon",
+      "x64": "x64",
+      "arm64": "ARM64"
+    },
+    "packageManagers": {
+      "homebrew": "Homebrew",
+      "apt": "APT",
+      "yum": "YUM",
+      "chocolatey": "Chocolatey",
+      "directDownload": "直接下载"
+    },
+    "allPlatforms": "所有平台",
+    "sourceCode": "源代码",
+    "vsCode": "VS Code"
+  },
+  "common": {
+    "version": "版本：",
+    "size": "大小：",
+    "platform": "平台：",
+    "download": "下载"
+  }
+}

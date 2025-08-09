@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       title: 'Cardity - Smart Protocols for Dogecoin',
       description: 'A statically-typed programming language for developing smart protocols on Dogecoin UTXO with Solidity-style syntax.',
     images: ['/images/cardity-logo-simple.svg'],
-    creator: '@carditylang',
+    creator: '@song_doge',
   },
   robots: {
     index: true,
@@ -87,11 +87,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#3B82F6" />
+        <meta name="theme-color" content="#0EA5E9" />
       </head>
       <body className={inter.className}>
         <LanguageWrapper>

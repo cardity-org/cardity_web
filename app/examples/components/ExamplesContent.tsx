@@ -605,7 +605,7 @@ export default function ExamplesContent() {
               <ExternalLink className="w-4 h-4 mr-2" />
               {t('examples.actions.submitExample')}
             </a>
-            <Link href="/docs/getting-started" className="btn-secondary inline-flex items-center">
+            <Link href={`/docs/getting-started?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
               <Code className="w-4 h-4 mr-2" />
               {t('examples.actions.startCoding')}
             </Link>

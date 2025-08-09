@@ -1,0 +1,121 @@
+{
+  "title": "标准库",
+  "subtitle": "Cardity 开发的内置函数和实用工具",
+  "description": "Cardity 标准库函数、实用工具和内置模块的完整参考，用于智能协议开发。",
+  "functions": {
+    "title": "内置函数",
+    "timeFunctions": {
+      "title": "时间函数",
+      "now": "获取当前时间戳",
+      "time": "获取当前时间（秒）",
+      "date": "获取当前日期字符串"
+    },
+    "arrayFunctions": {
+      "title": "数组函数",
+      "length": "获取数组长度",
+      "push": "向数组添加元素",
+      "pop": "移除最后一个元素",
+      "splice": "从数组中移除元素"
+    },
+    "stringFunctions": {
+      "title": "字符串函数",
+      "length": "获取字符串长度",
+      "substring": "提取子字符串",
+      "toLowerCase": "转换为小写",
+      "toUpperCase": "转换为大写"
+    },
+    "mathFunctions": {
+      "title": "数学函数",
+      "abs": "绝对值",
+      "min": "最小值",
+      "max": "最大值",
+      "sqrt": "平方根"
+    }
+  },
+  "overview": {
+    "title": "包概览",
+    "description": "Cardity 提供了全面的标准库，包含智能协议开发的内置函数和实用工具。",
+    "packageConfiguration": {
+      "title": "包配置"
+    },
+    "packageCommands": {
+      "title": "包命令"
+    },
+    "standardPackages": {
+      "title": "标准包",
+      "cardityStandard": {
+        "title": "cardity-standard",
+        "description": "核心标准库，包含基本函数",
+        "features": {
+          "title": "功能",
+          "dataStructures": "数据结构和集合",
+          "stringManipulation": "字符串操作工具",
+          "mathOperations": "数学运算",
+          "timeFunctions": "时间和日期函数",
+          "validationHelpers": "验证和类型检查"
+        }
+      },
+      "cardityUtils": {
+        "title": "cardity-utils",
+        "description": "常用任务的实用函数",
+        "features": {
+          "title": "功能",
+          "addressValidation": "地址验证工具",
+          "hashEncryption": "哈希和加密函数",
+          "jsonManipulation": "JSON 操作助手",
+          "errorHandling": "错误处理工具",
+          "loggingDebugging": "日志和调试工具"
+        }
+      },
+      "cardityDrc20": {
+        "title": "cardity-drc20",
+        "description": "DRC-20 代币开发工具",
+        "features": {
+          "title": "功能",
+          "tokenTemplates": "代币模板和模式",
+          "deploymentUtilities": "部署工具",
+          "mintTransfer": "铸造和转移函数",
+          "tokenValidation": "代币验证助手",
+          "eventEmission": "事件发出工具"
+        }
+      },
+      "cardityTest": {
+        "title": "cardity-test",
+        "description": "测试框架和工具",
+        "features": {
+          "title": "功能",
+          "unitTesting": "单元测试框架",
+          "assertionFunctions": "断言函数",
+          "mockStateEvents": "模拟状态和事件",
+          "testCoverage": "测试覆盖率报告",
+          "integrationTesting": "集成测试支持"
+        }
+      }
+    }
+  },
+  "usage": {
+    "importAndUse": "导入和使用",
+    "code": {
+      "importStandardLibrary": "// 导入标准库",
+      "useBuiltInFunctions": "// 使用内置函数",
+      "usingDrc20Library": "// 使用 DRC-20 库",
+      "drc20Configuration": "// DRC-20 配置"
+    },
+    "drc20WithStandardLibrary": "使用标准库的 DRC-20",
+    "registryFeatures": "注册表功能",
+    "centralizedDiscovery": "集中式包发现",
+    "versionManagement": "版本管理",
+    "dependencyResolution": "依赖解析",
+    "packageDocumentation": "包文档",
+    "communityRatings": "社区评分",
+    "securityScanning": "安全扫描",
+    "registryCommands": "注册表命令"
+  },
+  "nextSteps": {
+    "title": "下一步",
+    "description": "继续探索标准库",
+    "learnDeployment": "了解部署",
+    "exploreAdvancedTechniques": "探索高级技术",
+    "createPublishPackages": "创建和发布包"
+  }
+}
