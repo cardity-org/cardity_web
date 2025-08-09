@@ -48,10 +48,10 @@ export const metadata: Metadata = {
     siteName: 'Cardity',
     images: [
       {
-        url: '/images/cardity-logo-simple.svg',
+        url: '/api/og',
         width: 1200,
         height: 630,
-        alt: 'Cardity Logo',
+        alt: 'Cardity',
       },
     ],
     locale: 'en_US',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
       card: 'summary_large_image',
       title: 'Cardity - Smart Protocols for Dogecoin',
       description: 'A statically-typed programming language for developing smart protocols on Dogecoin UTXO with Solidity-style syntax.',
-    images: ['/images/cardity-logo-simple.svg'],
+    images: ['/api/og'],
     creator: '@song_doge',
   },
   robots: {
