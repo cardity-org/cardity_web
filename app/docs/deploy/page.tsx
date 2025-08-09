@@ -6,7 +6,7 @@ import CodeBlock from '../../../components/CodeBlock'
 import { useTranslations } from '../../../lib/i18n'
 
 export default function DeployPage() {
-  const { t, isClient, isInitialized } = useTranslations()
+  const { t, isClient, isInitialized, locale } = useTranslations()
   
   return (
     <div className="max-w-4xl mx-auto">

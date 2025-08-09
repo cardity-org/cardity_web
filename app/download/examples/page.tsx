@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslations } from '../../../lib/i18n'
 import { ArrowRight, Download, Code, Github, ExternalLink, FileText, Package } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
 
@@ -445,6 +446,9 @@ const categories = [
 ]
 
 export default function ExamplesDownloadPage() {
+  // This is a server component; useTranslations is a client hook.
+  // To avoid SSR errors and prerender failure, do not call client hooks here.
+  const langParam = '?lang=en'
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-16">
@@ -626,7 +630,7 @@ cardity_runtime hello.car your_new_method`}
               <Github className="w-4 h-4 mr-2" />
               Browse All Examples
             </a>
-            <Link href={`/docs/getting-started?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-secondary inline-flex items-center">
+            <Link href={`/docs/getting-started${langParam}`} className="btn-secondary inline-flex items-center">
               <Code className="w-4 h-4 mr-2" />
               Learn Cardity
             </Link>

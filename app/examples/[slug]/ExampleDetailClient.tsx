@@ -22,7 +22,7 @@ const iconMap: Record<string, any> = {
 }
 
 export default function ExampleDetailClient({ example, examplesData }: ExampleDetailClientProps) {
-  const { t } = useTranslations()
+  const { t, locale } = useTranslations()
 
   const getCategoryIcon = (category: string) => {
     switch (category) {

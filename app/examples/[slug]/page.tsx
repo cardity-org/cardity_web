@@ -640,6 +640,8 @@ export async function generateStaticParams() {
 }
 
 export default function ExampleDetailPage({ params }: { params: { slug: string } }) {
+  // locale is only available in client hooks; for server fallback, default to en
+  const langParam = '?lang=en'
   // 查找对应的示例
   const example = examplesData.find(ex => ex.slug === params.slug)
   
@@ -650,7 +652,7 @@ export default function ExampleDetailPage({ params }: { params: { slug: string }
           <div className="text-center">
             <h1 className="text-4xl font-bold text-white mb-4">示例未找到</h1>
             <p className="text-gray-400 mb-8">抱歉，您请求的示例不存在。</p>
-            <Link href={`/examples?lang=${locale === 'zh' ? 'zh' : 'en'}`} className="btn-primary inline-flex items-center">
+            <Link href={`/examples${langParam}`} className="btn-primary inline-flex items-center">
               <ArrowLeft className="w-4 h-4 mr-2" />
               返回示例列表
             </Link>
