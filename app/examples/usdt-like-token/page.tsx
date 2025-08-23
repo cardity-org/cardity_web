@@ -1,17 +1,13 @@
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-import ExampleDetailClient from './ExampleDetailClient'
+import ExampleDetailClient from '../[slug]/ExampleDetailClient'
 
-// 示例数据（仅保留核心仓库的 USDT-like 示例）
-const examplesData = [
-  {
-    slug: 'usdt-like-token',
-    title: 'USDT Like Token',
-    description: '演示如何用 Cardity 语言编写 USDT-like 协议并通过钱包以 hex-first 方式部署与调用。协议源码：08_usdt_like.car。',
-    category: 'token',
-    difficulty: 'intermediate',
-    icon: 'Coins',
-    code: `protocol USDTLikeToken {
+const example = {
+  slug: 'usdt-like-token',
+  title: 'USDT Like Token',
+  description: '演示如何用 Cardity 语言编写 USDT-like 协议并通过钱包以 hex-first 方式部署与调用。协议源码：08_usdt_like.car。',
+  category: 'token',
+  difficulty: 'intermediate',
+  icon: 'Coins',
+  code: `protocol USDTLikeToken {
   version: "1.0.0";
   owner: "doge1owner...";
 
@@ -89,48 +85,22 @@ const examplesData = [
   }
   returns: string state._result;
 }`,
-    features: [
-      'hex-first 部署/调用流程',
-      '费率与上限策略',
-      '冻结/解冻与暂停/恢复',
-      '发行与转账事件'
-    ],
-    usage: [
-      '代币发行与治理示例',
-      '钱包集成演示（hex-first）',
-      '对齐 dogeuni-sdk 的 commit/reveal 流程',
-      '表单校验（ABI 链下使用）'
-    ]
-  }
-]
-
-// 生成静态参数
-// 保留占位以防误访问动态路径；在 export 模式下改为静态路径
-export const dynamicParams = false
-export async function generateStaticParams() { return [] }
-
-export default function ExampleDetailPage({ params }: { params: { slug: string } }) {
-  // locale is only available in client hooks; for server fallback, default to en
-  const langParam = '?lang=en'
-  // 查找对应的示例
-  const example = examplesData.find(ex => ex.slug === params.slug)
-  
-  if (!example) {
-    return (
-      <div className="min-h-screen bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-white mb-4">示例未找到</h1>
-            <p className="text-gray-400 mb-8">抱歉，您请求的示例不存在。</p>
-            <Link href={`/examples${langParam}`} className="btn-primary inline-flex items-center">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              返回示例列表
-            </Link>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  return <ExampleDetailClient example={example} examplesData={examplesData} />
+  features: [
+    'hex-first 部署/调用流程',
+    '费率与上限策略',
+    '冻结/解冻与暂停/恢复',
+    '发行与转账事件'
+  ],
+  usage: [
+    '代币发行与治理示例',
+    '钱包集成演示（hex-first）',
+    '对齐 dogeuni-sdk 的 commit/reveal 流程',
+    '表单校验（ABI 链下使用）'
+  ]
 }
+
+export default function Page() {
+  return <ExampleDetailClient example={example} examplesData={[example]} />
+}
+
+

@@ -9,496 +9,151 @@ import { useMemo } from 'react'
 export default function ExamplesContent() {
   const { t, locale, isClient, isInitialized } = useTranslations()
 
+  // 简易 Provider 获取
+  const getProvider = async () => {
+    if (typeof window === 'undefined') return null as any
+    const w: any = window as any
+    if (w.dogeuni || w.unielon) return w.dogeuni || w.unielon
+    await new Promise<void>((resolve) => {
+      const t = setInterval(() => {
+        const ww: any = window as any
+        if (ww.dogeuni || ww.unielon) { clearInterval(t); resolve() }
+      }, 50)
+    })
+    const ww: any = window as any
+    return ww.dogeuni || ww.unielon
+  }
+
+  // 列表页快速部署（演示用，建议仍跳详情查看完整说明）
+  const handleQuickDeploy = async (example: any) => {
+    try {
+      const wallet: any = await getProvider()
+      if (!wallet) { alert('Provider not found'); return }
+      // 从 code 中提取 protocol 名；退化为标题去空格
+      const m = example?.code?.match(/protocol\s+([A-Za-z0-9_]+)/)
+      const moduleName = m?.[1] || String(example?.title || '').replace(/\s+/g, '') || 'Module'
+      // 确保先授权账户（避免直接部署被浏览器或钱包拦截）
+      try {
+        await (wallet.request?.({ method: 'requestAccounts' })
+          || wallet.request?.({ method: 'dogeuni_requestAccounts' })
+          || wallet.requestAccounts?.()
+          || wallet.getAccounts?.())
+      } catch (e) {
+        console.error('connect rejected', e)
+        alert('连接钱包被拒绝或失败')
+        return
+      }
+      // 读取本地生成的 carc_b64（当前示例为 USDT demo）
+      const resp = await fetch('/examples/10_wallet_invoke_demo/out/usdt.carc.b64')
+      const carc_b64 = await resp.text()
+      let res: any = null
+      try {
+        res = await wallet.request?.({
+          method: 'dogeuni_cardity_deploy',
+          params: { protocol: moduleName, version: '1.0.0', module: moduleName, carc_b64, feeRate: 150000, forcePrompt: true },
+        })
+      } catch {}
+      if (!res) {
+        res = await wallet.cardityDeploy?.({ carc_b64, module: moduleName, version: '1.0.0' })
+      }
+      if (res?.code === 413) {
+        alert(`oversize, need plan. bytes=${res?.bytes} limit=${res?.limit}`)
+        return
+      }
+      alert(`deploy broadcast: ${res?.txid || res}`)
+    } catch (e) {
+      alert(`deploy failed: ${String((e as any)?.msg || e)}`)
+    }
+  }
+
   // 使用 useMemo 确保示例数据在语言切换时重新计算
   const examples = useMemo(() => [
+    // 仅展示核心仓库中提供的 USDT-like 示例
     {
-      title: 'Hello World',
-      description: '最简单的 Hello World 示例，展示基本的协议结构：协议定义、状态变量、事件定义和基本方法实现',
-      category: t('examples.categories.basic'),
-      difficulty: t('examples.difficulty.beginner'),
-      icon: Database,
-      code: `protocol HelloWorld {
-  version: "1.0.0";
-  owner: "doge1abc123def456";
-  
-  state {
-    message: string = "Hello, Cardity!";
-    count: int = 0;
-  }
-  
-  event MessageUpdated {
-    new_message: string;
-  }
-  
-  event CounterIncremented {
-    old_count: int;
-    new_count: int;
-  }
-  
-  method get_message() {
-    return state.message;
-  }
-  
-  method set_message(new_message) {
-    state.message = new_message;
-    emit MessageUpdated(new_message);
-  }
-  
-  method increment() {
-    let old_count = state.count;
-    state.count = state.count + 1;
-    emit CounterIncremented(old_count, state.count);
-  }
-  
-  method get_count() {
-    return state.count;
-  }
-}`,
-    },
-    {
-      title: 'Counter Protocol',
-      description: '计数器协议，展示状态管理和事件系统：状态变量操作、条件逻辑、事件发射和方法参数',
-      category: t('examples.categories.basic'),
-      difficulty: t('examples.difficulty.beginner'),
-      icon: Shield,
-      code: `protocol Counter {
-  version: "1.0.0";
-  owner: "doge1counter123";
-  
-  state {
-    count: int = 0;
-    name: string = "Counter";
-    active: bool = true;
-    max_count: int = 1000;
-  }
-  
-  event CountChanged {
-    old_count: int;
-    new_count: int;
-    operation: string;
-  }
-  
-  event CounterReset {
-    previous_count: int;
-  }
-  
-  method increment() {
-    if (state.active && state.count < state.max_count) {
-      let old_count = state.count;
-      state.count = state.count + 1;
-      emit CountChanged(old_count, state.count, "increment");
-    }
-  }
-  
-  method decrement() {
-    if (state.active && state.count > 0) {
-      let old_count = state.count;
-      state.count = state.count - 1;
-      emit CountChanged(old_count, state.count, "decrement");
-    }
-  }
-  
-  method get_count() {
-    return state.count;
-  }
-  
-  method set_name(new_name) {
-    state.name = new_name;
-  }
-  
-  method get_name() {
-    return state.name;
-  }
-  
-  method toggle_active() {
-    state.active = !state.active;
-  }
-  
-  method reset() {
-    let previous_count = state.count;
-    state.count = 0;
-    emit CounterReset(previous_count);
-  }
-  
-  method set_max_count(max) {
-    if (max > 0) {
-      state.max_count = max;
-    }
-  }
-}`,
-    },
-    {
-      title: 'Simple Wallet',
-      description: '基础钱包协议，展示金融应用开发：余额管理、交易记录、安全锁定机制和每日限额控制',
-      category: t('examples.categories.wallet'),
-      difficulty: t('examples.difficulty.intermediate'),
-      icon: Download,
-      code: `protocol Wallet {
-  version: "1.0.0";
-  owner: "doge1wallet456";
-  
-  state {
-    balance: int = 0;
-    owner_address: string = "doge1wallet456";
-    is_locked: bool = false;
-    transaction_count: int = 0;
-    max_daily_withdrawal: int = 10000;
-    daily_withdrawal_used: int = 0;
-    last_reset_date: string = "";
-  }
-  
-  event BalanceUpdated {
-    old_balance: int;
-    new_balance: int;
-    operation: string;
-  }
-  
-  event WalletLocked {
-    locked: bool;
-  }
-  
-  event TransactionCreated {
-    amount: int;
-    transaction_type: string;
-  }
-  
-  method deposit(amount) {
-    if (!state.is_locked && amount > 0) {
-      let old_balance = state.balance;
-      state.balance = state.balance + amount;
-      state.transaction_count = state.transaction_count + 1;
-      emit BalanceUpdated(old_balance, state.balance, "deposit");
-      emit TransactionCreated(amount, "deposit");
-    }
-  }
-  
-  method withdraw(amount) {
-    if (!state.is_locked && amount > 0) {
-      if (state.balance >= amount) {
-        if (state.daily_withdrawal_used + amount <= state.max_daily_withdrawal) {
-          let old_balance = state.balance;
-          state.balance = state.balance - amount;
-          state.daily_withdrawal_used = state.daily_withdrawal_used + amount;
-          state.transaction_count = state.transaction_count + 1;
-          emit BalanceUpdated(old_balance, state.balance, "withdraw");
-          emit TransactionCreated(amount, "withdraw");
-        }
-      }
-    }
-  }
-  
-  method get_balance() {
-    return state.balance;
-  }
-  
-  method get_owner() {
-    return state.owner_address;
-  }
-  
-  method lock_wallet() {
-    state.is_locked = true;
-    emit WalletLocked(true);
-  }
-  
-  method unlock_wallet() {
-    state.is_locked = false;
-    emit WalletLocked(false);
-  }
-  
-  method get_transaction_count() {
-    return state.transaction_count;
-  }
-  
-  method set_max_daily_withdrawal(max) {
-    if (max > 0) {
-      state.max_daily_withdrawal = max;
-    }
-  }
-  
-  method reset_daily_withdrawal() {
-    state.daily_withdrawal_used = 0;
-    state.last_reset_date = "today";
-  }
-}`,
-    },
-    {
-      title: 'DRC-20 Token',
-      description: '完整的 DRC-20 代币实现：DRC-20 标准支持、代币部署、铸造和转账、持有人统计和完整的事件系统',
+      title: 'USDT Like Token',
+      slug: 'usdt-like-token',
+      description: '本目录仅保留一个示例，演示如何用 Cardity 语言编写 USDT-like 协议并通过钱包以 hex-first 方式部署与调用。协议源码：08_usdt_like.car。',
       category: t('examples.categories.token'),
       difficulty: t('examples.difficulty.intermediate'),
-      icon: Globe,
-      code: `protocol MyDrc20Token {
+      icon: Coins,
+      hasDetail: true,
+      code: `protocol USDTLikeToken {
   version: "1.0.0";
-  owner: "doge1token123";
-  
-  // DRC-20 代币定义
-  drc20 {
-    tick: "MYT";
-    name: "My Token";
-    max_supply: "1000000";
-    mint_limit: "1000";
-    decimals: "18";
-    deployer: "doge1token123";
-  }
-  
-  // 状态变量
+  owner: "doge1owner...";
+
   state {
+    name: string = "Tether USD";
+    symbol: string = "USDT";
+    decimals: int = 6;
+
     total_supply: int = 0;
-    deployed: bool = false;
-    mint_count: int = 0;
-    transfer_count: int = 0;
-    holders: int = 0;
+    max_supply: int = 1000000000;
+    owner_addr: address = "doge1owner...";
+
+    balances_placeholder: string = "";
+
+    paused: bool = false;
+
+    basis_points_rate: int = 0;
+    maximum_fee: int = 0;
+    _fee: int = 0;
+    _send: int = 0;
+    max_tx_amount: int = 500000;
+    frozen_placeholder: string = "";
+    _result: string = "ok";
   }
-  
-  // 事件定义
-  event TokenDeployed {
-    tick: string;
-    max_supply: string;
-    deployer: string;
+
+  method set_fee_policy(bps, cap) { state.basis_points_rate = params.bps; state.maximum_fee = params.cap }
+  returns: string "ok";
+
+  method issue(amount) {
+    state._result = "ok";
+    if (params.amount <= 0) { state._result = "InvalidAmount" }
+    if (state.total_supply + params.amount > state.max_supply) { state._result = "ExceedsMaxSupply" }
+    if (state._result == "ok") { state.total_supply = state.total_supply + params.amount }
+    if (state._result == "ok") { state.balances[state.owner_addr] = state.balances[state.owner_addr] + params.amount }
+    if (state._result == "ok") { emit Issue(state.owner_addr, params.amount, state.total_supply) }
   }
-  
-  event TokenMinted {
-    tick: string;
-    amount: int;
-    total_supply: int;
-    minter: string;
+  returns: string state._result;
+
+  method balance_of(user) { state.total_supply = state.total_supply }
+  returns: int state.balances[params.user];
+
+  method pause() { state.paused = "true" }
+  returns: string "paused";
+
+  method unpause() { state.paused = "false" }
+  returns: string "unpaused";
+
+  method calc_fee(amount) { state.total_supply = state.total_supply }
+  returns: int (params.amount * state.basis_points_rate) / 10000;
+
+  method freeze(user) { state.frozen[params.user] = "true" }
+  returns: string "ok";
+
+  method unfreeze(user) { state.frozen[params.user] = "false" }
+  returns: string "ok";
+
+  method transfer(to, amount) {
+    state._result = "ok";
+    if (params.amount <= 0) { state._result = "InvalidAmount" }
+    if (state.paused == "true") { state._result = "Paused" }
+    if (params.amount > state.max_tx_amount) { state._result = "ExceedsLimit" }
+    if (state.frozen[ctx.sender] == "true") { state._result = "SenderFrozen" }
+    if (state.frozen[params.to] == "true") { state._result = "RecipientFrozen" }
+    if (state.balances[ctx.sender] < params.amount) { state._result = "Insufficient" }
+
+    if (state._result == "ok") { state._fee = params.amount }
+    if (state._result == "ok") { state._fee = state._fee * state.basis_points_rate }
+    if (state._result == "ok") { state._fee = state._fee / 10000 }
+    if (state._result == "ok") { if (state._fee > state.maximum_fee) { state._fee = state.maximum_fee } }
+    if (state._result == "ok") { state._send = params.amount - state._fee }
+    if (state._result == "ok") { state.balances[ctx.sender] = state.balances[ctx.sender] - params.amount }
+    if (state._result == "ok") { state.balances[params.to] = state.balances[params.to] + state._send }
+    if (state._result == "ok") { state.balances[state.owner_addr] = state.balances[state.owner_addr] + state._fee }
+    if (state._result == "ok") { emit Transfer(ctx.sender, params.to, state._send, state._fee) }
   }
-  
-  event TokenTransferred {
-    tick: string;
-    amount: int;
-    from_address: string;
-    to_address: string;
-  }
-  
-  event HolderAdded {
-    address: string;
-    total_holders: int;
-  }
-  
-  // 部署方法
-  method deploy() {
-    if (!state.deployed) {
-      // 验证代币参数
-      if (drc20.tick.length() < 3 || drc20.tick.length() > 4) {
-        return "Invalid tick length";
-      }
-      
-      if (drc20.max_supply <= 0) {
-        return "Invalid max supply";
-      }
-      
-      // 执行部署
-      state.deployed = true;
-      emit TokenDeployed(drc20.tick, drc20.max_supply, drc20.deployer);
-      return "Token deployed successfully";
-    }
-    return "Token already deployed";
-  }
-  
-  // 铸造方法
-  method mint(amount, minter_address) {
-    if (!state.deployed) {
-      return "Token not deployed";
-    }
-    
-    if (amount <= 0) {
-      return "Invalid amount";
-    }
-    
-    if (state.total_supply + amount > drc20.max_supply) {
-      return "Exceeds max supply";
-    }
-    
-    if (amount > drc20.mint_limit) {
-      return "Exceeds mint limit";
-    }
-    
-    // 执行铸造
-    state.total_supply = state.total_supply + amount;
-    state.mint_count = state.mint_count + 1;
-    emit TokenMinted(drc20.tick, amount, state.total_supply, minter_address);
-    return "Minted successfully";
-  }
-  
-  // 转账方法
-  method transfer(from_address, to_address, amount) {
-    if (!state.deployed) {
-      return "Token not deployed";
-    }
-    
-    if (amount <= 0) {
-      return "Invalid amount";
-    }
-    
-    if (from_address.length() < 26 || to_address.length() < 26) {
-      return "Invalid address";
-    }
-    
-    // 执行转账
-    state.transfer_count = state.transfer_count + 1;
-    state.holders = state.holders + 1;
-    emit TokenTransferred(drc20.tick, amount, from_address, to_address);
-    emit HolderAdded(to_address, state.holders);
-    return "Transfer successful";
-  }
-  
-  // 查询方法
-  method get_total_supply() {
-    return state.total_supply;
-  }
-  
-  method get_mint_count() {
-    return state.mint_count;
-  }
-  
-  method get_transfer_count() {
-    return state.transfer_count;
-  }
-  
-  method get_holders_count() {
-    return state.holders;
-  }
-  
-  method is_deployed() {
-    return state.deployed;
-  }
-  
-  method get_token_info() {
-    return "Token: " + drc20.tick + ", Name: " + drc20.name + ", Supply: " + state.total_supply;
-  }
-}`,
-    },
-    {
-      title: 'Event System Demo',
-      description: '事件系统演示，展示复杂的事件处理：多种事件类型、事件参数、系统事件和错误处理事件',
-      category: t('examples.categories.advanced'),
-      difficulty: t('examples.difficulty.intermediate'),
-      icon: Zap,
-      code: `protocol EventDemo {
-  version: "1.0.0";
-  owner: "doge1event123";
-  
-  state {
-    user_count: int = 0;
-    event_count: int = 0;
-    last_event_time: string = "";
-    active_users: int = 0;
-  }
-  
-  // 用户相关事件
-  event UserRegistered {
-    user_id: string;
-    user_name: string;
-    registration_time: string;
-  }
-  
-  event UserLogin {
-    user_id: string;
-    login_time: string;
-  }
-  
-  event UserLogout {
-    user_id: string;
-    logout_time: string;
-    session_duration: int;
-  }
-  
-  // 系统事件
-  event SystemEvent {
-    event_type: string;
-    description: string;
-    timestamp: string;
-  }
-  
-  event ErrorOccurred {
-    error_code: int;
-    error_message: string;
-    user_id: string;
-  }
-  
-  // 用户管理方法
-  method register_user(user_id, user_name) {
-    if (user_id.length() > 0 && user_name.length() > 0) {
-      state.user_count = state.user_count + 1;
-      state.event_count = state.event_count + 1;
-      state.last_event_time = "now";
-      
-      emit UserRegistered(user_id, user_name, "now");
-      emit SystemEvent("user_registration", "New user registered", "now");
-      
-      return "User registered successfully";
-    }
-    return "Invalid user data";
-  }
-  
-  method user_login(user_id) {
-    if (user_id.length() > 0) {
-      state.active_users = state.active_users + 1;
-      state.event_count = state.event_count + 1;
-      state.last_event_time = "now";
-      
-      emit UserLogin(user_id, "now");
-      emit SystemEvent("user_login", "User logged in", "now");
-      
-      return "Login successful";
-    }
-    return "Invalid user ID";
-  }
-  
-  method user_logout(user_id, session_duration) {
-    if (user_id.length() > 0) {
-      state.active_users = state.active_users - 1;
-      state.event_count = state.event_count + 1;
-      state.last_event_time = "now";
-      
-      emit UserLogout(user_id, "now", session_duration);
-      emit SystemEvent("user_logout", "User logged out", "now");
-      
-      return "Logout successful";
-    }
-    return "Invalid user ID";
-  }
-  
-  // 系统方法
-  method trigger_system_event(event_type, description) {
-    state.event_count = state.event_count + 1;
-    state.last_event_time = "now";
-    
-    emit SystemEvent(event_type, description, "now");
-    return "System event triggered";
-  }
-  
-  method report_error(error_code, error_message, user_id) {
-    state.event_count = state.event_count + 1;
-    state.last_event_time = "now";
-    
-    emit ErrorOccurred(error_code, error_message, user_id);
-    emit SystemEvent("error", "Error reported", "now");
-    
-    return "Error reported";
-  }
-  
-  // 查询方法
-  method get_user_count() {
-    return state.user_count;
-  }
-  
-  method get_event_count() {
-    return state.event_count;
-  }
-  
-  method get_active_users() {
-    return state.active_users;
-  }
-  
-  method get_last_event_time() {
-    return state.last_event_time;
-  }
-  
-  method get_stats() {
-    return "Users: " + state.user_count + ", Events: " + state.event_count + ", Active: " + state.active_users;
-  }
+  returns: string state._result;
 }`,
     },
   ], [t])
@@ -576,13 +231,23 @@ export default function ExamplesContent() {
                   </span>
                 </div>
                 
-                <Link
-                  href={`/examples/${example.title.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium"
-                >
-                  {t('examples.actions.viewDetails')}
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
+                <div className="flex items-center space-x-3">
+                  <button
+                    onClick={() => handleQuickDeploy(example)}
+                    className="btn-secondary inline-flex items-center"
+                  >
+                    <Download className="w-4 h-4 mr-2" />部署
+                  </button>
+                  {example.hasDetail ? (
+                    <Link
+                      href={`/examples/${(example.slug || example.title.toLowerCase().replace(/\s+/g, '-'))}/`}
+                      className="inline-flex items-center text-blue-400 hover:text-blue-300 font-medium"
+                    >
+                      {t('examples.actions.viewDetails')}
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </Link>
+                  ) : null}
+                </div>
               </div>
             </div>
           ))}

@@ -1,0 +1,86 @@
+{
+  "events": null,
+  "methods": {
+    "balance_of": {
+      "params": [
+        {
+          "name": "user",
+          "type": "string"
+        }
+      ],
+      "returns": "int"
+    },
+    "calc_fee": {
+      "params": [
+        {
+          "name": "amount",
+          "type": "string"
+        }
+      ],
+      "returns": "int"
+    },
+    "freeze": {
+      "params": [
+        {
+          "name": "user",
+          "type": "string"
+        }
+      ],
+      "returns": "string"
+    },
+    "issue": {
+      "params": [
+        {
+          "name": "amount",
+          "type": "string"
+        }
+      ],
+      "returns": "string"
+    },
+    "pause": {
+      "params": [],
+      "returns": "string"
+    },
+    "set_fee_policy": {
+      "params": [
+        {
+          "name": "bps",
+          "type": "string"
+        },
+        {
+          "name": "cap",
+          "type": "string"
+        }
+      ],
+      "returns": "string"
+    },
+    "transfer": {
+      "params": [
+        {
+          "name": "to",
+          "type": "string"
+        },
+        {
+          "name": "amount",
+          "type": "string"
+        }
+      ],
+      "returns": "string"
+    },
+    "unfreeze": {
+      "params": [
+        {
+          "name": "user",
+          "type": "string"
+        }
+      ],
+      "returns": "string"
+    },
+    "unpause": {
+      "params": [],
+      "returns": "string"
+    }
+  },
+  "protocol": "USDTLikeToken",
+  "version": "1.0.0"
+}
