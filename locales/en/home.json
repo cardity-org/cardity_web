@@ -1,50 +1,86 @@
 {
   "hero": {
-    "title": "Cardity",
-    "subtitle": "A static type programming language designed for developing smart protocols on Dogecoin UTXO",
-    "description": "Build powerful smart protocols with a modern, type-safe programming language that runs directly on the Dogecoin blockchain.",
-    "getStarted": "Get Started",
+    "badge": "Public Cardity Core API is live",
+    "eyebrow": "Agent protocol layer",
+    "title": "Cardity Core",
+    "subtitle": "Turn protocol intent into system-ready artifacts for agents.",
+    "description": "Cardity Core compiles Cardity protocol source into ABI, protocol JSON, and Agent OS manifests. Agents can call the public API or MCP endpoint to generate the contract surface of a complete app from a precise protocol.",
+    "tryApi": "Try the API",
     "readDocs": "Read the docs",
-    "downloadTools": "Download Tools",
-    "latestVersion": "Latest Version"
+    "live": "Live",
+    "stats": [
+      "ABI + protocol JSON",
+      "Agent OS manifest",
+      "MCP-over-HTTP endpoint"
+    ]
   },
-  "features": {
-    "title": "Why Cardity?",
-    "subtitle": "Modern smart protocol development with type safety and developer experience",
-    "compiler": {
-      "title": "Type Safe",
-      "description": "Static type checking prevents runtime errors and improves code quality"
-    },
-    "packageManager": {
-      "title": "Developer Friendly",
-      "description": "Familiar syntax with modern development tools and debugging support"
-    },
-    "drc20": {
-      "title": "Dogecoin Native",
-      "description": "Built specifically for Dogecoin UTXO model with optimized performance"
-    }
+  "pipeline": {
+    "title": "From one protocol to a buildable system",
+    "subtitle": "Cardity is the deterministic layer between natural-language agents and production code generation.",
+    "steps": [
+      {
+        "label": "01",
+        "title": "Describe intent",
+        "description": "An agent or developer starts with a business rule, workflow, or protocol idea."
+      },
+      {
+        "label": "02",
+        "title": "Compile protocol",
+        "description": "Cardity Core validates the source and emits a stable machine-readable protocol contract."
+      },
+      {
+        "label": "03",
+        "title": "Generate system plan",
+        "description": "The Agent OS manifest exposes actions, state, permissions, API routes, UI resources, and workflows."
+      },
+      {
+        "label": "04",
+        "title": "Build with agents",
+        "description": "Downstream agents can generate services, UI, tests, and runtime integrations from the same source of truth."
+      }
+    ]
   },
-  "installation": {
-    "title": "Quick Installation",
-    "subtitle": "Get started with Cardity in minutes",
-    "npmInstall": {
-      "title": "npm Installation (Recommended)",
-      "description": "Install Cardity via npm or build from source. Full development environment setup included."
-    },
-    "sourceCode": {
-      "title": "From Source Code",
-      "description": "Clone source code from GitHub repository, suitable for developers to customize compilation and contribute code"
-    }
+  "artifacts": {
+    "title": "Artifacts agents can trust",
+    "subtitle": "The public API is compiler-only: it accepts source text and returns structured artifacts without signing, deploying, or reading a user's workspace.",
+    "exampleTitle": "MCP-over-HTTP tool call",
+    "items": [
+      {
+        "title": "ABI",
+        "description": "Typed method definitions, parameters, return values, and callable protocol shape."
+      },
+      {
+        "title": "Protocol JSON",
+        "description": "A normalized representation of protocol state, methods, events, and metadata."
+      },
+      {
+        "title": "Agent OS manifest",
+        "description": "Action schemas, permissions, API route hints, UI resources, database state, and workflow triggers."
+      }
+    ]
   },
-  "quickStart": {
-    "title": "Create Your First Project",
-    "subtitle": "Create and deploy your first smart protocol in minutes"
+  "integrations": {
+    "title": "Designed for every agent surface",
+    "subtitle": "Use Cardity Core remotely today, or keep it local when a desktop agent needs filesystem-level control.",
+    "items": [
+      {
+        "title": "Public API",
+        "description": "Call https://api.cardity.org from any agent, workflow, or backend service."
+      },
+      {
+        "title": "MCP endpoint",
+        "description": "Discover and invoke cardity_compile through the hosted JSON-RPC MCP endpoint."
+      },
+      {
+        "title": "CLI and local MCP",
+        "description": "Run the same compiler locally for private workspaces, CI, and deeper Agent OS integrations."
+      }
+    ]
   },
   "cta": {
-    "title": "Start Building Dogecoin Smart Protocols",
-    "subtitle": "Join the Cardity community and explore unlimited possibilities of UTXO smart protocols",
-    "readDocs": "Read Documentation",
-    "viewExamples": "View Examples",
-    "learnMore": "Learn More"
+    "title": "Give agents a protocol before they write code",
+    "subtitle": "A precise protocol contract lets agents generate systems with clearer permissions, routes, state, and workflows.",
+    "openApi": "Open API health",
+    "startBuilding": "Start building"
   }
 }

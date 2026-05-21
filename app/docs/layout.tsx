@@ -4,11 +4,11 @@ import ActiveSectionObserver from './components/ActiveSectionObserver'
 
 export const metadata: Metadata = {
   title: 'Documentation',
-      description: 'Complete documentation for Cardity programming language. Learn syntax, CLI tools, deployment guides, and best practices for smart protocol development on Dogecoin UTXO.',
-  keywords: 'Cardity documentation, smart protocol development, Dogecoin UTXO, programming guide, CLI tools, deployment',
+  description: 'Documentation for Cardity Core public API, MCP endpoint, CLI wrappers, and Agent OS manifest integration.',
+  keywords: 'Cardity documentation, protocol compiler, MCP, Agent OS, agent integration, API reference',
   openGraph: {
-    title: 'Cardity Documentation - Smart Protocol Development Guide',
-    description: 'Complete documentation for Cardity programming language. Learn syntax, CLI tools, deployment guides, and best practices.',
+    title: 'Cardity Documentation - Agent Protocol Layer',
+    description: 'Build agent-ready systems from deterministic protocol contracts.',
   },
 }
 

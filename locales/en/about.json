@@ -1,199 +1,77 @@
 {
+  "title": "About Cardity",
+  "subtitle": "Cardity Core is the protocol compiler layer for agent-generated systems",
   "about2": {
-    "title": "About Cardity",
-    "subtitle": "Cardity is a smart protocol language and toolchain for Dogecoin/Cardinals",
+    "title": "About Cardity Core",
+    "subtitle": "A deterministic protocol layer between natural-language intent and agent-built software.",
     "whatIs": {
       "title": "What is Cardity",
       "items": [
-        "A smart protocol development language and toolchain for Dogecoin/Cardinals.",
-        "Emphasizes UTXO security model (single-spend, single-signature) and aligns with on-chain indexing and frontend invocation."
+        "A public protocol compiler API that turns Cardity source into ABI, protocol JSON, and Agent OS manifests.",
+        "A shared contract for LLM agents, code-generation agents, and runtimes such as pmtsoul-agent.",
+        "A way to make one-sentence system generation less ambiguous before code is written."
       ]
     },
     "capabilities": {
-      "title": "Components & Capabilities",
+      "title": "Core Capabilities",
       "items": [
-        "Language & Types: TS/Solidity-like syntax, supports string/int/bool/address/map, events, explicit return types.",
-        "Compiler & Artifacts: Compile .car to .carc binary or JSON protocol desc; optional ABI generation.",
-        "Runtime: Local execution (ctx.sender/txid/data_length), state persistence to file.",
-        "Packaging & Multi-module: Package-level deployment and module-based distribution/invocation.",
-        "On-chain & Invocation: JSON inscriptions, Hex-only, and built-in commit/reveal flow for large files.",
-        "SDK Generation: Generate TS client from ABI for direct payload construction."
+        "Compile protocol source into stable machine-readable artifacts.",
+        "Expose the same protocol layer through HTTPS API, MCP endpoint, CLI wrapper, or SDK.",
+        "Describe entities, actions, permissions, views, workflows, and audit requirements.",
+        "Help agents generate systems with clearer routes, data models, tools, and tests."
       ]
     },
     "workflow": {
-      "title": "Typical Workflow",
+      "title": "Workflow",
       "items": [
-        "Develop: Write protocols/methods in .car (events and explicit returns).",
-        "Compile: Output .carc for deployment or JSON for runtime debugging.",
-        "On-chain: Hex-only, JSON inscription, or commit/reveal plan for large files.",
-        "Invoke: Support method:\"Module.method\" or provide module field for module-level calls.",
-        "Index: Align with dogeuni-indexer, support package/module/shard reassembly, pure-hex recognition and method lookup."
+        "Intent: user describes the system they want in natural language.",
+        "Protocol: an LLM converts intent into Cardity protocol source.",
+        "Compile: Cardity Core validates and emits ABI, protocol JSON, and Agent OS manifest.",
+        "Generate: pmtsoul-agent or another agent builds the system from the manifest.",
+        "Verify: generated code is checked against the protocol contract."
       ]
     },
     "utxoDesign": {
-      "title": "UTXO-oriented Design",
+      "title": "Why a Protocol Layer",
       "items": [
-        "No allowance/approve semantics to avoid approval race attacks.",
-        "Provide risk controls: pause/unpause, freeze/unfreeze, max_tx_amount, fee cap, etc.",
-        "Return unified error codes (e.g., \"InvalidAmount\", \"Paused\", \"Insufficient\") for easy alignment."
+        "Prompts are flexible but hard to verify; protocols are explicit and diffable.",
+        "Agents need stable contracts before they can safely create tools, pages, and workflows.",
+        "A protocol layer lets multiple agents share the same system semantics."
       ]
     },
     "indexerSpec": {
-      "title": "Indexer Conventions (Key Points)",
+      "title": "Artifact Contract",
       "items": [
-        "p: \"cardity\"",
-        "deploy: op:\"deploy\" | op:\"deploy_package\" with protocol/version or package_id/version, optional abi/carc_b64",
-        "invoke: op:\"invoke\" with contract_id/contract_ref, method (supports Module.method), args as raw JSON",
-        "Sharding: avoid custom shards; recommend inscription plan, indexer parses body and extracts bytes"
+        "abi: callable actions, parameters, return structures",
+        "protocol_json: entities, actions, policies, workflows, views",
+        "agent_os_manifest: task graph, tool mapping, route/page hints, permissions",
+        "diagnostics: structured feedback for LLM repair loops"
       ]
     },
     "toolchain": {
-      "title": "Toolchain (Core Commands)",
+      "title": "Integration Surfaces",
       "items": [
-        "Compile/Run: compile .car to .carc/JSON; local runtime execution with persistence.",
-        "Package: multi-file packaging for package-level deployment (ABI included or stripped).",
-        "Hex-only: generate hex for deploy/invoke.",
-        "Inscription plan: generate plan and broadcast; or full commit/reveal (dogeuni-sdk equivalent).",
-        "SDK: generate TS client from ABI, standardize signatures and payloads."
+        "Public API: https://api.cardity.org",
+        "Remote MCP endpoint: https://api.cardity.org/mcp",
+        "CLI wrapper: local and CI usage",
+        "SDK: embedded product workflows"
       ]
     },
-    "useCaseUSDT": {
-      "title": "Typical Use Case: USDT-like Stablecoin",
+    "useCases": {
+      "title": "Example Use Cases",
       "items": [
-        "Protocol: mint/transfer/fee/cap/freeze/pause with unified error codes; record Issue/Transfer events.",
-        "Multi-file structure: USDTLikeToken + USDTokenMeta, deployed and indexed as a package."
+        "Generate a CRM, support desk, booking system, or internal workflow app from a short intent.",
+        "Give pmtsoul-agent a protocol manifest before asking it to write a full system.",
+        "Publish reusable protocol packages that any agent can call."
       ]
     },
     "securityOps": {
-      "title": "Security & Operations",
+      "title": "Operations",
       "items": [
-        "Runtime/tooling resilience: robust tokenizer/parser, UTF-8/invisible-char handling, errors not fatal.",
-        "Indexer idempotency/replay: recommend unique keys, reassembled state, and soft delete."
+        "Version ABI changes and make breaking changes explicit.",
+        "Keep the public API stateless; callers own business context and secrets.",
+        "Use diagnostics as the repair loop between Cardity Core and the LLM."
       ]
     }
-  },
-  "title": "About Cardity",
-  "subtitle": "Cardity Core - Complete smart protocol programming language implementation designed for Dogecoin UTXO",
-  "overview": {
-    "title": "Project Overview",
-    "description": "Cardity Core is the complete implementation of the Cardity programming language, providing:",
-    "features": [
-      "Compiler - Compile programming language format .car files to executable format",
-      "Runtime - Execute compiled protocols",
-      "Package Manager - Manage dependencies and publish packages",
-      "CLI Tools - Command line development tools",
-      "Type System - Static type checking",
-      "Event System - Event-driven architecture",
-      "ABI Generator - Automatically generate protocol interfaces (support programming language format and JSON format)",
-      "Blockchain Deployment - Support Dogecoin chain deployment",
-      "DRC-20 Token Standard - Complete DRC-20 token support"
-    ]
-  },
-  "version": {
-    "title": "Version Information",
-    "npmPackage": {
-      "title": "npm Package Information",
-      "packageName": "Package Name",
-      "currentVersion": "Current Version",
-      "license": "License",
-      "packageSize": "Package Size",
-      "fileCount": "File Count"
-    },
-    "github": {
-      "title": "GitHub Repository",
-      "repository": "Repository",
-      "homepage": "Homepage",
-      "npmPage": "npm Page"
-    }
-  },
-  "features": {
-    "title": "Core Features",
-    "languageFormat": {
-      "title": "Programming Language Format",
-      "description": "Cardity supports programming language format .car files with Solidity-like syntax, including:",
-      "items": [
-        "Protocol definition (protocol)",
-        "State variables (state)",
-        "Event system (event)",
-        "Method definition (method)",
-        "Type system (string, int, bool)",
-        "Event emission (emit)"
-      ]
-    },
-    "drc20": {
-      "title": "DRC-20 Token Standard",
-      "description": "Complete DRC-20 token standard support, including:",
-      "items": [
-        "Token definition (drc20 block)",
-        "Deploy method (deploy)",
-        "Mint method (mint)",
-        "Transfer method (transfer)",
-        "Event definitions (TokenDeployed, TokenMinted, TokenTransferred)",
-        "Automatic ABI generation"
-      ]
-    },
-    "blockchain": {
-      "title": "Blockchain Deployment",
-      "description": "Support multiple deployment methods:",
-      "items": [
-        ".carc binary format",
-        "OP_RETURN deployment",
-        "Inscription deployment (ordinals protocol)",
-        "Dogecoin chain deployment",
-        "Protocol validation and viewing"
-      ]
-    },
-    "devTools": {
-      "title": "Development Tools",
-      "description": "Complete development toolchain:",
-      "items": [
-        "CLI command line tools",
-        "Project initialization",
-        "Compilation and running",
-        "ABI generation",
-        "Package management",
-        "Debugging and testing"
-      ]
-    }
-  },
-  "installation": {
-    "title": "Installation Methods",
-    "npm": {
-      "title": "npm Installation (Recommended)",
-      "description": "One-click installation via npm package manager, support global use, automatic dependency management"
-    },
-    "sourceCode": {
-      "title": "From Source Code",
-      "description": "Clone source code from GitHub repository, suitable for developers to customize compilation and contribute code"
-    }
-  },
-  "community": {
-    "title": "Community and Links",
-    "official": {
-      "title": "Official Resources",
-      "github": "GitHub Repository",
-      "npm": "npm Package Page",
-      "docs": "Official Documentation",
-      "examples": "Example Projects"
-    },
-    "devResources": {
-      "title": "Development Resources",
-      "quickStart": "Quick Start",
-      "cliReference": "CLI Reference",
-      "deployGuide": "Deploy Guide",
-      "downloadTools": "Download Tools"
-    }
-  },
-  "contributing": {
-    "title": "Contributing Code",
-    "description": "Welcome to contribute code! Cardity is an open source project, we welcome all forms of contributions:",
-    "steps": [
-      "Fork project and create feature branch",
-      "Submit your changes",
-      "Push to branch and create Pull Request",
-      "Report bugs and suggest features"
-    ],
-    "viewGitHub": "View GitHub",
-    "devGuide": "Development Guide"
   }
 }

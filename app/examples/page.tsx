@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import ExamplesContent from './components/ExamplesContent'
 
 export const metadata: Metadata = {
-  title: 'Code Examples',
-  description: 'Explore Cardity smart protocol examples including Hello World, DRC-20 tokens, wallets, voting systems, and more. Learn from real-world code samples.',
-  keywords: 'Cardity examples, smart protocol samples, DRC-20 tokens, wallet protocols, voting systems, code samples',
+  title: 'Protocol Examples',
+  description: 'Explore Cardity protocol examples for agent-generated support desks, workflows, CRM systems, and Agent OS manifests.',
+  keywords: 'Cardity examples, protocol examples, Agent OS manifest, MCP tools, agent generated systems',
   openGraph: {
-    title: 'Cardity Code Examples - Smart Protocol Samples',
-    description: 'Explore real-world Cardity smart protocol examples including DRC-20 tokens, wallets, voting systems, and more.',
+    title: 'Cardity Protocol Examples',
+    description: 'Examples of agent-ready protocol contracts and compiled artifacts.',
   },
 }
 

@@ -1,7 +1,7 @@
 {
-  "name": "Cardity - Smart Contracts for Dogecoin",
-  "short_name": "Cardity",
-  "description": "A statically-typed curly-braces programming language designed for developing smart contracts that run on Dogecoin UTXO",
+  "name": "Cardity Core - Agent Protocol Layer",
+  "short_name": "Cardity Core",
+  "description": "A protocol compiler API for agents that emits ABI, protocol JSON, and Agent OS manifests",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",

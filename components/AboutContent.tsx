@@ -12,7 +12,7 @@ export default function AboutContent() {
   const utxoDesign = (t('about2.utxoDesign.items') as string[]) ?? []
   const indexerSpec = (t('about2.indexerSpec.items') as string[]) ?? []
   const toolchain = (t('about2.toolchain.items') as string[]) ?? []
-  const useCaseUSDT = (t('about2.useCaseUSDT.items') as string[]) ?? []
+  const useCases = (t('about2.useCases.items') as string[]) ?? []
   const securityOps = (t('about2.securityOps.items') as string[]) ?? []
 
   return (
@@ -111,11 +111,11 @@ export default function AboutContent() {
 
         <section>
           <h2 className="text-2xl font-semibold text-white mb-4 flex items-center">
-            <Package className="w-6 h-6 mr-2 text-cardity-300" /> {String(t('about2.useCaseUSDT.title'))}
+            <Package className="w-6 h-6 mr-2 text-cardity-300" /> {String(t('about2.useCases.title'))}
           </h2>
           <div className="card card-gradient">
             <ul className="list-disc pl-5 space-y-2 text-gray-300">
-              {useCaseUSDT.map((item, i) => (
+              {useCases.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </ul>

@@ -1,25 +1,25 @@
 {
   "title": "文档",
-  "subtitle": "Cardity 智能协议开发完整指南",
-  "description": "欢迎来到 Cardity 文档。在这里您将找到在 Dogecoin 区块链上开发智能协议所需的一切。",
+  "subtitle": "从确定性的协议契约生成 agent 可执行的系统",
+  "description": "Cardity Core 文档覆盖公开协议编译 API、MCP endpoint、CLI wrapper 与 Agent OS manifest 流程。",
   "learningPath": {
     "title": "学习路径",
-    "description": "按照我们推荐的学习路径掌握 Cardity 开发",
+    "description": "团队把 Cardity 作为 agent 协议层时，建议按以下顺序接入：",
     "steps": [
-      "安装 CLI 工具并配置环境",
-      "学习基本语言语法和概念",
-      "编写和测试您的第一个协议",
-      "了解标准库的使用",
-      "将协议部署到 Dogecoin 网络"
+      "把系统边界描述成 Cardity 协议源",
+      "编译 ABI、protocol JSON 与 Agent OS manifest",
+      "通过 API、MCP、CLI 或 SDK 暴露协议层",
+      "让 pmtsoul-agent 把 manifest 映射成任务、工具、页面和检查",
+      "在 agent 重新生成生产系统前治理 ABI 版本变更"
     ]
   },
   "quickLinks": {
-    "title": "快速链接",
+    "title": "快速入口",
     "gettingStarted": "快速开始",
-    "reference": "语言参考",
-    "cli": "CLI 工具",
-    "standardLibrary": "标准库",
-    "deploy": "部署指南",
-    "developerGuide": "开发者指南"
+    "reference": "API 参考",
+    "cli": "CLI 与 MCP 封装",
+    "standardLibrary": "协议标准库",
+    "deploy": "发布",
+    "developerGuide": "Agent 集成"
   }
 }

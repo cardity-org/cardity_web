@@ -1,6 +1,6 @@
 {
   "footer": {
-    "description": "Cardity is a static type programming language designed for developing smart protocols on Dogecoin UTXO",
+    "description": "Cardity Core is the protocol layer for agent-generated systems: compile intent into ABI, protocol JSON, and Agent OS manifests.",
     "links": {
       "docs": "Documentation",
       "examples": "Examples",
@@ -10,12 +10,12 @@
     },
     "docs": {
       "gettingStarted": "Getting Started",
-      "cliReference": "CLI Reference",
-      "deployment": "Deployment"
+      "cliReference": "CLI & MCP",
+      "deployment": "Publishing"
     },
     "examples": {
-      "smartProtocols": "Smart Protocols",
-      "downloadExamples": "Download Examples"
+      "smartProtocols": "Protocol Examples",
+      "downloadExamples": "Artifacts"
     },
     "community": {
       "title": "Community",
@@ -29,6 +29,6 @@
       "terms": "Terms of Service",
       "license": "MIT License"
     },
-    "copyright": "© 2024 Cardity. All rights reserved."
+    "copyright": "© 2026 Cardity. All rights reserved."
   }
-} 
+}

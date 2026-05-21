@@ -32,13 +32,12 @@ export async function GET(_req: NextRequest) {
             backgroundColor: 'rgba(2,6,23,.35)'
           }}
         >
-          <div style={{ fontSize: 64, fontWeight: 800, color: '#fff', marginBottom: 16 }}>Cardity</div>
-          <div style={{ fontSize: 28, color: 'rgba(255,255,255,.9)' }}>Smart Protocols for Dogecoin</div>
+          <div style={{ fontSize: 64, fontWeight: 800, color: '#fff', marginBottom: 16 }}>Cardity Core</div>
+          <div style={{ fontSize: 28, color: 'rgba(255,255,255,.9)' }}>Agent Protocol Layer</div>
         </div>
       </div>
     ),
     { width, height }
   )
 }
-
 

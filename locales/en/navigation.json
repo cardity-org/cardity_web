@@ -3,11 +3,11 @@
     "docs": {
       "title": "Documentation",
       "gettingStarted": "Getting Started",
-      "reference": "Language Reference",
-      "cli": "CLI Tools",
-      "standardLibrary": "Standard Library",
-      "deploy": "Deployment Guide",
-      "developerGuide": "Developer Guide"
+      "reference": "API Reference",
+      "cli": "CLI & MCP",
+      "standardLibrary": "Protocol Library",
+      "deploy": "Publishing",
+      "developerGuide": "Agent Integration"
     }
   }
 }

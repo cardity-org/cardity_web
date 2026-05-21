@@ -1,25 +1,25 @@
 {
   "title": "Documentation",
-  "subtitle": "Complete guide to Cardity smart protocol development",
-  "description": "Welcome to the Cardity documentation. Here you'll find everything you need to develop smart protocols on the Dogecoin blockchain.",
+  "subtitle": "Build agent-ready systems from deterministic protocol contracts",
+  "description": "Cardity Core documents the public protocol compiler API, MCP endpoint, CLI wrappers, and Agent OS manifest flow.",
   "learningPath": {
     "title": "Learning Path",
-    "description": "If you are a new user, we recommend learning in the following order:",
+    "description": "Recommended path for teams adopting Cardity as an agent protocol layer:",
     "steps": [
-      "Install CLI tools and configure environment",
-      "Learn basic language syntax and concepts",
-      "Write and test your first contract",
-      "Understand standard library usage",
-      "Deploy contracts to Dogecoin network"
+      "Describe the system boundary as Cardity protocol source",
+      "Compile ABI, protocol JSON, and Agent OS manifest",
+      "Expose the protocol through API, MCP, CLI, or SDK",
+      "Let pmtsoul-agent map the manifest into tasks, tools, pages, and checks",
+      "Version ABI changes before agents regenerate production systems"
     ]
   },
   "quickLinks": {
     "title": "Quick Links",
     "gettingStarted": "Getting Started",
-    "reference": "Language Reference",
-    "cli": "CLI Tools",
-    "standardLibrary": "Standard Library",
-    "deploy": "Deployment Guide",
-    "developerGuide": "Developer Guide"
+    "reference": "API Reference",
+    "cli": "CLI & MCP Wrappers",
+    "standardLibrary": "Protocol Library",
+    "deploy": "Publishing",
+    "developerGuide": "Agent Integration"
   }
 }

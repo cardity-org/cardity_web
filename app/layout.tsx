@@ -9,25 +9,22 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Cardity - Smart Protocols for Dogecoin | Solidity-style Language',
+    default: 'Cardity Core - Agent Protocol Layer',
     template: '%s | Cardity'
   },
-      description: 'Cardity is a statically-typed programming language designed for developing smart protocols on Dogecoin UTXO. Features Solidity-style syntax, native UTXO protocol support, and powerful protocol logic capabilities.',
+  description: 'Cardity Core is a public protocol compiler API for agents. Compile Cardity source into ABI, protocol JSON, and Agent OS manifests for system generation.',
   keywords: [
     'Cardity',
-          'Smart Protocols',
-    'Dogecoin',
-    'UTXO',
-    'Programming Language',
-    'Blockchain',
-    'Solidity',
-          'Smart Protocol Development',
-    'Dogecoin Development',
-    'UTXO Protocol',
-    'Blockchain Programming',
-    'DeFi',
-    'Cryptocurrency',
-    'Web3'
+    'Cardity Core',
+    'Agent Protocol Layer',
+    'Agent OS',
+    'MCP',
+    'Protocol Compiler',
+    'ABI',
+    'Protocol JSON',
+    'AI Agents',
+    'System Generation',
+    'Developer Tools'
   ].join(', '),
   authors: [{ name: 'Cardity Team' }],
   creator: 'Cardity Team',
@@ -41,9 +38,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-      openGraph: {
-      title: 'Cardity - Smart Protocols for Dogecoin',
-      description: 'A statically-typed programming language for developing smart protocols on Dogecoin UTXO with Solidity-style syntax.',
+  openGraph: {
+    title: 'Cardity Core - Agent Protocol Layer',
+    description: 'Compile protocol source into ABI, protocol JSON, and Agent OS manifests through a public API for agents.',
     url: 'https://cardity.org',
     siteName: 'Cardity',
     images: [
@@ -57,10 +54,10 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-      twitter: {
-      card: 'summary_large_image',
-      title: 'Cardity - Smart Protocols for Dogecoin',
-      description: 'A statically-typed programming language for developing smart protocols on Dogecoin UTXO with Solidity-style syntax.',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Cardity Core - Agent Protocol Layer',
+    description: 'Public protocol compiler API for agents: ABI, protocol JSON, and Agent OS manifests.',
     images: ['/api/og'],
     creator: '@song_doge',
   },

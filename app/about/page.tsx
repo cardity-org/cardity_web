@@ -3,11 +3,11 @@ import AboutContent from '../../components/AboutContent'
 
 export const metadata: Metadata = {
   title: 'About Cardity',
-  description: 'Learn about Cardity - a statically-typed programming language for developing smart protocols on Dogecoin UTXO with Solidity-style syntax.',
-  keywords: 'Cardity about, smart protocol language, Dogecoin development, UTXO programming, blockchain language',
+  description: 'Learn how Cardity Core works as the protocol compiler layer for agent-generated systems.',
+  keywords: 'Cardity Core, agent protocol layer, Agent OS, MCP, protocol compiler',
   openGraph: {
-    title: 'About Cardity - Smart Protocol Language for Dogecoin',
-    description: 'Learn about Cardity programming language, its features, and how it enables smart protocol development on Dogecoin UTXO.',
+    title: 'About Cardity Core - Agent Protocol Layer',
+    description: 'Protocol compiler layer for agents: ABI, protocol JSON, and Agent OS manifests.',
   },
 }
 

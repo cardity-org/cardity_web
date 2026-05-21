@@ -1,50 +1,86 @@
 {
   "hero": {
-    "title": "Cardity",
-    "subtitle": "专为在 Dogecoin UTXO 上开发智能协议而设计的静态类型编程语言",
-    "description": "使用现代、类型安全的编程语言构建强大的智能协议，直接在 Dogecoin 区块链上运行。",
-    "getStarted": "开始使用",
+    "badge": "Cardity Core 公共 API 已上线",
+    "eyebrow": "Agent 协议层",
+    "title": "Cardity Core",
+    "subtitle": "把协议意图编译成 agent 可以直接生成系统的结构化产物。",
+    "description": "Cardity Core 会把 Cardity 协议源码编译成 ABI、protocol JSON 和 Agent OS manifest。Agent 可以通过公共 API 或 MCP endpoint 调用它，把一句业务意图沉淀成可生成应用的协议契约。",
+    "tryApi": "体验 API",
     "readDocs": "查看文档",
-    "downloadTools": "下载工具",
-    "latestVersion": "最新版本"
+    "live": "已上线",
+    "stats": [
+      "ABI + protocol JSON",
+      "Agent OS manifest",
+      "MCP-over-HTTP endpoint"
+    ]
   },
-  "features": {
-    "title": "为什么选择 Cardity？",
-    "subtitle": "具有类型安全性和开发者体验的现代智能协议开发",
-    "compiler": {
-      "title": "类型安全",
-      "description": "静态类型检查防止运行时错误并提高代码质量"
-    },
-    "packageManager": {
-      "title": "开发者友好",
-      "description": "熟悉的语法，现代化的开发工具和调试支持"
-    },
-    "drc20": {
-      "title": "Dogecoin 原生",
-      "description": "专为 Dogecoin UTXO 模型构建，性能优化"
-    }
+  "pipeline": {
+    "title": "从一句协议到可生成的系统",
+    "subtitle": "Cardity 是自然语言 agent 与生产级系统生成之间的确定性协议层。",
+    "steps": [
+      {
+        "label": "01",
+        "title": "描述意图",
+        "description": "开发者或 agent 从业务规则、工作流或协议想法开始。"
+      },
+      {
+        "label": "02",
+        "title": "编译协议",
+        "description": "Cardity Core 校验源码，并输出稳定、机器可读的协议契约。"
+      },
+      {
+        "label": "03",
+        "title": "生成系统计划",
+        "description": "Agent OS manifest 暴露 actions、state、permissions、API routes、UI resources 和 workflows。"
+      },
+      {
+        "label": "04",
+        "title": "交给 agent 构建",
+        "description": "下游 agent 可以基于同一个事实源生成服务、界面、测试和运行时集成。"
+      }
+    ]
   },
-  "installation": {
-    "title": "快速安装",
-    "subtitle": "几分钟内开始使用 Cardity",
-    "npmInstall": {
-      "title": "npm 安装（推荐）",
-      "description": "通过 npm 安装 Cardity 或从源码构建。包含完整的开发环境设置。"
-    },
-    "sourceCode": {
-      "title": "从源码安装",
-      "description": "从 GitHub 仓库克隆源码，适合开发者自定义编译和贡献代码"
-    }
+  "artifacts": {
+    "title": "Agent 可以信任的结构化产物",
+    "subtitle": "公共 API 只做编译：接收 source text，返回结构化 artifacts，不签名、不部署，也不读取用户工作区。",
+    "exampleTitle": "MCP-over-HTTP 工具调用",
+    "items": [
+      {
+        "title": "ABI",
+        "description": "包含 typed method、参数、返回值和可调用协议结构。"
+      },
+      {
+        "title": "Protocol JSON",
+        "description": "标准化描述协议的 state、methods、events 和 metadata。"
+      },
+      {
+        "title": "Agent OS manifest",
+        "description": "包含 action schema、permissions、API route hints、UI resources、database state 和 workflow triggers。"
+      }
+    ]
   },
-  "quickStart": {
-    "title": "创建第一个项目",
-    "subtitle": "几分钟内创建并部署你的第一个智能协议"
+  "integrations": {
+    "title": "面向所有 agent 调用面",
+    "subtitle": "现在可以远程调用 Cardity Core；需要私有工作区和本地文件控制时，也可以走 CLI 或本地 MCP。",
+    "items": [
+      {
+        "title": "公共 API",
+        "description": "任何 agent、workflow 或 backend service 都可以调用 https://api.cardity.org。"
+      },
+      {
+        "title": "MCP endpoint",
+        "description": "通过 hosted JSON-RPC MCP endpoint 发现并调用 cardity_compile。"
+      },
+      {
+        "title": "CLI 和本地 MCP",
+        "description": "同一套编译器也可在本地运行，用于私有项目、CI 和更深的 Agent OS 集成。"
+      }
+    ]
   },
   "cta": {
-    "title": "开始构建 Dogecoin 智能协议",
-    "subtitle": "加入 Cardity 社区，探索 UTXO 智能协议的无限可能",
-    "readDocs": "阅读文档",
-    "viewExamples": "查看示例",
-    "learnMore": "了解更多"
+    "title": "先给 agent 一个协议，再让它写代码",
+    "subtitle": "明确的协议契约能让 agent 生成系统时拥有更清晰的权限、路由、状态和工作流。",
+    "openApi": "打开 API health",
+    "startBuilding": "开始构建"
   }
 }
