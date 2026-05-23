@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next build && next export",
-    "deploy:cloudflare": "npm run build && wrangler pages deploy out",
-    "deploy:cloudflare:staging": "npm run build && wrangler pages deploy out --env staging"
+    "deploy:cloudflare": "npm run build && wrangler pages deploy out --project-name=cardity-org-web --branch=main",
+    "deploy:cloudflare:staging": "npm run build && wrangler pages deploy out --project-name=cardity-org-web --branch=staging"
   },
   "dependencies": {
     "autoprefixer": "^10.0.1",
