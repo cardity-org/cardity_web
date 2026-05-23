@@ -19,6 +19,7 @@ export default function Header() {
     { name: t('nav.docs'), href: `/docs${langParam}` },
     { name: t('nav.examples'), href: `/examples${langParam}` },
     { name: t('nav.registry'), href: `/registry${langParam}` },
+    { name: t('nav.visualizer'), href: `/visualizer${langParam}` },
     { name: t('nav.download'), href: `/download${langParam}` },
     { name: t('nav.about'), href: `/about${langParam}` },
   ], [t, locale, langParam])
@@ -33,7 +34,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-5 lg:space-x-7">
             {navigation.map((item) => (
               item.external ? (
                 <a

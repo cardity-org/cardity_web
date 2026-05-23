@@ -93,6 +93,7 @@ cardity_web/
   - 开发者指南 (`/docs/developer-guide`)
 - **示例** (`/examples`) - 代码示例和教程
 - **Registry** (`/registry`) - 生态注册表、schemas、runtime badges、packages
+- **Visualizer** (`/visualizer`) - 粘贴 Agent OS manifest 并预览三层契约图
 - **关于** (`/about`) - 项目信息和团队介绍
 
 ## 部署
