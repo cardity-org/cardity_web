@@ -7,8 +7,14 @@ pages_build_output_dir = "out"
 [env.production]
 name = "cardity-web-production"
 
+[env.production.vars]
+NODE_ENV = "production"
+
 [env.preview]
 name = "cardity-web-preview"
+
+[env.preview.vars]
+NODE_ENV = "production"
 
 # 环境变量配置
 [vars]
