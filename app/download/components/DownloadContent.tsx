@@ -16,8 +16,8 @@ export default function DownloadContent() {
         </h1>
         <p className="mx-auto max-w-3xl text-lg text-gray-300">
           {isZh
-            ? '现在优先使用公开 API 与 MCP endpoint。本地 CLI 和源码构建用于私有环境、CI 和深度集成。'
-            : 'Prefer the public API and MCP endpoint. Use local CLI and source builds for private environments, CI, and deeper integration.'}
+            ? '现在优先使用公开 API 与 hosted MCP endpoint。本地 CLI 和源码构建用于私有环境、CI 和深度 Agent OS 集成。'
+            : 'Prefer the public API and hosted MCP endpoint. Use local CLI and source builds for private environments, CI, and deeper Agent OS integration.'}
         </p>
       </div>
 
@@ -36,9 +36,9 @@ export default function DownloadContent() {
             language="bash"
             code={`curl https://api.cardity.org/v1/manifest
 
-curl https://api.cardity.org/v1/protocol/compile \\
+curl https://api.cardity.org/v1/compile \\
   -H 'content-type: application/json' \\
-  -d '{"source":"protocol Demo { action run(input: string) -> output: string; }"}'`}
+  -d '{"source_text":"protocol Counter { version: \\\"1.0.0\\\"; state { count: int = 0; } method get_count() { state.count = state.count; } returns: int state.count; }","include_manifest":true}'`}
           />
         </section>
 
@@ -49,18 +49,40 @@ curl https://api.cardity.org/v1/protocol/compile \\
           </h2>
           <p className="mb-4 text-gray-300">
             {isZh
-              ? '支持 MCP 的 agent 可以直接挂载远程 Cardity 工具。'
-              : 'MCP-capable agents can mount Cardity as a remote tool provider.'}
+              ? '支持远程 MCP 的 agent 可以直接挂载 Cardity 工具。'
+              : 'Remote-MCP-capable agents can mount Cardity as a hosted tool provider.'}
           </p>
           <CodeBlock
             language="json"
             code={`{
   "mcpServers": {
-    "cardity": {
+    "cardity_core": {
       "url": "https://api.cardity.org/mcp"
     }
   }
 }`}
+          />
+        </section>
+
+        <section className="card card-gradient">
+          <h2 className="mb-4 flex items-center text-2xl font-bold text-white">
+            <Package className="mr-2 h-6 w-6 text-cardity-300" />
+            {isZh ? 'NPM alpha' : 'NPM Alpha'}
+          </h2>
+          <p className="mb-4 text-gray-300">
+            {isZh
+              ? 'Cardity Core v0.1.0-alpha.1 已发布到 npm alpha tag。适合本地 agent、桌面 MCP 和私有 workspace 先行试用。'
+              : 'Cardity Core v0.1.0-alpha.1 is published on the npm alpha tag for local agents, desktop MCP, and private workspace trials.'}
+          </p>
+          <CodeBlock
+            language="bash"
+            code={`npm install -g cardity@alpha
+
+cardity_agent compile ./examples/02_member_points_agent.car \\
+  --out-dir ./dist \\
+  --include-manifest \\
+  --include-protocol \\
+  --include-abi`}
           />
         </section>
 
@@ -81,8 +103,8 @@ cd cardity-core
 npm install
 npm run build
 
-./build/cardityc --help
-node bin/cardity.js --help`}
+node bin/cardity_agent.js compile ./examples/03_merchant_erp_agent.car \\
+  --out-dir ./dist --name merchant_erp --include-manifest --include-protocol --include-abi`}
           />
         </section>
 
@@ -98,7 +120,9 @@ node bin/cardity.js --help`}
   "abi": "dist/app.abi.json",
   "protocol_json": "dist/app.protocol.json",
   "agent_os_manifest": "dist/app.agentos.json",
-  "target_runtime": "pmtsoul-agent"
+  "target_runtime": "pmtsoul-agent",
+  "projection_contract": "cardity.projection_contract.v1.1",
+  "database": ["tables", "read_models", "projections", "queries"]
 }`}
           />
         </section>

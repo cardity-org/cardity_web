@@ -1,10 +1,10 @@
 {
   "footer": {
-    "description": "Cardity Core 是面向 agent 生成系统的协议层：把意图编译成 ABI、protocol JSON 和 Agent OS manifest。",
+    "description": "Cardity Core 是面向 agent 生成系统的协议层：把意图编译成 ABI、protocol JSON、Agent OS manifest 和 projection contracts。",
     "links": {
       "docs": "文档",
       "examples": "示例",
-      "download": "下载",
+      "download": "接入",
       "about": "关于",
       "blog": "博客"
     },

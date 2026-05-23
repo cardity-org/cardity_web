@@ -1,8 +1,9 @@
 {
   "home": "首页",
+  "playground": "Playground",
   "docs": "文档",
   "examples": "示例",
-  "download": "下载",
+  "download": "接入",
   "blog": "博客",
   "about": "关于"
 }

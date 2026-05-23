@@ -1,22 +1,23 @@
 {
   "hero": {
-    "badge": "Public Cardity Core API is live",
+    "badge": "v0.1.0-alpha.1 contract baseline is live",
     "eyebrow": "Agent protocol layer",
     "title": "Cardity Core",
-    "subtitle": "Turn protocol intent into system-ready artifacts for agents.",
-    "description": "Cardity Core compiles Cardity protocol source into ABI, protocol JSON, and Agent OS manifests. Agents can call the public API or MCP endpoint to generate the contract surface of a complete app from a precise protocol.",
-    "tryApi": "Try the API",
+    "subtitle": "Turn one sentence into the protocol contract an agent can build from.",
+    "description": "Cardity Core compiles Cardity protocol source into ABI, protocol JSON, and Agent OS manifests with API, database, read-model, action, workflow, permission, projection, schema, and conformance contracts.",
+    "tryApi": "Open Playground",
     "readDocs": "Read the docs",
     "live": "Live",
     "stats": [
-      "ABI + protocol JSON",
+      "Remote MCP + HTTPS API",
       "Agent OS manifest",
-      "MCP-over-HTTP endpoint"
+      "PMTSoul Agent OS validated",
+      "Schema conformance baseline"
     ]
   },
   "pipeline": {
     "title": "From one protocol to a buildable system",
-    "subtitle": "Cardity is the deterministic layer between natural-language agents and production code generation.",
+    "subtitle": "Cardity is the deterministic contract layer between natural-language agents and production code generation. Agent action contract v1 plus projection contract v1.1 are now the stable downstream baseline.",
     "steps": [
       {
         "label": "01",
@@ -31,7 +32,7 @@
       {
         "label": "03",
         "title": "Generate system plan",
-        "description": "The Agent OS manifest exposes actions, state, permissions, API routes, UI resources, and workflows."
+        "description": "The Agent OS manifest exposes API routes, database tables, read models, generic action contracts, workflows, permissions, projections, modules, and external services."
       },
       {
         "label": "04",
@@ -55,7 +56,19 @@
       },
       {
         "title": "Agent OS manifest",
-        "description": "Action schemas, permissions, API route hints, UI resources, database state, and workflow triggers."
+        "description": "System API, database tables, UI actions, workflows, permissions, modules, external entries, and tool contracts."
+      },
+      {
+        "title": "Agent action contract v1",
+        "description": "Generic action semantics, planner hints, input/output schemas, confirmation, dry-run, readback, idempotency, risk, audit, and replay metadata."
+      },
+      {
+        "title": "Projection contract v1.1",
+        "description": "Read models, upsert snapshots, deltas, composite keys, confirmed readback, runtime_fields, and replay-safe idempotency metadata."
+      },
+      {
+        "title": "Machine-readable schemas",
+        "description": "Agent manifest, action contract, and projection contract schemas with local conformance checks for downstream runtimes."
       }
     ]
   },
@@ -65,22 +78,22 @@
     "items": [
       {
         "title": "Public API",
-        "description": "Call https://api.cardity.org from any agent, workflow, or backend service."
+        "description": "Call https://api.cardity.org from any agent, workflow, or backend service. The hosted compiler emits the same contract baseline as the local CLI."
       },
       {
         "title": "MCP endpoint",
-        "description": "Discover and invoke cardity_compile through the hosted JSON-RPC MCP endpoint."
+        "description": "Discover cardity_compile and cardity_manifest through the hosted JSON-RPC MCP endpoint, then feed the manifest into Agent OS generation."
       },
       {
         "title": "CLI and local MCP",
-        "description": "Run the same compiler locally for private workspaces, CI, and deeper Agent OS integrations."
+        "description": "Run the same compiler locally for private workspaces and deeper Agent OS integrations with the same schema and conformance checks."
       }
     ]
   },
   "cta": {
     "title": "Give agents a protocol before they write code",
-    "subtitle": "A precise protocol contract lets agents generate systems with clearer permissions, routes, state, and workflows.",
-    "openApi": "Open API health",
+    "subtitle": "A precise protocol contract lets agents generate systems with clearer permissions, routes, actions, read models, projections, workflows, and replay rules.",
+    "openApi": "Open Playground",
     "startBuilding": "Start building"
   }
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft, Archive } from 'lucide-react'
+import { ArrowLeft, Database } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
 import { useTranslations } from '../../../lib/i18n'
 
@@ -21,24 +21,36 @@ export default function ExampleDetailClient() {
 
       <div className="card card-gradient">
         <div className="mb-4 flex items-center gap-3">
-          <Archive className="h-6 w-6 text-cardity-300" />
+          <Database className="h-6 w-6 text-cardity-300" />
           <h1 className="text-3xl font-bold text-white">
-            {isZh ? 'Legacy 示例说明' : 'Legacy Example Note'}
+            {isZh ? 'Merchant ERP Projection v1.1' : 'Merchant ERP Projection v1.1'}
           </h1>
         </div>
         <p className="mb-6 text-gray-300">
           {isZh
-            ? '此页面保留为历史兼容入口。Cardity 官网当前主方向已经切换为 agent 协议层：公开 API、MCP endpoint、协议产物和 Agent OS manifest。'
-            : 'This page remains as a historical compatibility entry. The current Cardity site direction is the agent protocol layer: public API, MCP endpoint, compiled artifacts, and Agent OS manifests.'}
+            ? '这个示例展示 Cardity projection contract v1.1 如何描述商户商品、库存和订单 read models，并交给 Agent OS 生成 ERP 系统。'
+            : 'This example shows how Cardity projection contract v1.1 describes merchant product, inventory, and order read models for Agent OS generated ERP systems.'}
         </p>
         <CodeBlock
-          language="typescript"
+          language="json"
           showLineNumbers
-          code={`protocol SupportDesk {
-  entity Ticket { id: string; customer: string; status: string; }
-  action triage(message: string) -> ticket: Ticket;
-  action reply(ticket_id: string, draft: string) -> status: string;
-  policy require_audit for action reply;
+          code={`{
+  "contract": "cardity.projection_contract.v1.1",
+  "read_models": ["merchant_products", "merchant_inventory", "merchant_orders"],
+  "projections": [
+    {
+      "name": "product_saved_snapshot",
+      "source": "confirmed_readback",
+      "operation": "upsert_snapshot",
+      "primary_key": ["merchant_id", "goods_id"]
+    },
+    {
+      "name": "inventory_adjusted_delta",
+      "operation": "upsert_delta",
+      "primary_key": ["merchant_id", "goods_id", "sku_id"]
+    }
+  ],
+  "queries": ["products.list", "orders.list", "inventory.summary"]
 }`}
         />
       </div>

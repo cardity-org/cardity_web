@@ -1,9 +1,9 @@
 {
   "title": "接入 Cardity Core",
-  "subtitle": "使用公开 API、远程 MCP endpoint、CLI wrapper 或源码构建",
+  "subtitle": "使用公开 API、hosted MCP endpoint、CLI wrapper 或源码构建",
   "page": {
     "title": "接入 Cardity Core",
-    "subtitle": "面向 agent 与 Agent OS runtime 的 API-first 协议编译服务"
+    "subtitle": "面向 agent、Agent OS runtime 与 projection contract v1.1 的 API-first 协议编译服务"
   },
   "openSource": {
     "title": "开源仓库",

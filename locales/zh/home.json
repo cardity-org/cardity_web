@@ -1,22 +1,23 @@
 {
   "hero": {
-    "badge": "Cardity Core 公共 API 已上线",
+    "badge": "v0.1.0-alpha.1 契约基线已上线",
     "eyebrow": "Agent 协议层",
     "title": "Cardity Core",
-    "subtitle": "把协议意图编译成 agent 可以直接生成系统的结构化产物。",
-    "description": "Cardity Core 会把 Cardity 协议源码编译成 ABI、protocol JSON 和 Agent OS manifest。Agent 可以通过公共 API 或 MCP endpoint 调用它，把一句业务意图沉淀成可生成应用的协议契约。",
-    "tryApi": "体验 API",
+    "subtitle": "把一句话变成 agent 可以据此生成系统的协议契约。",
+    "description": "Cardity Core 会把 Cardity 协议源码编译成 ABI、protocol JSON 和 Agent OS manifest，并输出 API、database、read model、action、workflow、permission、projection、schema 与 conformance contract。",
+    "tryApi": "打开 Playground",
     "readDocs": "查看文档",
     "live": "已上线",
     "stats": [
-      "ABI + protocol JSON",
+      "远程 MCP + HTTPS API",
       "Agent OS manifest",
-      "MCP-over-HTTP endpoint"
+      "PMTSoul Agent OS 已验证",
+      "Schema conformance baseline"
     ]
   },
   "pipeline": {
     "title": "从一句协议到可生成的系统",
-    "subtitle": "Cardity 是自然语言 agent 与生产级系统生成之间的确定性协议层。",
+    "subtitle": "Cardity 是自然语言 agent 与生产级代码生成之间的确定性契约层。Agent action contract v1 与 projection contract v1.1 已成为稳定下游基线。",
     "steps": [
       {
         "label": "01",
@@ -31,7 +32,7 @@
       {
         "label": "03",
         "title": "生成系统计划",
-        "description": "Agent OS manifest 暴露 actions、state、permissions、API routes、UI resources 和 workflows。"
+        "description": "Agent OS manifest 暴露 API routes、database tables、read models、generic action contracts、workflows、permissions、projections、modules 和 external services。"
       },
       {
         "label": "04",
@@ -55,7 +56,19 @@
       },
       {
         "title": "Agent OS manifest",
-        "description": "包含 action schema、permissions、API route hints、UI resources、database state 和 workflow triggers。"
+        "description": "包含 system API、database tables、UI actions、workflows、permissions、modules、external entries 和 tool contracts。"
+      },
+      {
+        "title": "Agent action contract v1",
+        "description": "包含通用 action semantics、planner hints、input/output schema、confirm、dry-run、readback、idempotency、risk、audit 和 replay metadata。"
+      },
+      {
+        "title": "Projection contract v1.1",
+        "description": "包含 read models、upsert snapshots、deltas、composite keys、confirmed readback、runtime_fields 和 replay-safe idempotency metadata。"
+      },
+      {
+        "title": "Machine-readable schemas",
+        "description": "包含 Agent manifest、action contract 与 projection contract schema，以及下游 runtime 可复用的本地 conformance checks。"
       }
     ]
   },
@@ -65,22 +78,22 @@
     "items": [
       {
         "title": "公共 API",
-        "description": "任何 agent、workflow 或 backend service 都可以调用 https://api.cardity.org。"
+        "description": "任何 agent、workflow 或 backend service 都可以调用 https://api.cardity.org。托管编译器会输出与本地 CLI 相同的 contract baseline。"
       },
       {
         "title": "MCP endpoint",
-        "description": "通过 hosted JSON-RPC MCP endpoint 发现并调用 cardity_compile。"
+        "description": "通过 hosted JSON-RPC MCP endpoint 发现并调用 cardity_compile 与 cardity_manifest，再把 manifest 交给 Agent OS 生成。"
       },
       {
         "title": "CLI 和本地 MCP",
-        "description": "同一套编译器也可在本地运行，用于私有项目、CI 和更深的 Agent OS 集成。"
+        "description": "同一套编译器也可在本地运行，用于私有项目和更深的 Agent OS 集成，并保留相同的 schema 与 conformance checks。"
       }
     ]
   },
   "cta": {
     "title": "先给 agent 一个协议，再让它写代码",
-    "subtitle": "明确的协议契约能让 agent 生成系统时拥有更清晰的权限、路由、状态和工作流。",
-    "openApi": "打开 API health",
+    "subtitle": "明确的协议契约能让 agent 生成系统时拥有更清晰的权限、路由、actions、read models、projections、工作流和 replay rules。",
+    "openApi": "打开 Playground",
     "startBuilding": "开始构建"
   }
 }

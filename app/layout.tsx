@@ -9,10 +9,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Cardity Core - Agent Protocol Layer',
+    default: 'Cardity Core - Agent Protocol Layer for AI Agents',
     template: '%s | Cardity'
   },
-  description: 'Cardity Core is a public protocol compiler API for agents. Compile Cardity source into ABI, protocol JSON, and Agent OS manifests for system generation.',
+  description: 'Cardity Core turns one sentence into compiler-checked Agent OS manifests, generic action contracts, projection contracts, schemas, and conformance checks for AI-generated systems.',
   keywords: [
     'Cardity',
     'Cardity Core',
@@ -39,16 +39,16 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Cardity Core - Agent Protocol Layer',
-    description: 'Compile protocol source into ABI, protocol JSON, and Agent OS manifests through a public API for agents.',
+    title: 'Cardity Core - Protocol contracts for AI-generated systems',
+    description: 'Turn one sentence into ABI, protocol JSON, Agent OS manifests, generic action contracts, projection v1.1, and schema conformance validated with PMTSoul Agent OS.',
     url: 'https://cardity.org',
     siteName: 'Cardity',
     images: [
       {
-        url: '/api/og',
+        url: '/images/cardity-og.jpg',
         width: 1200,
         height: 630,
-        alt: 'Cardity',
+        alt: 'Cardity Core protocol contract preview',
       },
     ],
     locale: 'en_US',
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cardity Core - Agent Protocol Layer',
-    description: 'Public protocol compiler API for agents: ABI, protocol JSON, and Agent OS manifests.',
-    images: ['/api/og'],
+    title: 'Cardity Core - Protocol contracts for AI-generated systems',
+    description: 'A public protocol compiler API for agents: ABI, protocol JSON, Agent OS manifests, action contracts, projection contracts, and schemas.',
+    images: ['/images/cardity-og.jpg'],
     creator: '@song_doge',
   },
   robots: {

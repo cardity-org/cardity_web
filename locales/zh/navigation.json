@@ -5,7 +5,7 @@
       "gettingStarted": "快速开始",
       "reference": "API 参考",
       "cli": "CLI 与 MCP",
-      "standardLibrary": "协议库",
+      "standardLibrary": "协议与产物",
       "deploy": "发布",
       "developerGuide": "Agent 集成"
     }

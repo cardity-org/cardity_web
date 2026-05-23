@@ -1,9 +1,9 @@
 {
   "title": "Use Cardity Core",
-  "subtitle": "Use the public API, remote MCP endpoint, CLI wrapper, or source build",
+  "subtitle": "Use the public API, hosted MCP endpoint, CLI wrapper, or source build",
   "page": {
     "title": "Use Cardity Core",
-    "subtitle": "API-first protocol compiler access for agents and Agent OS runtimes"
+    "subtitle": "API-first protocol compiler access for agents, Agent OS runtimes, and projection contract v1.1"
   },
   "openSource": {
     "title": "Open-source Repository",

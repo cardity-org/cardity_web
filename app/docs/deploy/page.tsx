@@ -43,18 +43,34 @@ curl https://api.cardity.org/mcp`
           }
         },
         {
+          title: isZh ? 'Cloudflare 发布拓扑' : 'Cloudflare Publishing Topology',
+          bullets: isZh
+            ? [
+                '官网：Cloudflare Pages，静态导出目录 out。',
+                'API：cardity-core-api-proxy Worker，绑定 api.cardity.org/* route。',
+                'MCP：同一 API 域名下的 /mcp JSON-RPC endpoint。',
+                '账号边界：部署在 Seven.psong@gmail.com 的 Cloudflare account 下。'
+              ]
+            : [
+                'Website: Cloudflare Pages, static export directory out.',
+                'API: cardity-core-api-proxy Worker bound to the api.cardity.org/* route.',
+                'MCP: /mcp JSON-RPC endpoint under the same API domain.',
+                'Account boundary: deployed under the Seven.psong@gmail.com Cloudflare account.'
+              ]
+        },
+        {
           title: isZh ? '版本治理' : 'Version Governance',
           bullets: isZh
             ? [
                 '协议源版本跟产品版本分离。',
                 'ABI 变更需要 diff 和兼容性判断。',
-                'Agent OS manifest 需要记录目标 agent runtime、工具权限和页面生成策略。',
+                'Agent OS manifest 需要记录目标 agent runtime、工具权限、页面生成策略和 projection contract 版本。',
                 '公开 API 默认只暴露稳定端点，实验能力用 preview namespace。'
               ]
             : [
                 'Protocol source versions are separate from product versions.',
                 'ABI changes require diffing and compatibility checks.',
-                'Agent OS manifests should record target agent runtime, tool permissions, and page generation strategy.',
+                'Agent OS manifests should record target agent runtime, tool permissions, page-generation strategy, and projection contract version.',
                 'Public APIs expose stable endpoints by default; experimental capabilities use a preview namespace.'
               ],
           code: {
@@ -63,6 +79,7 @@ curl https://api.cardity.org/mcp`
   "protocol": "support-desk",
   "version": "1.2.0",
   "compatibility": "backward-compatible",
+  "projection_contract": "cardity.projection_contract.v1.1",
   "artifacts": {
     "abi": "support-desk.abi.json",
     "agent_os_manifest": "support-desk.agentos.json"

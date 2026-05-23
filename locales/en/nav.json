@@ -1,8 +1,9 @@
 {
   "home": "Home",
+  "playground": "Playground",
   "docs": "Documentation",
   "examples": "Examples",
-  "download": "Download",
+  "download": "Use Cardity",
   "blog": "Blog",
   "about": "About"
 }

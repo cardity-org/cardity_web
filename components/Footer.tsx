@@ -164,22 +164,6 @@ export default function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <Link
-                      href={`/privacy${langParam}`}
-                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
-                    >
-                      {t('footer.legal.privacy')}
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href={`/terms${langParam}`}
-                      className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"
-                    >
-                      {t('footer.legal.terms')}
-                    </Link>
-                  </li>
-                  <li>
                     <a
                       href="https://github.com/cardity-org/cardity-core/blob/main/LICENSE"
                       className="text-base text-gray-300 hover:text-cardity-200 transition-colors duration-200"

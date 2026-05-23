@@ -1,15 +1,15 @@
 {
   "title": "Documentation",
   "subtitle": "Build agent-ready systems from deterministic protocol contracts",
-  "description": "Cardity Core documents the public protocol compiler API, MCP endpoint, CLI wrappers, and Agent OS manifest flow.",
+  "description": "Cardity Core documents the public protocol compiler API, MCP endpoint, CLI wrappers, Agent OS manifest flow, and the PMTSoul-validated projection contract v1.1.",
   "learningPath": {
     "title": "Learning Path",
     "description": "Recommended path for teams adopting Cardity as an agent protocol layer:",
     "steps": [
-      "Describe the system boundary as Cardity protocol source",
-      "Compile ABI, protocol JSON, and Agent OS manifest",
+      "Describe the system contract as Cardity protocol source",
+      "Compile ABI, protocol JSON, Agent OS manifest, and schema-visible projection contracts",
       "Expose the protocol through API, MCP, CLI, or SDK",
-      "Let pmtsoul-agent map the manifest into tasks, tools, pages, and checks",
+      "Let pmtsoul-agent map and validate the manifest into API, database, read models, UI, workflows, and checks",
       "Version ABI changes before agents regenerate production systems"
     ]
   },
@@ -18,7 +18,7 @@
     "gettingStarted": "Getting Started",
     "reference": "API Reference",
     "cli": "CLI & MCP Wrappers",
-    "standardLibrary": "Protocol Library",
+    "standardLibrary": "Protocol & Artifacts",
     "deploy": "Publishing",
     "developerGuide": "Agent Integration"
   }

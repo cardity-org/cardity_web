@@ -1,10 +1,10 @@
 {
   "footer": {
-    "description": "Cardity Core is the protocol layer for agent-generated systems: compile intent into ABI, protocol JSON, and Agent OS manifests.",
+    "description": "Cardity Core is the protocol layer for agent-generated systems: compile intent into ABI, protocol JSON, Agent OS manifests, and projection contracts.",
     "links": {
       "docs": "Documentation",
       "examples": "Examples",
-      "download": "Download",
+      "download": "Use Cardity",
       "about": "About",
       "blog": "Blog"
     },

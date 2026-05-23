@@ -1,4 +1,4 @@
 {
-  "title": "协议标准库",
-  "subtitle": "身份、权限、工作流、审计和 UI 生成的可复用协议模块"
+  "title": "协议与产物库",
+  "subtitle": "可复用协议模式、manifest 字段、read models、projections 和 query contracts"
 }

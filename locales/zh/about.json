@@ -3,13 +3,13 @@
   "subtitle": "Cardity Core 是面向 agent 生成系统的协议编译层",
   "about2": {
     "title": "关于 Cardity Core",
-    "subtitle": "位于自然语言意图与 agent 生成软件之间的确定性协议层。",
+    "subtitle": "位于自然语言意图与 agent 生成软件之间的确定性协议与 projection 层。",
     "whatIs": {
       "title": "Cardity 是什么",
       "items": [
         "一个公开协议编译 API，把 Cardity source 编译成 ABI、protocol JSON 和 Agent OS manifest。",
         "一份供 LLM agent、代码生成 agent 与 pmtsoul-agent 这类 runtime 共同理解的系统契约。",
-        "一种让“一句话生成系统”在写代码之前先变得可验证、可 diff 的方式。"
+        "一种让“一句话生成系统”在写代码之前先变得可验证、可 diff，并显式拥有 read model 与 projection 的方式。"
       ]
     },
     "capabilities": {
@@ -17,7 +17,8 @@
       "items": [
         "把协议源编译成稳定的机器可读产物。",
         "通过 HTTPS API、MCP endpoint、CLI wrapper 或 SDK 暴露同一协议层。",
-        "描述实体、动作、权限、页面、工作流和审计要求。",
+        "描述 state、tables、methods、events、permissions、views、workflows 和 audit requirements。",
+        "输出 projection contract v1.1，用于 read models、snapshots、deltas、query contracts 和 replay-safe idempotency。",
         "帮助 agent 更清晰地生成路由、数据模型、工具和测试。"
       ]
     },
@@ -26,8 +27,8 @@
       "items": [
         "Intent：用户用自然语言描述想要的系统。",
         "Protocol：LLM 先把意图转换成 Cardity 协议源。",
-        "Compile：Cardity Core 校验并输出 ABI、protocol JSON 和 Agent OS manifest。",
-        "Generate：pmtsoul-agent 或其他 agent 根据 manifest 生成系统。",
+        "Compile：Cardity Core 校验并输出 ABI、protocol JSON、Agent OS manifest 和 projection hints。",
+        "Generate：pmtsoul-agent 或其他 agent 根据 manifest 与 read-model contracts 生成系统。",
         "Verify：生成代码按协议契约进行验收。"
       ]
     },
@@ -35,7 +36,7 @@
       "title": "为什么需要协议层",
       "items": [
         "Prompt 很灵活，但难验证；协议是显式、可 diff 的。",
-        "Agent 在安全生成工具、页面和工作流前，需要稳定契约。",
+        "Agent 在安全生成工具、页面、工作流和数据投影前，需要稳定契约。",
         "协议层让多个 agent 共享同一套系统语义。"
       ]
     },
@@ -43,8 +44,9 @@
       "title": "产物契约",
       "items": [
         "abi：可调用动作、参数、返回结构",
-        "protocol_json：实体、动作、策略、工作流、页面",
-        "agent_os_manifest：任务图、工具映射、路由/页面提示、权限",
+        "protocol_json：state、methods、events、tables、metadata",
+        "agent_os_manifest：API routes、tools、database tables、read models、UI actions、workflows、permissions",
+        "projection_contract_v1_1：insert、upsert_delta、upsert_snapshot、delete、soft_delete",
         "diagnostics：给 LLM 修复循环使用的结构化反馈"
       ]
     },
@@ -62,6 +64,7 @@
       "items": [
         "从一句话意图生成 CRM、客服台、预约系统或内部流程工具。",
         "在要求 pmtsoul-agent 写完整系统前，先给它协议 manifest。",
+        "生成带商品、库存、订单和消息 read models 的商户 ERP 系统。",
         "发布可复用协议包，让所有 agent 都能调用。"
       ]
     },

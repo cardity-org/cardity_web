@@ -3,14 +3,14 @@
   "subtitle": "Agent-ready protocol contracts for generated systems",
   "hero": {
     "title": "Protocol Examples",
-    "subtitle": "Describe system boundaries before agents write code",
-    "description": "Examples focus on ABI, protocol JSON, and Agent OS manifests."
+    "subtitle": "Describe system contracts before agents write code",
+    "description": "Examples focus on ABI, protocol JSON, Agent OS manifests, read models, and projections."
   },
   "pageTitle": "Cardity Protocol Examples",
-  "pageSubtitle": "Support desks, workflow backoffices, CRM systems, and reusable protocol packages.",
+  "pageSubtitle": "Member points, merchant ERP read models, remote MCP, and reusable protocol packages.",
   "categories": {
     "basic": "Basic",
-    "token": "Legacy",
+    "token": "Projection",
     "wallet": "Workflow",
     "governance": "Policy",
     "advanced": "Advanced"

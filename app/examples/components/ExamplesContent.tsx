@@ -8,35 +8,66 @@ import { useTranslations } from '../../../lib/i18n'
 const examples = [
   {
     icon: Bot,
-    title: 'Support Desk Agent',
-    description: 'A protocol for ticket triage, replies, ownership, and audit logs.',
-    code: `protocol SupportDesk {
-  entity Ticket { id: string; customer: string; status: string; }
-  action triage(message: string) -> ticket: Ticket;
-  action reply(ticket_id: string, draft: string) -> status: string;
-  policy require_audit for action reply;
+    title: 'Member Points System',
+    description: 'A compact loyalty protocol with earn, spend, balance query, and admin adjustment methods.',
+    code: `protocol MemberPointsSystem {
+  version: "1.0.0";
+  owner: "agent-os";
+
+  state {
+    admin_addr: address = "doge1admin...";
+    total_points_issued: int = 0;
+    result: string = "ok";
+  }
+
+  event PointsEarned { user: address; amount: int; reason: string; }
+
+  method earn_points(user: address, amount: int, reason: string) {
+    state.result = "ok";
+    if (params.amount <= 0) { state.result = "InvalidAmount" }
+    if (state.result == "ok") { state.total_points_issued = state.total_points_issued + params.amount }
+    if (state.result == "ok") { emit PointsEarned(params.user, params.amount, params.reason) }
+  }
+  returns: string state.result;
 }`
   },
   {
     icon: Layers,
-    title: 'Workflow Backoffice',
-    description: 'A manifest-friendly protocol for queues, approvals, and generated admin pages.',
-    code: `protocol WorkflowBackoffice {
-  entity Request { id: string; requester: string; state: string; }
-  action approve(request_id: string) -> state: string;
-  action reject(request_id: string, reason: string) -> state: string;
-  view request_queue uses Request;
+    title: 'Merchant ERP Read Models',
+    description: 'A v1.1 projection contract example for product, inventory, and order read models.',
+    code: `protocol MerchantERPSystem {
+  version: "1.0.0";
+  owner: "agent-os";
+
+  state { result: string = "ok"; }
+
+  table merchant_products {
+    merchant_id: string;
+    goods_id: string;
+    name: string = "";
+    price: int = 0;
+    status: string = "active";
+  }
+
+  event ProductSaved { merchant_id: string; goods_id: string; }
+
+  method save_product(merchant_id: string, goods_id: string) {
+    state.result = "ok";
+    emit ProductSaved(params.merchant_id, params.goods_id);
+  }
+  returns: string state.result;
 }`
   },
   {
     icon: ShieldCheck,
-    title: 'Permissioned CRM',
-    description: 'A compact protocol that tells agents what data exists and who may mutate it.',
-    code: `protocol CRM {
-  entity Lead { id: string; email: string; stage: string; }
-  action qualify(email: string) -> lead: Lead;
-  action assign(lead_id: string, owner_id: string) -> status: string;
-  policy require_role("sales-admin") for action assign;
+    title: 'Remote MCP Contract',
+    description: 'Agents can call Cardity as a hosted MCP tool provider without installing a local wrapper.',
+    code: `{
+  "mcpServers": {
+    "cardity_core": {
+      "url": "https://api.cardity.org/mcp"
+    }
+  }
 }`
   }
 ]
@@ -54,8 +85,8 @@ export default function ExamplesContent() {
           </h1>
           <p className="mx-auto max-w-3xl text-xl text-gray-300">
             {isZh
-              ? '这些示例展示 Cardity 如何把系统能力描述成 agent 可消费的协议契约，而不是直接展示旧的链上合约。'
-              : 'These examples show how Cardity describes system capabilities as agent-consumable protocol contracts instead of legacy on-chain contracts.'}
+              ? '这些示例展示 Cardity 如何把业务系统描述成 agent 可消费的协议契约，并输出 Agent OS manifest 与 projection contract。'
+              : 'These examples show how Cardity describes business systems as agent-consumable protocol contracts and emits Agent OS manifests plus projection contracts.'}
           </p>
         </div>
       </section>
@@ -76,28 +107,6 @@ export default function ExamplesContent() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-lg border border-dark-800 bg-dark-900/70 p-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="text-xl font-semibold text-white">
-                {isZh ? 'Legacy 示例仍可查看' : 'Legacy Example Is Still Available'}
-              </h2>
-              <p className="mt-2 text-gray-400">
-                {isZh
-                ? '旧示例暂时保留为历史兼容资料，但不再是官网主方向。'
-                : 'The old example remains available as historical compatibility material, but it is no longer the main site direction.'}
-              </p>
-            </div>
-            <Link
-              href={`/examples/legacy-protocol-note?lang=${locale}`}
-              className="btn-secondary inline-flex items-center justify-center"
-            >
-              {isZh ? '查看 legacy 示例' : 'View legacy example'}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-
         <div className="mt-8 rounded-lg border border-cardity-800/50 bg-cardity-950/20 p-6">
           <div className="mb-4 flex items-center gap-3">
             <Braces className="h-5 w-5 text-cardity-300" />
@@ -109,15 +118,52 @@ export default function ExamplesContent() {
             language="json"
             showLineNumbers
             code={`{
-  "abi": { "actions": ["triage", "reply"] },
-  "protocol_json": { "entities": ["Ticket"], "views": ["ticket_queue"] },
-  "agent_os_manifest": {
-    "tools": ["support.triage", "support.reply"],
-    "routes": ["/tickets", "/tickets/:id"],
-    "checks": ["audit-log-required"]
+  "abi": { "methods": ["save_product", "adjust_inventory"] },
+  "protocol_json": { "tables": ["merchant_products", "merchant_inventory"] },
+  "manifest": {
+    "events": [{
+      "name": "ProductSaved",
+      "runtime_fields": ["id", "write_index", "source_run_id", "idempotency_key"]
+    }],
+    "system": {
+      "database": {
+        "read_models": ["merchant_products", "merchant_inventory"],
+        "projections": [{
+          "name": "product_saved_snapshot",
+          "source_id": "$event.id",
+          "idempotency": {
+            "source_id": "$event.id",
+            "write_index": "$event.write_index"
+          }
+        }],
+        "queries": ["products.list", "inventory.summary"]
+      }
+    }
   }
 }`}
           />
+        </div>
+
+        <div className="mt-8 rounded-lg border border-dark-800 bg-dark-900/70 p-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-xl font-semibold text-white">
+                {isZh ? '完整示例在 cardity-core 仓库' : 'Full examples live in cardity-core'}
+              </h2>
+              <p className="mt-2 text-gray-400">
+                {isZh
+                  ? '包含会员积分系统、商户 ERP projection v1.1 示例，以及可编译的 .car 协议源。'
+                  : 'Includes the member points system, merchant ERP projection v1.1 example, and compilable .car protocol source.'}
+              </p>
+            </div>
+            <Link
+              href={`/docs/getting-started?lang=${locale}`}
+              className="btn-secondary inline-flex items-center justify-center"
+            >
+              {isZh ? '查看快速开始' : 'View getting started'}
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
     </div>

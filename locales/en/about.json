@@ -3,13 +3,13 @@
   "subtitle": "Cardity Core is the protocol compiler layer for agent-generated systems",
   "about2": {
     "title": "About Cardity Core",
-    "subtitle": "A deterministic protocol layer between natural-language intent and agent-built software.",
+    "subtitle": "A deterministic protocol and projection layer between natural-language intent and agent-built software.",
     "whatIs": {
       "title": "What is Cardity",
       "items": [
         "A public protocol compiler API that turns Cardity source into ABI, protocol JSON, and Agent OS manifests.",
         "A shared contract for LLM agents, code-generation agents, and runtimes such as pmtsoul-agent.",
-        "A way to make one-sentence system generation less ambiguous before code is written."
+        "A way to make one-sentence system generation less ambiguous before code is written, with read models and projections made explicit."
       ]
     },
     "capabilities": {
@@ -17,7 +17,8 @@
       "items": [
         "Compile protocol source into stable machine-readable artifacts.",
         "Expose the same protocol layer through HTTPS API, MCP endpoint, CLI wrapper, or SDK.",
-        "Describe entities, actions, permissions, views, workflows, and audit requirements.",
+        "Describe state, tables, methods, events, permissions, views, workflows, and audit requirements.",
+        "Emit projection contract v1.1 for read models, snapshots, deltas, query contracts, and replay-safe idempotency.",
         "Help agents generate systems with clearer routes, data models, tools, and tests."
       ]
     },
@@ -26,8 +27,8 @@
       "items": [
         "Intent: user describes the system they want in natural language.",
         "Protocol: an LLM converts intent into Cardity protocol source.",
-        "Compile: Cardity Core validates and emits ABI, protocol JSON, and Agent OS manifest.",
-        "Generate: pmtsoul-agent or another agent builds the system from the manifest.",
+        "Compile: Cardity Core validates and emits ABI, protocol JSON, Agent OS manifest, and projection hints.",
+        "Generate: pmtsoul-agent or another agent builds the system from the manifest and read-model contracts.",
         "Verify: generated code is checked against the protocol contract."
       ]
     },
@@ -35,7 +36,7 @@
       "title": "Why a Protocol Layer",
       "items": [
         "Prompts are flexible but hard to verify; protocols are explicit and diffable.",
-        "Agents need stable contracts before they can safely create tools, pages, and workflows.",
+        "Agents need stable contracts before they can safely create tools, pages, workflows, and data projections.",
         "A protocol layer lets multiple agents share the same system semantics."
       ]
     },
@@ -43,8 +44,9 @@
       "title": "Artifact Contract",
       "items": [
         "abi: callable actions, parameters, return structures",
-        "protocol_json: entities, actions, policies, workflows, views",
-        "agent_os_manifest: task graph, tool mapping, route/page hints, permissions",
+        "protocol_json: state, methods, events, tables, metadata",
+        "agent_os_manifest: API routes, tools, database tables, read models, UI actions, workflows, permissions",
+        "projection_contract_v1_1: insert, upsert_delta, upsert_snapshot, delete, soft_delete",
         "diagnostics: structured feedback for LLM repair loops"
       ]
     },
@@ -62,6 +64,7 @@
       "items": [
         "Generate a CRM, support desk, booking system, or internal workflow app from a short intent.",
         "Give pmtsoul-agent a protocol manifest before asking it to write a full system.",
+        "Generate merchant ERP systems with product, inventory, order, and message read models.",
         "Publish reusable protocol packages that any agent can call."
       ]
     },

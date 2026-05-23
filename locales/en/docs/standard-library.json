@@ -1,4 +1,4 @@
 {
-  "title": "Protocol Library",
-  "subtitle": "Reusable protocol modules for identity, permissions, workflows, audit, and UI generation"
+  "title": "Protocol and Artifact Library",
+  "subtitle": "Reusable protocol patterns, manifest fields, read models, projections, and query contracts"
 }

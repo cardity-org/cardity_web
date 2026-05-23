@@ -1,15 +1,15 @@
 {
   "title": "文档",
   "subtitle": "从确定性的协议契约生成 agent 可执行的系统",
-  "description": "Cardity Core 文档覆盖公开协议编译 API、MCP endpoint、CLI wrapper 与 Agent OS manifest 流程。",
+  "description": "Cardity Core 文档覆盖公开协议编译 API、MCP endpoint、CLI wrapper、Agent OS manifest 流程，以及 PMTSoul 已验证的 projection contract v1.1。",
   "learningPath": {
     "title": "学习路径",
     "description": "团队把 Cardity 作为 agent 协议层时，建议按以下顺序接入：",
     "steps": [
-      "把系统边界描述成 Cardity 协议源",
-      "编译 ABI、protocol JSON 与 Agent OS manifest",
+      "把系统契约描述成 Cardity 协议源",
+      "编译 ABI、protocol JSON、Agent OS manifest 与 schema-visible projection contracts",
       "通过 API、MCP、CLI 或 SDK 暴露协议层",
-      "让 pmtsoul-agent 把 manifest 映射成任务、工具、页面和检查",
+      "让 pmtsoul-agent 把 manifest 校验并映射成 API、数据库、read models、UI、workflow 和检查",
       "在 agent 重新生成生产系统前治理 ABI 版本变更"
     ]
   },
@@ -18,7 +18,7 @@
     "gettingStarted": "快速开始",
     "reference": "API 参考",
     "cli": "CLI 与 MCP 封装",
-    "standardLibrary": "协议标准库",
+    "standardLibrary": "协议与产物",
     "deploy": "发布",
     "developerGuide": "Agent 集成"
   }

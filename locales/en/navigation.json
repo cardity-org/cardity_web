@@ -5,7 +5,7 @@
       "gettingStarted": "Getting Started",
       "reference": "API Reference",
       "cli": "CLI & MCP",
-      "standardLibrary": "Protocol Library",
+      "standardLibrary": "Protocol & Artifacts",
       "deploy": "Publishing",
       "developerGuide": "Agent Integration"
     }

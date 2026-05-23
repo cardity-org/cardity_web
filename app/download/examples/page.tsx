@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, FileJson, PackageCheck, Workflow } from 'lucide-react'
+import { ArrowRight, Database, FileJson, PackageCheck, Workflow } from 'lucide-react'
 import CodeBlock from '../../../components/CodeBlock'
 import { useTranslations } from '../../../lib/i18n'
 
@@ -17,8 +17,8 @@ export default function DownloadExamplesPage() {
         </h1>
         <p className="mx-auto max-w-3xl text-lg text-gray-300">
           {isZh
-            ? '这里展示 Cardity 编译后交给 agent 的关键产物，而不是旧的链上合约下载列表。'
-            : 'This page shows the artifacts Cardity gives to agents after compilation, not a legacy on-chain contract download list.'}
+            ? '这里展示 Cardity 编译后交给 agent 的关键产物：ABI、protocol JSON、Agent OS manifest 和 projection contract。'
+            : 'This page shows the key artifacts Cardity gives to agents after compilation: ABI, protocol JSON, Agent OS manifest, and projection contract.'}
         </p>
       </div>
 
@@ -32,18 +32,11 @@ export default function DownloadExamplesPage() {
             language="json"
             showLineNumbers
             code={`{
-  "name": "SupportDesk",
-  "actions": [
-    {
-      "name": "triage",
-      "input": { "message": "string" },
-      "output": { "ticket": "Ticket" }
-    },
-    {
-      "name": "reply",
-      "input": { "ticket_id": "string", "draft": "string" },
-      "output": { "status": "string" }
-    }
+  "protocol": "MemberPointsSystem",
+  "methods": [
+    { "name": "earn_points", "params": ["user", "amount", "reason"], "returns": "string" },
+    { "name": "spend_points", "params": ["user", "amount", "reason"], "returns": "string" },
+    { "name": "get_balance", "params": ["user"], "returns": "int" }
   ]
 }`}
           />
@@ -58,17 +51,11 @@ export default function DownloadExamplesPage() {
             language="json"
             showLineNumbers
             code={`{
-  "entities": {
-    "Ticket": {
-      "fields": {
-        "id": "string",
-        "customer": "string",
-        "status": "string"
-      }
-    }
-  },
-  "policies": ["require_audit:reply"],
-  "views": ["ticket_queue", "ticket_detail"]
+  "name": "MerchantERPSystem",
+  "state": ["result", "last_actor", "last_merchant_id"],
+  "tables": ["merchant_products", "merchant_inventory", "merchant_orders"],
+  "events": ["ProductSaved", "InventoryAdjusted", "OrderCreated"],
+  "methods": ["save_product", "adjust_inventory", "create_order"]
 }`}
           />
         </section>
@@ -83,13 +70,32 @@ export default function DownloadExamplesPage() {
             showLineNumbers
             code={`{
   "target": "pmtsoul-agent",
-  "tasks": ["model.entities", "generate.routes", "wire.tools", "create.tests"],
-  "tools": [
-    { "name": "support.triage", "action": "triage" },
-    { "name": "support.reply", "action": "reply" }
-  ],
-  "routes": ["/tickets", "/tickets/:id"],
-  "checks": ["audit-log-required", "abi-compatible"]
+  "system": {
+    "api": { "routes": ["POST /protocols/MerchantERPSystem/methods/save_product"] },
+    "ui": { "actions": ["Save Product", "Adjust Inventory", "Create Order"] },
+    "permissions": ["save_product", "adjust_inventory", "create_order"]
+  }
+}`}
+          />
+        </section>
+
+        <section className="card card-gradient">
+          <h2 className="mb-4 flex items-center text-2xl font-semibold text-white">
+            <Database className="mr-2 h-6 w-6 text-cardity-300" />
+            Projection Contract v1.1
+          </h2>
+          <CodeBlock
+            language="json"
+            showLineNumbers
+            code={`{
+  "database": {
+    "read_models": ["merchant_products", "merchant_inventory", "merchant_orders"],
+    "projections": [
+      { "operation": "upsert_snapshot", "source": "confirmed_readback" },
+      { "operation": "upsert_delta", "primary_key": ["merchant_id", "goods_id", "sku_id"] }
+    ],
+    "queries": ["products.list", "orders.list", "inventory.summary"]
+  }
 }`}
           />
         </section>

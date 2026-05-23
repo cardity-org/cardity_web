@@ -7,6 +7,7 @@ import {
   BookOpen,
   Braces,
   Code,
+  Database,
   FileJson,
   Github,
   Network,
@@ -31,11 +32,11 @@ type PipelineStep = {
   description: string
 }
 
-const apiExample = `curl https://api.cardity.org/v1/manifest \\
+const apiExample = `curl https://api.cardity.org/v1/manifest
+
+curl https://api.cardity.org/v1/compile \\
   -H "content-type: application/json" \\
-  -d '{
-    "source_text": "protocol Counter { version: \\"1.0.0\\"; state { count: int = 0; } method get_count() returns: int state.count; }"
-  }'`
+  -d '{"source_text":"protocol Counter { version: \\"1.0.0\\"; state { count: int = 0; } method get_count() { state.count = state.count; } returns: int state.count; }","include_manifest":true}'`
 
 const mcpExample = `POST https://api.cardity.org/mcp
 
@@ -47,12 +48,14 @@ const mcpExample = `POST https://api.cardity.org/mcp
     "name": "cardity_compile",
     "arguments": {
       "source_text": "protocol Counter { ... }",
-      "include_manifest": true
+      "include_manifest": true,
+      "include_protocol": true,
+      "include_abi": true
     }
   }
 }`
 
-const artifactIcons = [FileJson, Braces, Workflow]
+const artifactIcons = [FileJson, Braces, Workflow, Database]
 const integrationIcons = [Server, Network, Terminal]
 
 export default function Home() {
@@ -96,7 +99,7 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-9">
-                <a href="https://api.cardity.org/health" className="btn-primary btn-glow inline-flex items-center justify-center">
+                <a href="https://api.cardity.org/playground" className="btn-primary btn-glow inline-flex items-center justify-center">
                   <Play className="w-4 h-4 mr-2" />
                   {t('home.hero.tryApi')}
                 </a>
@@ -242,7 +245,7 @@ export default function Home() {
             {t('home.cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://api.cardity.org/health" className="btn-primary inline-flex items-center justify-center">
+            <a href="https://api.cardity.org/playground" className="btn-primary inline-flex items-center justify-center">
               <Server className="w-4 h-4 mr-2" />
               {t('home.cta.openApi')}
             </a>

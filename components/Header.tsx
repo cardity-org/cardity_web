@@ -15,6 +15,7 @@ export default function Header() {
   const langParam = useMemo(() => `?lang=${locale === 'zh' ? 'zh' : 'en'}`, [locale])
   const navigation = useMemo(() => [
     { name: t('nav.home'), href: `/${langParam}`.replace('//', '/') },
+    { name: t('nav.playground'), href: 'https://api.cardity.org/playground', external: true },
     { name: t('nav.docs'), href: `/docs${langParam}` },
     { name: t('nav.examples'), href: `/examples${langParam}` },
     { name: t('nav.download'), href: `/download${langParam}` },
@@ -33,13 +34,25 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-300 hover:text-cardity-200 transition-colors duration-200 text-sm font-medium"
-              >
-                {item.name}
-              </Link>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-cardity-200 transition-colors duration-200 text-sm font-medium"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-300 hover:text-cardity-200 transition-colors duration-200 text-sm font-medium"
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -67,14 +80,27 @@ export default function Header() {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 border-t border-dark-800">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-gray-300 hover:text-cardity-200 hover:bg-dark-800 rounded-md text-base font-medium transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-3 py-2 text-gray-300 hover:text-cardity-200 hover:bg-dark-800 rounded-md text-base font-medium transition-colors duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 text-gray-300 hover:text-cardity-200 hover:bg-dark-800 rounded-md text-base font-medium transition-colors duration-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
           </div>

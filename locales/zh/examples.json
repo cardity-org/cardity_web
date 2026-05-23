@@ -3,14 +3,14 @@
   "subtitle": "面向 agent 生成系统的协议契约",
   "hero": {
     "title": "协议示例",
-    "subtitle": "在 agent 写代码前先描述系统边界",
-    "description": "示例聚焦 ABI、protocol JSON 和 Agent OS manifest。"
+    "subtitle": "在 agent 写代码前先描述系统契约",
+    "description": "示例聚焦 ABI、protocol JSON、Agent OS manifest、read models 和 projections。"
   },
   "pageTitle": "Cardity 协议示例",
-  "pageSubtitle": "客服台、工作流后台、CRM 系统与可复用协议包。",
+  "pageSubtitle": "会员积分、商户 ERP read models、远程 MCP 与可复用协议包。",
   "categories": {
     "basic": "基础",
-    "token": "Legacy",
+    "token": "Projection",
     "wallet": "工作流",
     "governance": "策略",
     "advanced": "高级"
