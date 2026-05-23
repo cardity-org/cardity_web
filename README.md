@@ -36,6 +36,7 @@ Cardity 是 AI Agent 生成系统前的协议契约层。官网负责解释并�
 | 构建输出 | `out/` |
 | Pages headers | `public/_headers` |
 | Pages redirects | `public/_redirects` |
+| Pages functions | `functions/` |
 
 注意：Cloudflare 上还存在旧项目 `cardity-web`，它没有绑定正式域名。不要把生产官网手动部署到 `cardity-web`。
 

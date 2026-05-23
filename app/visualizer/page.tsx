@@ -16,6 +16,8 @@ import {
 } from 'lucide-react'
 import { useTranslations } from '../../lib/i18n'
 
+type InputMode = 'manifest' | 'source'
+
 type ManifestNode = {
   id: string
   label: string
@@ -122,36 +124,125 @@ const sampleManifest = {
   },
 }
 
+const sampleSource = `protocol MemberPointsSystem {
+  version: "1.0.0";
+  owner: "agent-os";
+
+  state {
+    result: string = "ok";
+    total_points_issued: int = 0;
+    total_points_spent: int = 0;
+    last_actor: address = "";
+    last_user: address = "";
+    last_amount: int = 0;
+    last_delta: int = 0;
+    last_reason: string = "";
+    last_operation: string = "none";
+  }
+
+  table member_point_balances {
+    user: address;
+    balance: int = 0;
+  }
+
+  table member_point_ledger {
+    user: address;
+    delta: int;
+    reason: string;
+    actor: address;
+    operation: string;
+  }
+
+  event PointsEarned {
+    user: address;
+    amount: int;
+    reason: string;
+  }
+
+  event PointsSpent {
+    user: address;
+    amount: int;
+    reason: string;
+  }
+
+  method earn_points(user: address, amount: int, reason: string) {
+    state.result = "ok";
+    state.total_points_issued = state.total_points_issued + params.amount;
+    state.last_actor = ctx.sender;
+    state.last_user = params.user;
+    state.last_amount = params.amount;
+    state.last_delta = params.amount;
+    state.last_reason = params.reason;
+    state.last_operation = "earn_points";
+    emit PointsEarned(params.user, params.amount, params.reason);
+  }
+  returns: string state.result;
+
+  method spend_points(user: address, amount: int, reason: string) {
+    state.result = "ok";
+    state.total_points_spent = state.total_points_spent + params.amount;
+    state.last_actor = ctx.sender;
+    state.last_user = params.user;
+    state.last_amount = params.amount;
+    state.last_delta = 0 - params.amount;
+    state.last_reason = params.reason;
+    state.last_operation = "spend_points";
+    emit PointsSpent(params.user, params.amount, params.reason);
+  }
+  returns: string state.result;
+
+  method get_balance(user: address) {
+    state.result = state.result;
+  }
+  returns: string state.result;
+}`
+
 const copy = {
   en: {
     title: 'Manifest Visualizer',
-    subtitle: 'Paste an Agent OS manifest and inspect the Business, System, and Agent contract layers.',
+    subtitle: 'Paste an Agent OS manifest or compile .car source, then inspect the Business, System, and Agent contract layers.',
+    manifestMode: 'Manifest JSON',
+    sourceMode: '.car source',
     input: 'Manifest JSON',
+    sourceInput: '.car source',
     loadSample: 'Load sample',
     reset: 'Reset',
+    compileSource: 'Compile source',
+    compiling: 'Compiling',
     copyMermaid: 'Copy Mermaid',
     valid: 'Manifest parsed',
+    sourceReady: 'Source ready',
+    compileSuccess: 'Compiled manifest',
     invalid: 'Invalid JSON',
+    compileFailed: 'Compile failed',
     business: 'Business',
     system: 'System',
     agent: 'Agent',
     edges: 'Contract edges',
-    empty: 'Paste a manifest JSON document to render the graph.',
+    empty: 'Paste manifest JSON or compile .car source to render the graph.',
   },
   zh: {
     title: 'Manifest 图谱',
-    subtitle: '粘贴 Agent OS manifest，查看 Business、System、Agent 三层协议契约。',
+    subtitle: '粘贴 Agent OS manifest，或编译 .car 源码，然后查看 Business、System、Agent 三层协议契约。',
+    manifestMode: 'Manifest JSON',
+    sourceMode: '.car 源码',
     input: 'Manifest JSON',
+    sourceInput: '.car 源码',
     loadSample: '加载示例',
     reset: '清空',
+    compileSource: '编译源码',
+    compiling: '编译中',
     copyMermaid: '复制 Mermaid',
     valid: 'Manifest 已解析',
+    sourceReady: '源码待编译',
+    compileSuccess: 'Manifest 已生成',
     invalid: 'JSON 无效',
+    compileFailed: '编译失败',
     business: '业务层',
     system: '系统层',
     agent: 'Agent 层',
     edges: '契约边',
-    empty: '粘贴 manifest JSON 后渲染图谱。',
+    empty: '粘贴 manifest JSON，或编译 .car 源码后渲染图谱。',
   },
 }
 
@@ -370,17 +461,24 @@ function NodeCard({ node }: { node: ManifestNode }) {
 export default function VisualizerPage() {
   const { locale } = useTranslations()
   const text = copy[locale]
+  const [mode, setMode] = useState<InputMode>('manifest')
   const [source, setSource] = useState(() => JSON.stringify(sampleManifest, null, 2))
+  const [compiledManifest, setCompiledManifest] = useState<any | null>(null)
+  const [compileError, setCompileError] = useState('')
+  const [isCompiling, setIsCompiling] = useState(false)
   const [copied, setCopied] = useState(false)
 
   const parsed = useMemo(() => {
+    if (mode === 'source') {
+      return { manifest: compiledManifest, error: compileError }
+    }
     if (!source.trim()) return { manifest: null, error: '' }
     try {
       return { manifest: JSON.parse(source), error: '' }
     } catch (error) {
       return { manifest: null, error: error instanceof Error ? error.message : 'Invalid JSON' }
     }
-  }, [source])
+  }, [source, mode, compiledManifest, compileError])
 
   const visualization = useMemo(() => (
     parsed.manifest ? buildVisualization(parsed.manifest) : null
@@ -396,6 +494,73 @@ export default function VisualizerPage() {
     window.setTimeout(() => setCopied(false), 1600)
   }
 
+  function switchMode(nextMode: InputMode) {
+    setMode(nextMode)
+    setSource(nextMode === 'manifest' ? JSON.stringify(sampleManifest, null, 2) : sampleSource)
+    setCompiledManifest(null)
+    setCompileError('')
+    setCopied(false)
+  }
+
+  function loadSample() {
+    setSource(mode === 'manifest' ? JSON.stringify(sampleManifest, null, 2) : sampleSource)
+    setCompiledManifest(null)
+    setCompileError('')
+  }
+
+  function resetInput() {
+    setSource('')
+    setCompiledManifest(null)
+    setCompileError('')
+  }
+
+  function updateSource(value: string) {
+    setSource(value)
+    if (mode === 'source') {
+      setCompiledManifest(null)
+      setCompileError('')
+    }
+  }
+
+  async function compileSource() {
+    if (!source.trim()) {
+      setCompileError(text.compileFailed)
+      return
+    }
+    setIsCompiling(true)
+    setCompileError('')
+    setCompiledManifest(null)
+    try {
+      const response = await fetch('/api/cardity/compile', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          source_text: source,
+          include_manifest: true,
+          include_abi: false,
+          include_protocol: false,
+          carc: false,
+        }),
+      })
+      const payload = await response.json()
+      if (!response.ok || !payload.ok || !payload.manifest) {
+        const message = payload?.error?.message || payload?.error || payload?.stderr || text.compileFailed
+        throw new Error(String(message))
+      }
+      setCompiledManifest(payload.manifest)
+    } catch (error) {
+      setCompileError(error instanceof Error ? error.message : text.compileFailed)
+    } finally {
+      setIsCompiling(false)
+    }
+  }
+
+  const statusText = parsed.error
+    ? (mode === 'source' ? text.compileFailed : text.invalid)
+    : visualization
+      ? (mode === 'source' ? text.compileSuccess : text.valid)
+      : (mode === 'source' ? text.sourceReady : text.valid)
+
   return (
     <div className="min-h-screen">
       <section className="border-b border-dark-800 bg-dark-950">
@@ -410,14 +575,31 @@ export default function VisualizerPage() {
               <p className="text-lg text-gray-400 mt-4 leading-8">{text.subtitle}</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <button className="btn-secondary inline-flex items-center" onClick={() => setSource(JSON.stringify(sampleManifest, null, 2))}>
+              <div className="inline-flex rounded-lg border border-dark-700 bg-dark-900 p-1">
+                {(['manifest', 'source'] as const).map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => switchMode(item)}
+                    className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${mode === item ? 'bg-cardity-600 text-white' : 'text-gray-300 hover:text-white'}`}
+                  >
+                    {item === 'manifest' ? text.manifestMode : text.sourceMode}
+                  </button>
+                ))}
+              </div>
+              <button className="btn-secondary inline-flex items-center" onClick={loadSample}>
                 <FileJson className="w-4 h-4 mr-2" />
                 {text.loadSample}
               </button>
-              <button className="btn-outline inline-flex items-center" onClick={() => setSource('')}>
+              <button className="btn-outline inline-flex items-center" onClick={resetInput}>
                 <RotateCcw className="w-4 h-4 mr-2" />
                 {text.reset}
               </button>
+              {mode === 'source' && (
+                <button className="btn-primary inline-flex items-center disabled:opacity-50" onClick={compileSource} disabled={isCompiling || !source.trim()}>
+                  <Boxes className="w-4 h-4 mr-2" />
+                  {isCompiling ? text.compiling : text.compileSource}
+                </button>
+              )}
               <button className="btn-primary inline-flex items-center disabled:opacity-50" onClick={copyMermaid} disabled={!visualization}>
                 <Copy className="w-4 h-4 mr-2" />
                 {copied ? 'Copied' : text.copyMermaid}
@@ -431,15 +613,15 @@ export default function VisualizerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.82fr_1.18fr] gap-6 items-start">
           <div className="rounded-lg border border-dark-800 bg-dark-950/80 overflow-hidden">
             <div className="h-12 px-4 border-b border-dark-800 flex items-center justify-between">
-              <div className="text-sm font-medium text-gray-200">{text.input}</div>
+              <div className="text-sm font-medium text-gray-200">{mode === 'source' ? text.sourceInput : text.input}</div>
               <div className={`inline-flex items-center gap-2 text-xs ${parsed.error ? 'text-rose-300' : 'text-emerald-300'}`}>
                 {parsed.error ? <AlertCircle className="w-4 h-4" /> : <CheckCircle2 className="w-4 h-4" />}
-                {parsed.error ? text.invalid : text.valid}
+                {statusText}
               </div>
             </div>
             <textarea
               value={source}
-              onChange={(event) => setSource(event.target.value)}
+              onChange={(event) => updateSource(event.target.value)}
               spellCheck={false}
               className="h-[680px] w-full resize-none bg-dark-950 p-4 font-mono text-sm leading-6 text-gray-200 outline-none"
             />
