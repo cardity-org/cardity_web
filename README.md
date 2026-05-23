@@ -1,14 +1,19 @@
-# Cardity 官网
+# Cardity Web
 
-这是 Cardity 编程语言的官方网站，使用 Next.js 和 Tailwind CSS 构建。
+这是 Cardity Core 的官方网站，使用 Next.js 静态导出和 Cloudflare Pages 部署。
 
-## 特性
+## 当前定位
 
-- 🎨 现代化的响应式设计
-- 📚 完整的文档系统
-- 💻 代码高亮和示例
-- 🔍 SEO 优化
-- ⚡ 快速加载和性能优化
+Cardity 是 AI Agent 生成系统前的协议契约层。官网负责解释并展示：
+
+- `.car` protocol
+- Compiler / Protocol JSON / ABI
+- Agent OS Manifest
+- Action Contract
+- Projection Contract
+- Conformance
+- Registry / Package / Runtime compatibility
+- Hosted API / MCP / WASM
 
 ## 技术栈
 
@@ -17,6 +22,22 @@
 - **图标**: Lucide React
 - **代码高亮**: React Syntax Highlighter
 - **类型检查**: TypeScript
+
+## 生产部署地图
+
+| 项目 | 值 |
+| --- | --- |
+| GitHub repo | `cardity-org/cardity_web` |
+| Cloudflare account | `Seven.psong@gmail.com's Account` |
+| 正式 Pages project | `cardity-org-web` |
+| 正式域名 | `https://cardity.org` |
+| www 跳转 | `https://www.cardity.org` -> `https://cardity.org` |
+| Pages 预览域 | `https://cardity-org-web.pages.dev` |
+| 构建输出 | `out/` |
+| Pages headers | `public/_headers` |
+| Pages redirects | `public/_redirects` |
+
+注意：Cloudflare 上还存在旧项目 `cardity-web`，它没有绑定正式域名。不要把生产官网手动部署到 `cardity-web`。
 
 ## 快速开始
 
@@ -40,12 +61,6 @@ npm run dev
 npm run build
 ```
 
-### 启动生产服务器
-
-```bash
-npm start
-```
-
 ## 项目结构
 
 ```
@@ -61,13 +76,14 @@ cardity_web/
 │   ├── Header.tsx         # 网站头部
 │   ├── Footer.tsx         # 网站底部
 │   └── CodeBlock.tsx      # 代码块组件
-├── public/                # 静态资源
+├── public/                # 静态资源、_headers、_redirects
+├── locales/               # 中英文文案
 └── package.json           # 项目配置
 ```
 
 ## 页面结构
 
-- **首页** (`/`) - 介绍 Cardity 语言和核心特性
+- **首页** (`/`) - 介绍 Cardity Core 和协议契约层能力
 - **文档** (`/docs`) - 完整的开发文档
   - 快速开始 (`/docs/getting-started`)
   - 语言参考 (`/docs/reference`)
@@ -76,48 +92,56 @@ cardity_web/
   - 部署指南 (`/docs/deploy`)
   - 开发者指南 (`/docs/developer-guide`)
 - **示例** (`/examples`) - 代码示例和教程
+- **Registry** (`/registry`) - 生态注册表、schemas、runtime badges、packages
 - **关于** (`/about`) - 项目信息和团队介绍
-
-## 自定义
-
-### 颜色主题
-
-在 `tailwind.config.js` 中修改颜色配置：
-
-```javascript
-colors: {
-  cardity: {
-    50: '#f0f9ff',
-    // ... 其他色阶
-  }
-}
-```
-
-### 添加新页面
-
-1. 在 `app/` 目录下创建新的文件夹
-2. 添加 `page.tsx` 文件
-3. 在导航组件中添加链接
-
-### 添加新组件
-
-1. 在 `components/` 目录下创建新的组件文件
-2. 使用 TypeScript 定义接口
-3. 添加适当的样式和功能
 
 ## 部署
 
-### Vercel (推荐)
+### 正式部署
 
-1. 将代码推送到 GitHub
-2. 在 Vercel 中导入项目
-3. 自动部署
+```bash
+npm run deploy:cloudflare
+```
 
-### 其他平台
+该命令会构建并部署到正式 Pages project：
+
+```bash
+wrangler pages deploy out --project-name=cardity-org-web --branch=main
+```
+
+### Staging 部署
+
+```bash
+npm run deploy:cloudflare:staging
+```
+
+### 手动验证
+
+部署后至少验证：
+
+```bash
+curl -sSI https://cardity.org/
+curl -sSI https://cardity.org/docs
+curl -sSI https://www.cardity.org/
+```
+
+预期：
+
+- `https://cardity.org/` 返回 `200`
+- `https://cardity.org/docs` 返回 `301` 到 `/docs/getting-started`
+- `https://www.cardity.org/` 返回 `301` 到 `https://cardity.org/`
+- 响应包含 `Strict-Transport-Security`、`X-Frame-Options`、`X-Content-Type-Options`
+
+## 开发约定
+
+- 默认修改 `locales/en/*.json` 和 `locales/zh/*.json`，保持双语内容同步。
+- 新增公开页面时同步检查 header/footer 导航。
+- 不要在 `wrangler.toml` 里放 Pages `headers` / `redirects`，使用 `public/_headers` 和 `public/_redirects`。
+- 页面上线前至少运行：
 
 ```bash
 npm run build
-npm start
+git diff --check
 ```
 
 ## 贡献
@@ -132,10 +156,10 @@ npm start
 
 ## 许可证
 
-MIT License - 查看 [LICENSE](LICENSE) 文件了解详情。
+MIT License.
 
 ## 联系我们
 
 - GitHub: [@cardity](https://github.com/cardity)
 - X: [@song_doge](https://x.com/song_doge)
-- Email: hello@cardity.org 
+- Email: hello@cardity.org
