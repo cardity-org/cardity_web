@@ -90,6 +90,32 @@
       }
     ]
   },
+  "registry": {
+    "badge": "生态注册表",
+    "title": "从一个目录发现 templates、schemas、badges 和 packages。",
+    "subtitle": "Cardity Registry 为 agent 和 runtime 提供稳定发现层：官方协议模板、contract schemas、runtime adapters、compatibility badges 和 .carditypkg 示例。",
+    "exampleTitle": "Registry API",
+    "openRegistry": "查看 Registry",
+    "openApi": "打开 API JSON",
+    "items": [
+      {
+        "title": "Templates",
+        "description": "会员积分、退款、客服工单和 agent tool permission 等官方协议模板。"
+      },
+      {
+        "title": "Schemas",
+        "description": "Manifest、action、projection、conformance、package 和 registry schema 的稳定 URL。"
+      },
+      {
+        "title": "Runtime badges",
+        "description": "下游 runtime 可公开兼容状态，但不会把执行权交给 Cardity。"
+      },
+      {
+        "title": ".carditypkg",
+        "description": "带哈希的可分发协议包示例，让 runtime 安装前先验证协议产物。"
+      }
+    ]
+  },
   "cta": {
     "title": "先给 agent 一个协议，再让它写代码",
     "subtitle": "明确的协议契约能让 agent 生成系统时拥有更清晰的权限、路由、actions、read models、projections、工作流和 replay rules。",

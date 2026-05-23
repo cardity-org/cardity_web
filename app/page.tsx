@@ -4,7 +4,9 @@ import Link from 'next/link'
 import { useMemo } from 'react'
 import {
   ArrowRight,
+  BadgeCheck,
   BookOpen,
+  Boxes,
   Braces,
   Code,
   Database,
@@ -15,6 +17,7 @@ import {
   Server,
   ShieldCheck,
   Terminal,
+  PackageCheck,
   Workflow,
 } from 'lucide-react'
 import CodeBlock from '../components/CodeBlock'
@@ -55,8 +58,14 @@ const mcpExample = `POST https://api.cardity.org/mcp
   }
 }`
 
+const registryExample = `curl https://api.cardity.org/registry
+curl https://api.cardity.org/registry/templates/member_points
+curl https://api.cardity.org/registry/packages/member-points-system
+curl https://api.cardity.org/runtimes/pmtsoul-agent-os/badge.svg`
+
 const artifactIcons = [FileJson, Braces, Workflow, Database]
 const integrationIcons = [Server, Network, Terminal]
+const registryIcons = [Boxes, FileJson, BadgeCheck, PackageCheck]
 
 export default function Home() {
   const { t, locale } = useTranslations()
@@ -64,6 +73,7 @@ export default function Home() {
   const pipeline = t('home.pipeline.steps') as PipelineStep[]
   const artifacts = t('home.artifacts.items') as FeatureItem[]
   const integrations = t('home.integrations.items') as FeatureItem[]
+  const registryItems = t('home.registry.items') as FeatureItem[]
 
   return (
     <div className="min-h-screen">
@@ -232,6 +242,67 @@ export default function Home() {
                 </div>
               )
             })}
+          </div>
+        </div>
+      </section>
+
+
+      <section className="py-18 sm:py-20 bg-dark-900/40 border-y border-dark-800/70">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 items-start">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-cardity-700/40 bg-cardity-950/35 px-4 py-2 text-sm text-cardity-100 mb-6">
+                <Boxes className="w-4 h-4" />
+                {t('home.registry.badge')}
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                {t('home.registry.title')}
+              </h2>
+              <p className="text-lg text-gray-400 mb-8">
+                {t('home.registry.subtitle')}
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                {registryItems.map((item, index) => {
+                  const Icon = registryIcons[index] || Boxes
+                  return (
+                    <div key={item.title} className="rounded-lg border border-dark-800 bg-dark-950/55 p-5">
+                      <div className="h-10 w-10 rounded-lg bg-cardity-900/45 border border-cardity-800/50 flex items-center justify-center mb-4">
+                        <Icon className="w-5 h-5 text-cardity-300" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                      <p className="text-sm text-gray-400 leading-6 mt-2">{item.description}</p>
+                    </div>
+                  )
+                })}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                <Link href={`/registry${langParam}`} className="btn-primary inline-flex items-center justify-center">
+                  <Boxes className="w-4 h-4 mr-2" />
+                  {t('home.registry.openRegistry')}
+                </Link>
+                <a
+                  href="https://api.cardity.org/registry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary inline-flex items-center justify-center"
+                >
+                  <Server className="w-4 h-4 mr-2" />
+                  {t('home.registry.openApi')}
+                </a>
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-dark-800 bg-dark-950/75 overflow-hidden">
+              <div className="border-b border-dark-800 px-4 py-3 text-sm text-gray-300 flex items-center gap-2">
+                <Terminal className="w-4 h-4 text-cardity-300" />
+                {t('home.registry.exampleTitle')}
+              </div>
+              <div className="p-5">
+                <CodeBlock code={registryExample} language="bash" />
+              </div>
+            </div>
           </div>
         </div>
       </section>

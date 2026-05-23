@@ -90,6 +90,32 @@
       }
     ]
   },
+  "registry": {
+    "badge": "Ecosystem registry",
+    "title": "Discover templates, schemas, badges, and packages from one catalog.",
+    "subtitle": "Cardity Registry gives agents and runtimes a stable discovery layer for official protocol templates, contract schemas, runtime adapters, compatibility badges, and .carditypkg examples.",
+    "exampleTitle": "Registry API",
+    "openRegistry": "Explore Registry",
+    "openApi": "Open API JSON",
+    "items": [
+      {
+        "title": "Templates",
+        "description": "Official protocol starters for member points, refunds, support tickets, and agent tool permissions."
+      },
+      {
+        "title": "Schemas",
+        "description": "Stable URLs for manifest, action, projection, conformance, package, and registry schemas."
+      },
+      {
+        "title": "Runtime badges",
+        "description": "Compatibility status that downstream runtimes can publish without giving Cardity execution authority."
+      },
+      {
+        "title": ".carditypkg",
+        "description": "Portable package examples with hashes so runtimes can verify protocol artifacts before installing."
+      }
+    ]
+  },
   "cta": {
     "title": "Give agents a protocol before they write code",
     "subtitle": "A precise protocol contract lets agents generate systems with clearer permissions, routes, actions, read models, projections, workflows, and replay rules.",
