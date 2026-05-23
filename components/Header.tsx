@@ -18,6 +18,7 @@ export default function Header() {
     { name: t('nav.playground'), href: 'https://api.cardity.org/playground', external: true },
     { name: t('nav.docs'), href: `/docs${langParam}` },
     { name: t('nav.examples'), href: `/examples${langParam}` },
+    { name: t('nav.registry'), href: `/registry${langParam}` },
     { name: t('nav.download'), href: `/download${langParam}` },
     { name: t('nav.about'), href: `/about${langParam}` },
   ], [t, locale, langParam])
