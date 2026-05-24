@@ -36,7 +36,7 @@ Cardity 是 AI Agent 生成系统前的协议契约层。官网负责解释并�
 | 构建输出 | `out/` |
 | Pages headers | `public/_headers` |
 | Pages redirects | `public/_redirects` |
-| Pages functions | `functions/` |
+| Pages functions | `functions/` (`/api/cardity/compile`, `/api/cardity/generation-guide`) |
 
 注意：Cloudflare 上还存在旧项目 `cardity-web`，它没有绑定正式域名。不要把生产官网手动部署到 `cardity-web`。
 
@@ -94,7 +94,7 @@ cardity_web/
   - 开发者指南 (`/docs/developer-guide`)
 - **示例** (`/examples`) - 代码示例和教程
 - **Registry** (`/registry`) - 生态注册表、schemas、runtime badges、packages
-- **Visualizer** (`/visualizer`) - 粘贴 Agent OS manifest 并预览三层契约图
+- **Visualizer** (`/visualizer`) - 从自然语言需求生成 Agent authoring prompt，编译 `.car`，或粘贴 Agent OS manifest 并预览三层契约图
 - **关于** (`/about`) - 项目信息和团队介绍
 
 ## 部署

@@ -12,11 +12,12 @@ import {
   Network,
   RotateCcw,
   ShieldCheck,
+  Sparkles,
   Workflow,
 } from 'lucide-react'
 import { useTranslations } from '../../lib/i18n'
 
-type InputMode = 'manifest' | 'source'
+type InputMode = 'manifest' | 'source' | 'requirement'
 
 type ManifestNode = {
   id: string
@@ -197,52 +198,76 @@ const sampleSource = `protocol MemberPointsSystem {
   returns: string state.result;
 }`
 
+const sampleRequirement = 'Build a member points system. Users can earn points and spend points. Admins can adjust points. Every write action should require confirmation, support dry-run, emit audit events, and update replay-safe read models.'
+
 const copy = {
   en: {
     title: 'Manifest Visualizer',
-    subtitle: 'Paste an Agent OS manifest or compile .car source, then inspect the Business, System, and Agent contract layers.',
+    subtitle: 'Start from a requirement, .car source, or Agent OS manifest, then inspect the Business, System, and Agent contract layers.',
     manifestMode: 'Manifest JSON',
     sourceMode: '.car source',
+    requirementMode: 'Requirement',
     input: 'Manifest JSON',
     sourceInput: '.car source',
+    requirementInput: 'Natural language requirement',
     loadSample: 'Load sample',
     reset: 'Reset',
     compileSource: 'Compile source',
     compiling: 'Compiling',
+    generatePrompt: 'Generate prompt',
+    generatingPrompt: 'Generating',
     copyMermaid: 'Copy Mermaid',
+    copyPrompt: 'Copy prompt',
     valid: 'Manifest parsed',
     sourceReady: 'Source ready',
+    requirementReady: 'Requirement ready',
+    promptReady: 'Agent prompt ready',
     compileSuccess: 'Compiled manifest',
     invalid: 'Invalid JSON',
     compileFailed: 'Compile failed',
+    guideFailed: 'Guide failed',
     business: 'Business',
     system: 'System',
     agent: 'Agent',
     edges: 'Contract edges',
-    empty: 'Paste manifest JSON or compile .car source to render the graph.',
+    empty: 'Paste manifest JSON, compile .car source, or generate an authoring prompt from a requirement.',
+    promptTitle: 'Cardity authoring prompt',
+    promptSubtitle: 'Use this with Codex, Claude, Cursor, PMTSoul, or another Agent. It asks the Agent to write compile-ready .car source instead of executing production writes.',
+    promptEmpty: 'Enter a requirement and generate a prompt. The next step is to paste the prompt into an Agent, then compile the returned .car source here.',
   },
   zh: {
     title: 'Manifest 图谱',
-    subtitle: '粘贴 Agent OS manifest，或编译 .car 源码，然后查看 Business、System、Agent 三层协议契约。',
+    subtitle: '从自然语言需求、.car 源码或 Agent OS manifest 开始，然后查看 Business、System、Agent 三层协议契约。',
     manifestMode: 'Manifest JSON',
     sourceMode: '.car 源码',
+    requirementMode: '需求',
     input: 'Manifest JSON',
     sourceInput: '.car 源码',
+    requirementInput: '自然语言需求',
     loadSample: '加载示例',
     reset: '清空',
     compileSource: '编译源码',
     compiling: '编译中',
+    generatePrompt: '生成 Prompt',
+    generatingPrompt: '生成中',
     copyMermaid: '复制 Mermaid',
+    copyPrompt: '复制 Prompt',
     valid: 'Manifest 已解析',
     sourceReady: '源码待编译',
+    requirementReady: '需求待生成',
+    promptReady: 'Agent Prompt 已生成',
     compileSuccess: 'Manifest 已生成',
     invalid: 'JSON 无效',
     compileFailed: '编译失败',
+    guideFailed: '生成指南失败',
     business: '业务层',
     system: '系统层',
     agent: 'Agent 层',
     edges: '契约边',
-    empty: '粘贴 manifest JSON，或编译 .car 源码后渲染图谱。',
+    empty: '粘贴 manifest JSON、编译 .car 源码，或先从需求生成协议编写 Prompt。',
+    promptTitle: 'Cardity 协议编写 Prompt',
+    promptSubtitle: '把它交给 Codex、Claude、Cursor、PMTSoul 或其他 Agent。它会要求 Agent 生成可编译 .car，而不是执行生产写入。',
+    promptEmpty: '输入需求并生成 Prompt。下一步是把 Prompt 发给 Agent，再把返回的 .car 源码粘贴到这里编译。',
   },
 }
 
@@ -426,6 +451,56 @@ function renderMermaid(visualization: Visualization) {
   ].join('\n')
 }
 
+async function writeClipboardText(value: string) {
+  const textarea = document.createElement('textarea')
+  textarea.value = value
+  textarea.setAttribute('readonly', 'true')
+  textarea.style.position = 'fixed'
+  textarea.style.left = '-9999px'
+  textarea.style.top = '0'
+  document.body.appendChild(textarea)
+  textarea.focus()
+  textarea.select()
+  const copied = document.execCommand('copy')
+  document.body.removeChild(textarea)
+  if (copied) return true
+
+  try {
+    await navigator.clipboard.writeText(value)
+    return true
+  } catch {
+    return false
+  }
+}
+
+function buildAuthoringPrompt(requirement: string, guide: any) {
+  const rules = asArray(guide.protocol_rules)
+    .map((item, index) => `${index + 1}. ${String(item)}`)
+    .join('\n')
+
+  const tableSyntax = guide.table_syntax ? `\n\nTable syntax reference:\n\`\`\`car\n${guide.table_syntax}\n\`\`\`` : ''
+
+  return `You are a Cardity protocol author.
+
+Task:
+Convert the following product requirement into compile-ready Cardity .car source.
+
+Requirement:
+${requirement.trim()}
+
+Rules:
+${rules}
+
+Output format:
+1. Return the full .car source in one fenced \`\`\`car block.
+2. Include protocol, version, owner, state, table, event, method, and returns blocks where needed.
+3. Keep Cardity generic: do not generate a full app runtime, deployment script, or production write executor.
+4. For write-like methods, model permission, confirmation, dry-run/readback intent, audit events, and replay-safe projections through the generated manifest semantics.
+5. After the .car block, include the exact compile command:
+   cardity compile protocol.car --include-manifest --no-carc
+6. If you are connected to the Cardity MCP server, call cardity_compile and repair diagnostics until compilation succeeds.${tableSyntax}`
+}
+
 function kindClass(kind: string) {
   if (kind === 'action' || kind === 'tool' || kind === 'permission') return 'border-emerald-500/60'
   if (kind === 'event' || kind === 'workflow') return 'border-amber-500/60'
@@ -466,9 +541,16 @@ export default function VisualizerPage() {
   const [compiledManifest, setCompiledManifest] = useState<any | null>(null)
   const [compileError, setCompileError] = useState('')
   const [isCompiling, setIsCompiling] = useState(false)
+  const [generatedPrompt, setGeneratedPrompt] = useState('')
+  const [guideError, setGuideError] = useState('')
+  const [isGeneratingGuide, setIsGeneratingGuide] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [copiedPrompt, setCopiedPrompt] = useState(false)
 
   const parsed = useMemo(() => {
+    if (mode === 'requirement') {
+      return { manifest: null, error: guideError }
+    }
     if (mode === 'source') {
       return { manifest: compiledManifest, error: compileError }
     }
@@ -478,7 +560,7 @@ export default function VisualizerPage() {
     } catch (error) {
       return { manifest: null, error: error instanceof Error ? error.message : 'Invalid JSON' }
     }
-  }, [source, mode, compiledManifest, compileError])
+  }, [source, mode, compiledManifest, compileError, guideError])
 
   const visualization = useMemo(() => (
     parsed.manifest ? buildVisualization(parsed.manifest) : null
@@ -489,29 +571,51 @@ export default function VisualizerPage() {
 
   async function copyMermaid() {
     if (!mermaid) return
-    await navigator.clipboard.writeText(mermaid)
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1600)
+    if (await writeClipboardText(mermaid)) {
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1600)
+    }
+  }
+
+  async function copyGeneratedPrompt() {
+    if (!generatedPrompt) return
+    if (await writeClipboardText(generatedPrompt)) {
+      setCopiedPrompt(true)
+      window.setTimeout(() => setCopiedPrompt(false), 1600)
+    }
+  }
+
+  function defaultValue(nextMode: InputMode) {
+    if (nextMode === 'manifest') return JSON.stringify(sampleManifest, null, 2)
+    if (nextMode === 'source') return sampleSource
+    return sampleRequirement
   }
 
   function switchMode(nextMode: InputMode) {
     setMode(nextMode)
-    setSource(nextMode === 'manifest' ? JSON.stringify(sampleManifest, null, 2) : sampleSource)
+    setSource(defaultValue(nextMode))
     setCompiledManifest(null)
     setCompileError('')
+    setGeneratedPrompt('')
+    setGuideError('')
     setCopied(false)
+    setCopiedPrompt(false)
   }
 
   function loadSample() {
-    setSource(mode === 'manifest' ? JSON.stringify(sampleManifest, null, 2) : sampleSource)
+    setSource(defaultValue(mode))
     setCompiledManifest(null)
     setCompileError('')
+    setGeneratedPrompt('')
+    setGuideError('')
   }
 
   function resetInput() {
     setSource('')
     setCompiledManifest(null)
     setCompileError('')
+    setGeneratedPrompt('')
+    setGuideError('')
   }
 
   function updateSource(value: string) {
@@ -519,6 +623,10 @@ export default function VisualizerPage() {
     if (mode === 'source') {
       setCompiledManifest(null)
       setCompileError('')
+    }
+    if (mode === 'requirement') {
+      setGeneratedPrompt('')
+      setGuideError('')
     }
   }
 
@@ -555,11 +663,40 @@ export default function VisualizerPage() {
     }
   }
 
+  async function generateAuthoringPrompt() {
+    if (!source.trim()) {
+      setGuideError(text.guideFailed)
+      return
+    }
+    setIsGeneratingGuide(true)
+    setGuideError('')
+    setGeneratedPrompt('')
+    try {
+      const response = await fetch('/api/cardity/generation-guide', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ requirement: source }),
+      })
+      const payload = await response.json()
+      if (!response.ok || !payload.ok) {
+        const message = payload?.error?.message || payload?.error || text.guideFailed
+        throw new Error(String(message))
+      }
+      setGeneratedPrompt(buildAuthoringPrompt(source, payload))
+    } catch (error) {
+      setGuideError(error instanceof Error ? error.message : text.guideFailed)
+    } finally {
+      setIsGeneratingGuide(false)
+    }
+  }
+
   const statusText = parsed.error
-    ? (mode === 'source' ? text.compileFailed : text.invalid)
+    ? (mode === 'source' ? text.compileFailed : mode === 'requirement' ? text.guideFailed : text.invalid)
     : visualization
       ? (mode === 'source' ? text.compileSuccess : text.valid)
-      : (mode === 'source' ? text.sourceReady : text.valid)
+      : mode === 'requirement'
+        ? (generatedPrompt ? text.promptReady : text.requirementReady)
+        : (mode === 'source' ? text.sourceReady : text.valid)
 
   return (
     <div className="min-h-screen">
@@ -576,13 +713,13 @@ export default function VisualizerPage() {
             </div>
             <div className="flex flex-wrap gap-3">
               <div className="inline-flex rounded-lg border border-dark-700 bg-dark-900 p-1">
-                {(['manifest', 'source'] as const).map((item) => (
+                {(['requirement', 'source', 'manifest'] as const).map((item) => (
                   <button
                     key={item}
                     onClick={() => switchMode(item)}
                     className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${mode === item ? 'bg-cardity-600 text-white' : 'text-gray-300 hover:text-white'}`}
                   >
-                    {item === 'manifest' ? text.manifestMode : text.sourceMode}
+                    {item === 'manifest' ? text.manifestMode : item === 'source' ? text.sourceMode : text.requirementMode}
                   </button>
                 ))}
               </div>
@@ -600,6 +737,12 @@ export default function VisualizerPage() {
                   {isCompiling ? text.compiling : text.compileSource}
                 </button>
               )}
+              {mode === 'requirement' && (
+                <button className="btn-primary inline-flex items-center disabled:opacity-50" onClick={generateAuthoringPrompt} disabled={isGeneratingGuide || !source.trim()}>
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  {isGeneratingGuide ? text.generatingPrompt : text.generatePrompt}
+                </button>
+              )}
               <button className="btn-primary inline-flex items-center disabled:opacity-50" onClick={copyMermaid} disabled={!visualization}>
                 <Copy className="w-4 h-4 mr-2" />
                 {copied ? 'Copied' : text.copyMermaid}
@@ -613,7 +756,7 @@ export default function VisualizerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[0.82fr_1.18fr] gap-6 items-start">
           <div className="rounded-lg border border-dark-800 bg-dark-950/80 overflow-hidden">
             <div className="h-12 px-4 border-b border-dark-800 flex items-center justify-between">
-              <div className="text-sm font-medium text-gray-200">{mode === 'source' ? text.sourceInput : text.input}</div>
+              <div className="text-sm font-medium text-gray-200">{mode === 'source' ? text.sourceInput : mode === 'requirement' ? text.requirementInput : text.input}</div>
               <div className={`inline-flex items-center gap-2 text-xs ${parsed.error ? 'text-rose-300' : 'text-emerald-300'}`}>
                 {parsed.error ? <AlertCircle className="w-4 h-4" /> : <CheckCircle2 className="w-4 h-4" />}
                 {statusText}
@@ -633,7 +776,28 @@ export default function VisualizerPage() {
           </div>
 
           <div className="space-y-6">
-            {visualization ? (
+            {mode === 'requirement' ? (
+              <section className="rounded-lg border border-dark-800 bg-dark-950/75 overflow-hidden">
+                <div className="border-b border-dark-800 px-4 py-4 flex items-center justify-between gap-4">
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.14em] text-cardity-300">Agent authoring</div>
+                    <h2 className="text-lg font-semibold text-white">{text.promptTitle}</h2>
+                    <p className="text-sm text-gray-400 mt-1 leading-6">{text.promptSubtitle}</p>
+                  </div>
+                  <button className="btn-secondary inline-flex items-center disabled:opacity-50 shrink-0" onClick={copyGeneratedPrompt} disabled={!generatedPrompt}>
+                    <Copy className="w-4 h-4 mr-2" />
+                    {copiedPrompt ? 'Copied' : text.copyPrompt}
+                  </button>
+                </div>
+                {generatedPrompt ? (
+                  <pre className="max-h-[760px] overflow-auto whitespace-pre-wrap break-words p-4 text-sm leading-6 text-gray-200">
+                    {generatedPrompt}
+                  </pre>
+                ) : (
+                  <div className="p-8 text-gray-400">{text.promptEmpty}</div>
+                )}
+              </section>
+            ) : visualization ? (
               <>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {Object.entries(visualization.summary).map(([key, value]) => (
