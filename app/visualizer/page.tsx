@@ -8,6 +8,8 @@ import {
   CheckCircle2,
   Copy,
   Database,
+  Eye,
+  EyeOff,
   FileJson,
   Network,
   RotateCcw,
@@ -232,8 +234,12 @@ const copy = {
     edges: 'Contract edges',
     empty: 'Paste manifest JSON, compile .car source, or generate an authoring prompt from a requirement.',
     promptTitle: 'Cardity authoring prompt',
-    promptSubtitle: 'Use this with Codex, Claude, Cursor, PMTSoul, or another Agent. It asks the Agent to write compile-ready .car source instead of executing production writes.',
-    promptEmpty: 'Enter a requirement and generate a prompt. The next step is to paste the prompt into an Agent, then compile the returned .car source here.',
+    promptSubtitle: 'Copy this prompt into an Agent, then paste the returned .car source back here.',
+    promptEmpty: 'Enter a requirement and generate a prompt.',
+    promptReadyBody: 'Prompt generated. It asks an Agent to write compile-ready .car source without executing production writes.',
+    promptNextStep: 'Next: copy it into Codex, Claude, Cursor, PMTSoul, or another Agent.',
+    viewPrompt: 'View prompt',
+    hidePrompt: 'Hide prompt',
   },
   zh: {
     title: 'Manifest 图谱',
@@ -266,8 +272,12 @@ const copy = {
     edges: '契约边',
     empty: '粘贴 manifest JSON、编译 .car 源码，或先从需求生成协议编写 Prompt。',
     promptTitle: 'Cardity 协议编写 Prompt',
-    promptSubtitle: '把它交给 Codex、Claude、Cursor、PMTSoul 或其他 Agent。它会要求 Agent 生成可编译 .car，而不是执行生产写入。',
-    promptEmpty: '输入需求并生成 Prompt。下一步是把 Prompt 发给 Agent，再把返回的 .car 源码粘贴到这里编译。',
+    promptSubtitle: '复制给 Agent，再把返回的 .car 源码粘贴回来编译。',
+    promptEmpty: '输入需求并生成 Prompt。',
+    promptReadyBody: 'Prompt 已生成。它会要求 Agent 生成可编译 .car，不执行生产写入。',
+    promptNextStep: '下一步：复制给 Codex、Claude、Cursor、PMTSoul 或其他 Agent。',
+    viewPrompt: '查看 Prompt',
+    hidePrompt: '收起 Prompt',
   },
 }
 
@@ -546,6 +556,7 @@ export default function VisualizerPage() {
   const [isGeneratingGuide, setIsGeneratingGuide] = useState(false)
   const [copied, setCopied] = useState(false)
   const [copiedPrompt, setCopiedPrompt] = useState(false)
+  const [showPrompt, setShowPrompt] = useState(false)
 
   const parsed = useMemo(() => {
     if (mode === 'requirement') {
@@ -600,6 +611,7 @@ export default function VisualizerPage() {
     setGuideError('')
     setCopied(false)
     setCopiedPrompt(false)
+    setShowPrompt(false)
   }
 
   function loadSample() {
@@ -608,6 +620,7 @@ export default function VisualizerPage() {
     setCompileError('')
     setGeneratedPrompt('')
     setGuideError('')
+    setShowPrompt(false)
   }
 
   function resetInput() {
@@ -616,6 +629,7 @@ export default function VisualizerPage() {
     setCompileError('')
     setGeneratedPrompt('')
     setGuideError('')
+    setShowPrompt(false)
   }
 
   function updateSource(value: string) {
@@ -627,6 +641,7 @@ export default function VisualizerPage() {
     if (mode === 'requirement') {
       setGeneratedPrompt('')
       setGuideError('')
+      setShowPrompt(false)
     }
   }
 
@@ -683,6 +698,7 @@ export default function VisualizerPage() {
         throw new Error(String(message))
       }
       setGeneratedPrompt(buildAuthoringPrompt(source, payload))
+      setShowPrompt(false)
     } catch (error) {
       setGuideError(error instanceof Error ? error.message : text.guideFailed)
     } finally {
@@ -766,7 +782,7 @@ export default function VisualizerPage() {
               value={source}
               onChange={(event) => updateSource(event.target.value)}
               spellCheck={false}
-              className="h-[680px] w-full resize-none bg-dark-950 p-4 font-mono text-sm leading-6 text-gray-200 outline-none"
+              className={`${mode === 'requirement' ? 'h-[340px]' : 'h-[680px]'} w-full resize-none bg-dark-950 p-4 font-mono text-sm leading-6 text-gray-200 outline-none`}
             />
             {parsed.error && (
               <div className="border-t border-rose-900/60 bg-rose-950/30 px-4 py-3 text-sm text-rose-200">
@@ -784,15 +800,35 @@ export default function VisualizerPage() {
                     <h2 className="text-lg font-semibold text-white">{text.promptTitle}</h2>
                     <p className="text-sm text-gray-400 mt-1 leading-6">{text.promptSubtitle}</p>
                   </div>
-                  <button className="btn-secondary inline-flex items-center disabled:opacity-50 shrink-0" onClick={copyGeneratedPrompt} disabled={!generatedPrompt}>
-                    <Copy className="w-4 h-4 mr-2" />
-                    {copiedPrompt ? 'Copied' : text.copyPrompt}
-                  </button>
+                  <div className="flex flex-wrap gap-2 justify-end">
+                    <button className="btn-secondary inline-flex items-center disabled:opacity-50 shrink-0" onClick={copyGeneratedPrompt} disabled={!generatedPrompt}>
+                      <Copy className="w-4 h-4 mr-2" />
+                      {copiedPrompt ? 'Copied' : text.copyPrompt}
+                    </button>
+                    <button className="btn-outline inline-flex items-center disabled:opacity-50 shrink-0" onClick={() => setShowPrompt((value) => !value)} disabled={!generatedPrompt}>
+                      {showPrompt ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
+                      {showPrompt ? text.hidePrompt : text.viewPrompt}
+                    </button>
+                  </div>
                 </div>
                 {generatedPrompt ? (
-                  <pre className="max-h-[760px] overflow-auto whitespace-pre-wrap break-words p-4 text-sm leading-6 text-gray-200">
-                    {generatedPrompt}
-                  </pre>
+                  <>
+                    <div className="grid md:grid-cols-3 gap-3 p-4">
+                      <div className="rounded-lg border border-emerald-800/50 bg-emerald-950/20 p-4">
+                        <div className="text-xs uppercase tracking-[0.14em] text-emerald-300">{text.promptReady}</div>
+                        <p className="mt-2 text-sm leading-6 text-gray-300">{text.promptReadyBody}</p>
+                      </div>
+                      <div className="rounded-lg border border-dark-800 bg-dark-900/50 p-4 md:col-span-2">
+                        <div className="text-xs uppercase tracking-[0.14em] text-cardity-300">Next</div>
+                        <p className="mt-2 text-sm leading-6 text-gray-300">{text.promptNextStep}</p>
+                      </div>
+                    </div>
+                    {showPrompt && (
+                      <pre className="max-h-[420px] overflow-auto whitespace-pre-wrap break-words border-t border-dark-800 p-4 text-sm leading-6 text-gray-200">
+                        {generatedPrompt}
+                      </pre>
+                    )}
+                  </>
                 ) : (
                   <div className="p-8 text-gray-400">{text.promptEmpty}</div>
                 )}
